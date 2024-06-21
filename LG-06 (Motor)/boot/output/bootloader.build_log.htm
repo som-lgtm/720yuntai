@@ -1,0 +1,33 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\C project\project\KMALER\A621C\a621-c\code\boot\MDK-ARM\c400 controller.uvproj
+Project File Date:  10/16/2021
+
+<h2>Output:</h2>
+Build target 'A610'
+compiling main.c...
+../Src/main.c(37): warning:  #177-D: variable "device_id" was declared but never referenced
+        uint8_t device_id[12]={0};
+../Src/main.c(38): warning:  #177-D: variable "i" was declared but never referenced
+        uint8_t i = 0;
+../Src/main.c: 2 warnings, 0 errors
+compiling GPIO.c...
+compiling common.c...
+compiling download.c...
+..\Src\User\download.c(154): warning:  #177-D: variable "infor" was declared but never referenced
+        IAP_INF_T infor={0};
+..\Src\User\download.c(358): warning:  #550-D: variable "name" was set but never used
+        u8 name[20] = {0};
+..\Src\User\download.c: 2 warnings, 0 errors
+compiling ymodem.c...
+linking...
+Program Size: Code=6052 RO-data=236 RW-data=52 ZI-data=2324  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil\ARM\ARMCC\bin\fromelf.exe --bin --output ../output/bootloader.bin ../output/bootloader.axf
+"..\output\bootloader.axf" - 0 Error(s), 4 Warning(s).
+</pre>
+</body>
+</html>

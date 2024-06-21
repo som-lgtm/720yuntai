@@ -1,0 +1,227 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\C project\project\KMALER\C300B\c300-b\CODE\APP\MDK-ARM\A610.uvproj
+Project File Date:  03/19/2022
+
+<h2>Output:</h2>
+Build target 'A610'
+compiling Motor.c...
+compiling car.c...
+linking...
+Program Size: Code=29628 RO-data=288 RW-data=200 ZI-data=4548  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil\ARM\ARMCC\bin\fromelf.exe --bin --output ../output/C300B.bin ../output/C300B.axf
+"..\output\C300B.axf" - 0 Error(s), 0 Warning(s).
+</pre>
+</body>
+</html>
+177-D: function "MX_IWDG_Init" was declared but never referenced
+  static void MX_IWDG_Init(void)
+../Src/main.c(311): warning:  #177-D: function "MX_RTC_Init" was declared but never referenced
+  static void MX_RTC_Init(void)
+../Src/main.c: 4 warnings, 0 errors
+compiling stm32f0xx_it.c...
+compiling uart.c...
+compiling ADC.c...
+compiling flash.c...
+compiling GPIO.c...
+compiling Motor.c...
+compiling ReadAndSend.c...
+compiling TMC2208.c...
+compiling car.c...
+compiling Ble.c...
+compiling bootloader.c...
+compiling keyscan.c...
+compiling UID_Encryption.c...
+compiling stm32f0xx_ll_adc.c...
+compiling stm32f0xx_ll_utils.c...
+compiling stm32f0xx_ll_exti.c...
+compiling stm32f0xx_ll_rcc.c...
+compiling stm32f0xx_ll_tim.c...
+compiling stm32f0xx_ll_usart.c...
+compiling stm32f0xx_ll_dma.c...
+compiling stm32f0xx_ll_pwr.c...
+compiling stm32f0xx_ll_gpio.c...
+compiling stm32f0xx_ll_rtc.c...
+compiling stm32f0xx_hal_pwr.c...
+assembling startup_stm32f030x8.s...
+linking...
+Program Size: Code=35140 RO-data=288 RW-data=200 ZI-data=4548  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil\ARM\ARMCC\bin\fromelf.exe --bin --output ../output/C300B.bin ../output/C300B.axf
+"..\output\C300B.axf" - 0 Error(s), 4 Warning(s).
+r directory
+  #include "config.h"
+..\Src\User\keyscan.c: 0 warnings, 1 error
+"..\output\C300B.axf" - 2 Error(s), 7 Warning(s).
+Target not created
+g keyscan.c...
+..\Src\User\keyscan.c(5): error:  #5: cannot open source input file "config.h": No such file or directory
+  #include "config.h"
+..\Src\User\keyscan.c: 0 warnings, 1 error
+"..\output\C300B.axf" - 3 Error(s), 8 Warning(s).
+Target not created
+IM3);
+..\Src\User\GPIO.c: 6 warnings, 1 error
+compiling Motor.c...
+..\Src\User\Motor.c(4001): error:  #20: identifier "androd_delay_tag" is undefined
+                                        androd_delay_tag = 0xff;
+..\Src\User\Motor.c: 0 warnings, 1 error
+compiling pair.c...
+..\Src\User\pair.c(79): error:  #20: identifier "ENTER_ATS" is undefined
+        ENTER_ATS;
+..\Src\User\pair.c(131): error:  #20: identifier "EXIT_ATS" is undefined
+        EXIT_ATS;
+..\Src\User\pair.c(192): error:  #20: identifier "EXIT_ATS" is undefined
+        EXIT_ATS;
+..\Src\User\pair.c(216): error:  #20: identifier "EXIT_ATS" is undefined
+        EXIT_ATS;
+..\Src\User\pair.c(307): error:  #20: identifier "EXIT_ATS" is undefined
+        EXIT_ATS;
+..\Src\User\pair.c(509): error:  #20: identifier "ENTER_ATS" is undefined
+        ENTER_ATS;
+..\Src\User\pair.c(644): error:  #20: identifier "EXIT_ATS" is undefined
+        EXIT_ATS;
+..\Src\User\pair.c: 0 warnings, 7 errors
+compiling ReadAndSend.c...
+compiling TMC2208.c...
+compiling car.c...
+compiling Ble.c...
+..\Src\User\Ble.c(76): warning:  #223-D: function "string_lengt" declared implicitly
+                if(strncmp("ZY-A621", (const char *)&get_buffer[6],string_lengt("ZY-A621")) == 0) // Search to device
+..\Src\User\Ble.c(91): warning:  #223-D: function "string_lengt" declared implicitly
+                        usart_set_the_data(r_baud, string_lengt(r_baud));
+..\Src\User\Ble.c(108): warning:  #223-D: function "Usart11_Init" declared implicitly
+                Usart11_Init(9600);     
+..\Src\User\Ble.c(115): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("ZY-A621", (const char *)&get_buffer[6],string_lengt("ZY-A621")) == 0) // Search to device
+..\Src\User\Ble.c(125): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(r_baud, string_lengt(r_baud));
+..\Src\User\Ble.c(158): warning:  #223-D: function "Usart11_Init" declared implicitly
+                        Usart11_Init(9600);
+..\Src\User\Ble.c(167): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("ZY-A621", (const char *)&get_buffer[6],string_lengt("ZY-A621")) == 0) // Search to device
+..\Src\User\Ble.c(186): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(name_b, string_lengt(name_b));
+..\Src\User\Ble.c(205): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("OK", (const char *)&get_buffer[0],string_lengt("OK")) == 0) // Search to device
+..\Src\User\Ble.c(215): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(Role_b, string_lengt(Role_b));
+..\Src\User\Ble.c(232): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("OK", (const char *)&get_buffer[0],string_lengt("OK")) == 0) // Search to device
+..\Src\User\Ble.c(242): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(Baud_b, string_lengt(Baud_b));
+..\Src\User\Ble.c(256): warning:  #223-D: function "string_lengt" declared implicitly
+                usart_set_the_data(Reset_b, string_lengt(Reset_b));
+..\Src\User\Ble.c(260): warning:  #223-D: function "Usart11_Init" declared implicitly
+                Usart11_Init(115200);
+..\Src\User\Ble.c(470): warning:  #223-D: function "string_lengt" declared implicitly
+        String_Printf(USART_2, mac_con, string_lengt(mac_con));
+..\Src\User\Ble.c: 15 warnings, 0 errors
+compiling bootloader.c...
+compiling keyscan.c...
+..\Src\User\keyscan.c(5): error:  #5: cannot open source input file "config.h": No such file or directory
+  #include "config.h"
+..\Src\User\keyscan.c: 0 warnings, 1 error
+"..\output\C300B.axf" - 11 Error(s), 26 Warning(s).
+Target not created
+
+                                usart_set_the_data(Baud_b, string_lengt(Baud_b));
+..\Src\User\Ble.c(256): warning:  #223-D: function "string_lengt" declared implicitly
+                usart_set_the_data(Reset_b, string_lengt(Reset_b));
+..\Src\User\Ble.c(260): warning:  #223-D: function "Usart11_Init" declared implicitly
+                Usart11_Init(115200);
+..\Src\User\Ble.c(470): warning:  #223-D: function "string_lengt" declared implicitly
+        String_Printf(USART_2, mac_con, string_lengt(mac_con));
+..\Src\User\Ble.c: 16 warnings, 0 errors
+compiling bootloader.c...
+..\Src\User\bootloader.c(150): error:  #20: identifier "FW_VERSIONS" is undefined
+                ack_bufer[5] = FW_VERSIONS / 100;
+..\Src\User\bootloader.c: 0 warnings, 1 error
+compiling keyscan.c...
+..\Src\User\keyscan.c(5): error:  #5: cannot open source input file "config.h": No such file or directory
+  #include "config.h"
+..\Src\User\keyscan.c: 0 warnings, 1 error
+"..\output\C300B.axf" - 17 Error(s), 28 Warning(s).
+Target not created
+on.h(194): error:  #20: identifier "USART_NUM" is undefined
+  void String_Printf(USART_NUM Usart, uint8_t *sptf, uint8_t sizes);
+..\Src\User\Ble.c(69): warning:  #223-D: function "Green_led_onORoff" declared implicitly
+        Green_led_onORoff(1);
+..\Src\User\Ble.c(70): warning:  #223-D: function "time_delay_ms" declared implicitly
+        time_delay_ms(400);
+..\Src\User\Ble.c(76): warning:  #223-D: function "string_lengt" declared implicitly
+                if(strncmp("ZY-A621", (const char *)&get_buffer[6],string_lengt("ZY-A621")) == 0) // Search to device
+..\Src\User\Ble.c(91): warning:  #223-D: function "string_lengt" declared implicitly
+                        usart_set_the_data(r_baud, string_lengt(r_baud));
+..\Src\User\Ble.c(108): warning:  #223-D: function "Usart11_Init" declared implicitly
+                Usart11_Init(9600);     
+..\Src\User\Ble.c(115): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("ZY-A621", (const char *)&get_buffer[6],string_lengt("ZY-A621")) == 0) // Search to device
+..\Src\User\Ble.c(125): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(r_baud, string_lengt(r_baud));
+..\Src\User\Ble.c(158): warning:  #223-D: function "Usart11_Init" declared implicitly
+                        Usart11_Init(9600);
+..\Src\User\Ble.c(159): warning:  #223-D: function "time_delay_ms" declared implicitly
+                        time_delay_ms(400);
+..\Src\User\Ble.c(167): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("ZY-A621", (const char *)&get_buffer[6],string_lengt("ZY-A621")) == 0) // Search to device
+..\Src\User\Ble.c(170): error:  #20: identifier "USART_2" is undefined
+                                String_Printf(USART_2, get_buffer, string_lengt(get_buffer));
+..\Src\User\Ble.c(177): error:  #20: identifier "USART_2" is undefined
+                                String_Printf(USART_2, get_buffer, string_lengt(get_buffer));
+..\Src\User\Ble.c(186): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(name_b, string_lengt(name_b));
+..\Src\User\Ble.c(205): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("OK", (const char *)&get_buffer[0],string_lengt("OK")) == 0) // Search to device
+..\Src\User\Ble.c(207): error:  #20: identifier "USART_2" is undefined
+                                String_Printf(USART_2, get_buffer, string_lengt(get_buffer));
+..\Src\User\Ble.c(215): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(Role_b, string_lengt(Role_b));
+..\Src\User\Ble.c(232): warning:  #223-D: function "string_lengt" declared implicitly
+                        if(strncmp("OK", (const char *)&get_buffer[0],string_lengt("OK")) == 0) // Search to device
+..\Src\User\Ble.c(234): error:  #20: identifier "USART_2" is undefined
+                                String_Printf(USART_2, get_buffer, string_lengt(get_buffer));
+..\Src\User\Ble.c(242): warning:  #223-D: function "string_lengt" declared implicitly
+                                usart_set_the_data(Baud_b, string_lengt(Baud_b));
+..\Src\User\Ble.c(256): warning:  #223-D: function "string_lengt" declared implicitly
+                usart_set_the_data(Reset_b, string_lengt(Reset_b));
+..\Src\User\Ble.c(260): warning:  #223-D: function "Usart11_Init" declared implicitly
+                Usart11_Init(115200);
+..\Src\User\Ble.c(261): warning:  #223-D: function "time_delay_ms" declared implicitly
+                time_delay_ms(400);
+..\Src\User\Ble.c(470): error:  #20: identifier "USART_2" is undefined
+        String_Printf(USART_2, mac_con, string_lengt(mac_con));
+..\Src\User\Ble.c(470): warning:  #223-D: function "string_lengt" declared implicitly
+        String_Printf(USART_2, mac_con, string_lengt(mac_con));
+..\Src\User\Ble.c: 19 warnings, 6 errors
+compiling bootloader.c...
+..\Src\User\include\common.h(194): error:  #20: identifier "USART_NUM" is undefined
+  void String_Printf(USART_NUM Usart, uint8_t *sptf, uint8_t sizes);
+..\Src\User\bootloader.c(81): error:  #20: identifier "USART_2" is undefined
+                                                                                        String_Printf(USART_2,"G", 1);
+..\Src\User\bootloader.c(102): error:  #20: identifier "USART_2" is undefined
+                String_Printf(USART_2,"G", 1);
+..\Src\User\bootloader.c(126): error:  #20: identifier "USART_2" is undefined
+                        String_Printf(USART_2,"F", 1);
+..\Src\User\bootloader.c(132): error:  #20: identifier "USART_2" is undefined
+                String_Printf(USART_2,"N", 1);
+..\Src\User\bootloader.c(150): error:  #20: identifier "FW_VERSIONS" is undefined
+                ack_bufer[5] = FW_VERSIONS / 100;
+..\Src\User\bootloader.c(159): error:  #20: identifier "USART_1" is undefined
+                String_Printf(USART_1, ack_bufer, 13);
+..\Src\User\bootloader.c(169): error:  #20: identifier "USART_1" is undefined
+                String_Printf(USART_1, ack_bufer, 5);
+..\Src\User\bootloader.c: 0 warnings, 8 errors
+compiling keyscan.c...
+..\Src\User\include\common.h(194): error:  #20: identifier "USART_NUM" is undefined
+  void String_Printf(USART_NUM Usart, uint8_t *sptf, uint8_t sizes);
+..\Src\User\keyscan.c(5): error:  #5: cannot open source input file "config.h": No such file or directory
+  #include "config.h"
+..\Src\User\keyscan.c: 0 warnings, 2 errors
+compiling UID_Encryption.c...
+"..\output\C300B.axf" - 43 Error(s), 40 Warning(s).
+Target not created

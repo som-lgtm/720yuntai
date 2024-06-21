@@ -1,0 +1,10 @@
+a610\flash.o: ..\Src\User\flash.c
+a610\flash.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
+a610\flash.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
+a610\flash.o: ../Drivers/CMSIS/Include/core_cm0.h
+a610\flash.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+a610\flash.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+a610\flash.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+a610\flash.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+a610\flash.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h
+a610\flash.o: ..\Src\User\include\common.h

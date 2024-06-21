@@ -1,0 +1,442 @@
+Dependencies for Project 'A610', Target 'A610': (DO NOT MODIFY !)
+F (../Src/system_stm32f0xx.c)(0x5A643C46)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\system_stm32f0xx.o --omf_browse a610\system_stm32f0xx.crf --depend a610\system_stm32f0xx.d)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+F (../Src/main.c)(0x60C86A02)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\main.o --omf_browse a610\main.crf --depend a610\main.d)
+I (../Inc/main.h)(0x5FDB450D)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h)(0x5AAE14DE)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_iwdg.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_crs.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rtc.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (..\Src\User\include\rf24l01.h)(0x5FE004E1)
+F (../Src/stm32f0xx_it.c)(0x60C866E8)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_it.o --omf_browse a610\stm32f0xx_it.crf --depend a610\stm32f0xx_it.d)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Inc/stm32f0xx_it.h)(0x5AACFF1D)
+I (../Inc/main.h)(0x5FDB450D)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h)(0x5AAE14DE)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_iwdg.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_crs.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rtc.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (..\Src\User\include\rf24l01.h)(0x5FE004E1)
+F (..\Src\User\uart.c)(0x60C476A5)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\uart.o --omf_browse a610\uart.crf --depend a610\uart.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\motor_dri.h)(0x5C793808)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5A643C48)
+F (..\Src\User\ADC.c)(0x60C83DA3)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\adc.o --omf_browse a610\adc.crf --depend a610\adc.d)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h)(0x5AAE14DE)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+I (..\Src\User\include\ADC.h)(0x60C83DA5)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+I (..\Src\User\include\motor_dri.h)(0x5C793808)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+F (..\Src\User\motor_dri.c)(0x60C48EF2)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\motor_dri.o --omf_browse a610\motor_dri.crf --depend a610\motor_dri.d)
+I (..\Src\User\include\motor_dri.h)(0x5C793808)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5A643C48)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+I (..\Src\User\include\orbital.h)(0x60C899AB)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+F (..\Src\User\flash.c)(0x5FDB1F2C)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\flash.o --omf_browse a610\flash.crf --depend a610\flash.d)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\common.h)(0x60C869FE)
+F (..\Src\User\ab_set.c)(0x5F2002DD)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\ab_set.o --omf_browse a610\ab_set.crf --depend a610\ab_set.d)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\pwm.h)(0x5A51C428)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\config.h)(0x5D006C08)
+I (..\Src\User\include\keyscan.h)(0x60C86572)
+I (..\Src\User\include\orbital.h)(0x60C899AB)
+I (..\Src\User\include\motor_dri.h)(0x5C793808)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+F (..\Src\User\config.c)(0x5F23BB55)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\config.o --omf_browse a610\config.crf --depend a610\config.d)
+I (..\Src\User\include\config.h)(0x5D006C08)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\orbital.h)(0x60C899AB)
+I (..\Src\User\include\keyscan.h)(0x60C86572)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\ab_set.h)(0x5AF7F07E)
+F (..\Src\User\orbital.c)(0x60DC5E16)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\orbital.o --omf_browse a610\orbital.crf --depend a610\orbital.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\keyscan.h)(0x60C86572)
+I (..\Src\User\include\orbital.h)(0x60C899AB)
+I (..\Src\User\include\config.h)(0x5D006C08)
+I (..\Src\User\include\ab_set.h)(0x5AF7F07E)
+I (..\Src\User\include\motor_dri.h)(0x5C793808)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5A643C48)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+F (..\Src\User\keyscan.c)(0x60C86756)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\keyscan.o --omf_browse a610\keyscan.crf --depend a610\keyscan.d)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\keyscan.h)(0x60C86572)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\config.h)(0x5D006C08)
+I (..\Src\User\include\orbital.h)(0x60C899AB)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\ab_set.h)(0x5AF7F07E)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (..\Src\User\GPIO.c)(0x60C463C2)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\gpio.o --omf_browse a610\gpio.crf --depend a610\gpio.d)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (..\Src\User\oled.c)(0x60C84C80)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\oled.o --omf_browse a610\oled.crf --depend a610\oled.d)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (..\Src\User\include\matrix.h)(0x60C48F91)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (..\Src\User\include\orbital.h)(0x60C899AB)
+F (..\Src\User\Pair.c)(0x60C44746)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\pair.o --omf_browse a610\pair.crf --depend a610\pair.d)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5A643C48)
+I (..\Src\User\include\rf24l01.h)(0x5FE004E1)
+I (..\Src\User\include\keyscan.h)(0x60C86572)
+F (..\Src\User\RF24L01.c)(0x5FE009F9)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\rf24l01.o --omf_browse a610\rf24l01.crf --depend a610\rf24l01.d)
+I (..\Src\User\include\RF24L01.h)(0x5FE004E1)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+F (..\Src\User\Ble.c)(0x60C48FC5)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\ble.o --omf_browse a610\ble.crf --depend a610\ble.d)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\uart.h)(0x60C4769E)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (..\Src\User\include\oled.h)(0x60C84009)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
+I (..\Src\User\include\keyscan.h)(0x60C86572)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+F (..\Src\User\low_power.c)(0x60C86A0F)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\low_power.o --omf_browse a610\low_power.crf --depend a610\low_power.d)
+I (..\Src\User\include\gpio.h)(0x60C46946)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (..\Src\User\include\common.h)(0x60C869FE)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (..\Src\User\include\config.h)(0x5D006C08)
+I (..\Src\User\include\orbital.h)(0x60C899AB)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_adc.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_adc.o --omf_browse a610\stm32f0xx_ll_adc.crf --depend a610\stm32f0xx_ll_adc.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h)(0x5AAE14DE)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_utils.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_utils.o --omf_browse a610\stm32f0xx_ll_utils.crf --depend a610\stm32f0xx_ll_utils.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5A643C48)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_exti.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_exti.o --omf_browse a610\stm32f0xx_ll_exti.crf --depend a610\stm32f0xx_ll_exti.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_rcc.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_rcc.o --omf_browse a610\stm32f0xx_ll_rcc.crf --depend a610\stm32f0xx_ll_rcc.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_tim.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_tim.o --omf_browse a610\stm32f0xx_ll_tim.crf --depend a610\stm32f0xx_ll_tim.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_usart.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_usart.o --omf_browse a610\stm32f0xx_ll_usart.crf --depend a610\stm32f0xx_ll_usart.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5AD5F5EF)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_dma.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_dma.o --omf_browse a610\stm32f0xx_ll_dma.crf --depend a610\stm32f0xx_ll_dma.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_pwr.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_pwr.o --omf_browse a610\stm32f0xx_ll_pwr.crf --depend a610\stm32f0xx_ll_pwr.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_gpio.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_gpio.o --omf_browse a610\stm32f0xx_ll_gpio.crf --depend a610\stm32f0xx_ll_gpio.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_rtc.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_rtc.o --omf_browse a610\stm32f0xx_ll_rtc.crf --depend a610\stm32f0xx_ll_rtc.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rtc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h)(0x5A643C48)
+F (..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_ll_spi.c)(0x5A643C48)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\User\include --C99-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DUSE_FULL_LL_DRIVER -DSTM32F030x8-o a610\stm32f0xx_ll_spi.o --omf_browse a610\stm32f0xx_ll_spi.crf --depend a610\stm32f0xx_ll_spi.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5A643C45)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x5A643C45)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5A643C48)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5A643C48)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5A643C45)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5A643C48)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5A643C48)
+F (startup_stm32f030x8.s)(0x5AACFF27)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 525"--list startup_stm32f030x8.lst --xref -o a610\startup_stm32f030x8.o --depend a610\startup_stm32f030x8.d)

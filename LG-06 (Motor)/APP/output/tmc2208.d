@@ -1,0 +1,12 @@
+..\output\tmc2208.o: ..\Src\User\TMC2208.c
+..\output\tmc2208.o: ..\Src\User\include\TMC2208.h
+..\output\tmc2208.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
+..\output\tmc2208.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
+..\output\tmc2208.o: ../Drivers/CMSIS/Include/core_cm0.h
+..\output\tmc2208.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\output\tmc2208.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+..\output\tmc2208.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+..\output\tmc2208.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+..\output\tmc2208.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h
+..\output\tmc2208.o: ..\Src\User\include\common.h
+..\output\tmc2208.o: ..\Src\User\include\UART.h

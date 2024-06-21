@@ -1,0 +1,17 @@
+a610\config.o: ..\Src\User\config.c
+a610\config.o: ..\Src\User\include\config.h
+a610\config.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
+a610\config.o: ../Drivers/CMSIS/Include/core_cm0.h
+a610\config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+a610\config.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+a610\config.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+a610\config.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+a610\config.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h
+a610\config.o: ..\Src\User\include\oled.h
+a610\config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+a610\config.o: ..\Src\User\include\common.h
+a610\config.o: ..\Src\User\include\orbital.h
+a610\config.o: ..\Src\User\include\keyscan.h
+a610\config.o: ..\Src\User\include\uart.h
+a610\config.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
+a610\config.o: ..\Src\User\include\ab_set.h

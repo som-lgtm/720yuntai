@@ -1,0 +1,16 @@
+..\output\common.o: ..\Src\User\common.c
+..\output\common.o: ..\Src\User\include\common.h
+..\output\common.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
+..\output\common.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
+..\output\common.o: ../Drivers/CMSIS/Include/core_cm0.h
+..\output\common.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\output\common.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+..\output\common.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+..\output\common.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+..\output\common.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h
+..\output\common.o: ..\Src\User\include\uart.h
+..\output\common.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\output\common.o: ..\Src\User\include\gpio.h
+..\output\common.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h
+..\output\common.o: ..\Src\User\include\MOTOR.h
+..\output\common.o: ..\Src\User\include\flash.h

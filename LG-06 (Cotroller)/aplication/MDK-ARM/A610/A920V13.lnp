@@ -1,0 +1,29 @@
+--cpu Cortex-M0
+"a610\system_stm32f0xx.o"
+"a610\main.o"
+"a610\stm32f0xx_it.o"
+"a610\uart.o"
+"a610\adc.o"
+"a610\motor_dri.o"
+"a610\flash.o"
+"a610\ab_set.o"
+"a610\config.o"
+"a610\oled_spi.o"
+"a610\orbital.o"
+"a610\keyscan.o"
+"a610\stm32f0xx_ll_adc.o"
+"a610\stm32f0xx_ll_utils.o"
+"a610\stm32f0xx_ll_exti.o"
+"a610\stm32f0xx_ll_rcc.o"
+"a610\stm32f0xx_ll_tim.o"
+"a610\stm32f0xx_ll_usart.o"
+"a610\stm32f0xx_ll_dma.o"
+"a610\stm32f0xx_ll_pwr.o"
+"a610\stm32f0xx_ll_gpio.o"
+"a610\stm32f0xx_ll_rtc.o"
+"a610\startup_stm32f030x8.o"
+--library_type=microlib --strict --scatter "A610\A920V13.sct"
+
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "A920V13.map" -o A610\A920V13.axf

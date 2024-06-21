@@ -1,0 +1,96 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\MyProject\project\Product\B600\code\B600\MDK-ARM\A610.uvproj
+Project File Date:  04/27/2018
+
+<h2>Output:</h2>
+Build target 'A610'
+compiling motor_dri.c...
+linking...
+Program Size: Code=8280 RO-data=452 RW-data=96 ZI-data=1080  
+FromELF: creating hex file...
+"A610\B600.axf" - 0 Error(s), 0 Warning(s).
+</pre>
+</body>
+</html>
+t JLink Project File to "F:\MyProject\project\Product\B600\code\B600\MDK-ARM\JLinkSettings.ini"
+* JLink Info: Device "STM32F030C8" selected.
+ 
+JLink info:
+------------
+DLL: V5.02f, compiled Oct  2 2015 20:51:34
+Firmware: J-Link V9 compiled Sep  1 2016 18:29:50
+Hardware: V9.40
+S/N : 59405311 
+Feature(s) : FlashBP, GDB, RDI, FlashDL, JFlash, GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x0BB11477
+* JLink Info: Found SWD-DP with ID 0x0BB11477
+* JLink Info: Found Cortex-M0 r0p0, Little endian.
+* JLink Info: FPUnit: 4 code (BP) slots and 0 literal slots
+* JLink Info: CoreSight components:
+* JLink Info: ROMTbl 0 @ E00FF000
+* JLink Info: ROMTbl 0 [0]: FFF0F000, CID: B105E00D, PID: 000BB008 SCS
+* JLink Info: ROMTbl 0 [1]: FFF02000, CID: B105E00D, PID: 000BB00A DWT
+* JLink Info: ROMTbl 0 [2]: FFF03000, CID: B105E00D, PID: 000BB00B FPB
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F030C8
+VTarget = 3.320V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 0
+Hardware-Breakpoints: 4
+Software-Breakpoints: 8192
+Watchpoints:          2
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+ated
+o field "yuntai_dir"
+                else glob_para.yuntai_dir = count_direction;
+..\Src\User\motor_dri.c(1034): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                motor_direction_change(glob_para.yuntai_dir);
+..\Src\User\motor_dri.c(1046): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = ~(glob_para.yuntai_dir);
+..\Src\User\motor_dri.c(1050): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = glob_para.yuntai_dir;
+..\Src\User\motor_dri.c(1062): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                if(glob_para.yuntai_dir == A_to_B)
+..\Src\User\motor_dri.c(1065): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = ~(glob_para.yuntai_dir);
+..\Src\User\motor_dri.c(1070): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = glob_para.yuntai_dir;
+..\Src\User\motor_dri.c: 0 warnings, 11 errors
+compiling flash.c...
+"A610\A610.axf" - 11 Error(s), 4 Warning(s).
+Target not created
+136: struct "<unnamed>" has no field "yuntai_dir"
+                if(dir_reverse)glob_para.yuntai_dir = ~count_direction;
+..\Src\User\motor_dri.c(1033): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                else glob_para.yuntai_dir = count_direction;
+..\Src\User\motor_dri.c(1034): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                motor_direction_change(glob_para.yuntai_dir);
+..\Src\User\motor_dri.c(1046): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = ~(glob_para.yuntai_dir);
+..\Src\User\motor_dri.c(1050): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = glob_para.yuntai_dir;
+..\Src\User\motor_dri.c(1062): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                if(glob_para.yuntai_dir == A_to_B)
+..\Src\User\motor_dri.c(1065): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = ~(glob_para.yuntai_dir);
+..\Src\User\motor_dri.c(1070): error:  #136: struct "<unnamed>" has no field "yuntai_dir"
+                        count_direction = glob_para.yuntai_dir;
+..\Src\User\motor_dri.c: 0 warnings, 16 errors
+compiling flash.c...
+..\Src\User\include\common.h(110): error:  #260-D: explicit type is missing ("int" assumed)
+  yuntai_atoreturn_check(void);
+..\Src\User\flash.c: 0 warnings, 1 error
+"A610\A610.axf" - 21 Error(s), 4 Warning(s).
+Target not created

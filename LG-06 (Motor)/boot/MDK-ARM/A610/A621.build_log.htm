@@ -1,0 +1,389 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\feng\project\STM32 bootloader\bootloader  project\030 bootloader\MDK-ARM\A610.uvproj
+Project File Date:  02/28/2021
+
+<h2>Output:</h2>
+Build target 'A610'
+compiling main.c...
+linking...
+Program Size: Code=3812 RO-data=396 RW-data=32 ZI-data=2328  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil\ARM\ARMCC\bin\fromelf.exe --bin --output ../output/bootloader.bin ../output/bootloader.axf
+"..\output\bootloader.axf" - 0 Error(s), 0 Warning(s).
+in\fromelf.exe --bin --output ../output/bootloader.bin ../output/bootloader.axf
+"..\output\bootloader.axf" - 0 Error(s), 1 Warning(s).
+n file '../output/bootloader.axf': No such file or directory
+Finished: 0 information, 0 warning and 1 error messages.
+"..\output\boootloader.axf" - 0 Error(s), 1 Warning(s).
+
+..\output\boootloader.axf: Error: L6218E: Undefined symbol _Error_Handler (referred from main.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+"..\output\boootloader.axf" - 1 Error(s), 3 Warning(s).
+Target not created
+r "PACKET_1K_SIZE" is undefined
+      packet_size = PACKET_1K_SIZE;
+..\Src\User\ymodem.c(106): error:  #20: identifier "EOT" is undefined
+    case EOT:
+..\Src\User\ymodem.c(108): error:  #20: identifier "CA" is undefined
+    case CA:
+..\Src\User\ymodem.c(118): error:  #20: identifier "ABORT1" is undefined
+    case ABORT1:
+..\Src\User\ymodem.c(119): error:  #20: identifier "ABORT2" is undefined
+    case ABORT2:
+..\Src\User\ymodem.c(126): warning:  #111-D: statement is unreachable
+    *data = c;
+..\Src\User\ymodem.c(127): error:  #20: identifier "PACKET_OVERHEAD" is undefined
+    for (i = 1; i < (packet_size + PACKET_OVERHEAD); i ++)
+..\Src\User\ymodem.c(135): error:  #20: identifier "PACKET_SEQNO_INDEX" is undefined
+    if (data[PACKET_SEQNO_INDEX] != ((data[PACKET_SEQNO_COMP_INDEX] ^ 0xff) & 0xff))
+..\Src\User\ymodem.c(135): error:  #20: identifier "PACKET_SEQNO_COMP_INDEX" is undefined
+    if (data[PACKET_SEQNO_INDEX] != ((data[PACKET_SEQNO_COMP_INDEX] ^ 0xff) & 0xff))
+..\Src\User\ymodem.c(151): error:  #20: identifier "PACKET_1K_SIZE" is undefined
+    u8 packet_data[PACKET_1K_SIZE + PACKET_OVERHEAD], *file_ptr, *buf_ptr;
+..\Src\User\ymodem.c(151): error:  #20: identifier "PACKET_OVERHEAD" is undefined
+    u8 packet_data[PACKET_1K_SIZE + PACKET_OVERHEAD], *file_ptr, *buf_ptr;
+..\Src\User\ymodem.c(158): error:  #20: identifier "NAK_TIMEOUT" is undefined
+        switch (Receive_Packet(packet_data, &packet_length, NAK_TIMEOUT))
+..\Src\User\ymodem.c(166): error:  #20: identifier "ACK" is undefined
+                Send_Byte(ACK);
+..\Src\User\ymodem.c(177): error:  #20: identifier "PACKET_SEQNO_INDEX" is undefined
+              if ((packet_data[PACKET_SEQNO_INDEX] & 0xff) != (packets_received & 0xff))
+..\Src\User\ymodem.c(179): error:  #20: identifier "NAK" is undefined
+                Send_Byte(NAK);
+..\Src\User\ymodem.c(185): error:  #20: identifier "PACKET_HEADER" is undefined
+                  if (packet_data[PACKET_HEADER] != 0)    
+..\Src\User\ymodem.c(207): error:  #20: identifier "CA" is undefined
+                      Send_Byte(CA);
+..\Src\User\ymodem.c(217): warning:  #223-D: function "FLASH_ErasePage" declared implicitly
+                      FLASHStatus = FLASH_ErasePage(FlashDestination + (PageSize * EraseCounter));
+..\Src\User\ymodem.c(217): warning:  #188-D: enumerated type mixed with another type
+                      FLASHStatus = FLASH_ErasePage(FlashDestination + (PageSize * EraseCounter));
+..\Src\User\ymodem.c(220): error:  #20: identifier "CRC16" is undefined
+                    Send_Byte(CRC16);
+..\Src\User\ymodem.c(234): error:  #20: identifier "PACKET_HEADER" is undefined
+                  memcpy(buf_ptr, packet_data + PACKET_HEADER, packet_length);
+..\Src\User\ymodem.c(239): warning:  #223-D: function "FLASH_ProgramWord" declared implicitly
+                    FLASH_ProgramWord(FlashDestination, *(u32*)RamSource);
+..\Src\User\ymodem.c(243): error:  #20: identifier "CA" is undefined
+                      Send_Byte(CA);
+..\Src\User\ymodem.c(258): error:  #20: identifier "CA" is undefined
+              Send_Byte(CA);
+..\Src\User\ymodem.c(266): error:  #20: identifier "MAX_ERRORS" is undefined
+            if (errors > MAX_ERRORS)
+..\Src\User\ymodem.c(272): error:  #20: identifier "CRC16" is undefined
+            Send_Byte(CRC16);
+..\Src\User\ymodem.c: 4 warnings, 27 errors
+compiling stm32f0xx_ll_adc.c...
+compiling stm32f0xx_ll_utils.c...
+compiling stm32f0xx_ll_exti.c...
+compiling stm32f0xx_ll_rcc.c...
+compiling stm32f0xx_ll_tim.c...
+compiling stm32f0xx_ll_usart.c...
+compiling stm32f0xx_ll_dma.c...
+compiling stm32f0xx_ll_pwr.c...
+compiling stm32f0xx_ll_gpio.c...
+compiling stm32f0xx_ll_rtc.c...
+assembling startup_stm32f030x8.s...
+"..\output\boootloader.axf" - 27 Error(s), 5 Warning(s).
+Target not created
+ "stm32f10x_flash.h": No such file or directory
+  #include "stm32f10x_flash.h"
+..\Src\User\ymodem.c: 0 warnings, 1 error
+"..\boootloader.axf" - 9 Error(s), 26 Warning(s).
+Target not created
+       GPIO_InitStruct.Pin = LL_GPIO_PIN_3;
+../Src/main.c(256): warning:  #223-D: function "GPIO_ReadInputDataBit" declared implicitly
+    return GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_8);
+../Src/main.c(256): error:  #20: identifier "GPIO_Pin_8" is undefined
+    return GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_8);
+../Src/main.c(268): warning:  #223-D: function "GPIO_INUP_Init" declared implicitly
+        GPIO_INUP_Init(GPIOA, LL_GPIO_PIN_4);
+../Src/main.c(268): error:  #20: identifier "LL_GPIO_PIN_4" is undefined
+        GPIO_INUP_Init(GPIOA, LL_GPIO_PIN_4);
+../Src/main.c(253): warning:  #177-D: function "Push_Button_Read" was declared but never referenced
+  static u8 Push_Button_Read (void)
+../Src/main.c: 22 warnings, 20 errors
+compiling stm32f0xx_it.c...
+../Inc/main.h(62): error:  #5: cannot open source input file "motor_dri.h": No such file or directory
+  #include "motor_dri.h"
+../Src/stm32f0xx_it.c: 0 warnings, 1 error
+compiling flash.c...
+..\Src\User\flash.c(289): error:  #20: identifier "glob_para" is undefined
+        data_len = sizeof(glob_para); //(uint8_t)(temp1-temp2);
+..\Src\User\flash.c(297): warning:  #223-D: function "Feed_IWDG" declared implicitly
+        Feed_IWDG(); //Î¹¹·
+..\Src\User\flash.c(321): error:  #20: identifier "glob_para" is undefined
+        data_len =sizeof(glob_para); //(uint8_t)(temp1-temp2);
+..\Src\User\flash.c(323): warning:  #223-D: function "Feed_IWDG" declared implicitly
+        Feed_IWDG();//Î¹¹·
+..\Src\User\flash.c(429): error:  #20: identifier "glob_para" is undefined
+        read_flash_holfword(&glob_para.read_fisrt);
+..\Src\User\flash.c(436): warning:  #223-D: function "para_init" declared implicitly
+                para_init();
+..\Src\User\flash.c(454): error:  #20: identifier "glob_para" is undefined
+                write_flash_holfword_buffer(&glob_para.read_fisrt);
+..\Src\User\flash.c(473): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FLASH_ADDRESS(Address));
+..\Src\User\flash.c(473): warning:  #223-D: function "IS_FLASH_ADDRESS" declared implicitly
+    assert_param(IS_FLASH_ADDRESS(Address));
+..\Src\User\flash.c: 5 warnings, 4 errors
+compiling GPIO.c...
+compiling common.c...
+..\Src\User\common.c(86): warning:  #223-D: function "LL_GPIO_SetOutputPin" declared implicitly
+                  LED_ON;
+..\Src\User\common.c(86): error:  #20: identifier "LL_GPIO_PIN_12" is undefined
+                  LED_ON;
+..\Src\User\common.c: 1 warning, 1 error
+compiling download.c...
+..\Src\User\download.c(27): error:  #20: identifier "FILE_NAME_LENGTH" is undefined
+  extern u8 file_name[FILE_NAME_LENGTH];
+..\Src\User\download.c(28): error:  #20: identifier "FILE_SIZE_LENGTH" is undefined
+  extern u8 ffile_size[FILE_SIZE_LENGTH];
+..\Src\User\download.c(47): warning:  #223-D: function "Ymodem_Receive" declared implicitly
+    Size = Ymodem_Receive(&tab_1024[0]);
+..\Src\User\download.c: 1 warning, 2 errors
+compiling ymodem.c...
+..\Src\User\ymodem.c(21): error:  #5: cannot open source input file "stm32f10x_flash.h": No such file or directory
+  #include "stm32f10x_flash.h"
+..\Src\User\ymodem.c: 0 warnings, 1 error
+"..\boootloader.axf" - 29 Error(s), 29 Warning(s).
+Target not created
+er\include\ymodem.h(53): error:  #20: identifier "u8" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\common.c(86): warning:  #223-D: function "LL_GPIO_SetOutputPin" declared implicitly
+                  LED_ON;
+..\Src\User\common.c(86): error:  #20: identifier "LL_GPIO_PIN_12" is undefined
+                  LED_ON;
+..\Src\User\common.c: 1 warning, 3 errors
+compiling download.c...
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "s32" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "u8" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\download.c: 0 warnings, 2 errors
+compiling ymodem.c...
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "s32" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "u8" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\ymodem.c(21): error:  #5: cannot open source input file "stm32f10x_flash.h": No such file or directory
+  #include "stm32f10x_flash.h"
+..\Src\User\ymodem.c: 0 warnings, 3 errors
+"..\boootloader.axf" - 41 Error(s), 28 Warning(s).
+Target not created
+  #20: identifier "u32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\include\common.h(78): error:  #20: identifier "vu32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\flash.c(289): error:  #20: identifier "glob_para" is undefined
+        data_len = sizeof(glob_para); //(uint8_t)(temp1-temp2);
+..\Src\User\flash.c(297): warning:  #223-D: function "Feed_IWDG" declared implicitly
+        Feed_IWDG(); //Î¹¹·
+..\Src\User\flash.c(321): error:  #20: identifier "glob_para" is undefined
+        data_len =sizeof(glob_para); //(uint8_t)(temp1-temp2);
+..\Src\User\flash.c(323): warning:  #223-D: function "Feed_IWDG" declared implicitly
+        Feed_IWDG();//Î¹¹·
+..\Src\User\flash.c(429): error:  #20: identifier "glob_para" is undefined
+        read_flash_holfword(&glob_para.read_fisrt);
+..\Src\User\flash.c(436): warning:  #223-D: function "para_init" declared implicitly
+                para_init();
+..\Src\User\flash.c(454): error:  #20: identifier "glob_para" is undefined
+                write_flash_holfword_buffer(&glob_para.read_fisrt);
+..\Src\User\flash.c(473): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FLASH_ADDRESS(Address));
+..\Src\User\flash.c(473): warning:  #223-D: function "IS_FLASH_ADDRESS" declared implicitly
+    assert_param(IS_FLASH_ADDRESS(Address));
+..\Src\User\flash.c: 5 warnings, 21 errors
+compiling GPIO.c...
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "s32" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "u8" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\common.h(70): error:  #20: identifier "u8" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(70): error:  #20: identifier "s32" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u8" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "s32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(72): error:  #20: identifier "u32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(72): error:  #20: identifier "s32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(73): error:  #20: identifier "u32" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(73): error:  #20: identifier "u8" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(74): error:  #20: identifier "u8" is undefined
+  u8 GetKey(void);
+..\Src\User\include\common.h(75): error:  #20: identifier "u8" is undefined
+  void SerialPutChar(u8 c);
+..\Src\User\include\common.h(76): error:  #20: identifier "u8" is undefined
+  void SerialPutString(u8 *s);
+..\Src\User\include\common.h(77): error:  #20: identifier "u8" is undefined
+  void GetInputString(u8 * buffP);
+..\Src\User\include\common.h(78): error:  #20: identifier "u32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\include\common.h(78): error:  #20: identifier "vu32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\GPIO.c: 0 warnings, 17 errors
+compiling common.c...
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "s32" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "u8" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\common.h(70): error:  #20: identifier "u8" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(70): error:  #20: identifier "s32" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u8" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "s32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(72): error:  #20: identifier "u32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(72): error:  #20: identifier "s32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(73): error:  #20: identifier "u32" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(73): error:  #20: identifier "u8" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(74): error:  #20: identifier "u8" is undefined
+  u8 GetKey(void);
+..\Src\User\include\common.h(75): error:  #20: identifier "u8" is undefined
+  void SerialPutChar(u8 c);
+..\Src\User\include\common.h(76): error:  #20: identifier "u8" is undefined
+  void SerialPutString(u8 *s);
+..\Src\User\include\common.h(77): error:  #20: identifier "u8" is undefined
+  void GetInputString(u8 * buffP);
+..\Src\User\include\common.h(78): error:  #20: identifier "u32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\include\common.h(78): error:  #20: identifier "vu32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\common.c(26): error:  #20: identifier "u32" is undefined
+  u32 JumpAddress;
+..\Src\User\common.c(27): error:  #20: identifier "u32" is undefined
+  u32 BlockNbr = 0, UserMemoryMask = 0;
+..\Src\User\common.c(29): error:  #20: identifier "u32" is undefined
+  extern u32 FlashDestination;
+..\Src\User\common.c(41): error:  #20: identifier "u8" is undefined
+  void Int2Str(u8* str, s32 intnum)
+..\Src\User\common.c(41): error:  #20: identifier "s32" is undefined
+  void Int2Str(u8* str, s32 intnum)
+..\Src\User\common.c(43): error:  #20: identifier "u32" is undefined
+    u32 i, Div = 1000000000, j = 0, Status = 0;
+..\Src\User\common.c(71): error:  #20: identifier "u32" is undefined
+  u32 Str2Int(u8 *inputstr, s32 *intnum)
+..\Src\User\common.c(71): error:  #20: identifier "u8" is undefined
+  u32 Str2Int(u8 *inputstr, s32 *intnum)
+..\Src\User\common.c(71): error:  #20: identifier "s32" is undefined
+  u32 Str2Int(u8 *inputstr, s32 *intnum)
+..\Src\User\common.c(73): error:  #20: identifier "u32" is undefined
+    u32 i = 0, res = 0;
+..\Src\User\common.c(74): error:  #20: identifier "u32" is undefined
+    u32 val = 0;
+..\Src\User\common.c(86): warning:  #223-D: function "LL_GPIO_SetOutputPin" declared implicitly
+                  LED_ON;
+..\Src\User\common.c(86): error:  #20: identifier "LL_GPIO_PIN_12" is undefined
+                  LED_ON;
+..\Src\User\common.c(163): error:  #20: identifier "u32" is undefined
+  u32 GetIntegerInput(s32 * num)
+..\Src\User\common.c: 1 warning, 30 errors
+compiling download.c...
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "s32" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "u8" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\common.h(70): error:  #20: identifier "u8" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(70): error:  #20: identifier "s32" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u8" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "s32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(72): error:  #20: identifier "u32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(72): error:  #20: identifier "s32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(73): error:  #20: identifier "u32" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(73): error:  #20: identifier "u8" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(74): error:  #20: identifier "u8" is undefined
+  u8 GetKey(void);
+..\Src\User\include\common.h(75): error:  #20: identifier "u8" is undefined
+  void SerialPutChar(u8 c);
+..\Src\User\include\common.h(76): error:  #20: identifier "u8" is undefined
+  void SerialPutString(u8 *s);
+..\Src\User\include\common.h(77): error:  #20: identifier "u8" is undefined
+  void GetInputString(u8 * buffP);
+..\Src\User\include\common.h(78): error:  #20: identifier "u32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\include\common.h(78): error:  #20: identifier "vu32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\download.c(27): error:  #20: identifier "u8" is undefined
+  extern u8 file_name[FILE_NAME_LENGTH];
+..\Src\User\download.c(28): error:  #20: identifier "u8" is undefined
+  extern u8 ffile_size[FILE_SIZE_LENGTH];
+..\Src\User\download.c(30): error:  #20: identifier "u8" is undefined
+  u8 tab_1024[1024]={0};
+..\Src\User\download.c(43): error:  #20: identifier "u8" is undefined
+    u8 Number[10] = "          ";
+..\Src\User\download.c(43): warning:  #520-D: initialization with "{...}" expected for aggregate object
+    u8 Number[10] = "          ";
+..\Src\User\download.c(44): error:  #20: identifier "s32" is undefined
+    s32 Size = 0;
+..\Src\User\download.c: 1 warning, 22 errors
+compiling ymodem.c...
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "s32" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\ymodem.h(53): error:  #20: identifier "u8" is undefined
+  s32 Ymodem_Receive (u8 *);
+..\Src\User\include\common.h(70): error:  #20: identifier "u8" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(70): error:  #20: identifier "s32" is undefined
+  void Int2Str(u8* str,s32 intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "u8" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(71): error:  #20: identifier "s32" is undefined
+  u32 Str2Int(u8 *inputstr,s32 *intnum);
+..\Src\User\include\common.h(72): error:  #20: identifier "u32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(72): error:  #20: identifier "s32" is undefined
+  u32 GetIntegerInput(s32 * num);
+..\Src\User\include\common.h(73): error:  #20: identifier "u32" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(73): error:  #20: identifier "u8" is undefined
+  u32 SerialKeyPressed(u8 *key);
+..\Src\User\include\common.h(74): error:  #20: identifier "u8" is undefined
+  u8 GetKey(void);
+..\Src\User\include\common.h(75): error:  #20: identifier "u8" is undefined
+  void SerialPutChar(u8 c);
+..\Src\User\include\common.h(76): error:  #20: identifier "u8" is undefined
+  void SerialPutString(u8 *s);
+..\Src\User\include\common.h(77): error:  #20: identifier "u8" is undefined
+  void GetInputString(u8 * buffP);
+..\Src\User\include\common.h(78): error:  #20: identifier "u32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\include\common.h(78): error:  #20: identifier "vu32" is undefined
+  u32 FLASH_PagesMask(vu32 Size);
+..\Src\User\ymodem.c(21): error:  #5: cannot open source input file "stm32f10x_flash.h": No such file or directory
+  #include "stm32f10x_flash.h"
+..\Src\User\ymodem.c: 0 warnings, 18 errors
+"..\boootloader.axf" - 156 Error(s), 21 Warning(s).
+Target not created

@@ -1,0 +1,25 @@
+--cpu Cortex-M0
+"..\output\system_stm32f0xx.o"
+"..\output\main.o"
+"..\output\stm32f0xx_it.o"
+"..\output\flash.o"
+"..\output\gpio.o"
+"..\output\common.o"
+"..\output\download.o"
+"..\output\ymodem.o"
+"..\output\stm32f0xx_ll_adc.o"
+"..\output\stm32f0xx_ll_utils.o"
+"..\output\stm32f0xx_ll_exti.o"
+"..\output\stm32f0xx_ll_rcc.o"
+"..\output\stm32f0xx_ll_tim.o"
+"..\output\stm32f0xx_ll_usart.o"
+"..\output\stm32f0xx_ll_dma.o"
+"..\output\stm32f0xx_ll_pwr.o"
+"..\output\stm32f0xx_ll_gpio.o"
+"..\output\stm32f0xx_ll_rtc.o"
+"..\output\startup_stm32f030x8.o"
+--library_type=microlib --strict --scatter "..\output\boootloader.sct"
+
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "boootloader.map" -o ..\output\boootloader.axf

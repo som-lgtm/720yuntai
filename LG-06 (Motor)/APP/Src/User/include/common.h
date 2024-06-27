@@ -542,6 +542,8 @@ void specialty_mode_para_clear(void);
 uint8_t SpecialtyHH_Ramp_Speed_Load(uint32_t speed, uint8_t idx);
 void Specialty_loop_check(void);
 void Specialty_Key_start(void);
+void Specialty_Send_reshot_to_controller(uint8_t types);
+void Reshot_Clear(void);
 
 // video_mode.c
 void Video_pulse_check(void);

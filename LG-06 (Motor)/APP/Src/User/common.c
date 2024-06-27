@@ -503,6 +503,10 @@ void Get_data_from_controller(uint8_t *fifos)
 						angle_snedt_time = 0;
 						Angle_real_time_transmission(0);
 					}
+					else if(mode_backup == PREINSTALL_MODE)
+					{
+						//Specialty_Send_reshot_to_controller(0);
+					}
 				}
 			}
 		}
@@ -576,6 +580,8 @@ void Get_data_from_controller(uint8_t *fifos)
 					Panorama_mode_find_Apoint();
 					//mp_Speed_Load(speed_calculat(100));
 					Send_connect_data_to_controller();
+					Specialty_Send_reshot_to_controller(1);
+					Reshot_Clear();
 				}
 				
 			}

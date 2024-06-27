@@ -13,8 +13,11 @@
 //MODE_PARA spe_para[8]={0};
 uint8_t Sync_sendt=0;
 
+uint8_t Reshot = 0; //  专业模式补拍标志变量
+uint8_t Reshot_id = 0; //  专业模式补拍标志变量ID
 uint8_t mid_ct = 0;
 uint8_t run_id = 0;
+uint8_t run_id_b = 0;
 uint8_t run_idVV = 0;
 uint8_t sp_start= 0;
 uint8_t delay_cout = 0;
@@ -89,6 +92,8 @@ void sp_para_init(void)
 	if(glob_para.mode_id>=MODE_ID_MAX)glob_para.mode_id=0;
 	mid_ct = glob_para.mode_id;
 	if(mid_ct >=MODE_ID_MAX)mid_ct=MODE_ID_MAX-1;
+	run_id = 1;
+	run_idVV = 1;
 }
 
 void Sp_para_start_init(void)
@@ -289,7 +294,10 @@ void Specialty_mode_Start(void)
 					}
 
 			}
+			con_b.begin_back = con_b.begin;
 		}
+		
+		Specialty_Send_reshot_to_controller(0);
 	}
 	else
 	{
@@ -407,17 +415,24 @@ void Specialty_Get_data_from_controller(uint8_t *fifob)
 	}
 	else if(fifob[4] == 0x10) // 方向
 	{
-		if(fifob[5] == 1) //left
+		if(Reshot == 0)return;
+		if(fifob[5] == 1) //left 移到上一张
 		{
 			
 		}
-		else if(fifob[5] == 2) //right
+		else if(fifob[5] == 2) //right  移到下一张
 		{
 			
 		}
 	}
+	else if(fifob[4] == 0x11) // 
+	{
+		Reshot = fifob[7];
+		Reshot_id = fifob[5];
+	}
 }
 
+// 将全景模式的当前数据发给遥控器显示
 void Specialty_modeID_sendt(void)
 {
 //	uint8_t i=0;
@@ -525,7 +540,7 @@ void specialty_mode_param_display(void)
 	bufers[7] = con_b.time_down_count>>8;
 	if(mode_backup == PREINSTALL_MODE)
 	{
-		bufers[8] = sp_start;
+		bufers[8] = con_b.begin_back;
 	}
 	else
 	{
@@ -618,6 +633,7 @@ void specialty_mode_main(void)
 					con_b.shut_time = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].exposure * 1000;
 					con_b.interval_t = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].interval * 1000;
 					con_b.sys_stop = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].sys_stop * 1000;
+					sp_start = 0;
 					//con_b.interval_t = con_b.interval_t - con_b.shut_time;
 					//HHmotor_return_to_theOrigin_start();
 					//con_b.begin = 6;
@@ -985,8 +1001,8 @@ void spe_mode_clear(void)
 	con_b.begin_back = 0;
 	sp_start = 0;
 	con_b.p_amount_back = 0;
-	run_id =0;
-	run_idVV = 0;
+	run_id =1;
+	run_idVV = 1;
 	con_b.time_down_count = 0;
 	delay_cout = 0;
 	
@@ -1003,7 +1019,14 @@ void Sync_data_for_controller(void)
 
 	Specialty_Send_data(Sync_sendt);
 	if(Sync_sendt)Sync_sendt -=1;
-	if(Sync_sendt==0)Specialty_modeID_sendt();
+	if(Sync_sendt==0)
+	{
+		Specialty_modeID_sendt();
+		if(sp_start)
+		{
+			Specialty_Send_reshot_to_controller(0);
+		}
+	}
 //	Alon_sendt = 1;
 }
 
@@ -1056,19 +1079,50 @@ void Specialty_loop_check(void)
 void Specialty_Key_start(void)
 {
 	if(mode_backup != PREINSTALL_MODE)return;
-	if(sp_start)return;
+	if(con_b.begin)return;
 	sp_start = 0xff;
 	
 	Specialty_mode_Start();
 	Specialty_modeID_sendt();
 }
 
+//发送补拍参数ID给遥控器显示
+void Specialty_Send_reshot_to_controller(uint8_t types)
+{
+	uint8_t buffer[20] = {0};
+	uint8_t j=0;
+	
+	buffer[0] = 9;
+	buffer[1] = 0x0b;
+	buffer[2] = 1;
+//	buffer[3] = 7;
+	
+	if(types)
+	{
+		run_id_b = 1;
+	}
+	else
+	{
+		run_id_b = run_id;
+	}
+	
+	buffer[3] = run_id_b;
+	buffer[4] = check_sum_add(4, buffer);
+	Package_dataBufer(5,buffer);
+}
+
+
+// 手动回到上一张
 void manual_goBack(void)
 {
-	if()
 	motorHH_p.DIR = B_TO_A;
 	motorHH_direction_change(motorHH_p.DIR);
 	SpHHorizontal_start();
 	con_b.begin = 2;
+}
+
+void Reshot_Clear(void)
+{
+	Reshot = 0;
 }
 

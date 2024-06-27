@@ -304,7 +304,7 @@ void page_return_adjust(void)
 	if(page_id == ORIGIN_SET_MOVE)return;
 	if(page_id > LOCUS_PAGE)
 	{
-		if(page_id == PREINSTALL_SET || page_id == PREINSTALL_SET1 || page_id == PREINSTALL_MOVE)
+		if(page_id == PREINSTALL_SET || page_id == PREINSTALL_SET1 || page_id == PREINSTALL_MOVE || page_id == PREINSTALL_SESHOT)
 		{
 			specilty_page_return();
 		}

@@ -772,6 +772,7 @@ void param_display(uint8_t cur)
 		case PREINSTALL_SESHOT:
 		{
 			specialty_move_dis(cur);
+			break;
 		}
 		case VIDEO_MODE:
 		{
@@ -837,6 +838,7 @@ void single_cursor_dis(uint8_t cur)
 {
 	if(page_id == PREINSTALL_MODE)return;
 	if(page_id == PREINSTALL_SET)return;
+	if(page_id == PREINSTALL_SESHOT)return;
 	inverse_get_value(0xff);
 	//TFTDis_Selet(cur);
 	page_display(cur);
@@ -2514,7 +2516,6 @@ void receiver_data_from_A650(void)
 						}
 					}
 
-
 					cursor_id_back = 2;
 					
 				}
@@ -2586,7 +2587,17 @@ void receiver_data_from_A650(void)
 					mid_cr_back = app_read_buffer[5];
 					cear_the_id_add(app_read_buffer[6]);
 					m_start = app_read_buffer[7];
-					if(page_id == PREINSTALL_MOVE)pecialty_pix_amt_display(3);
+					//id_add = mid_cr_back;
+					if(page_id == PREINSTALL_MOVE)
+					{
+						Cunrent_para_display(app_read_buffer[6]);
+						param_display(3);
+					}
+					if(m_start)
+					{
+						Current_Status_display(1);
+						specialty_move_dis(4);
+					}
 					specialty_totaol_time_dis();
 					specialty_page_mode_dis();
 					specialty_get = 0;
@@ -2700,6 +2711,7 @@ void receiver_data_from_A650(void)
 							cear_the_id_add(1);
 							specialty_totaol_time_dis();
 							Current_Status_display(2);
+							specialty_move_dis(4);
 						}
 					}
 				}
@@ -2827,6 +2839,10 @@ void receiver_data_from_A650(void)
 			case 0x0a: // product was select
 			{
 				break;
+			}
+			case 0x0b:
+			{
+				specilty_get_reshot_form_motor(app_read_buffer[3]);
 			}
 		}
 	}

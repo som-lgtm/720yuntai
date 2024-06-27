@@ -467,8 +467,7 @@ void specialty_mode_OKkey(void)
 		ReturnOrNext_dis();
 		jiantou_display();
 		mode_and_para_sendt(1);
-		if(m_start == 0)id_add = 1;
-		id_add_back = 1;
+		//if(m_start == 0)id_add = 1;
 		
 	}
 	else if(page_id == PREINSTALL_SET)
@@ -575,21 +574,20 @@ void specialty_mode_OKkey(void)
 			specialty_move_dis(cursor_id);
 			Current_Status_display(1);
 			specialty_totaol_time_dis();
-			id_add_back = id_add;
 			specialty_move_dis(4);
 		}
-		else if(cursor_id == 4) // return
+		else if(cursor_id == 4) // 进入补拍界面
 		{
 			if(m_start)return;
 			page_id = PREINSTALL_SESHOT;
-			cursor_id = 0;
+			specialty_para_sendTo_motor(1);
+			//cursor_id = 3;
 			change_page();
-			specialty_para_sendTo_motor(4);
 		}
 	}
 	else if(page_id == PREINSTALL_SESHOT)
 	{
-		if(cursor_id == 3)
+		/*if(cursor_id == 3)
 		{
 			
 		}
@@ -599,7 +597,7 @@ void specialty_mode_OKkey(void)
 			cursor_id = 3;
 			change_page();
 			specialty_totaol_time_dis();
-		}
+		}*/
 	}
 	
 }
@@ -1335,6 +1333,16 @@ void specialty_para_sendTo_motor(uint8_t curt)
 		App_Buffer[i].app_send_buffer[8] = check_sum_add(8, App_Buffer[i].app_send_buffer);
 		App_Buffer[i].app_send_size = 9;
 	}
+	else if(page_id == PREINSTALL_SESHOT)
+	{
+			App_Buffer[i].app_send_buffer[4] = 0x11;
+			App_Buffer[i].app_send_buffer[5] = id_add_back;
+			App_Buffer[i].app_send_buffer[6] = mid_cr;
+			App_Buffer[i].app_send_buffer[7] = curt; // 1为进入拍补状态；2为退出补拍
+		
+		App_Buffer[i].app_send_buffer[8] = check_sum_add(8, App_Buffer[i].app_send_buffer);
+		App_Buffer[i].app_send_size = 9;
+	}
 	
 	
 }
@@ -1486,12 +1494,12 @@ void shotting_Get_data_from_controller(uint8_t *sptt)
 	{
 		if(move_be == 0)
 		{
-			if(id_add)
+			/*if(id_add)
 			{
 				if(id_add - 1)id_add_back = id_add - 1;
 				//else if(id_add == pid_cr)id_add_back = 1;
 				else id_add_back = 1;
-			}
+			}*/
 			
 			
 			m_start = 0;
@@ -1652,5 +1660,20 @@ void specilty_page_return(void)
 		jiantou_display();
 		mode_and_para_sendt(1);
 	}
+	else if(page_id == PREINSTALL_SESHOT)
+	{
+		page_id = PREINSTALL_MOVE;
+		cursor_id = 3;
+		change_page();
+		specialty_totaol_time_dis();
+		specialty_move_dis(4);
+		specialty_para_sendTo_motor(2);
+	}
+}
+
+void specilty_get_reshot_form_motor(uint8_t datas)
+{
+	id_add_back = datas;
+	specialty_move_dis(4);
 }
 

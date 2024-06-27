@@ -405,6 +405,7 @@ void Current_Status_display(uint8_t statuss);
 void cear_the_id_add(uint8_t datas);
 void specilty_keyscan_send(uint8_t dir);
 void specilty_page_return(void);
+void specilty_get_reshot_form_motor(uint8_t datas);
 
 
 extern ID_CODE wifi_id;

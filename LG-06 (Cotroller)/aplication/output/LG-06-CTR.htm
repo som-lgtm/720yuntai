@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\output\LG-06-CTR.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\output\LG-06-CTR.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu Jun 20 16:59:48 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed Jun 26 13:38:34 2024
 <BR><P>
-<H3>Maximum Stack Usage =        344 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        336 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; keyscan &rArr; press_OK_function &rArr; specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 <P>
@@ -61,7 +61,7 @@ Global Symbols
 <P><STRONG><a name="[21]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(.text)
 </UL>
-<P><STRONG><a name="[178]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[179]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[23]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -71,15 +71,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[179]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[17a]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[17a]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[17b]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[17b]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[17c]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[17c]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[17d]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[17d]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[17e]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f030x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
@@ -130,7 +130,7 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f030x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
 </UL>
-<P><STRONG><a name="[17e]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<P><STRONG><a name="[17f]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
 <P><STRONG><a name="[64]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = __aeabi_uidivmod
@@ -148,26 +148,26 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5a]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
+<BR><BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Burn_code_value
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;paraORmode_shift
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_OKkey
 </UL>
 
-<P><STRONG><a name="[16c]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
+<P><STRONG><a name="[16d]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
 </UL>
 
-<P><STRONG><a name="[17f]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[180]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[26]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[180]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[181]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[181]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[182]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[25]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -179,11 +179,11 @@ Global Symbols
 <P><STRONG><a name="[6a]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bootloader_action_if
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 </UL>
 
-<P><STRONG><a name="[182]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[183]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[27]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -297,7 +297,7 @@ Global Symbols
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;filtering
 </UL>
 
-<P><STRONG><a name="[183]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text), UNUSED)
+<P><STRONG><a name="[184]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text), UNUSED)
 
 <P><STRONG><a name="[129]"></a>__aeabi_cfcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;filtering
@@ -326,7 +326,7 @@ Global Symbols
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
 </UL>
 
-<P><STRONG><a name="[184]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[185]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[30]"></a>__aeabi_lasr</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, llsshr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_lasr
@@ -334,9 +334,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[185]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llsshr.o(.text), UNUSED)
+<P><STRONG><a name="[186]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llsshr.o(.text), UNUSED)
 
-<P><STRONG><a name="[186]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[187]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[2a]"></a>_float_round</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, fepilogue.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
@@ -400,7 +400,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[187]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[188]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[38]"></a>__aeabi_llsr</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, llushr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_llsr
@@ -410,7 +410,7 @@ Global Symbols
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
 </UL>
 
-<P><STRONG><a name="[188]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[189]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[43]"></a>ADC_GetCalibrationFactor</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, adc.o(i.ADC_GetCalibrationFactor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_GetCalibrationFactor
@@ -542,7 +542,7 @@ Global Symbols
 <P><STRONG><a name="[fe]"></a>Check_Buffer_Empty</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, config.o(i.Check_Buffer_Empty))
 <BR><BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_init_from_A650
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;controller_send_data_to_motor
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mode_and_para_sendt
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_keyscan_send
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delet_paraORmode
@@ -562,16 +562,16 @@ Global Symbols
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Brightness_dis
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;factory_set_display
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jiantou_display
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_jahao
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Angle_dis
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_data_display
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;The_page_processing
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Status_display
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;status_display
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;slow_start_stop_dis
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sleep_time_dis
@@ -609,7 +609,8 @@ Global Symbols
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_totaol_time_dis
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_totaol_time_dis
 </UL>
 
 <P><STRONG><a name="[6b]"></a>Current_Status_display</STRONG> (Thumb, 384 bytes, Stack size 48 bytes, specialty_mode.o(i.Current_Status_display))
@@ -739,8 +740,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 </UL>
 
-<P><STRONG><a name="[177]"></a>FLASH_Lock</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, flash.o(i.FLASH_Lock))
-<BR><BR>[Called By]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<P><STRONG><a name="[178]"></a>FLASH_Lock</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, flash.o(i.FLASH_Lock))
+<BR><BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
 </UL>
 
 <P><STRONG><a name="[7f]"></a>FLASH_ProgramHalfWord</STRONG> (Thumb, 48 bytes, Stack size 20 bytes, flash.o(i.FLASH_ProgramHalfWord))
@@ -748,11 +749,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 </UL>
-<BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword
+<BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword
 </UL>
 
-<P><STRONG><a name="[176]"></a>FLASH_Unlock</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, flash.o(i.FLASH_Unlock))
-<BR><BR>[Called By]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<P><STRONG><a name="[177]"></a>FLASH_Unlock</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, flash.o(i.FLASH_Unlock))
+<BR><BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
 </UL>
 
 <P><STRONG><a name="[7e]"></a>FLASH_WaitForLastOperation</STRONG> (Thumb, 34 bytes, Stack size 4 bytes, flash.o(i.FLASH_WaitForLastOperation))
@@ -768,7 +769,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;time_delay_ms
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Burn_code_value
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Oled_EnlPrint
-<LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_flash_holfword
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;erase_flash_OnePage
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_check
@@ -928,7 +929,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnOff_ShutDonw_Battery_dis
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Logo_display
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Fill
-<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_scan
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_scan
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_frame_display
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_data_display
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_P8x16Str
@@ -1124,7 +1125,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_spi_read_write_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
+<BR>[Called By]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RF24L01_Init
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RF24L01_Set_Mode
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_TxPacket
@@ -1148,7 +1149,7 @@ Global Symbols
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Write_Reg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Burn_code_value
-<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
+<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Enter_into_Pair
 </UL>
 
@@ -1186,7 +1187,7 @@ Global Symbols
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Write_Reg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Burn_code_value
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
+<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pair_send_data
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Enter_into_Pair
 </UL>
@@ -1259,21 +1260,21 @@ Global Symbols
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;version_dis
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;factory_set_display
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_clear_han_display
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jiantou_display
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_jahao
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReturnOrNext_dis
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfirmOrCancel_dis
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Angle_dis
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_check
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pair_send_data
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;The_page_processing
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_move_dis
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bornd_code_dis
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Status_display
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;status_display
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;slow_start_stop_dis
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sleep_time_dis
@@ -1291,7 +1292,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[bc]"></a>Page_preinstall_move_return</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, specialty_mode.o(i.Page_preinstall_move_return))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_page
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_para_dis
@@ -1381,7 +1382,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Nrf24L01_init
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Burn_code_value
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
+<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pair_send_data
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Enter_into_Pair
 </UL>
@@ -1431,7 +1432,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
 </UL>
 
-<P><STRONG><a name="[16f]"></a>Set_RX_Complete</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uart.o(i.Set_RX_Complete))
+<P><STRONG><a name="[170]"></a>Set_RX_Complete</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uart.o(i.Set_RX_Complete))
 <BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_receiver
 </UL>
 
@@ -1511,7 +1512,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_enter_boot_if
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bootloader_action_if
-<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
+<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
 </UL>
 
 <P><STRONG><a name="[5]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_it.o(i.SysTick_Handler))
@@ -1685,7 +1686,7 @@ Global Symbols
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[189]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[18a]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
 <P><STRONG><a name="[48]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
@@ -1696,14 +1697,14 @@ Global Symbols
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Speed_display
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_pix_amt_display
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Brightness_dis
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Angle_dis
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pair_send_data
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_data_display
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Status_display
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sleep_time_dis
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;secondes_time_dis
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pix_amt_display
@@ -1716,9 +1717,9 @@ Global Symbols
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_display
 </UL>
 
-<P><STRONG><a name="[18a]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[18b]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
-<P><STRONG><a name="[18b]"></a>sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[18c]"></a>sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
 <P><STRONG><a name="[39]"></a>__ARM_clz</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, depilogue.o(i.__ARM_clz))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
@@ -1735,11 +1736,11 @@ Global Symbols
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cursor_shift
 </UL>
 
-<P><STRONG><a name="[18c]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[18d]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[18d]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[18e]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[18e]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[18f]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[fd]"></a>ab_set_move</STRONG> (Thumb, 222 bytes, Stack size 24 bytes, ab_set.o(i.ab_set_move))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ab_set_move &rArr; controller_send_data_to_motor &rArr; __aeabi_fmul
@@ -1751,7 +1752,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ff]"></a>ab_set_press_ok</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, ab_set.o(i.ab_set_press_ok))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = ab_set_press_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = ab_set_press_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_cear
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;controller_send_data_to_motor
@@ -1843,7 +1844,7 @@ Global Symbols
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncmp
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
+<BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
 </UL>
 
 <P><STRONG><a name="[55]"></a>bornd_code_dis</STRONG> (Thumb, 168 bytes, Stack size 16 bytes, oled.o(i.bornd_code_dis))
@@ -1870,7 +1871,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[bd]"></a>change_page</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, orbital.o(i.change_page))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;single_cursor_dis
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;oled_print_screen
@@ -1896,7 +1897,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10a]"></a>check_connection</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, orbital.o(i.check_connection))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = check_connection &rArr; oled_print_screen &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = check_connection &rArr; oled_print_screen &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Fill
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;oled_print_screen
@@ -1911,7 +1912,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;String_Printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
+<BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
 </UL>
 
 <P><STRONG><a name="[52]"></a>check_sum_add</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, orbital.o(i.check_sum_add))
@@ -1920,7 +1921,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_init_from_A650
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Burn_code_value
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;controller_send_data_to_motor
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mode_and_para_sendt
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_keyscan_send
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delet_paraORmode
@@ -1936,10 +1937,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyscan
 </UL>
 
-<P><STRONG><a name="[173]"></a>checksum_verify</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, rf24l01.o(i.checksum_verify))
+<P><STRONG><a name="[174]"></a>checksum_verify</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, rf24l01.o(i.checksum_verify))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = checksum_verify
 </UL>
-<BR>[Called By]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
+<BR>[Called By]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
 </UL>
 
 <P><STRONG><a name="[10f]"></a>chinese_page_dis</STRONG> (Thumb, 1850 bytes, Stack size 8 bytes, oled.o(i.chinese_page_dis))
@@ -1952,7 +1953,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[111]"></a>config_page_ok</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, config.o(i.config_page_ok))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = config_page_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = config_page_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_active
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_para_clear
@@ -1989,7 +1990,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[115]"></a>cursor_count</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, config.o(i.cursor_count))
-<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = cursor_count &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = cursor_count &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_dis
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cursor_display
@@ -1999,7 +2000,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[116]"></a>cursor_display</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, config.o(i.cursor_display))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = cursor_display &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = cursor_display &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;single_cursor_dis
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
@@ -2009,7 +2010,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10b]"></a>cursor_glint</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, orbital.o(i.cursor_glint))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = cursor_glint &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = cursor_glint &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_pix_amt_display
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
@@ -2019,7 +2020,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11b]"></a>cursor_shift</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, orbital.o(i.cursor_shift))
-<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = cursor_shift &rArr; specialty_cursor_id_shift &rArr; cursor_count &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = cursor_shift &rArr; specialty_cursor_id_shift &rArr; cursor_count &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cursor_count
@@ -2036,7 +2037,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11d]"></a>delay_page_ok</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, orbital.o(i.delay_page_ok))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = delay_page_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = delay_page_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_DownCount
 <LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_mode_back
@@ -2128,7 +2129,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Feed_IWDG
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ErasePage
 </UL>
-<BR>[Called By]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
 </UL>
 
 <P><STRONG><a name="[126]"></a>factory_set_display</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, config.o(i.factory_set_display))
@@ -2271,7 +2272,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[133]"></a>keyscan</STRONG> (Thumb, 432 bytes, Stack size 24 bytes, keyscan.o(i.keyscan))
-<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = keyscan &rArr; press_OK_function &rArr; specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = keyscan &rArr; press_OK_function &rArr; specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Video_mode_cursor_shift
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpOrDown_adjust_para
@@ -2310,7 +2311,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1f]"></a>main</STRONG> (Thumb, 216 bytes, Stack size 24 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = main &rArr; keyscan &rArr; press_OK_function &rArr; specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = main &rArr; keyscan &rArr; press_OK_function &rArr; specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_active
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_data_Dispose
@@ -2344,7 +2345,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
 <P><STRONG><a name="[145]"></a>main_page_ok</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, config.o(i.main_page_ok))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = main_page_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = main_page_ok &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;version_dis
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_mode_dis
@@ -2435,7 +2436,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[108]"></a>oled_print_screen</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, oled.o(i.oled_print_screen))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = oled_print_screen &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = oled_print_screen &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;page_display
@@ -2464,8 +2465,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyscan
 </UL>
 
-<P><STRONG><a name="[13b]"></a>page_return_adjust</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, config.o(i.page_return_adjust))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = page_return_adjust &rArr; specilty_page_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[13b]"></a>page_return_adjust</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, config.o(i.page_return_adjust))
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = page_return_adjust &rArr; specilty_page_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_active
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_page_return
@@ -2518,7 +2519,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[134]"></a>param_adjust</STRONG> (Thumb, 782 bytes, Stack size 24 bytes, orbital.o(i.param_adjust))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = param_adjust &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = param_adjust &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;version_dis
@@ -2536,8 +2537,8 @@ Global Symbols
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_key_continue
 </UL>
 
-<P><STRONG><a name="[119]"></a>param_display</STRONG> (Thumb, 368 bytes, Stack size 24 bytes, orbital.o(i.param_display))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[119]"></a>param_display</STRONG> (Thumb, 362 bytes, Stack size 16 bytes, orbital.o(i.param_display))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_Percentage_Dis
@@ -2586,8 +2587,7 @@ Global Symbols
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_String
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
-<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specielty_para_dis
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specielty_para_dis
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_totaol_time_dis
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_move_dis
 </UL>
@@ -2628,7 +2628,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[139]"></a>press_OK_function</STRONG> (Thumb, 234 bytes, Stack size 24 bytes, keyscan.o(i.press_OK_function))
-<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = press_OK_function &rArr; specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = press_OK_function &rArr; specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_cear
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Manual_page_OK
@@ -2647,7 +2647,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[13d]"></a>press_key_continue</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, keyscan.o(i.press_key_continue))
-<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = press_key_continue &rArr; param_adjust &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = press_key_continue &rArr; param_adjust &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_addend_data
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_adjust
@@ -2672,7 +2672,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[13a]"></a>pwr_key_enter_moveInterfer</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, specialty_mode.o(i.pwr_key_enter_moveInterfer))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = pwr_key_enter_moveInterfer &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = pwr_key_enter_moveInterfer &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_page
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_totaol_time_dis
@@ -2708,8 +2708,8 @@ Global Symbols
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;para_read_from_flash
 </UL>
 
-<P><STRONG><a name="[164]"></a>receiver_data_from_A650</STRONG> (Thumb, 1306 bytes, Stack size 32 bytes, orbital.o(i.receiver_data_from_A650))
-<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = receiver_data_from_A650 &rArr; Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[164]"></a>receiver_data_from_A650</STRONG> (Thumb, 1360 bytes, Stack size 32 bytes, orbital.o(i.receiver_data_from_A650))
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = receiver_data_from_A650 &rArr; Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;time_delay_ms
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
@@ -2720,10 +2720,11 @@ Global Symbols
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_data_form_A650
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_page
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Fill
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_get_reshot_form_motor
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_totaol_time_dis
+<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_move_dis
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shotting_Get_data_from_controller
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_back
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_battery_dis
 <LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_abpoint_Set_if
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cear_the_id_add
@@ -2736,11 +2737,12 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_data_from_Motor
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Status_display
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;status_display
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pix_amt_compara_dis
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
+<BR>[Called By]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
 </UL>
 
 <P><STRONG><a name="[138]"></a>remotoe_cursor_dispose</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, orbital.o(i.remotoe_cursor_dispose))
@@ -2811,7 +2813,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI4_15_IRQHandler
 </UL>
 
-<P><STRONG><a name="[169]"></a>shotting_Get_data_from_controller</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, specialty_mode.o(i.shotting_Get_data_from_controller))
+<P><STRONG><a name="[169]"></a>shotting_Get_data_from_controller</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, specialty_mode.o(i.shotting_Get_data_from_controller))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = shotting_Get_data_from_controller &rArr; specialty_totaol_time_dis &rArr; Cunrent_para_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_totaol_time_dis
@@ -2831,8 +2833,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyscan
 </UL>
 
-<P><STRONG><a name="[109]"></a>single_cursor_dis</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, orbital.o(i.single_cursor_dis))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[109]"></a>single_cursor_dis</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, orbital.o(i.single_cursor_dis))
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;page_display
@@ -2863,7 +2865,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[117]"></a>specialty_cursor_id_dis</STRONG> (Thumb, 436 bytes, Stack size 24 bytes, specialty_mode.o(i.specialty_cursor_id_dis))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;single_cursor_dis
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
@@ -2872,8 +2874,8 @@ Global Symbols
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_page
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_para_dis
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jiantou_display
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReturnOrNext_dis
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfirmOrCancel_dis
@@ -2882,7 +2884,7 @@ Global Symbols
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_OKkey
 </UL>
 
-<P><STRONG><a name="[16a]"></a>specialty_cursor_id_mode_dis</STRONG> (Thumb, 126 bytes, Stack size 32 bytes, specialty_mode.o(i.specialty_cursor_id_mode_dis))
+<P><STRONG><a name="[16b]"></a>specialty_cursor_id_mode_dis</STRONG> (Thumb, 126 bytes, Stack size 32 bytes, specialty_mode.o(i.specialty_cursor_id_mode_dis))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = specialty_cursor_id_mode_dis &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Oled_EnlPrint
@@ -2893,7 +2895,7 @@ Global Symbols
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_dis
 </UL>
 
-<P><STRONG><a name="[16b]"></a>specialty_cursor_id_para_dis</STRONG> (Thumb, 124 bytes, Stack size 64 bytes, specialty_mode.o(i.specialty_cursor_id_para_dis))
+<P><STRONG><a name="[16c]"></a>specialty_cursor_id_para_dis</STRONG> (Thumb, 124 bytes, Stack size 64 bytes, specialty_mode.o(i.specialty_cursor_id_para_dis))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = specialty_cursor_id_para_dis &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Oled_EnlPrint
@@ -2906,7 +2908,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11c]"></a>specialty_cursor_id_shift</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, specialty_mode.o(i.specialty_cursor_id_shift))
-<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = specialty_cursor_id_shift &rArr; cursor_count &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = specialty_cursor_id_shift &rArr; cursor_count &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cursor_count
 </UL>
@@ -2918,10 +2920,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_get_value
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_String
-<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_scan
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_scan
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Address_set
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_mode_dis
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_dis
@@ -2930,7 +2932,7 @@ Global Symbols
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_OKkey
 </UL>
 
-<P><STRONG><a name="[16d]"></a>specialty_jiaHao_scan</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, specialty_mode.o(i.specialty_jiaHao_scan))
+<P><STRONG><a name="[16e]"></a>specialty_jiaHao_scan</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, specialty_mode.o(i.specialty_jiaHao_scan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = specialty_jiaHao_scan &rArr; LCD_WR_DATA
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WR_DATA
@@ -2938,13 +2940,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
 </UL>
 
-<P><STRONG><a name="[160]"></a>specialty_mode_OKkey</STRONG> (Thumb, 526 bytes, Stack size 24 bytes, specialty_mode.o(i.specialty_mode_OKkey))
-<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[160]"></a>specialty_mode_OKkey</STRONG> (Thumb, 480 bytes, Stack size 24 bytes, specialty_mode.o(i.specialty_mode_OKkey))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = specialty_mode_OKkey &rArr; specialty_cursor_id_dis &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_mode_dis
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_dis
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_page
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_para_dis
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mode_and_para_sendt
@@ -2978,8 +2980,11 @@ Global Symbols
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;manulORauto_dis
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_position_display
 </UL>
-<BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_page_return
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_OKkey
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_get_reshot_form_motor
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specielty_para_adjust
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shotting_Get_data_from_controller
 </UL>
@@ -2989,7 +2994,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_get_value
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_mode_dis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_page_return
@@ -3004,7 +3009,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_get_value
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_jiaHao_display
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_para_dis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_page_return
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_cursor_id_dis
@@ -3017,23 +3022,25 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;page_return_adjust
 </UL>
 
-<P><STRONG><a name="[16e]"></a>specialty_para_sendTo_motor</STRONG> (Thumb, 658 bytes, Stack size 24 bytes, specialty_mode.o(i.specialty_para_sendTo_motor))
+<P><STRONG><a name="[16f]"></a>specialty_para_sendTo_motor</STRONG> (Thumb, 662 bytes, Stack size 24 bytes, specialty_mode.o(i.specialty_para_sendTo_motor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = specialty_para_sendTo_motor &rArr; check_sum_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_Buffer_Empty
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_sum_add
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_OKkey
+<BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_page_return
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_OKkey
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specielty_para_adjust
 </UL>
 
 <P><STRONG><a name="[163]"></a>specialty_totaol_time_dis</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, specialty_mode.o(i.specialty_totaol_time_dis))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = specialty_totaol_time_dis &rArr; Cunrent_para_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
+<BR>[Calls]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cunrent_para_display
 </UL>
 <BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specilty_page_return
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_mode_OKkey
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwr_key_enter_moveInterfer
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shotting_Get_data_from_controller
@@ -3043,7 +3050,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = specielty_para_adjust &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_get_value
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specielty_para_dis
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_move_dis
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_count
@@ -3052,10 +3059,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[15a]"></a>specielty_para_dis</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, specialty_mode.o(i.specielty_para_dis))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = specielty_para_dis &rArr; Angle_dis &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = specielty_para_dis &rArr; pecialty_pix_amt_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
-<BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Angle_dis
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
+<BR>[Calls]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pecialty_pix_amt_display
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Angle_dis
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;secondes_time_dis
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_display
 </UL>
@@ -3071,6 +3078,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;paraORmode_shift
 </UL>
 
+<P><STRONG><a name="[16a]"></a>specilty_get_reshot_form_motor</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, specialty_mode.o(i.specilty_get_reshot_form_motor))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = specilty_get_reshot_form_motor &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+</UL>
+<BR>[Calls]<UL><LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_move_dis
+</UL>
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
+</UL>
+
 <P><STRONG><a name="[136]"></a>specilty_keyscan_send</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, specialty_mode.o(i.specilty_keyscan_send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = specilty_keyscan_send &rArr; controller_send_data_to_motor &rArr; __aeabi_fmul
 </UL>
@@ -3081,15 +3096,18 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyscan
 </UL>
 
-<P><STRONG><a name="[14f]"></a>specilty_page_return</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, specialty_mode.o(i.specilty_page_return))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = specilty_page_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[14f]"></a>specilty_page_return</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, specialty_mode.o(i.specilty_page_return))
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = specilty_page_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_mode_dis
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_page
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_para_sendTo_motor
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_page_para_dis
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mode_and_para_sendt
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jiantou_display
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReturnOrNext_dis
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_totaol_time_dis
+<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;specialty_move_dis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;page_return_adjust
 </UL>
@@ -3139,14 +3157,14 @@ Global Symbols
 <P><STRONG><a name="[df]"></a>usart1_receiver</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, uart.o(i.usart1_receiver))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = usart1_receiver
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_RX_Complete
+<BR>[Calls]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_RX_Complete
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_GetDataLength
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_DisableChannel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[170]"></a>usart22_Recdata_Handling</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, uart.o(i.usart22_Recdata_Handling))
+<P><STRONG><a name="[171]"></a>usart22_Recdata_Handling</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, uart.o(i.usart22_Recdata_Handling))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = usart22_Recdata_Handling &rArr; bootloader_action_if &rArr; enter_bootloader &rArr; write_bootTag &rArr; write_flash_holfword_buffer &rArr; erase_flash_OnePage &rArr; FLASH_ErasePage &rArr; FLASH_WaitForLastOperation
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_enter_boot_if
@@ -3161,7 +3179,7 @@ Global Symbols
 <P><STRONG><a name="[e0]"></a>usart22_read_byte</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, uart.o(i.usart22_read_byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = usart22_read_byte &rArr; usart22_Recdata_Handling &rArr; bootloader_action_if &rArr; enter_bootloader &rArr; write_bootTag &rArr; write_flash_holfword_buffer &rArr; erase_flash_OnePage &rArr; FLASH_ErasePage &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart22_Receiver
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
@@ -3177,7 +3195,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[15f]"></a>video_page_OK</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, orbital.o(i.video_page_OK))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = video_page_OK &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = video_page_OK &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_mode_back
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;param_display
@@ -3202,26 +3220,26 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[144]"></a>wifi24G_data_Dispose</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, rf24l01.o(i.wifi24G_data_Dispose))
-<BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = wifi24G_data_Dispose &rArr; wifi24G_read_data &rArr; receiver_data_from_A650 &rArr; Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = wifi24G_data_Dispose &rArr; wifi24G_read_data &rArr; receiver_data_from_A650 &rArr; Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
-<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
-<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
+<BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
+<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_read_data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[172]"></a>wifi24G_read_data</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, rf24l01.o(i.wifi24G_read_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = wifi24G_read_data &rArr; receiver_data_from_A650 &rArr; Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[173]"></a>wifi24G_read_data</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, rf24l01.o(i.wifi24G_read_data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = wifi24G_read_data &rArr; receiver_data_from_A650 &rArr; Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;String_Printf
-<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checksum_verify
+<LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checksum_verify
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_RxPacket
 </UL>
 <BR>[Called By]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_data_Dispose
 </UL>
 
-<P><STRONG><a name="[171]"></a>wifi24G_send_data</STRONG> (Thumb, 204 bytes, Stack size 24 bytes, rf24l01.o(i.wifi24G_send_data))
+<P><STRONG><a name="[172]"></a>wifi24G_send_data</STRONG> (Thumb, 204 bytes, Stack size 24 bytes, rf24l01.o(i.wifi24G_send_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = wifi24G_send_data &rArr; NRF24L01_TxPacket &rArr; NRF24L01_Write_Buf &rArr; drv_spi_read_write_byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Read_Reg
@@ -3252,7 +3270,7 @@ Global Symbols
 <P><STRONG><a name="[124]"></a>write_bootTag</STRONG> (Thumb, 42 bytes, Stack size 32 bytes, flash.o(i.write_bootTag))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = write_bootTag &rArr; write_flash_holfword_buffer &rArr; erase_flash_OnePage &rArr; FLASH_ErasePage &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_flash_holfword
 </UL>
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enter_bootloader
@@ -3261,7 +3279,7 @@ Global Symbols
 <P><STRONG><a name="[86]"></a>write_flash_active</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, flash.o(i.write_flash_active))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = write_flash_active &rArr; write_flash_holfword_buffer &rArr; erase_flash_OnePage &rArr; FLASH_ErasePage &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;page_return_adjust
@@ -3271,22 +3289,22 @@ Global Symbols
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pwr_key_continue
 </UL>
 
-<P><STRONG><a name="[175]"></a>write_flash_holfword</STRONG> (Thumb, 14 bytes, Stack size 4 bytes, flash.o(i.write_flash_holfword))
+<P><STRONG><a name="[176]"></a>write_flash_holfword</STRONG> (Thumb, 14 bytes, Stack size 4 bytes, flash.o(i.write_flash_holfword))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = write_flash_holfword &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ProgramHalfWord
 </UL>
-<BR>[Called By]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
 </UL>
 
-<P><STRONG><a name="[174]"></a>write_flash_holfword_buffer</STRONG> (Thumb, 78 bytes, Stack size 32 bytes, flash.o(i.write_flash_holfword_buffer))
+<P><STRONG><a name="[175]"></a>write_flash_holfword_buffer</STRONG> (Thumb, 78 bytes, Stack size 32 bytes, flash.o(i.write_flash_holfword_buffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = write_flash_holfword_buffer &rArr; erase_flash_OnePage &rArr; FLASH_ErasePage &rArr; FLASH_WaitForLastOperation
 </UL>
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Feed_IWDG
-<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword
+<LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;erase_flash_OnePage
-<LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Unlock
-<LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Lock
+<LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Unlock
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Lock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_active
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_bootTag
@@ -3337,7 +3355,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[f3]"></a>LL_DMA_EnableChannel</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, uart.o(i.LL_DMA_EnableChannel))
-<BR><BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
+<BR><BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart22_Receiver_Dma_Init
 </UL>
 
@@ -3354,7 +3372,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[eb]"></a>LL_DMA_SetDataLength</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, uart.o(i.LL_DMA_SetDataLength))
-<BR><BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
+<BR><BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart22_Recdata_Handling
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart22_Send_Dma_Init
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart22_Receiver_Dma_Init
 </UL>
@@ -3518,7 +3536,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[b6]"></a>LL_GPIO_IsInputPinSet</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, rf24l01.o(i.LL_GPIO_IsInputPinSet))
-<BR><BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
+<BR><BR>[Called By]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi24G_send_data
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_spi_read_write_byte
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_TxPacket
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_RxPacket

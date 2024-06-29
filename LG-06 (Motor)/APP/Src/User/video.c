@@ -1218,6 +1218,7 @@ void video_motorHH_pulse_check(void)
 			{
 				Send_connect_data_to_controller();
 				BLE_shut_start();
+				camera_shutter_shot(1);
 			}
 		}
 	}

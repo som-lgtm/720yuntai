@@ -140,15 +140,11 @@ void motor_pwr_init(void)
 	GPIO_OUT_init(GPIOA, LL_GPIO_PIN_5); // usb mos switch
 //	GPIO_INUP_Init(GPIOC, LL_GPIO_PIN_13); // USB READ STATUS
 	shutdown_motor_pwr();
-	//usb_status_initerrupt_init();
+	usb_status_initerrupt_init();
 	BATTER_MOS_ON;
 }
 
 
-void usb_voltage_tatus(void)
-{
-	MOTOR_PWR_ON;
-}
 
 
 void time_delay_us(uint32_t tttt)
@@ -164,23 +160,7 @@ void time_delay_us(uint32_t tttt)
 
 void usb_protection(void)
 {
-	static uint8_t voltage = 0;
-	if(USB_INT)
-	{
-		if(voltage!=1)
-		{
-			time_delay_us(200);
-			if(USB_INT)
-			{
-				voltage = 1;
-				BATTER_MOS_OFF;
-				time_delay_us(300);
-				USB_MOS_ON;
-			}
-		}
-		
-	}
-	else
+/*	static uint8_t voltage = 0;
 	{
 		if(voltage !=2)
 		{
@@ -194,7 +174,7 @@ void usb_protection(void)
 				BATTER_MOS_ON;
 			}
 		}
-	}
+	}*/
 }
 
 void ble_init(void)
@@ -286,16 +266,31 @@ void Device_init(void)
 }
 
 
-void motor_enter_sleep(void)
-{
-	//LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_13); //sleep
-}
 
-void motor_exit_sleep(void)
+void usb_voltage_tatus(void)
 {
-	//LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_13); //sleep
+	if(USB_STATUS)
+	{
+		time_delay_us(500);
+		if(USB_STATUS)
+		{
+			BATTER_MOS_OFF;
+			time_delay_us(300);
+			USB_MOS_ON;
+		}
+	}
+	else
+	{
+		time_delay_us(500);
+		if(!USB_STATUS)
+		{
+			//if(return_battery() == 0 ||return_battery() > SUPERVOTAGE)return;
+			USB_MOS_OFF;
+			time_delay_us(300);
+			BATTER_MOS_ON;
+		}
+	}
 }
-
 
 
 void Resolution_Configure(MOTOR_RESOLUTION Preassigned)
@@ -520,9 +515,13 @@ void shutter_processing(uint8_t satuss)
 
 void BLE_PWR_TurnOn(void)
 {
+	uint8_t tims=0;
 	while(!BLE_STATU)
 	{
 		BLE_PWR_DOWN;
+		time_delay_ms(10);
+		tims += 1;
+		if(tims > 300)break;
 	}
 
 	BLE_PWR_UP;

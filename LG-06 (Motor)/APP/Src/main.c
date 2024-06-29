@@ -106,7 +106,7 @@ MX_TIM14_Init();
 	BLE_PWR_TurnOn();
 //  MX_IWDG_Init();
 	write_flash_active();
-	//usb_protection();
+	usb_voltage_tatus();
 //MX_IWDG_Init();
 
   while (1)
@@ -115,7 +115,6 @@ MX_TIM14_Init();
 	keyscan();
 	 read_ADC_value();
 	  Angle_real_time_transmission(1);
-	 // usb_protection();
  	bluetooth_pair_led();
 	set_abpoint_slow_stopORstart(MOTOR_HORITAL);
 	//set_abpoint_slow_stopORstart(MOTOR_Vertical);

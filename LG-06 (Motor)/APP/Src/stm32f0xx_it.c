@@ -266,8 +266,12 @@ void EXTI4_15_IRQHandler(void)
 	{
 		set_press_time();
 	}
+	else if(LL_EXTI_ReadFlag_0_31(LL_EXTI_LINE_4) == LL_EXTI_LINE_4)
+	{
+		usb_voltage_tatus();
+	}
 	
-	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7);
+	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7|LL_EXTI_LINE_4);
 }
 
 void RTC_IRQHandler(void)

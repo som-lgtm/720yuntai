@@ -385,10 +385,10 @@ void Set_origin_move(uint8_t dirs, uint8_t active)
 				}
 			}
 			Manual_mode_dir_set(typs);
-			motorVV_direction_change(motorVV_p.DIR);
+			//motorVV_direction_change(motorVV_p.DIR);
 			Manul_SartOrStop(MOTOR_Vertical,0xff);
 			//motorVV_speed_set(speed_calculat(95));
-			motorVV_start();
+			//motorVV_start();
 		}
 	}
 	else
@@ -712,7 +712,7 @@ void set_abpoint_slow_stopORstart(MOTOR_TYPE motor_t)
 			}
 		}
 	}
-	else if(motor_t == MOTOR_Vertical)
+	/*else if(motor_t == MOTOR_Vertical)
 	{
 		if(find_pataVV.HHfind_Apoint==0)return;
 
@@ -750,7 +750,7 @@ void set_abpoint_slow_stopORstart(MOTOR_TYPE motor_t)
 				find_pataVV.find_abpoint = 0;
 			}
 		}
-	}
+	}*/
 
 }
 
@@ -934,7 +934,8 @@ void Manual_HH_slowStartOrStop(void)
 			else 
 			{
 				Manul_p.HH_UpRoDown = 0;
-				if(mode_backup == MANUAL_MODE)motorHH_stop();
+				//if(mode_backup == MANUAL_MODE)motorHH_stop();
+				motorHH_stop();
 				angle_snedt_time = 0;
 				Angle_real_time_transmission(0);
 			}

@@ -55,8 +55,8 @@ typedef enum
 #define MOTOR_PWR_OFF LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_2)// HT7178 EN
 
 
+#define USB_STATUS	LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_4)
 
-#define USB_INT LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_4)
 #define BLE_STATU LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_11)
 
 

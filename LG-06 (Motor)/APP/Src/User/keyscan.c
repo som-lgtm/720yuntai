@@ -23,6 +23,7 @@ uint8_t keypowr_status=0;
 uint16_t continues = 0;
 uint16_t press_time = 0;
 uint8_t powers_off = 0;
+uint8_t Pwrkey_debounce = 0;
 
 uint8_t key_debounce = 0;
 
@@ -57,7 +58,21 @@ void keyscan(void)
 	scan_cycle = 4;//20;
 	
 	key_status = key_Handle();
-
+		
+		if((key_status & KEY_POWR_MASK)==0)
+		{
+			if(return_powers())
+			{
+				Pwrkey_debounce += 1;
+				if(Pwrkey_debounce >= 50)
+				{
+					Pwrkey_debounce = 0;
+					continues = 0;
+					press_time = 0;
+					check_the_powers_status(); // Continue standby for less than 1S
+				}
+			}
+		}
 		
 	if(key_status != key_final_status)
 	{
@@ -129,7 +144,7 @@ void check_the_powers_status(void)
 	//if(CHARGE_STATUS == 0)return;
 	if(powers_off) // stanby
 	{
-		Enter_Sleep_Mode();
+		ShutDown();
 	}
 }
 
@@ -141,7 +156,8 @@ void press_key_continue(void)
 	{
 		//if(CHARGE_STATUS == 0)return;
 		set_power_on_int(POWER_OFF);
-		Enter_Sleep_Mode();
+		//Enter_Sleep_Mode();
+		ShutDown();
 	}
 	else // Hold down the button 1S to wake up
 	{

@@ -399,7 +399,7 @@ void Set_origin_move(uint8_t dirs, uint8_t active)
 		}
 		else if(typs == 2)
 		{
-			Manul_SartOrStop(MOTOR_Vertical,0);
+		//	Manul_SartOrStop(MOTOR_Vertical,0);
 		}
 
 		if(mode_backup == MANUAL_MODE)
@@ -577,6 +577,7 @@ void Get_data_from_controller(uint8_t *fifos)
 				if(mode_backup != PREINSTALL_MODE)
 				{
 					mode_backup = PREINSTALL_MODE;
+					Sp_para_start_init();
 					Panorama_mode_find_Apoint();
 					//mp_Speed_Load(speed_calculat(100));
 					Send_connect_data_to_controller();
@@ -1041,19 +1042,19 @@ void Manul_SartOrStop(MOTOR_TYPE motor_t, uint8_t status)
 		}
 		else
 		{
-			if(mode_backup == MANUAL_MODE)
+			//if(mode_backup == MANUAL_MODE)
 			{
 				//Manul_p.HH_speed = SLOW_THRESHOLD;
 				Manul_p.HH_UpRoDown = SLOW_STOP;
 			}
-			else
+			/*else
 			{
 				motorHH_stop();
 				Manul_p.HH_UpRoDown = 0;
-			}
+			}*/
 		}
 	}
-	else
+	/*else
 	{
 		if(status)
 		{
@@ -1076,7 +1077,7 @@ void Manul_SartOrStop(MOTOR_TYPE motor_t, uint8_t status)
 				Manul_p.VV_UpRoDown = 0;
 			}
 		}
-	}
+	}*/
 }
 
 void Red_led_tack(void)

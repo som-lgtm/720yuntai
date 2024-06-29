@@ -104,14 +104,17 @@ void ADC_shutdown(void)
 	LL_APB1_GRP2_ForceReset(1<<9);
 }
 
-
 void ShutDown(void)
 {
+	wifi_sleep();
 	disable_interrupt();
 		ADC_shutdown();
-		MOTOR_PWR_OFF;
+		shutdown_motor_pwr();
 		RED_LED_OFF;
 		GREEN_LED_OFF;
+		SHUTTER_OFF;
+		BLE_PWR_DOWN;
+		A3_3_PWR_DOWN;
 		shutter_processing(0);
 	//	Nixie_all_Off();
 	//	lowbattery_dis_if = 1;
@@ -185,25 +188,43 @@ void Time_Out_And_Enter_Stop_Mode(void)
 
 void disable_interrupt(void)
 {
+	LL_TIM_DisableCounter(TIM3);
+	LL_TIM_ClearFlag_UPDATE(TIM3);
 	NVIC_DisableIRQ(TIM3_IRQn);
 	LL_TIM_ClearFlag_UPDATE(TIM3);
 	
 	LL_TIM_DisableCounter(TIM14);
+	LL_TIM_ClearFlag_UPDATE(TIM14);
 	NVIC_DisableIRQ(TIM14_IRQn);
 	LL_TIM_ClearFlag_UPDATE(TIM14);
 	
+	LL_TIM_DisableCounter(TIM16);
+	LL_TIM_ClearFlag_UPDATE(TIM16);
+	NVIC_DisableIRQ(TIM16_IRQn);
+	LL_TIM_ClearFlag_UPDATE(TIM16);
+	
 	LL_USART_Disable(USART2);
+	LL_USART_DisableDMAReq_RX(USART2);
+	LL_USART_DisableDMAReq_TX(USART2);
+	LL_USART_DisableIT_IDLE(USART2);
+	LL_USART_ClearFlag_IDLE(USART2); // 
 	NVIC_DisableIRQ(USART2_IRQn);
 	NVIC_DisableIRQ(DMA1_Channel4_5_IRQn);
 	LL_USART_ClearFlag_IDLE(USART2); // 
 	Dma_SendIRQ_Dispose();
-
 	
 	LL_USART_Disable(USART1);
+	LL_USART_DisableDMAReq_RX(USART1);
+	LL_USART_DisableDMAReq_TX(USART1);
+	LL_USART_DisableIT_IDLE(USART1);
+	LL_USART_ClearFlag_IDLE(USART1); // 
 	NVIC_DisableIRQ(USART1_IRQn);
 	NVIC_DisableIRQ(DMA1_Channel2_3_IRQn);
 	LL_USART_ClearFlag_IDLE(USART1); // 
-	Usart22_Dma_SendIRQ_Dispose();
+	//Dma_SendIRQ_Dispose();
+	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7);
+	LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_7);
+	NVIC_DisableIRQ(EXTI4_15_IRQn);
 
 }
 

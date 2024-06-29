@@ -661,11 +661,13 @@ void wifi_sleep(void)
 {
 	RF24L01_CE_OFF;
 	RF24L01_CSN_OFF;
- //   NRF24L01_Write_Reg( CONFIG, /*( 1<<MASK_RX_DR ) |*/			//接收中断
- //   
- //                                     ( 1 << EN_CRC ) |     //使能CRC 1个字节
- //                                     ( 0 << CRCO) |			// CRC8bit
- //                                     (  SHUTDOWN<<1 ) );    	// shutdown
+	   NRF24L01_Write_Reg( FLUSH_TX,0xff );    //清除FIFO
+	   NRF24L01_Write_Reg( STATUS,0xff );  //清除STATUS
+	//	 NRF24L01_Write_Reg( CONFIG, /*( 1<<MASK_RX_DR ) |*/		   //接收中断
+	//	 
+	//									   ( 1 << EN_CRC ) |	 //使能CRC 1个字节
+	//									   ( 0 << CRCO) |		   // CRC8bit
+	//									   (  SHUTDOWN<<1 ) );	   // shutdown
 }
 
 

@@ -18,6 +18,8 @@ uint8_t mid_cr = 0; // 当前模式号
 uint8_t pid_cr = 0; // 当前参数号
 uint8_t fanye = 0; // 页面标专，0为首页，1为第二页
 uint16_t enter_time = 0;
+uint8_t Reshot = 0;
+uint8_t sp_start = 0; // 专业模式整个拍摄全部结束
 
 typedef struct{
 	short int ele_angle; // 仰角
@@ -583,6 +585,7 @@ void specialty_mode_OKkey(void)
 			specialty_para_sendTo_motor(1);
 			//cursor_id = 3;
 			change_page();
+			Reshot = 1;
 		}
 	}
 	else if(page_id == PREINSTALL_SESHOT)
@@ -1468,6 +1471,7 @@ void Cunrent_para_display(uint8_t cur)
 
 	//if(cur > 6)cur -= fanye*6;
 	//if(cur == 0)return;
+	Oled_EnlPrint(0, 5, "                    ",z_buffer,ENGLISH);
 	Oled_EnlPrint(x, 5, fifos,z_buffer,ENGLISH);
 	
 }
@@ -1481,7 +1485,7 @@ void shotting_Get_data_from_controller(uint8_t *sptt)
 	if(page_id != PREINSTALL_MOVE)return;
 	
 	p_amount = (uint16_t)sptt[4] | (uint16_t)sptt[5]<<8; // 张数
-	m_start = sptt[8];
+	sp_start = sptt[8];
 	id_add = sptt[9];
 	move_be = sptt[10];
 	
@@ -1553,6 +1557,7 @@ void Current_Status_display(uint8_t statuss)
 	}
 	else if(statuss == 2) // 
 	{
+		if(sp_start)return;
 		inverse_get_value(0xff);
 		x = Check_String("所有参数拍摄已结束", ENGLISH);
 		
@@ -1600,10 +1605,11 @@ void cear_the_id_add(uint8_t datas)
 void specilty_keyscan_send(uint8_t dir)
 {
 	uint8_t i;
-	if(page_id != PREINSTALL_MOVE)return;
-	if(m_start==0)return;
-	if(cursor_id != 3)return;
-	if(spe_para[mid_cr].manul==0)return;
+	if(page_id != PREINSTALL_SESHOT)return;
+	//if(m_start==0)return;
+	//if(cursor_id != 3)return;
+	if(Reshot == 0)return;
+	//if(spe_para[mid_cr].manul==0)return;
 	
 	i = Check_Buffer_Empty();
 	if(i == NOT_EMPTY)return;
@@ -1612,7 +1618,7 @@ void specilty_keyscan_send(uint8_t dir)
 	App_Buffer[i].app_send_buffer[1] = 0;
 	App_Buffer[i].app_send_buffer[2] = 0x09;
 	App_Buffer[i].app_send_buffer[3] = 6;
-	App_Buffer[i].app_send_buffer[4] = 10;
+	App_Buffer[i].app_send_buffer[4] = 0x10;
 	
 	if(dir & KEY_LEFT_MASK)
 	{
@@ -1627,12 +1633,12 @@ void specilty_keyscan_send(uint8_t dir)
 	//	controller_send_data_to_motor(0,0x06, 0x10);
 		
 	}
-	else
+	/*else
 	{
 		App_Buffer[i].app_send_buffer[5] = 0x01;
 		App_Buffer[i].app_send_buffer[6] = 0;
 	//	controller_send_data_to_motor(0,0x06, 0x10);
-	}
+	}*/
 	
 	App_Buffer[i].app_send_buffer[7] = 0;
 	App_Buffer[i].app_send_buffer[8] = check_sum_add(8, App_Buffer[i].app_send_buffer);
@@ -1662,12 +1668,13 @@ void specilty_page_return(void)
 	}
 	else if(page_id == PREINSTALL_SESHOT)
 	{
+		specialty_para_sendTo_motor(0);
 		page_id = PREINSTALL_MOVE;
 		cursor_id = 3;
 		change_page();
 		specialty_totaol_time_dis();
 		specialty_move_dis(4);
-		specialty_para_sendTo_motor(2);
+		Reshot = 0;
 	}
 }
 

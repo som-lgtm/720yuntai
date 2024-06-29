@@ -27,6 +27,9 @@ typedef enum
 #define BLE_SHUT_ON	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_10) //
 #define BLE_SHUT_OFF	LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_10) //
 
+#define A3_3_PWR_UP	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_8) //
+#define A3_3_PWR_DOWN		LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_8) //
+
 #define BLE_PWR_UP	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_9) //
 #define BLE_PWR_DOWN	LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_9) //
 
@@ -68,5 +71,6 @@ void LED_indication(uint8_t flash_if);
 void led_status(uint8_t status, uint8_t indexs);
 void BLE_PWR_TurnOn(void);
 void Green_led_onORoff(uint8_t status);
+void shutdown_motor_pwr(void);
 
 #endif

@@ -354,23 +354,23 @@ void ShutDown_AllIO_High_resistance_mode(void)
 	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
 	GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
 	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);*/
-		input_opendrain(GPIOA,LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_14|LL_GPIO_PIN_13)));
-		input_opendrain(GPIOB,LL_GPIO_PIN_ALL);	
+		input_opendrain(GPIOA,LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_14|LL_GPIO_PIN_13|LL_GPIO_PIN_8)));
+		input_opendrain(GPIOB,LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_7)));	
 		input_opendrain(GPIOC,LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_13)));
 		input_opendrain(GPIOF,LL_GPIO_PIN_ALL);
 		
-		LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_14|LL_GPIO_PIN_13)));
-		LL_GPIO_SetOutputPin(GPIOB,LL_GPIO_PIN_ALL);
+		LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_14|LL_GPIO_PIN_13|LL_GPIO_PIN_8)));
+		LL_GPIO_SetOutputPin(GPIOB,LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_7)));
 		LL_GPIO_SetOutputPin(GPIOC,LL_GPIO_PIN_ALL&(~(LL_GPIO_PIN_13)));
 		LL_GPIO_SetOutputPin(GPIOF,LL_GPIO_PIN_ALL);
 }
 
 void pwrKey_exti_interrupt(void)
 {
-//	LL_SYSCFG_SetEXTISource(LL_SYSCFG_EXTI_PORTB,  LL_SYSCFG_EXTI_LINE5); // power key
-	LL_SYSCFG_SetEXTISource(LL_SYSCFG_EXTI_PORTC,  LL_SYSCFG_EXTI_LINE13); // CHARGE key
-	LL_EXTI_EnableIT_0_31(LL_EXTI_LINE_13);
-	LL_EXTI_EnableFallingTrig_0_31(LL_EXTI_LINE_13);
+	LL_SYSCFG_SetEXTISource(LL_SYSCFG_EXTI_PORTB,  LL_SYSCFG_EXTI_LINE7); // power key
+	//LL_SYSCFG_SetEXTISource(LL_SYSCFG_EXTI_PORTC,  LL_SYSCFG_EXTI_LINE13); // CHARGE key
+	LL_EXTI_EnableIT_0_31(LL_EXTI_LINE_7);
+	LL_EXTI_EnableFallingTrig_0_31(LL_EXTI_LINE_7);
 	
 	//LL_EXTI_EnableFallingTrig_0_31(LL_EXTI_LINE_8);
 	NVIC_SetPriority(EXTI4_15_IRQn, 0);
@@ -558,7 +558,7 @@ void Green_Led_Brightness(void)
 		GREEN_LED_OFF;
 	}
 
-	if(ness == 20)
+	if(ness == 100)
 	{
 		ness = 0;
 	}
@@ -586,6 +586,7 @@ void exti_init_beforEnterStop(uint8_t type)
 		GREEN_LED_OFF;
 		SHUTTER_OFF;
 		BLE_PWR_DOWN;
+		A3_3_PWR_DOWN;
 	//	RF24L01_CE_OFF;
 		AllIO_High_resistance_mode();
 		//LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_4);

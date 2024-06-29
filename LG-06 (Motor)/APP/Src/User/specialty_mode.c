@@ -13,9 +13,10 @@
 //MODE_PARA spe_para[8]={0};
 uint8_t Sync_sendt=0;
 
-uint8_t Reshot = 0; //  专业模式补拍标志变量
-uint8_t Reshot_id = 0; //  专业模式补拍标志变量ID
-uint8_t mid_ct = 0;
+uint8_t Reshot = 0; //  专业模式补拍标志变量, 非0为正在拍补状态
+uint8_t Reshot_id = 0; //  专业模式补拍标志变量ID, 参数组ID
+uint8_t Reshot_aid = 0; //  专业模式补拍标志张数位置ID, 补拍位置ID
+uint8_t mid_ct = 0; //预设ID
 uint8_t run_id = 0;
 uint8_t run_id_b = 0;
 uint8_t run_idVV = 0;
@@ -55,7 +56,7 @@ void SpHHorizontal_start(void)
 	//motorHH_speed_set(con_b.ramp_buffer[con_b.Ramp_id]);
 	//slider_upORdown(SLOW_START);
 	//set_slow_time_data();
-	H_slow_tag = 1; // 慢启停标志记
+	//H_slow_tag = 1; // 慢启停标志记
 	dynamic_speed = 7;
 	motorHH_speed_set(con_b.ramp_buffer[dynamic_speed]);
 	slider_upORdown(SLOW_START);
@@ -100,6 +101,9 @@ void Sp_para_start_init(void)
 {
 	uint8_t i;
 	uint16_t temps=0;
+	if(mid_ct==0)return;
+	if(glob_para.spe_para[mid_ct].para_id==0)return;
+	
 	if(mid_ct>=MODE_ID_MAX)mid_ct =MODE_ID_MAX-1;
 	if(glob_para.spe_para[mid_ct].para_id>=PARA_MAX_ID)glob_para.spe_para[mid_ct].para_id=PARA_MAX_ID-1;
 	for(i=0; i< glob_para.spe_para[mid_ct].para_id; i++)
@@ -153,6 +157,7 @@ void Delete_mode_para(uint8_t types, uint8_t idx)
 void specialty_parameter_calculate(uint8_t idxs)
 {
 	uint16_t m_angle = 0;
+	uint16_t amounts = 0;
 //	uint16_t frame_ange = 0;
 	if(mid_ct>=MODE_ID_MAX)mid_ct =MODE_ID_MAX-1;
 
@@ -160,7 +165,24 @@ void specialty_parameter_calculate(uint8_t idxs)
 	
 // H轴的角度换算出对应张数下的角度脉冲数
 	m_angle = glob_para.spe_para[mid_ct].Param[idxs].lev_angle;
-	con_b.remainder_p[idxs] = PULSE_SUM(m_angle) / (double)(glob_para.spe_para[mid_ct].Param[idxs].amout);
+	amounts = glob_para.spe_para[mid_ct].Param[idxs].amout;
+	
+	if(m_angle >= 360)
+	{
+		con_b.remainder_p[idxs] = PULSE_SUM(m_angle) / (float)(glob_para.spe_para[mid_ct].Param[idxs].amout);
+	}
+	else
+	{
+		if(amounts > 1)
+		{
+			con_b.remainder_p[idxs] = PULSE_SUM(m_angle) / (float)(glob_para.spe_para[mid_ct].Param[idxs].amout-1);
+		}
+		else
+		{
+			con_b.remainder_p[idxs] = PULSE_SUM(m_angle) / (float)(glob_para.spe_para[mid_ct].Param[idxs].amout);
+		}
+	}
+	
 //	H_frame_pulse[idxs] = con_b.remainder_p[idxs];
 	sp_move_par[idxs].lev_pulse = con_b.remainder_p[idxs];	
 }
@@ -206,7 +228,7 @@ void leve_turn_on_shutter(void)
 // 专业模式启动前的迟时开始倒计时到达后的启动处理涵数
 void Specialty_mode_downcount_begin(void)
 {
-	if(delay_cout)
+/*	if(delay_cout)
 	{
 		delay_cout = 0;
 		if(sp_move_par[run_idVV].ele_pulse != ORIGIN_POINT && sp_move_par[run_idVV].ele_pulse != motorVV_p.pulse_count)
@@ -219,6 +241,25 @@ void Specialty_mode_downcount_begin(void)
 			leve_turn_on_shutter();
 		}
 
+	}*/
+}
+
+//一个水平轴的首张开始涵数,即是一组数据的首张图片的拍摄处理
+void Specialty_first_begin(void)
+{
+	delay_cout = 0;
+	con_b.cur_begin = 1;
+	if(glob_para.spe_para[mid_ct].Param[run_id].amout>1)
+	{
+		leve_turn_on_shutter();
+		Red_led_tack();
+	}
+	else
+	{
+		motorHH_p.DIR = A_TO_B;
+		motorHH_direction_change(motorHH_p.DIR);
+		SpHHorizontal_start();
+		con_b.begin = 2;
 	}
 }
 
@@ -230,16 +271,23 @@ void Specialty_mode_Start(void)
 		if(con_b.begin_back)
 		{
 			con_b.begin = con_b.begin_back;
-			if(con_b.begin == 1)
+			if(con_b.cur_begin)
 			{
-				if(con_b.HHgo_back)
+				if(con_b.begin == 1)
 				{
-					SpHHorizontal_start();
+					if(con_b.HHgo_back)
+					{
+						SpHHorizontal_start();
+					}
 				}
+				if(con_b.begin == 2)SpHHorizontal_start(); //H 轴移动
+				if(con_b.begin == 6)con_b.begin_back=0; //还未开始
+				else if(con_b.begin == 7)SpVVertical_start();
 			}
-			if(con_b.begin == 2)SpHHorizontal_start(); //H 轴移动
-			if(con_b.begin == 6)con_b.begin_back=0; //还未开始
-			else if(con_b.begin == 7)SpVVertical_start();
+			else
+			{
+				Specialty_first_begin();
+			}
 		}
 		else
 		{
@@ -260,8 +308,8 @@ void Specialty_mode_Start(void)
 			{
 				specialty_parameter_calculate(i+1);
 			}*/
-		//	String_Printf(USART_2,"FFFF",4);
-		//	String_Printf(USART_2,(uint8_t *)&motorHH_p.pulse_count,4);
+			//String_Printf(USART_2,"AAAA",4);
+			///String_Printf(USART_2,(uint8_t *)&sp_move_par[run_id].lev_pulse,4);
 		//	String_Printf(USART_2,(uint8_t *)&V_frame_pulse[run_id],4);
 		//	String_Printf(USART_2,(uint8_t *)&con_b.go_back,1);
 			if(mid_ct>=MODE_ID_MAX)mid_ct =MODE_ID_MAX-1;
@@ -287,10 +335,7 @@ void Specialty_mode_Start(void)
 					}
 					else*/
 					{
-						delay_cout = 0;
-						leve_turn_on_shutter();
-						Red_led_tack();
-						//con_b.begin = 3;
+						Specialty_first_begin();
 					}
 
 			}
@@ -363,7 +408,7 @@ void Specialty_Get_data_from_controller(uint8_t *fifob)
 		
 		write_flash_active();
 	}
-	else if(fifob[4] == 0x09) //添加模式ID
+	else if(fifob[4] == 0x09) //添加预设ID
 	{
 		if(mid_ct != fifob[5])
 		{
@@ -416,19 +461,37 @@ void Specialty_Get_data_from_controller(uint8_t *fifob)
 	else if(fifob[4] == 0x10) // 方向
 	{
 		if(Reshot == 0)return;
-		if(fifob[5] == 1) //left 移到上一张
-		{
-			
-		}
-		else if(fifob[5] == 2) //right  移到下一张
-		{
-			
-		}
+		if(H_slow_tag)return;
+		Reshot_move(fifob[5]);
 	}
 	else if(fifob[4] == 0x11) // 
 	{
 		Reshot = fifob[7];
 		Reshot_id = fifob[5];
+		Reshot_aid = con_b.p_amount_back;
+		if(Reshot_aid<1)Reshot_aid=1;
+		if(Reshot==0) // 退出补拍时要重新算RAMP 速度
+		{
+			Reshot_Clear();
+			for(idx=BASE_SPEED; idx < RAMP_MAX; idx++)
+			{
+				if(SpecialtyHH_Ramp_Speed_Load(idx, run_id))
+				{
+					break;				
+				}
+			}
+			Panorama_mode_find_Apoint();
+		}
+		else
+		{
+			for(idx=BASE_SPEED; idx < RAMP_MAX; idx++)
+			{
+				if(SpecialtyHH_Ramp_Speed_Load(idx, Reshot_id))
+				{
+					break;				
+				}
+			}
+		}
 	}
 }
 
@@ -608,6 +671,7 @@ void specialty_mode_main(void)
 					con_b.begin_back = 3; 
 					con_b.begin = 0;
 					p_move_time = 0;
+					con_b.cur_begin = 0;
 					if(run_id < glob_para.spe_para[mid_ct].para_id)run_id +=1;
 					///////////////////////////////////////////
 				//	if(run_id < glob_para.spe_para[mid_ct].para_id)run_id +=1;
@@ -624,7 +688,8 @@ void specialty_mode_main(void)
 					{
 					//	if(con_b.VVgo_back==0)
 						{
-							leve_turn_on_shutter();
+							//leve_turn_on_shutter();
+							//Specialty_first_begin();
 							//con_b.begin_back = con_b.begin;
 							//con_b.begin = 0;
 							specialty_mode_param_display();
@@ -649,6 +714,7 @@ void specialty_mode_main(void)
 			}
 			else //整个拍摄完成
 			{
+				con_b.p_amount_back = 0;
 				con_b.begin = 0;
 				con_b.begin_back = 0;
 				sp_start = 0;
@@ -656,6 +722,7 @@ void specialty_mode_main(void)
 				run_idVV = 0;
 				con_b.time_down_count = 0;
 				p_amount = 0;
+				con_b.cur_begin = 0;
 			//	standard_mode_param_display();
 				//con_b.go_back = 0xff;
 				//con_b.HHgo_back = 0xff;
@@ -676,12 +743,12 @@ void specialty_mode_main(void)
 // V 轴到点停止转动处理涵数
 void Speialty_Vertical_pulse_check(void)
 {
-//	uint8_t tempss=0;
+/*//	uint8_t tempss=0;
 	if(mode_backup != PREINSTALL_MODE)return;
 	if(find_pataVV.HHfind_Apoint)return;
 	//con_b.VDynamic_pulse += 1;
 	//if(con_b.VDynamic_pulse >= V_frame_pulse[run_id]) //府仰轴到达位置后由水平轴开始
-	if(motorVV_p.pulse_count == sp_move_par[run_idVV].ele_pulse/*+compensation*/)
+	if(motorVV_p.pulse_count == sp_move_par[run_idVV].ele_pulse)
 	{
 		motorVV_stop();
 		con_b.VDynamic_pulse = 0;
@@ -690,14 +757,16 @@ void Speialty_Vertical_pulse_check(void)
 		if(con_b.begin == 7)
 		{
 			leve_turn_on_shutter();
+			//Specialty_first_begin();
 		}
 
 		if(con_b.VVgo_back && con_b.HHgo_back==0)
 		{
-			leve_turn_on_shutter();
+			//leve_turn_on_shutter();
+			Specialty_first_begin();
 		}
 		con_b.VVgo_back = 0;
-	}
+	}*/
  }
 
 
@@ -705,6 +774,7 @@ void Speialty_Vertical_pulse_check(void)
 void Speialty_Horizontal_pulse_check(void)
 {
 	//if(mode_backup != PREINSTALL_MODE)return;
+	if(Reshot)return;
 	if(con_b.begin != 2)return;
 	if(con_b.HHgo_back)return;
 	
@@ -910,6 +980,7 @@ void SpHHorizontal_slow_check(void)
 {
 	//if(mode_backup != PREINSTALL_MODE)return;
 	//if(con_b.begin != 2)return;
+	if(Reshot)return;
 	if(con_b.Dynamic_pulse == (sp_move_par[run_id].lev_pulse - con_b.slow_point))
 	{
 		slider_upORdown(SLOW_STOP);
@@ -964,8 +1035,11 @@ void Spe_manul_Shuting(void)
 	{
 		SHUTTER_ON;
 		BLE_shut_start();
-		con_b.begin = 4;
-		p_move_time = 0;
+		if(Reshot==0)
+		{
+			con_b.begin = 4;
+			p_move_time = 0;
+		}
 	}
 	else
 	{
@@ -1074,6 +1148,8 @@ void Specialty_loop_check(void)
 	Horizontal_pulse_goBack();
 	Speialty_Horizontal_pulse_check();
 	SpHHorizontal_slow_check();
+	Reshot_pulses_check_stop();
+	SpResot_slow_check();
 }
 
 void Specialty_Key_start(void)
@@ -1124,5 +1200,71 @@ void manual_goBack(void)
 void Reshot_Clear(void)
 {
 	Reshot = 0;
+	con_b.Dynamic_pulse = 0;
 }
+
+//补拍的上移或下移，dir为1时上移，dir为2时下移
+void Reshot_move(uint8_t dir)
+{
+	if(mode_backup != PREINSTALL_MODE)return;
+	if(sp_start)return;
+	if(Reshot==0)return;
+
+	if(dir == 1)
+	{
+		if(Reshot_aid <= 1)return;
+		Reshot_aid -= 1;
+		motorHH_p.DIR = B_TO_A;
+		//if(Reshot_id > 1)Reshot_id -=1;
+	}
+	else if(dir == 2)
+	{
+		if(Reshot_aid >= glob_para.spe_para[mid_ct].Param[Reshot_id].amout)return;
+		Reshot_aid += 1;
+		motorHH_p.DIR = A_TO_B;
+		//if(Reshot_id < glob_para.spe_para[mid_ct].para_id)Reshot_id +=1;
+	}
+
+	motorHH_direction_change(motorHH_p.DIR);
+	SpHHorizontal_start();
+	H_slow_tag = 1; // 补拍正在移动时不可以切换张数位置
+}
+
+void Reshot_pulses_check_stop(void)
+{
+	if(mode_backup != PREINSTALL_MODE)return;
+	if(sp_start)return;
+	if(Reshot==0)return;
+	con_b.Dynamic_pulse += 1;
+	if(con_b.Dynamic_pulse >= sp_move_par[Reshot_id].lev_pulse+con_b.compensation) //
+	{
+		motorHH_stop();
+		//motorHH_p.DIR = A_TO_B;
+	//	motorHH_direction_change(motorHH_p.DIR);
+		con_b.Dynamic_pulse = 0;
+		H_slow_tag = 0;
+		//con_b.begin = 3;
+		//p_move_time = 0;
+	//	V_goBack = 2;
+		//Horizontal_start();
+		//con_b.Dynamic_pulse = 0;
+		//con_b.begin = 2;
+		//p_move_time = 0;
+	}
+	
+}
+
+// 水平电机到达慢停时触发此涵数
+void SpResot_slow_check(void)
+{
+	if(mode_backup != PREINSTALL_MODE)return;
+	if(sp_start)return;
+	if(Reshot==0)return;
+	if(con_b.Dynamic_pulse == (sp_move_par[Reshot_id].lev_pulse - con_b.slow_point))
+	{
+		slider_upORdown(SLOW_STOP);
+		set_slow_time_data();
+	}
+}
+
 

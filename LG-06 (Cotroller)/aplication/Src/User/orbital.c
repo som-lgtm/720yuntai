@@ -2297,7 +2297,7 @@ void get_init_from_A650(void)
 	if(i == NOT_EMPTY)return;
 	
 	
-	if(get_init_tag == 0)
+	if(get_init_tag != 0xff && get_init_tag != 0x01)
 	{
 		if(get_init_time)return;
 		get_init_time = 1000;
@@ -2707,6 +2707,7 @@ void receiver_data_from_A650(void)
 						else if(page_id == PREINSTALL_MOVE)
 						{
 							m_start = 0;
+							
 							status_display(3);
 							cear_the_id_add(1);
 							specialty_totaol_time_dis();

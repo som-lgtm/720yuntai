@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	101
+#define FW_VERSIONS	102
 
 #define PARA_MAX_ID	25
 
@@ -173,6 +173,7 @@ typedef struct{
 	uint32_t rampp_time;
 	
 	uint8_t begin;
+	uint8_t cur_begin; // 当前的参数组是否拍完的标志变量，值为0表示拍完，非0为正在拍当前的参数组
 	uint8_t begin_back;
 	uint16_t amount;
 	uint32_t shut_time;
@@ -190,7 +191,7 @@ typedef struct{
 	uint8_t HHgo_back;
 	uint8_t ddAB_set;
 	uint8_t compensation;
-	double remainder_p[PARA_MAX_ID]; //小数点脉冲数，用于计算脉冲数误差的补尝
+	float remainder_p[PARA_MAX_ID]; //小数点脉冲数，用于计算脉冲数误差的补尝
 	float diff;
 
 	uint8_t move_time_s; // video mode move time
@@ -544,6 +545,10 @@ void Specialty_loop_check(void);
 void Specialty_Key_start(void);
 void Specialty_Send_reshot_to_controller(uint8_t types);
 void Reshot_Clear(void);
+void Reshot_move(uint8_t dir);
+void Reshot_pulses_check_stop(void);
+void SpResot_slow_check(void);
+void Sp_para_start_init(void);
 
 // video_mode.c
 void Video_pulse_check(void);

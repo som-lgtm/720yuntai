@@ -28,9 +28,17 @@ uint8_t H_slow_tag = 0; // 慢启停标志记
 uint8_t V_slow_tag = 0; // 慢启停标志记
 uint8_t Alon_sendt = 0;
 uint16_t H_frame_pulse[PARA_MAX_ID]={0};
-uint32_t V_frame_pulse[PARA_MAX_ID]={0};
+uint16_t V_frame_pulse[PARA_MAX_ID]={0};
+uint16_t shutter_teimes = 0;
+
+
 
 SPEDCIALTY_MOVE_PARA sp_move_par[PARA_MAX_ID]={0};
+
+void shutter_time_counts(void)
+{
+	if(shutter_teimes > 1)shutter_teimes--;
+}
 
 void specialty_mode_para_clear(void)
 {
@@ -1046,6 +1054,7 @@ void Spe_manul_Shuting(void)
 		if(con_b.begin != 1 && con_b.begin != 2 && con_b.begin!=3)
 		{
 			BLE_shut_start();
+			camera_shutter_shot(1);
 		}
 	}
 }
@@ -1267,4 +1276,21 @@ void SpResot_slow_check(void)
 	}
 }
 
+// 
+void camera_shutter_shot(uint8_t typess)
+{
+	if(typess)
+	{
+		SHUTTER_ON;
+		shutter_teimes = 300;
+	}
+	else
+	{
+		if(shutter_teimes == 1)
+		{
+			shutter_teimes = 0;
+			SHUTTER_OFF;
+		}
+	}
+}
 

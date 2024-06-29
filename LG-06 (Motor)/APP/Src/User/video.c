@@ -1145,10 +1145,12 @@ void Video_start(void)
 	if(video_p.Pause)
 	{
 		BLE_shut_start();
+		camera_shutter_shot(1);
 	}
 	else
 	{
 		BLE_shut_start();
+		camera_shutter_shot(1);
 	}
 	Video_motorHH_start(video_p.Pause);
 	Video_motorVV_start(video_p.VVPause);

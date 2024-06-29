@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	102
+#define FW_VERSIONS	104
 
 #define PARA_MAX_ID	25
 
@@ -549,6 +549,8 @@ void Reshot_move(uint8_t dir);
 void Reshot_pulses_check_stop(void);
 void SpResot_slow_check(void);
 void Sp_para_start_init(void);
+void shutter_time_counts(void);
+void camera_shutter_shot(uint8_t typess);
 
 // video_mode.c
 void Video_pulse_check(void);

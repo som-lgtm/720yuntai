@@ -583,8 +583,8 @@ void specialty_mode_OKkey(void)
 			if(m_start)return;
 			page_id = PREINSTALL_SESHOT;
 			specialty_para_sendTo_motor(1);
-			//cursor_id = 3;
 			change_page();
+			Oled_EnlPrint(1, 2, "  <              >  ","", ENGLISH);
 			Reshot = 1;
 		}
 	}
@@ -898,7 +898,7 @@ void specialty_move_dis(uint8_t cur)
 		}
 		else if(cur == 4)
 		{
-			integer_position_display(id_add_back, cur, 28);
+			//integer_position_display(id_add_back, cur, 28);
 		}
 		else if(cur == 5) //显示将要拍摄 的参数
 		{
@@ -916,7 +916,7 @@ void specialty_move_dis(uint8_t cur)
 	}
 	else if(page_id == PREINSTALL_SESHOT)
 	{
-		integer_position_display(id_add_back, 1, 16);
+		//integer_position_display(id_add_back, 1, 16);
 	}
 }
 

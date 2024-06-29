@@ -174,7 +174,7 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x618F109B)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x618F109B)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_SYSTEM.h)(0x618F109B)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x618F109B)
-F (..\Src\User\oled.c)(0x667F7D2B)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I..\Src\User\include --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_FULL_LL_DRIVER -DSTM32F030x8-o ..\output\oled.o --omf_browse ..\output\oled.crf --depend ..\output\oled.d)
+F (..\Src\User\oled.c)(0x667F9DAF)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I..\Src\User\include --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_FULL_LL_DRIVER -DSTM32F030x8-o ..\output\oled.o --omf_browse ..\output\oled.crf --depend ..\output\oled.d)
 I (..\Src\User\include\oled.h)(0x65811281)
 I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C7C554)
 I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x618F109B)
@@ -185,7 +185,7 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x618F109B)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x618F109B)
 I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x618F109B)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
-I (..\Src\User\include\matrix.h)(0x667E96D8)
+I (..\Src\User\include\matrix.h)(0x667F9AF6)
 I (..\Src\User\include\common.h)(0x66754089)
 I (..\Src\User\include\gpio.h)(0x62D1316C)
 I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x618F109B)
@@ -325,7 +325,7 @@ I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C7C554)
 I (..\Src\User\include\gpio.h)(0x62D1316C)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h)(0x618F109B)
 I (..\Src\User\include\low_power.h)(0x64A6AEC4)
-F (..\Src\User\specialty_mode.c)(0x667F677E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I..\Src\User\include --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_FULL_LL_DRIVER -DSTM32F030x8-o ..\output\specialty_mode.o --omf_browse ..\output\specialty_mode.crf --depend ..\output\specialty_mode.d)
+F (..\Src\User\specialty_mode.c)(0x667F9C7C)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I..\Src\User\include --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_FULL_LL_DRIVER -DSTM32F030x8-o ..\output\specialty_mode.o --omf_browse ..\output\specialty_mode.crf --depend ..\output\specialty_mode.d)
 I (..\Src\User\include\common.h)(0x66754089)
 I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h)(0x618F109B)
 I (../Drivers/CMSIS/Include/core_cm0.h)(0x618F109B)

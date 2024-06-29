@@ -201,7 +201,7 @@ void TIM14_IRQHandler(void)
 	  standard_countdown_time_display();
 	  ble_shut_time_count();
 	  delay_mode_time_countdwon();
-	  
+	  shutter_time_counts();
   }
 //	  usart_timer_test();
 

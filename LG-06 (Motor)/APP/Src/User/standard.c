@@ -200,7 +200,7 @@ void Vertical_slow_check(void)
 // 手动功能打开后，等待按键触发快门
 void Manul_Turn_the_shuter(void)
 {
-	if(mode_backup == STANDAR_MODE)
+	/*if(mode_backup == STANDAR_MODE)
 	{
 		if(move_begin != 2 && move_begin != 1)
 		{
@@ -236,13 +236,14 @@ void Manul_Turn_the_shuter(void)
 			}
 		}
 	}
-	else if(mode_backup == PREINSTALL_MODE)
+	else */if(mode_backup == PREINSTALL_MODE)
 	{
 		Spe_manul_Shuting();
 	}
 	else
 	{
 		BLE_shut_start();
+		camera_shutter_shot(1);
 	}
 }
 

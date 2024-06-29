@@ -46,12 +46,12 @@ void time_count(void)
 	if(slow_time)slow_time--;
 	if(con_b.slw_time)con_b.slw_time--;
 	if(video_p.locusH.slow_time)video_p.locusH.slow_time--;
-	if(video_p.locusV.slow_time)video_p.locusV.slow_time--;
+	//if(video_p.locusV.slow_time)video_p.locusV.slow_time--;
 	if(Manul_p.HH_Ttime)Manul_p.HH_Ttime--;
-	if(Manul_p.VV_Time)Manul_p.VV_Time--;
+	//if(Manul_p.VV_Time)Manul_p.VV_Time--;
 	if(video_p.activate)video_p.activate--;
 	if(delay_p.activate)delay_p.activate--;
-	if(delay_p.locuVV.ramTime)delay_p.locuVV.ramTime--;
+	//if(delay_p.locuVV.ramTime)delay_p.locuVV.ramTime--;
 	if(delay_p.locuHH.ramTime)delay_p.locuHH.ramTime--;
 	if(angle_snedt_time)angle_snedt_time--;
 }

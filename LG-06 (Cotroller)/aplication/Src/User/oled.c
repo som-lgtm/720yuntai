@@ -256,7 +256,7 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows, "  启动  ");}
 			else if(rows == 4){
-				The_page_processing(rows,	 "参数补拍");}
+				The_page_processing(rows,	 "  补拍  ");}
 			else if(rows == 5){
 				The_page_processing(rows, "                    ");} // 显示当前参数
 			else if(rows == 6){
@@ -270,19 +270,19 @@ void chinese_page_dis(uint8_t rows)
 			if(rows == 0){
 				The_page_processing(rows, "全景模式补拍界面");}
 			else if(rows == 1){
-				The_page_processing(rows,	 "按方向键选择");}
+				The_page_processing(rows,	 "                    ");}
 			else if(rows == 2){
-				The_page_processing(rows, "                    ");}
+				The_page_processing(rows, "按方向键选择");}
 			else if(rows == 3){
-				The_page_processing(rows, "上一张        下一张");}
+				The_page_processing(rows, "                    ");}
 			else if(rows == 4){
 				The_page_processing(rows,	 "                    ");}
 			else if(rows == 5){
-				The_page_processing(rows,	 "按  菜单键  退出");}
+				The_page_processing(rows,	 "上一张    下一张");}
 			else if(rows == 6){
 				The_page_processing(rows, "                    ");} // 与定时倒计复用
 			else if(rows == 7){
-				The_page_processing(rows,	 "                    ");}
+				The_page_processing(rows,	 "按  菜单键  退出");}
 			break;
 		}
 		case VIDEO_MODE:
@@ -3050,7 +3050,7 @@ y = y * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.0.3", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.0.6", "", ENGLISH);
 }
 
 

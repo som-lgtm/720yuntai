@@ -443,11 +443,11 @@ void flash_read_protect(void)
 void para_read_from_flash(void)
 {
 	read_flash_holfword(FLASH_WRITE_START_ADDR, (uint8_t *)&glob_para.read_fisrt, sizeof(glob_para));
-	if(glob_para.read_fisrt != 0x80)
+	if(glob_para.read_fisrt != 0x70)
 	{
 		//glob_para.a_point = 0;
 		para_init();
-		glob_para.read_fisrt = 0x80;
+		glob_para.read_fisrt = 0x70;
 		glob_para.speed = 3;
 
 //		write_flash_holfword_buffer(&glob_para.read_fisrt);

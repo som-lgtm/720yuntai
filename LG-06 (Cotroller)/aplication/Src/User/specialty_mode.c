@@ -584,7 +584,7 @@ void specialty_mode_OKkey(void)
 			page_id = PREINSTALL_SESHOT;
 			specialty_para_sendTo_motor(1);
 			change_page();
-			Oled_EnlPrint(1, 2, "  <              >  ","", ENGLISH);
+			Oled_EnlPrint(1, 4, "    <          >    ","", ENGLISH);
 			Reshot = 1;
 		}
 	}
@@ -1482,12 +1482,15 @@ void Cunrent_para_display(uint8_t cur)
 void shotting_Get_data_from_controller(uint8_t *sptt)
 {
 	uint8_t move_be = 0;
-	if(page_id != PREINSTALL_MOVE)return;
+	
+	//if(page_id != FINDING_ORIGIN)
 	
 	p_amount = (uint16_t)sptt[4] | (uint16_t)sptt[5]<<8; // ÕÅÊý
 	sp_start = sptt[8];
 	id_add = sptt[9];
 	move_be = sptt[10];
+	
+	if(page_id != PREINSTALL_MOVE)return;
 	
 	if(m_start == 0)
 	{

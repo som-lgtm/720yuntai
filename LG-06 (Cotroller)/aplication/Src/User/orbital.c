@@ -2709,7 +2709,7 @@ void receiver_data_from_A650(void)
 							m_start = 0;
 							
 							status_display(3);
-							cear_the_id_add(1);
+							if(sp_start==0)cear_the_id_add(1);
 							specialty_totaol_time_dis();
 							Current_Status_display(2);
 							specialty_move_dis(4);

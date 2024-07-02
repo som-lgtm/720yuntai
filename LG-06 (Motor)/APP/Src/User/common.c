@@ -785,6 +785,7 @@ void HHangle_accuracy_test(void)
 void para_init(void)
 {
 	memset((void *)&glob_para.read_fisrt, 0, sizeof(glob_para));
+	sp_Factory_default();
 }
 
 // 两个值相减，取绝对值

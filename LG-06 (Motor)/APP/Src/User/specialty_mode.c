@@ -89,15 +89,28 @@ void SpVVertical_start(void)
 	//Vertical_start();
 }
 
+void sp_Factory_default(void)
+{
+	glob_para.spe_para[1].Param[1].lev_angle = 360;
+	glob_para.spe_para[1].Param[1].amout = 4;
+	glob_para.spe_para[1].Param[1].exposure = 1;
+	glob_para.spe_para[1].Param[1].interval = 1;
+	glob_para.spe_para[1].Param[1].set_flag = 1;
+	glob_para.spe_para[1].Param[1].shut_times = 1;
+	glob_para.spe_para[1].Param[1].sys_stop = 1;
+	glob_para.spe_para[1].para_id=1;
+	glob_para.mode_id =1;
+}
+
 void sp_para_init(void)
 {
-	uint8_t i;
+/*	uint8_t i;
 	for(i=0; i<MODE_ID_MAX; i++)
 	{
 		glob_para.spe_para[i].Param[0].lev_angle = 360;
 		if(glob_para.spe_para[i].para_id>=PARA_MAX_ID)glob_para.spe_para[i].para_id=0;
 	}
-	
+	*/
 	if(glob_para.mode_id>=MODE_ID_MAX)glob_para.mode_id=0;
 	mid_ct = glob_para.mode_id;
 	if(mid_ct >=MODE_ID_MAX)mid_ct=MODE_ID_MAX-1;

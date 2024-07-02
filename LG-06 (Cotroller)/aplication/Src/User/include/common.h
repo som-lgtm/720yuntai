@@ -440,6 +440,7 @@ extern uint8_t mode_id;
 extern uint8_t mid_cr;
 extern uint8_t mid_cr_back;
 extern uint8_t specialty_get;
+extern uint8_t sp_start;
 
 //extern uint8_t lowbattery_dis;
 //extern uint8_t lowbattery_dis_if;

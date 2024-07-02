@@ -515,7 +515,7 @@ void shutter_processing(uint8_t satuss)
 
 void BLE_PWR_TurnOn(void)
 {
-	uint8_t tims=0;
+	uint16_t tims=0;
 	while(!BLE_STATU)
 	{
 		BLE_PWR_DOWN;

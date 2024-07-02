@@ -551,6 +551,7 @@ void SpResot_slow_check(void);
 void Sp_para_start_init(void);
 void shutter_time_counts(void);
 void camera_shutter_shot(uint8_t typess);
+void sp_Factory_default(void);
 
 // video_mode.c
 void Video_pulse_check(void);

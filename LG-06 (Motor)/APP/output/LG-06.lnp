@@ -35,7 +35,6 @@
 "..\output\stm32f0xx_hal_pwr.o"
 "..\output\startup_stm32f030x8.o"
 --library_type=microlib --strict --scatter "..\output\LG-06.sct"
-
---diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "LG-06.map" -o ..\output\LG-06.axf

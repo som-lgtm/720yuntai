@@ -277,10 +277,18 @@ void Specialty_first_begin(void)
 	}
 	else
 	{
-		motorHH_p.DIR = A_TO_B;
-		motorHH_direction_change(motorHH_p.DIR);
-		SpHHorizontal_start();
-		con_b.begin = 2;
+		if(glob_para.spe_para[mid_ct].Param[run_id].lev_angle >= 360)
+		{
+			leve_turn_on_shutter();
+			Red_led_tack();
+		}
+		else
+		{
+			motorHH_p.DIR = A_TO_B;
+			motorHH_direction_change(motorHH_p.DIR);
+			SpHHorizontal_start();
+			con_b.begin = 2;
+		}
 	}
 }
 
@@ -1188,7 +1196,7 @@ void Specialty_Key_start(void)
 void Specialty_Send_reshot_to_controller(uint8_t types)
 {
 	uint8_t buffer[20] = {0};
-	uint8_t j=0;
+	//uint8_t j=0;
 	
 	buffer[0] = 9;
 	buffer[1] = 0x0b;

@@ -113,7 +113,7 @@ void bootloader_action_if(uint8_t *spt)
 	
 	FileSize = spt[i+1] | (uint16_t)(spt[i+2])<<8;
 	
-	if(strncmp("LG-06", (const char *)&name,string_lengt("LG-06")) == 0) // Search to device
+	if(strncmp("LG-06-M", (const char *)&name,string_lengt("LG-06-M")) == 0) // Search to device
 	{
 		if(FileSize <= 0xD400)
 		{

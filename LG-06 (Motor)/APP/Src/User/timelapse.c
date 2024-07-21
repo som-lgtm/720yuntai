@@ -81,7 +81,7 @@ void Delay_total_time_calculate(void)
 void Delay_move_speed_calculate(uint8_t count_types)
 {
 	uint32_t Hmove_times = 0;
-	uint32_t move_times = 0;
+//	uint32_t move_times = 0;
 //	uint16_t int_time = 0;
 	uint8_t sendt = 0;
 
@@ -141,7 +141,7 @@ void Delay_move_speed_calculate(uint8_t count_types)
 void delay_mode_start(void)
 {
 	uint8_t hhdir_check = 0;
-	uint8_t vvdir_check = 0;
+//	uint8_t vvdir_check = 0;
 	
 	if(mode_backup != DELAY_SET)return;
 	if(delay_p.m_start)
@@ -501,6 +501,7 @@ void Delay_mode_find_Apoint(void)
 
 				set_abpoint_start_setting(MOTOR_HORITAL);
 				Red_led_tack();
+				Video_Find_ABpoint_notify(LOOKING_ORIGIN_POINT);
 		}
 	}
 }
@@ -561,6 +562,7 @@ void Delay_find_Origin_checkStop(MOTOR_TYPE motor_t)
 			delay_p.locuHH.dir = delay_p.DIR;
 			//video_p.locusV.dir = video_p.DIR;
 			Delay_mode_Dir_check(MOTOR_HORITAL);
+			Video_Find_ABpoint_notify(REACHED_ORIGIN_POINT);
 		}
 	}
 	
@@ -695,12 +697,12 @@ uint8_t Delay_MotorHH_Start_check_diretion(void)
 		if(motorHH_p.DLLpulse_count > delay_p.locuHH.point_a)
 		{
 			motorHH_p.DIR = B_TO_A;
-			temp = 1;
+			temp = LOOKING_A_POINT;
 		}
 		else if(motorHH_p.DLLpulse_count < delay_p.locuHH.point_a)
 		{
 			motorHH_p.DIR = A_TO_B;
-			temp = 1;
+			temp = LOOKING_A_POINT;
 		}
 	}
 	else if(delay_p.locuHH.dir == B_TO_A )
@@ -709,12 +711,12 @@ uint8_t Delay_MotorHH_Start_check_diretion(void)
 		if(motorHH_p.DLLpulse_count > delay_p.locuHH.point_b)
 		{
 			motorHH_p.DIR = B_TO_A;
-			temp = 1;
+			temp = LOOKING_B_POINT;
 		}
 		else if(motorHH_p.DLLpulse_count < delay_p.locuHH.point_b)
 		{
 			motorHH_p.DIR = A_TO_B;
-			temp = 1;
+			temp = LOOKING_B_POINT;
 		}
 	}
 
@@ -725,6 +727,7 @@ uint8_t Delay_MotorHH_Start_check_diretion(void)
 		motorHH_direction_change(motorHH_p.DIR);
 		set_abpoint_start_setting(MOTOR_HORITAL);
 		Red_led_tack();
+		Video_Find_ABpoint_notify(temp);
 		/*DelayMode_ram_load( MOTOR_HORITAL);
 		delay_p.locuHH.ramspeed = delay_p.locuHH.ram_id;
 		motorHH_speed_set(delay_p.locuHH.ramspeed );
@@ -972,6 +975,7 @@ void Delay_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 					delay_p.activate = 1000;
 					delay_p.locuVV.check_dir=2;
 				}
+				Video_Find_ABpoint_notify(REACHED_ABPOINT);
 			}
 		}
 		else if(delay_p.locuHH.dir == B_TO_A)
@@ -988,6 +992,7 @@ void Delay_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 					delay_p.activate = 1000;
 					delay_p.locuVV.check_dir=2;
 				}
+				Video_Find_ABpoint_notify(REACHED_ABPOINT);
 			}
 		}
 	}

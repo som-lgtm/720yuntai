@@ -372,10 +372,11 @@ ARM Macro Assembler    Page 6
   250 00000014                 END
               00000000 
               00000000 
-Command Line: --debug --xref --cpu=Cortex-M0 --apcs=interwork --depend=..\outpu
-t\startup_stm32f030x8.d -o..\output\startup_stm32f030x8.o -IC:\Keil\ARM\RV31\IN
-C -IC:\Keil\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --list=startup_st
-m32f030x8.lst startup_stm32f030x8.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
+ork --depend=..\output\startup_stm32f030x8.d -o..\output\startup_stm32f030x8.o 
+-IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 525" --list=startup_stm32f030x8.l
+st startup_stm32f030x8.s
 
 
 
@@ -866,4 +867,4 @@ Symbol: __main
       At line 135 in file startup_stm32f030x8.s
 Comment: __main used once
 2 symbols
-381 symbols in table
+382 symbols in table

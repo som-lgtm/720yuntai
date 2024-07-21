@@ -2,7 +2,7 @@
 ..\output\rf24l01.o: ..\Src\User\include\RF24L01.h
 ..\output\rf24l01.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
 ..\output\rf24l01.o: ../Drivers/CMSIS/Include/core_cm0.h
-..\output\rf24l01.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\output\rf24l01.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\output\rf24l01.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ..\output\rf24l01.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ..\output\rf24l01.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -15,8 +15,8 @@
 ..\output\rf24l01.o: ..\Src\User\include\gpio.h
 ..\output\rf24l01.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h
 ..\output\rf24l01.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h
-..\output\rf24l01.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
-..\output\rf24l01.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\output\rf24l01.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\rf24l01.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\output\rf24l01.o: ..\Src\User\include\uart.h
 ..\output\rf24l01.o: ..\Src\User\include\oled.h
-..\output\rf24l01.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+..\output\rf24l01.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -152,38 +152,18 @@ void active_time_out_countdown(void)
 
 void Time_Out_And_Enter_Stop_Mode(void)
 {
-/*	static uint8_t statuss=0;
-	if(rtc_wackup==0){
-		if(yun_start)
-		{
-			set_active_time_out(600000); // 10mS
-			statuss = 0;
-		}
-		else
-		{
-			if(CHARGE_STATU == CHARGING)return; // 
-			if(statuss == 0)
-			{
-				if(return_active_time_out())return;
-				MOTOR_PWR_OFF;
-				statuss = 1;
-				set_active_time_out(1200000);//20mS
-				
-			}
-			else
-			{
-				if(return_active_time_out())return;
-				charge_tag = 1;
-				ShutDown();
-			}
-		}
-	}
-	else
+	if(m_start || sp_start || video_p.Pause || delay_p.m_start)
 	{
-			//if(return_active_time_out())return;
-			ShutDown();
-	}*/
+		set_active_time_out(1800000); //30∑÷÷”
+		return;
+	}
+	
+	if(return_active_time_out())return;
+	set_active_time_out(1800000); //30∑÷÷”
+	
+	ShutDown();
 }
+
 
 
 void disable_interrupt(void)

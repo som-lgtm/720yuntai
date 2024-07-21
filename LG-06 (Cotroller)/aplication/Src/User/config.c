@@ -310,8 +310,9 @@ void page_return_adjust(void)
 		}
 		else
 		{
-			page_id = MAIN_ID;
 			cursor_id = cursor_id_back;
+			if(page_id == PREINSTALL_MODE)cursor_id = 2;
+			page_id = MAIN_ID;
 			reverse_cur = 0;
 			adj_parm_sel = 0;
 			m_start = 0;

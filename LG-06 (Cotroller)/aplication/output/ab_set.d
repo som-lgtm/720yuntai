@@ -1,9 +1,9 @@
 ..\output\ab_set.o: ..\Src\User\ab_set.c
 ..\output\ab_set.o: ..\Src\User\include\oled.h
-..\output\ab_set.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+..\output\ab_set.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\output\ab_set.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
 ..\output\ab_set.o: ../Drivers/CMSIS/Include/core_cm0.h
-..\output\ab_set.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\output\ab_set.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\output\ab_set.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ..\output\ab_set.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ..\output\ab_set.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -15,5 +15,5 @@
 ..\output\ab_set.o: ..\Src\User\include\keyscan.h
 ..\output\ab_set.o: ..\Src\User\include\orbital.h
 ..\output\ab_set.o: ..\Src\User\include\motor_dri.h
-..\output\ab_set.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\output\ab_set.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\ab_set.o: ..\Src\User\include\uart.h

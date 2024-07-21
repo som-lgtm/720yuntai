@@ -176,7 +176,6 @@ void TIM3_IRQHandler(void)
 	Video_loop_check();
 	Timelapse_loop_check();
 	ManulHH_mode_pulse_check();
-
 }
 
 
@@ -202,6 +201,7 @@ void TIM14_IRQHandler(void)
 	  ble_shut_time_count();
 	  delay_mode_time_countdwon();
 	  shutter_time_counts();
+	  active_time_out_countdown();
   }
 //	  usart_timer_test();
 

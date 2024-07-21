@@ -168,6 +168,7 @@ void TIM14_IRQHandler(void)
 	  Time_DCount();
 	  active_time_out_countdown();
 	  splty_mode_time_count();
+	  Video_times_downcount();
   }
 //	  usart_timer_test();
 

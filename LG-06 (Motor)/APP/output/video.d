@@ -3,11 +3,11 @@
 ..\output\video.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
 ..\output\video.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
 ..\output\video.o: ../Drivers/CMSIS/Include/core_cm0.h
-..\output\video.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\output\video.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\output\video.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ..\output\video.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ..\output\video.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 ..\output\video.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h
 ..\output\video.o: ..\Src\User\include\motor.h
 ..\output\video.o: ..\Src\User\include\uart.h
-..\output\video.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\output\video.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

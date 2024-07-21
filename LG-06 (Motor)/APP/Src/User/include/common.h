@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	106
+#define FW_VERSIONS	107
 
 #define PARA_MAX_ID	25
 
@@ -46,6 +46,13 @@
 #define SLOW_BASIC_TIME11	30 // 79
 
 #define MODE_ID_MAX	8 // 专业模式的预设最大只有8个
+
+// video.c宏定义
+#define REACHED_ABPOINT 0 //Point A or B has been reached
+#define LOOKING_A_POINT 1 //Finding the a piont
+#define LOOKING_B_POINT 2 //Finding the a piont
+#define LOOKING_ORIGIN_POINT 3 //Finding the origin piont
+#define REACHED_ORIGIN_POINT 4 //Finding the origin piont
 
 typedef enum
 {
@@ -584,6 +591,7 @@ void limit_angle_360(void);
 void vidoe_mode_para_clear(void);
 void Video_find_Origin_slow_check(MOTOR_TYPE motor_t);
 void Video_loop_check(void);
+void Video_Find_ABpoint_notify(uint8_t dis_type);
 
 // timelapse.c
 void delay_mode_main(void);

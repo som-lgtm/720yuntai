@@ -24,12 +24,12 @@
 
 #define LCD_W 128
 #define LCD_H 160
-#define ZHI_H 12
+#define ZHI_H 12 // 字高度
 #define ZHI_W 12
-#define TITLE (16+5)
 #define CHAR_W 6
 #define SCREEN_MIGRATION	(2)//(4)// 2:屏本身的偏移，4: 字宽12*10=120; 像素128 -120=8/2
-#define ROWLEDGE	5
+#define ROWLEDGE	5 //行高
+#define TITLE (16+ROWLEDGE) //任务栏
 #define	u8 unsigned char
 #define	u16 unsigned int
 #define	u32 unsigned long

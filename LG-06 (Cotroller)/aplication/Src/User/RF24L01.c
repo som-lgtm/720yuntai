@@ -602,8 +602,8 @@ void wifi24G_send_data(void)
 	Send_status = NRF24L01_TxPacket( &App_Buffer[index].app_send_buffer[0], App_Buffer[index].app_send_size );
 	if(Send_status == TX_OK)
 	{
-		String_Printf("TX_OK",5);
-		String_Printf(&App_Buffer[index].app_send_buffer[0],App_Buffer[index].app_send_size);
+		//String_Printf("TX_OK",5);
+		//String_Printf(&App_Buffer[index].app_send_buffer[0],App_Buffer[index].app_send_size);
 		App_Buffer[index].app_send_size = 0;
 		usart22_send.send_interval22 = 60;
 		RF24L01_CE_OFF;
@@ -614,8 +614,8 @@ void wifi24G_send_data(void)
 	}
 	else if(Send_status == MAX_TX)//如果是重发次数超了就再发
 	{
-		String_Printf("MAX_TX",6);
-		String_Printf(&App_Buffer[index].app_send_buffer[0],App_Buffer[index].app_send_size);
+		//String_Printf("MAX_TX",6);
+		//String_Printf(&App_Buffer[index].app_send_buffer[0],App_Buffer[index].app_send_size);
 		//App_Buffer[index].app_send_size = 0;
 		
 		send_times += 1;

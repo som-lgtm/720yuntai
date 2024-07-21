@@ -3050,7 +3050,7 @@ y = y * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.0.6", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.0.8", "", ENGLISH);
 }
 
 

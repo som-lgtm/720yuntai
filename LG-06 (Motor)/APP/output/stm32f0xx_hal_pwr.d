@@ -6,7 +6,7 @@
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/CMSIS/Include/core_cm0.h
-..\output\stm32f0xx_hal_pwr.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\output\stm32f0xx_hal_pwr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -30,7 +30,7 @@
 ..\output\stm32f0xx_hal_pwr.o: ..\Src\User\include\rf24l01.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h
-..\output\stm32f0xx_hal_pwr.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\output\stm32f0xx_hal_pwr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h

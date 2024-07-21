@@ -107,6 +107,7 @@ MX_TIM14_Init();
 //  MX_IWDG_Init();
 	write_flash_active();
 	usb_voltage_tatus();
+	set_active_time_out(1800000); //30∑÷÷”
 //MX_IWDG_Init();
 
   while (1)
@@ -139,7 +140,7 @@ MX_TIM14_Init();
 	limit_angle_360();
 	delay_mode_main();
 	wifi24G_data_Dispose();
-	 // Time_Out_And_Enter_Stop_Mode();
+	  Time_Out_And_Enter_Stop_Mode();
 	 All_slow_check();
   }
   /* USER CODE END 3 */

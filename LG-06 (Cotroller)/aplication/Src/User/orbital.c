@@ -212,12 +212,15 @@ void video_page_OK(void)
 	if(page_id != VIDEO_MODE)return;
 		if(cursor_id == 4)
 		{
+			if(Video_motor_status_return())return;
 			m_start = ~m_start;
 			inverse_get_value(0xff);
 			param_display(cursor_id);
 			inverse_get_value(0);
 
 			controller_send_data_to_motor(0x00,0x01, 0x05);
+			Video_Get_downcount_times();
+			count_tag_set(m_start);
 		//	Send_data_to_ER1(0x00,0x02,0x02);
 			//if(m_start)Send_data_to_ER1(0x00,0x02,0x04);
 			//else Send_data_to_ER1(0x00,0x02,0x02);
@@ -364,6 +367,7 @@ void delay_page_ok(void)
 	{
 		if(cursor_id == 5)
 		{
+			if(Video_motor_status_return())return;
 			m_start = 0xff;
 			page_id = DELAY_DIS;
 			cursor_id = 5;
@@ -609,7 +613,10 @@ void press_key_continue_if(uint8_t dir)
 void Time_DownCount(uint8_t cur)
 {
 	uint8_t buff[6];
-	
+	uint8_t h_len=0;
+	uint8_t X=0;
+	uint8_t y=0;
+	//inverse_get_value(0xff);
 	if(hours < 10)
 	{
 		sprintf( (char *)buff,"0%d", hours);
@@ -618,33 +625,45 @@ void Time_DownCount(uint8_t cur)
 	{
 		sprintf( (char *)buff,"%d", hours);
 	}
+	else if(hours < 1000)
+	{
+		sprintf( (char *)buff,"%d", hours);
+		h_len = 6;
+	}
+		//					H	   M      S
+	X = (LCD_W - (h_len + 18 + 24 + 24)) / 2;
 	
-	Oled_EnlPrint(SCREEN_MIGRATION+4, cur, buff, " ", ENGLISH);
-	LCD_shi_fen_miao_display(SCREEN_MIGRATION+4+12, cur, "H");
+	Oled_EnlPrint(X, cur, buff, " ", ENGLISH);
+	LCD_shi_fen_miao_display(X+h_len + 12, cur, "H");
 	
 	if(minutes < 10)
 	{
-		sprintf( (char *)buff,"0%d", minutes);
+		sprintf( (char *)buff," 0%d", minutes);
 	}
 	else if(minutes < 100)
 	{
-		sprintf( (char *)buff,"%d", minutes);
+		sprintf( (char *)buff," %d", minutes);
 	}
 	
-	Oled_EnlPrint(SCREEN_MIGRATION+18+4, cur, buff, " ", ENGLISH);
-	LCD_shi_fen_miao_display(SCREEN_MIGRATION+18+4+12, cur, "M");
+	Oled_EnlPrint(X + h_len + 18, cur, buff, " ", ENGLISH);
+	LCD_shi_fen_miao_display(X + h_len + 18+18, cur, "M");
 	
 	if(seconds < 10)
 	{
-		sprintf( (char *)buff,"0%d /", seconds);
+		sprintf( (char *)buff," 0%d", seconds);
 	}
 	else if(seconds < 100)
 	{
-		sprintf( (char *)buff,"%d /", seconds);
+		sprintf( (char *)buff," %d", seconds);
 	}
 	
-	Oled_EnlPrint(SCREEN_MIGRATION+36+4, cur, buff, " ", ENGLISH);
-	LCD_shi_fen_miao_display(SCREEN_MIGRATION+36+4+12, cur, "S");
+	Oled_EnlPrint(X + h_len + 18+24, cur, buff, " ", ENGLISH);
+	LCD_shi_fen_miao_display(X + h_len + 18+24+18, cur, "S");
+	//inverse_get_value(0);
+	
+	y = cur * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始显示的起始地址
+	LCD_Fill(0, y, X-1, y+ZHI_H, BLACK);
+	LCD_Fill(X+(h_len + 18 + 24 + 24), y, LCD_W, y+ZHI_H, BLACK);
 }
 
 // 
@@ -717,9 +736,11 @@ void param_display(uint8_t cur)
 			}
 			else if(cur == 3)
 			{
-				hours_time_dis(glob_para.tatol_time_h, cur);
-				minutes_time_dis(glob_para.tatol_time_m, cur);
-				secondes_time_dis(glob_para.tatol_time_s, cur);
+				//inverse_get_value(0xff);
+				//hours_time_dis(glob_para.tatol_time_h, cur);
+				//minutes_time_dis(glob_para.tatol_time_m, cur);
+				//secondes_time_dis(glob_para.tatol_time_s, cur);
+				//inverse_get_value(0);
 				//Time_DownCount(cur);
 				//hours_time_dis(hours, cur);
 				//minutes_time_dis(minutes, cur);
@@ -1223,24 +1244,20 @@ void pix_amt_display(uint8_t cur)
 	{
 		if(amounts < 10)
 		{
-			sprintf( (char *)buff," %d", amounts);
+			sprintf( (char *)buff,"   %d", amounts);
 		}
 		else if(amounts < 100)
 		{
-			sprintf( (char *)buff,"%d", amounts);
+			sprintf( (char *)buff,"  %d", amounts);
 		}
-		/*else if(amounts < 1000)
+		else if(amounts < 1000)
 		{
-			sprintf( (char *)buff,"%d  ", amounts);
-		}
-		else if(amounts < 10000)
-		{
-			sprintf( (char *)buff,"%d ", amounts);
+			sprintf( (char *)buff," %d", amounts);
 		}
 		else
 		{
 			sprintf( (char *)buff,"%d", amounts);
-		}*/
+		}
 	}
 	
 	x_size = Check_String(buff, ENGLISH);
@@ -2397,7 +2414,10 @@ void receiver_data_from_A650(void)
 					ramp_flag = app_read_buffer[7];
 					glob_para.orbital_dir = app_read_buffer[8];
 					m_start = app_read_buffer[11];
-					
+					if(m_start)
+					{
+						Video_Get_downcount_times();
+					}
 					if(check_abpoint_Set_if(app_read_buffer[3]))
 					{
 						if(page_id != VIDEO_MODE)
@@ -2790,6 +2810,9 @@ void receiver_data_from_A650(void)
 				param_display(2);
 				if(page_id == DELAY_DIS)Time_DownCount(3);
 				//param_display(3);
+				
+				//String_Printf("AAAA",4);
+				//String_Printf((uint8_t *)&glob_para.shoot_amount,4);
 				param_display(4);
 				if(app_read_buffer[8]==0)param_display(5);
 				break;
@@ -2844,6 +2867,11 @@ void receiver_data_from_A650(void)
 			case 0x0b:
 			{
 				specilty_get_reshot_form_motor(app_read_buffer[3]);
+			}
+			case 0x0d:
+			{
+				Video_check_the_motor_status((MOTOR_STATUS)app_read_buffer[2]);
+				break;
 			}
 		}
 	}

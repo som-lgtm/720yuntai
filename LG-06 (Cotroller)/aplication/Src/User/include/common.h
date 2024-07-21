@@ -92,6 +92,16 @@
 
 typedef enum
 {
+	REACHED_ABPOINT=0, 	//Point A or B has been reached
+	LOOKING_A_POINT, 		//Finding the a piont
+	LOOKING_B_POINT, 		//Finding the a piont
+	LOOKING_ORIGIN_POINT, 	//Finding the origin piont
+	REACHED_ORIGIN_POINT 	//Finding the origin piont
+	
+}MOTOR_STATUS;
+
+typedef enum
+{
 	G30 = 1,
 	ER1,
 	CAR
@@ -279,7 +289,6 @@ void auto_return_check(void);
 void slider_upORdown(uint8_t p_type);
 void Logo_display(void);
 void dynamic_speed_calculat(uint8_t typep);
-void delay_The_countdown(void);
 void set_boot_time(uint16_t timep);
 void auto_stop_1S(void);
 void set_1S(uint8_t stop_timep);
@@ -406,6 +415,13 @@ void cear_the_id_add(uint8_t datas);
 void specilty_keyscan_send(uint8_t dir);
 void specilty_page_return(void);
 void specilty_get_reshot_form_motor(uint8_t datas);
+
+//video.c
+void Video_times_downcount(void);
+void Video_check_the_motor_status(MOTOR_STATUS statuss);
+uint8_t Video_motor_status_return(void);
+void Video_Get_downcount_times(void);
+void count_tag_set(uint8_t dat);
 
 
 extern ID_CODE wifi_id;

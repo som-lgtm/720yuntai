@@ -20,7 +20,7 @@ void Video_Get_data_from_controller(uint8_t *fifo)
 {
 	//uint8_t index = 0;
 	uint8_t temphh=0;
-	uint8_t tempvv=0;
+//	uint8_t tempvv=0;
 	
 	 if(fifo[4] == 0x01) // 每段轨迹的运行时长	
 	{
@@ -47,7 +47,7 @@ void Video_Get_data_from_controller(uint8_t *fifo)
 	}
 	else if(fifo[4] == 0x05) // pause  or continue
 	{
-		if(find_pataVV.HHfind_Apoint || find_pata.HHfind_Apoint)
+		if(/*find_pataVV.HHfind_Apoint || */find_pata.HHfind_Apoint)
 		{
 			Send_connect_data_to_controller();
 			return;
@@ -57,10 +57,10 @@ void Video_Get_data_from_controller(uint8_t *fifo)
 		if(video_p.Pause)
 		{
 			temphh = Video_MotorHH_Start_check_diretion();
-			tempvv = Video_MotorVV_Start_check_diretion();
-			if(temphh==0 && tempvv==0)
+			//tempvv = Video_MotorVV_Start_check_diretion();
+			if(temphh==0)
 			{
-				MotorVV_Video_move_time_check();
+				//MotorVV_Video_move_time_check();
 				MotorHH_Video_move_time_check();
 				video_Dir_check(MOTOR_HORITAL);
 				video_Dir_check(MOTOR_Vertical);
@@ -691,7 +691,7 @@ void set_abpoint_start_setting(MOTOR_TYPE motor_t)
 	}
 }
 
-// 进入视频模式要自动找A 点
+// 进入视频模式要自动找原点
 void Video_find_Apoint(void)
 {
 	if(motorVV_p.pulse_count != video_p.locusV.point_a)
@@ -765,6 +765,7 @@ void Video_find_Apoint(void)
 
 			set_abpoint_start_setting(MOTOR_HORITAL);
 			Red_led_tack();
+			Video_Find_ABpoint_notify(LOOKING_ORIGIN_POINT);
 		}
 	}
 	else
@@ -800,6 +801,7 @@ void Video_find_Origin_checkStop(MOTOR_TYPE motor_t)
 			//video_p.locusV.dir = video_p.DIR;
 			video_Dir_check(motor_t);
 			Send_connect_data_to_controller();
+			Video_Find_ABpoint_notify(REACHED_ORIGIN_POINT);
 		}
 	}
 	else if(motor_t == MOTOR_Vertical)
@@ -1187,13 +1189,22 @@ void video_motorHH_pulse_check(void)
 
 	if(temp)
 	{
-		if(limit_360_tag==0)video_Dir_check(MOTOR_HORITAL);
+		if(limit_360_tag==0)
+		{
+			video_Dir_check(MOTOR_HORITAL);
+		}
+		else // 360时，循环检测脉冲数，
+		{
+			motorHH_p.DVpulse_count = (video_p.locusH.dir == B_TO_A)?video_p.locusH.point_pulse_b : video_p.locusH.point_pulse_a;
+		}
+		
 		if(video_p.loop)
 		{
 			if(video_p.locusH.ram_if)
 			{
-				if(limit_360_tag)return;
+				//if(limit_360_tag)return;
 				//if(video_p.locusV.dir == video_p.locusH.dir)
+				if(limit_360_tag==0)
 				{
 				//	slider_upORdown(SLOW_START);
 					//video_p.locusV.p_upORdown = SLOW_START;
@@ -1207,11 +1218,11 @@ void video_motorHH_pulse_check(void)
 		else
 		{
 			motorHH_stop();
-			if(limit_360_tag)
+			/*if(limit_360_tag)
 			{
 				if(video_p.locusH.dir == A_TO_B)motorHH_p.DVpulse_count = video_p.locusH.point_pulse_a;
 				else if(video_p.locusH.dir == B_TO_A)motorHH_p.DVpulse_count = video_p.locusH.point_pulse_b;
-			}
+			}*/
 			
 			video_p.Pause = 0;
 			if(video_p.VVPause==0)
@@ -1462,12 +1473,12 @@ uint8_t Video_MotorHH_Start_check_diretion(void)
 		if(motorHH_p.DVpulse_count > video_p.locusH.point_pulse_a)
 		{
 			motorHH_p.DIR = B_TO_A;
-			temp = 1;
+			temp = LOOKING_A_POINT;
 		}
 		else if(motorHH_p.DVpulse_count < video_p.locusH.point_pulse_a)
 		{
 			motorHH_p.DIR = A_TO_B;
-			temp = 1;
+			temp = LOOKING_A_POINT;
 		}
 	}
 	else if(video_p.locusH.dir == B_TO_A )
@@ -1476,12 +1487,12 @@ uint8_t Video_MotorHH_Start_check_diretion(void)
 		if(motorHH_p.DVpulse_count > video_p.locusH.point_pulse_b)
 		{
 			motorHH_p.DIR = B_TO_A;
-			temp = 1;
+			temp = LOOKING_B_POINT;
 		}
 		else if(motorHH_p.DVpulse_count < video_p.locusH.point_pulse_b)
 		{
 			motorHH_p.DIR = A_TO_B;
-			temp = 1;
+			temp = LOOKING_B_POINT;
 		}
 	}
 
@@ -1491,6 +1502,7 @@ uint8_t Video_MotorHH_Start_check_diretion(void)
 		motorHH_direction_change(motorHH_p.DIR);
 		set_abpoint_start_setting(MOTOR_HORITAL);
 		Red_led_tack();
+		Video_Find_ABpoint_notify(temp);
 		/*//video_Dir_check(MOTOR_HORITAL);
 		motorHH_direction_change(motorHH_p.DIR);
 		Video_ram_load(BASE_SPEED, MOTOR_HORITAL);
@@ -1579,6 +1591,7 @@ void Video_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 					video_p.activate = 1000;
 					video_p.locusV.check_dir = 2;
 				}
+				Video_Find_ABpoint_notify(REACHED_ABPOINT);
 			}
 		}
 		else if(video_p.locusH.dir == B_TO_A)
@@ -1595,10 +1608,11 @@ void Video_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 					video_p.activate = 1000;
 					video_p.locusV.check_dir = 2;
 				}
+				Video_Find_ABpoint_notify(REACHED_ABPOINT);
 			}
 		}
 	}
-	else if(motor_tt == MOTOR_Vertical)
+	/*else if(motor_tt == MOTOR_Vertical)
 	{
 		if(video_p.locusV.check_dir==0)return;
 
@@ -1634,7 +1648,7 @@ void Video_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 				}
 			}
 		}
-	}
+	}*/
 }
 
 // 启动前找AB 点到达后的自动启动
@@ -1889,5 +1903,17 @@ void Video_loop_check(void)
 	Video_find_Origin_checkStop(MOTOR_HORITAL);
 	//Video_find_Origin_slow_check(MOTOR_HORITAL);
 	Video_compensation_change_speed(MOTOR_HORITAL);
+}
+
+// 视频模式找AB点时通知遥控器显示给用户看
+void Video_Find_ABpoint_notify(uint8_t dis_type)
+{
+	uint8_t buffers[5]={0};
+
+	buffers[0] = 0x09;
+	buffers[1] = 0x0d;
+	buffers[2] = dis_type; // 0: 已找到A/B点；1: 正在找A点; 2: 正在找B点
+	buffers[3] = check_sum_add(3, buffers);
+	Package_dataBufer(4, buffers);
 }
 

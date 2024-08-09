@@ -11,7 +11,6 @@
 uint16_t Pair_times = 0;
 
 void Send_NameToBle(void);
-extern void Ble_init(void);
 
 void Pairing_time(void)
 {

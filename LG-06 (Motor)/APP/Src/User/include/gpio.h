@@ -24,14 +24,14 @@ typedef enum
 #define SHUTTER_ON	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_8) //
 #define SHUTTER_OFF	LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_8) //
 
-#define BLE_SHUT_ON	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_10) //
-#define BLE_SHUT_OFF	LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_10) //
+#define BLE_SHUT_ON	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_2) //
+#define BLE_SHUT_OFF	LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_2) //
 
 #define A3_3_PWR_UP	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_8) //
 #define A3_3_PWR_DOWN		LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_8) //
 
-#define BLE_PWR_UP	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_9) //
-#define BLE_PWR_DOWN	LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_9) //
+#define BLE_PWR_UP	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_6) //
+#define BLE_PWR_DOWN	LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_6) //
 
 //#define MOTOR_SLEEP	LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_4) //
 //#define MOTOR_WACKUP	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_4) //

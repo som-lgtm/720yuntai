@@ -97,13 +97,14 @@ MX_TIM14_Init();
  
 //  MX_RTC_Init();
   MX_USART2_UART_Init();  
+	MX_USART1_UART_Init();
 	check_uid();
-//  MX_USART1_UART_Init();
 //  MX_RTC_Init();
 	  motor_init();
 	Nrf24L01_init();
 	Burn_code_value();
-	BLE_PWR_TurnOn();
+	//BLE_PWR_TurnOn();
+	Ble_init();
 //  MX_IWDG_Init();
 	write_flash_active();
 	usb_voltage_tatus();

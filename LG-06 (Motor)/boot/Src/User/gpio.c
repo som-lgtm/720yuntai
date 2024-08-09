@@ -46,7 +46,7 @@ void gpio_pulldown_int(GPIO_TypeDef *GPIOx, uint32_t PinMask)
 void TMC22xx_Init(void)
 {
 	GPIO_OUT_init(GPIOA, LL_GPIO_PIN_7); // battery mos switch
-	GPIO_OUT_init(GPIOA, LL_GPIO_PIN_5); // usb mos switch
+	GPIO_OUT_init(GPIOA, LL_GPIO_PIN_3); // usb mos switch
 
 	GPIO_INUP_Init(GPIOA, LL_GPIO_PIN_4); // USB READ STATUS
 	BATTER_MOS_OFF;

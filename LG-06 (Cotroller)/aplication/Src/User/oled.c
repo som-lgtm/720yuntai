@@ -145,7 +145,7 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,"                    ");}
 			break;
 		}
-		case SINGLE_PANORAMA:
+	/*	case SINGLE_PANORAMA:
 		{
 			if(rows == 0){
 				The_page_processing(rows, "单层全景模式");}
@@ -184,7 +184,7 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 7){
 				The_page_processing(rows,	"总张数            ");}
 			break;
-		}		
+		}		*/
 		case PREINSTALL_MODE:
 		{
 			if(rows == 0){
@@ -357,6 +357,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,"版本                ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,	"                    ");}
 			break;
 		}
 		case REVERSE_MODE:
@@ -451,11 +453,11 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 1){
 				The_page_processing(rows,"                    ");}
 			else if(rows == 2){
-				The_page_processing(rows,	"Connecting");}
+				The_page_processing(rows,	"Disconnected");}
 			else if(rows == 3){
-				The_page_processing(rows,"Please wait");}
+				The_page_processing(rows,"Signal's weak,please");}
 			else if(rows == 4){
-				The_page_processing(rows,	"                    ");}
+				The_page_processing(rows,	"approach the product");}
 			else if(rows == 5){
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
@@ -491,9 +493,9 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows,"                    ");}
 			else if(rows == 4){
-				The_page_processing(rows,	"Horizontal Angle    ");}
+				The_page_processing(rows,	"Angle             ");}
 			else if(rows == 5){
-				The_page_processing(rows,	"Pitch Angle         ");}
+				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
 			break;
@@ -591,6 +593,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,"Sleep               ");}
 			else if(rows == 5){
 				The_page_processing(rows,"Version             ");}
+			else if(rows == 6){
+				The_page_processing(rows,"                    ");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
 			break;
@@ -600,7 +604,7 @@ void english_page_dis(uint8_t rows)
 			if(rows == 0){
 				The_page_processing(rows,"Video mode");}
 			else if(rows == 1){
-				The_page_processing(rows,	"                    ");}
+				The_page_processing(rows,	"direction           ");}
 			else if(rows == 2){
 				The_page_processing(rows,"Times               ");}
 			else if(rows == 3){
@@ -615,7 +619,7 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,"                    ");}
 			break;
 		}
-		case SINGLE_PANORAMA:
+	/*	case SINGLE_PANORAMA:
 		{
 			if(rows == 0){
 				The_page_processing(rows,"Standar mdoe");}
@@ -634,11 +638,11 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 7){
 				The_page_processing(rows,"Pic                 ");}
 			break;
-		}
+		}*/
 		case PREINSTALL_MODE:
 		{
 			if(rows == 0){
-				The_page_processing(rows,"Expert Mode");}
+				The_page_processing(rows,"Panorama Mode");}
 			else if(rows == 1){
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 2){
@@ -658,7 +662,7 @@ void english_page_dis(uint8_t rows)
 		case PREINSTALL_SET:
 		{
 			if(rows == 0){
-				The_page_processing(rows,"Expert Mode(Para)");}
+				The_page_processing(rows,"Panorama Mode(Para)");}
 			else if(rows == 1){
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 2){
@@ -678,19 +682,19 @@ void english_page_dis(uint8_t rows)
 		case PREINSTALL_SET1:
 		{
 			if(rows == 0){
-				The_page_processing(rows,"Expert Mode(Para)");}
+				The_page_processing(rows,"Expert Mode(Set)");}
 			else if(rows == 1){
-				The_page_processing(rows,	"V-angle             ");}
+				The_page_processing(rows,	"Angle             ");}
 			else if(rows == 2){
-				The_page_processing(rows,"H-angle             ");}
+				The_page_processing(rows,"Shut count        ");}
 			else if(rows == 3){
-				The_page_processing(rows,	"Frames              ");}
+				The_page_processing(rows,	"Frames            ");}
 			else if(rows == 4){
-				The_page_processing(rows,"Exposure            ");}
+				The_page_processing(rows,"Exposure          ");}
 			else if(rows == 5){
-				The_page_processing(rows,"Interval            ");}
+				The_page_processing(rows,"Interval          ");}
 			else if(rows == 6){
-				The_page_processing(rows,"                    ");}
+				The_page_processing(rows,"Delay             ");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
 			break;
@@ -698,21 +702,41 @@ void english_page_dis(uint8_t rows)
 		case PREINSTALL_MOVE:
 		{
 			if(rows == 0){
-				The_page_processing(rows,"Expert Mode");}
+				The_page_processing(rows,"Panorama Mode(move)");}
 			else if(rows == 1){
-				The_page_processing(rows,	"Delay               ");}
+				The_page_processing(rows,	"Timed start       ");}
 			else if(rows == 2){
-				The_page_processing(rows,"Manual              ");}
+				The_page_processing(rows,"Manual            ");}
 			else if(rows == 3){
-				The_page_processing(rows,	"                    ");}
+				The_page_processing(rows,	" Start ");}
 			else if(rows == 4){
-				The_page_processing(rows,"                    ");}
+				The_page_processing(rows,"Reshoot");}
 			else if(rows == 5){
-				The_page_processing(rows,"Countdown           ");}
+				The_page_processing(rows,"                    ");}
 			else if(rows == 6){
-				The_page_processing(rows,"Pic                 ");}
+				The_page_processing(rows,"Pic               ");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
+			break;
+		}
+		case PREINSTALL_SESHOT:
+		{
+			if(rows == 0){
+				The_page_processing(rows, "Panorama Mode(Reshot");}
+			else if(rows == 1){
+				The_page_processing(rows,	 "                    ");}
+			else if(rows == 2){
+				The_page_processing(rows, "Press arrow keys to ");}
+			else if(rows == 3){
+				The_page_processing(rows, "select              ");}
+			else if(rows == 4){
+				The_page_processing(rows,	 "                    ");}
+			else if(rows == 5){
+				The_page_processing(rows,	 "Previous    Next");}
+			else if(rows == 6){
+				The_page_processing(rows, "                    ");} // 与定时倒计复用
+			else if(rows == 7){
+				The_page_processing(rows,	 "Press menu key  exit");}
 			break;
 		}
 		case REVERSE_MODE:
@@ -760,13 +784,13 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 1){
 				The_page_processing(rows, "                    ");}
 			else if(rows == 2){
-				The_page_processing(rows, "Speed         Gear");}
+				The_page_processing(rows, "Speed           Gear");}
 			else if(rows == 3){
 				The_page_processing(rows, "                    ");}
 			else if(rows == 4){
-				The_page_processing(rows,	"Horizontal Angle    ");}
+				The_page_processing(rows,	 "Angle             ");}
 			else if(rows == 5){
-				The_page_processing(rows,	"Pitch Angle         ");}
+				The_page_processing(rows, "                    ");}
 			else if(rows == 6){
 				The_page_processing(rows, "                    ");}
 			//else if(rows == 7){
@@ -3050,7 +3074,7 @@ y = y * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.0.8", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.0.9", "", ENGLISH);
 }
 
 

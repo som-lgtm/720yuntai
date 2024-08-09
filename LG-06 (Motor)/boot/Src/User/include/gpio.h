@@ -25,8 +25,8 @@ void GPIO_INUP_Init(GPIO_TypeDef *GPIOx, uint32_t PinMask);
 
 #define SHUTTER_ON	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_14) //
 #define SHUTTER_OFF	LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_14) //
-#define USB_MOS_ON LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_5)
-#define USB_MOS_OFF LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_5)
+#define USB_MOS_ON LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_3)
+#define USB_MOS_OFF LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_3)
 #define BATTER_MOS_ON LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_7)
 #define BATTER_MOS_OFF LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_7)
 

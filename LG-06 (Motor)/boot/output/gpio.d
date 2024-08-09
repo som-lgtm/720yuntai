@@ -1,11 +1,11 @@
 ..\output\gpio.o: ..\Src\User\GPIO.c
 ..\output\gpio.o: ..\Src\User\include\common.h
-..\output\gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
-..\output\gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\output\gpio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\gpio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\output\gpio.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
 ..\output\gpio.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
 ..\output\gpio.o: ../Drivers/CMSIS/Include/core_cm0.h
-..\output\gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\output\gpio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\output\gpio.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ..\output\gpio.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ..\output\gpio.o: ../Drivers/CMSIS/Include/core_cmFunc.h

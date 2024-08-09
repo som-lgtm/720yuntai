@@ -189,13 +189,13 @@ void ble_init(void)
 	GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
 	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
-	GPIO_OUT_init(GPIOA, LL_GPIO_PIN_10); // ble SHUT
+	GPIO_OUT_init(GPIOB, LL_GPIO_PIN_2); // ble SHUT
 	//GPIO_INUP_Init(GPIOB, LL_GPIO_PIN_15); // statu
-	GPIO_OUT_init(GPIOA, LL_GPIO_PIN_9); // pwr key
 	GPIO_OUT_init(GPIOA, LL_GPIO_PIN_8); // pwr GND
+	GPIO_OUT_init(GPIOB, LL_GPIO_PIN_11); // BLE AT
 	BLE_SHUT_ON;
-	BLE_PWR_UP;
-	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_8);
+	A3_3_PWR_UP;
+	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_11);
 }
 
 void Adc_Gpio_init(void)
@@ -461,7 +461,7 @@ void bluetooth_pair_led(void)
 		//C_status = 0;
 		if(Battery_percentage > 10)
 		{
-			//if(BLE_STATU==0)
+			if(BLE_STATU==0)
 			{
 				if(led_time==0)
 				{
@@ -478,6 +478,10 @@ void bluetooth_pair_led(void)
 						Green_led_onORoff(0);
 					}
 				}
+			}
+			else
+			{
+				Green_led_onORoff(1);
 			}
 		}
 		else
@@ -518,13 +522,13 @@ void BLE_PWR_TurnOn(void)
 	uint16_t tims=0;
 	while(!BLE_STATU)
 	{
-		BLE_PWR_DOWN;
+		//BLE_PWR_DOWN;
 		time_delay_ms(10);
 		tims += 1;
 		if(tims > 300)break;
 	}
 
-	BLE_PWR_UP;
+	//BLE_PWR_UP;
 	
 //	String_Printf(USART_2, &glob_para.speed, 1);
 }
@@ -584,7 +588,7 @@ void exti_init_beforEnterStop(uint8_t type)
 		RED_LED_OFF;
 		GREEN_LED_OFF;
 		SHUTTER_OFF;
-		BLE_PWR_DOWN;
+		//BLE_PWR_DOWN;
 		A3_3_PWR_DOWN;
 	//	RF24L01_CE_OFF;
 		AllIO_High_resistance_mode();

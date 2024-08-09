@@ -125,6 +125,8 @@ void Video_abPoint_set(uint8_t types)
 	}
 	else if(con_b.vvAB_set == 2)
 	{
+		motorHH_stop();
+		//motorVV_stop();
 		video_p.locusV.point_b = motorVV_p.pulse_count;
 		video_p.locusV.point_pulse_b = motorVV_p.DVpulse_count;
 		

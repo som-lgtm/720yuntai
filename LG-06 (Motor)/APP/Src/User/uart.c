@@ -178,7 +178,7 @@ void Usart11_Init(uint32_t baud)
 /* USART1 init function */
 void MX_USART1_UART_Init(void)
 {
-	Usart11_Init(115200);
+	Usart11_Init(9600);
 	Usart1_Dma_Init();
 }
 

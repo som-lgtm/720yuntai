@@ -113,7 +113,7 @@ void ShutDown(void)
 		RED_LED_OFF;
 		GREEN_LED_OFF;
 		SHUTTER_OFF;
-		BLE_PWR_DOWN;
+		//BLE_PWR_DOWN;
 		A3_3_PWR_DOWN;
 		shutter_processing(0);
 	//	Nixie_all_Off();

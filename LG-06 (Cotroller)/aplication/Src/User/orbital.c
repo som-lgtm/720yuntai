@@ -3466,7 +3466,7 @@ void slow_start_stop_dis(uint8_t cur)
 		{
 			if(wifi_id.language_sel == ENGLISH)
 			{
-				x_size = Check_String("Open", wifi_id.language_sel);
+				x_size = Check_String(" Open", wifi_id.language_sel);
 			}
 			else if(wifi_id.language_sel == CHINESE)
 			{
@@ -3516,7 +3516,14 @@ void Speed_display(uint8_t cur)
 	}
 	
 	x_size = Check_String(buff, ENGLISH);
-	x = LCD_W - (x_size + SCREEN_MIGRATION+24);
+	if(wifi_id.language_sel == CHINESE)
+	{
+		x = LCD_W - (x_size + SCREEN_MIGRATION+24);
+	}
+	else
+	{
+		x = LCD_W - (x_size + SCREEN_MIGRATION+26);
+	}
 	Oled_EnlPrint(x, cur, buff, " ", ENGLISH);
 }
 

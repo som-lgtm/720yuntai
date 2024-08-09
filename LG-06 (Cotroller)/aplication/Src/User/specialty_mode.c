@@ -584,7 +584,7 @@ void specialty_mode_OKkey(void)
 			page_id = PREINSTALL_SESHOT;
 			specialty_para_sendTo_motor(1);
 			change_page();
-			Oled_EnlPrint(1, 4, "    <          >    ","", ENGLISH);
+			Oled_EnlPrint(4, 4, "    <          >    ","", ENGLISH);
 			Reshot = 1;
 		}
 	}

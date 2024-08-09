@@ -254,6 +254,8 @@ void Delay_set_abPoint(uint8_t typess)
 	}
 	else if(delay_p.ab_set_if == 2)
 	{
+		motorHH_stop();
+		motorVV_stop();
 		pulse_h = Absolute_value_calculation(delay_p.locuHH.point_a, motorHH_p.DLLpulse_count);
 		pulse_v = Absolute_value_calculation(delay_p.locuVV.point_a, motorVV_p.DLLpulse_count);
 

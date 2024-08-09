@@ -540,6 +540,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\User\keyscan.c</FilePath>
             </File>
+            <File>
+              <FileName>Ble.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\User\Ble.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

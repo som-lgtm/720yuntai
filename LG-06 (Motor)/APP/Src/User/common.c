@@ -1085,7 +1085,7 @@ void Manul_SartOrStop(MOTOR_TYPE motor_t, uint8_t status)
 void Red_led_tack(void)
 {
 	//RED_LED_ON;
-	Green_led_onORoff(0);
+	//Green_led_onORoff(0);
 }
 
 //视频模式和延时模式设置AB点时的实时角度发送

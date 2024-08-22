@@ -15,10 +15,10 @@
 //#define RETURN_KEY2	GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)
 
 
-__IO uint8_t scan_cycle=0;
+uint8_t scan_cycle=0;
 uint8_t key_final_status=0;
 uint8_t return_key=0;
-__IO uint16_t return_key_time=0;
+uint16_t return_key_time=0;
 uint8_t shutter_key_satus = 0;
 
 uint8_t keyup_status=0;
@@ -35,12 +35,12 @@ uint8_t keyreturn_left=0;
 uint8_t keyreturn_right=0;
 uint8_t key_debounce = 0;
 uint8_t Pwrkey_debounce = 0;
-__IO uint16_t key_contunue_cout=0;
+uint16_t key_contunue_cout=0;
 uint8_t powers_off = 0;
 
-__IO uint16_t press_time = 0; // 电源开关误触计算时间3s
+uint16_t press_time = 0; // 电源开关误触计算时间3s
 
-__IO uint16_t continues = 0;
+uint16_t continues = 0;
 
 extern uint16_t add_contunue;
 extern uint16_t sub_contunue;
@@ -295,9 +295,7 @@ void boot_screen(void)
 }
 
 void press_OK_function(void)
-{
-//	uint8_t i;
-	
+{	
 	if(page_id == MAIN_ID)
 	{
 		main_page_ok();

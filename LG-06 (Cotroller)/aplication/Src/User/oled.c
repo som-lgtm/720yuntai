@@ -143,13 +143,13 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 2){
 				The_page_processing(rows,	"  全景模式  ");}
 			else if(rows == 3){
-				The_page_processing(rows,"  视频模式  ");}
-			else if(rows == 4){
-				The_page_processing(rows,	"  延时模式  ");}
-			else if(rows == 5){
-				The_page_processing(rows,	"  手动模式  ");}
-			else if(rows == 6){
 				The_page_processing(rows,	"  合影模式  ");}
+			else if(rows == 4){
+				The_page_processing(rows,"  视频模式  ");}
+			else if(rows == 5){
+				The_page_processing(rows,	"  延时模式  ");}
+			else if(rows == 6){
+				The_page_processing(rows,	"  手动模式  ");}
 			else if(rows == 7){
 				The_page_processing(rows,"    设置    ");}
 			break;
@@ -157,7 +157,7 @@ void chinese_page_dis(uint8_t rows)
 		case GROUP_PHOTO:
 		{
 			if(rows == 0){
-				The_page_processing(rows, "合影模式");}
+				The_page_processing(rows,"相机放置          ");}
 			else if(rows == 1){
 				The_page_processing(rows,	"镜头焦距          ");}
 			else if(rows == 2){
@@ -565,7 +565,7 @@ void english_page_dis(uint8_t rows)
 		case GROUP_PHOTO:
 		{
 			if(rows == 0){
-				The_page_processing(rows, "Group mode");}
+				The_page_processing(rows,"Camera placement  ");}
 			else if(rows == 1){
 				The_page_processing(rows,	"Lens              ");}
 			else if(rows == 2){
@@ -3122,7 +3122,7 @@ y = y * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.1.0", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.1.1", "", ENGLISH);
 }
 
 

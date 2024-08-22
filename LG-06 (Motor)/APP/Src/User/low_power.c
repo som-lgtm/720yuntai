@@ -17,37 +17,28 @@ uint8_t lowbattery_dis_if = 0;
 uint8_t charge_tag; // 当插电充电时至1
 uint8_t rtc_wackup=0; //
 
-void Reset_theSystem(void)
+void Reset_theSystem(uint8_t types)
 {
-
-/*	LL_FLASH_SetLatency(LL_FLASH_LATENCY_1);
-
-  if(LL_FLASH_GetLatency() != LL_FLASH_LATENCY_1)
-  {
-  Error_Handler();	
-  }
-  */
- /* LL_RCC_HSI_Enable();
-
-   // Wait till HSI is ready 
-  while(LL_RCC_HSI_IsReady() != 1)
-  {
-	
-  }*/
-  LL_RCC_HSE_Disable();
-  LL_RCC_PLL_Disable();
-  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSI);
-////  LL_RCC_HSI_SetCalibTrimming(16);
-
- //// LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI_DIV_2, LL_RCC_PLL_MUL_2);
-
- /// LL_RCC_PLL_Enable();
-
-   // Wait till PLL is ready /
-////  while(LL_RCC_PLL_IsReady() != 1)
-////  {
-	
- //// }
+	if(types)
+	{
+	  LL_RCC_HSE_Disable();
+	  LL_RCC_PLL_Disable();
+	  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSI);
+	}
+	else
+	{
+		LL_RCC_PLL_Enable();
+		
+		 // Wait till PLL is ready /
+		while(LL_RCC_PLL_IsReady() != 1)
+		{
+		}
+		LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_PLL);
+		while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_PLL)
+		{
+		
+		}
+	}
 }
 
 
@@ -120,12 +111,12 @@ void ShutDown(void)
 	//	lowbattery_dis_if = 1;
 		ShutDown_AllIO_High_resistance_mode();
 	//MX_RTC_Init();
-//	set_power_on_int(0XFF);
+	set_power_on_int(0XFF);
 	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
 	pwrKey_exti_interrupt();
 //	RTC_AlarmConfig();
 //	SysTick->CTRL  = 0; //DISABLE SYSYTICK
-	Reset_theSystem();
+	Reset_theSystem(1);
 	HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 //	RTC_disable();
 	if(charge_tag)
@@ -134,8 +125,13 @@ void ShutDown(void)
 		__disable_irq();
 		NVIC_SystemReset();
 	}
-	SystemClock_Config();
+	Reset_theSystem(0);
+	//SystemClock_Config();
 	enable_interrupt();
+	set_active_time_out(1800000); //30分钟
+//	Device_init();
+	RED_LED_OFF;
+//	GREEN_LED_ON;
 //	Led_init();
 //	key_gpio_init();
 //	LED_ON;
@@ -204,6 +200,9 @@ void disable_interrupt(void)
 	//Dma_SendIRQ_Dispose();
 	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7);
 	LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_7);
+	
+	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7|LL_EXTI_LINE_4);
+	LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_7|LL_EXTI_LINE_4);
 	NVIC_DisableIRQ(EXTI4_15_IRQn);
 
 }

@@ -16,12 +16,12 @@
 //#define RETURN_KEY1	GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10)
 //#define RETURN_KEY2	GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)
 
-__IO uint16_t scan_cycle=0;
+uint16_t scan_cycle=0;
 uint8_t key_final_status=0;
 
 uint8_t keypowr_status=0;
-__IO uint16_t continues = 0;
-__IO uint16_t press_time = 0;
+uint16_t continues = 0;
+uint16_t press_time = 0;
 uint8_t powers_off = 0;
 uint8_t Pwrkey_debounce = 0;
 
@@ -29,7 +29,7 @@ uint8_t key_debounce = 0;
 
 void set_press_time(void)
 {
-	press_time = 2501;
+	press_time = 3000;
 }
 
 unsigned char key_Handle(void)
@@ -59,7 +59,7 @@ void keyscan(void)
 	
 	key_status = key_Handle();
 		
-		if((key_status & KEY_POWR_MASK)==0)
+	/*	if((key_status & KEY_POWR_MASK)==0)
 		{
 			if(return_powers())
 			{
@@ -72,7 +72,7 @@ void keyscan(void)
 					check_the_powers_status(); // Continue standby for less than 1S
 				}
 			}
-		}
+		}*/
 		
 	if(key_status != key_final_status)
 	{

@@ -96,8 +96,8 @@ void Led_init(void)
 {
 	GPIO_OUT_init(GPIOB, LL_GPIO_PIN_9); // GREEN
 	GPIO_OUT_init(GPIOC, LL_GPIO_PIN_13); // RED
-	RED_LED_ON;
-	//GREEN_LED_ON;
+	RED_LED_OFF;
+	GREEN_LED_ON;
 }
 
 

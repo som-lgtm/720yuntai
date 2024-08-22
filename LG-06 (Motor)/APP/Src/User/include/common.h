@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	109
+#define FW_VERSIONS	110
 
 #define PARA_MAX_ID	25
 
@@ -189,7 +189,7 @@ typedef struct{
 	uint32_t interval_t;
 	uint8_t dynamic;
 	uint8_t p_upDown;
-	__IO uint8_t slw_time;
+	uint8_t slw_time;
 	uint8_t VRamp_id;
 	uint16_t Vslow_point ;
 	uint16_t Vramp_buffer[20];
@@ -239,7 +239,7 @@ typedef struct{
 	uint8_t VV_speed;
 	uint8_t HH_speed;
 	uint8_t VV_Time;
-	__IO uint8_t HH_Ttime;
+	uint8_t HH_Ttime;
 	uint8_t VV_UpRoDown;
 	uint8_t HH_UpRoDown;
 	
@@ -264,7 +264,7 @@ typedef struct{
 	uint8_t check_dir;
 	uint8_t p_upORdown;
 	uint8_t dynamic_speed;
-	__IO uint8_t slow_time;
+	uint8_t slow_time;
 	uint8_t locus_set;
 	uint32_t point_a; // 从其它模式回到视频模式的校准点
 	uint32_t point_b;
@@ -291,7 +291,7 @@ typedef struct{
 	uint8_t DIR;
 	uint8_t VV_DIR; // z 轴方向
 	uint8_t loop;
-	__IO uint16_t activate;
+	uint16_t activate;
 	uint8_t Pause;
 	uint8_t VVPause;
 	uint8_t locus_id;
@@ -322,8 +322,8 @@ typedef struct{
 	float remainder_p; //每张照片移动的脉冲数的余数，用于脉冲数的补尝计算
 	uint16_t ram_dist;
 	uint16_t ram_id;
-	__IO uint8_t ramspeed;
-	__IO uint8_t ramTime;
+	 uint8_t ramspeed;
+	uint8_t ramTime;
 	uint8_t Ram_UpRoDown;
 	uint8_t check_dir;
 }DELAY_LOCUS;
@@ -359,6 +359,7 @@ typedef struct{
 	uint8_t GP_set_if; // 是否已设置AB点
 	uint8_t check_dir; //找A/B点标志
 	uint8_t amount;
+	uint8_t GP_shut_mode; // 横竖拍
 
 	uint16_t Gp_angle;
 	uint32_t origin_pulse; // 从其它模式回到视频模式的校准点
@@ -664,6 +665,7 @@ void Group_mode_find_Apoint(void);
 void Group_mode_Dir_check(void);
 void Group_Ramp_Speed_Load(void);
 void Group_manul_Shuting(void);
+uint8_t Group_mode_Start_check_diretion(void);
 
 extern PARA_STRUCT glob_para;
 extern float battery_back;
@@ -674,11 +676,11 @@ extern uint8_t mode_backup;
 extern __IO uint32_t boot_time;
 extern uint8_t p_upORdown;
 
-extern __IO uint16_t dynamic_speed;
-extern __IO uint16_t slow_time;
+extern uint16_t dynamic_speed;
+extern uint16_t slow_time;
 extern uint8_t move_begin_backup;
 extern uint8_t move_begin;
-extern __IO uint32_t p_move_time ;
+extern uint32_t p_move_time ;
 extern uint32_t p_amount;
 extern uint8_t m_start;
 extern uint8_t Battery_percentage;

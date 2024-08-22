@@ -199,7 +199,11 @@ void TIM15_IRQHandler(void)
 */
 void USART2_IRQHandler(void)
 {
-	  /* USER CODE BEGIN USART2_IRQn 0 */
+	if(LL_USART_IsActiveFlag_RXNE(USART2))
+	{
+		Usart22_ReadByte();
+		LL_USART_EnableIT_IDLE(USART2);
+	}
 	 if(LL_USART_IsActiveFlag_IDLE(USART2))
 	 {
 		LL_USART_ClearFlag_IDLE(USART2);

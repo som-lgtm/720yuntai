@@ -137,13 +137,14 @@ void decimal_point_time_dis(float datat, uint8_t cur);
 void integer_position_display(uint16_t datat, uint8_t cur, uint8_t curxx);
 void Group_pix_amt_compara_dis(uint8_t max_p, uint8_t cur);
 void Group_page_OK(void);
+void Group_shut_mode_display(uint8_t cur);
 
 extern uint16_t p_amount;
-extern __IO uint16_t get_init_time ;
-extern __IO uint16_t led_time;
+extern uint16_t get_init_time ;
+extern uint16_t led_time;
 extern uint32_t expouse_time;
-extern __IO uint16_t connection_flag;
-extern __IO uint16_t continues ;
+extern uint16_t connection_flag;
+extern uint16_t continues ;
 extern uint16_t low_voltage;
 
 #endif

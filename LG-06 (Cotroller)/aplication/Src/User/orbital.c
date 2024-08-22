@@ -15,6 +15,7 @@ uint8_t D_amount[4]={0};
 uint8_t page_id_back = 0;
 uint8_t specialty_get = 0;
 uint8_t std_manul_tag = 0;
+uint8_t shut_mode = 0; //0:  横; 1:竖拍
 uint8_t wid_manul_tag = 0;
 uint8_t move_begin =0;
 uint8_t m_start = 0;
@@ -34,18 +35,18 @@ uint8_t video_fisrt_time = 0;
 uint8_t manual_flag = 0;
 uint8_t get_init_tag = 0;
 uint8_t fps_buffer[3]={0};
-__IO uint16_t get_init_time = 0;
+uint16_t get_init_time = 0;
 
 uint16_t delay_speed =0;
-__IO uint16_t led_time=0;
-__IO uint16_t sub_contunue=0;
-__IO uint16_t add_contunue=0;
+uint16_t led_time=0;
+uint16_t sub_contunue=0;
+uint16_t add_contunue=0;
 uint16_t MS_count=0;
 uint16_t p_amount =0;
 uint16_t p_move_step = 0;
 uint16_t hours =0;
 uint16_t addend_value=0;
-__IO uint16_t connection_flag = 0;
+uint16_t connection_flag = 0;
 uint16_t V_agnle = 0;
 uint16_t H_agnle = 0;
 
@@ -673,7 +674,11 @@ void param_display(uint8_t cur)
 	{
 		case GROUP_PHOTO:
 		{
-			if(cur == 1)
+			if(cur == 0)
+			{
+				Group_shut_mode_display(cur);
+			}
+			else if(cur == 1)
 			{
 				integer_display(glob_para.lens_folcal,cur);
 				Oled_EnlPrint(LCD_W-12-SCREEN_MIGRATION, cur, "mm", " ", ENGLISH);
@@ -700,6 +705,17 @@ void param_display(uint8_t cur)
 			else if(cur == 6)
 			{
 				status_display(cur);
+			}
+			else if(cur == 7)
+			{
+				if(m_start)
+				{
+					The_page_processing(7,"张数              ");
+				}
+				else
+				{
+					The_page_processing(7,"      AB点设置      ");
+				}
 			}
 			break;
 		}
@@ -932,7 +948,7 @@ void cursor_shift(uint8_t dir)
 		}
 		case GROUP_PHOTO:
 		{
-			cursor_count(dir, 7, 1);
+			cursor_count(dir, 7, 0);
 			break;
 		}
 		case CONFIG_ID:
@@ -1768,7 +1784,22 @@ void param_adjust(uint8_t dir)
 	{
 		case GROUP_PHOTO:
 		{
-			if(cursor_id == 1)
+			if(cursor_id == 0)
+			{
+				inverse_get_value(0xff);
+				if(dir & KEY_RIGHT_MASK)
+				{
+					shut_mode = 0;
+				}
+				else if(dir & KEY_LEFT_MASK)
+				{
+					shut_mode = 0xff;
+				}
+				param_display(cursor_id);
+				controller_send_data_to_motor(0,0x05, 0x07);
+				inverse_get_value(0);
+			}
+			else if(cursor_id == 1)
 			{
 				inverse_get_value(0xff);
 				glob_para.lens_folcal = data_count(glob_para.lens_folcal, dir, 500, 1);
@@ -2464,13 +2495,14 @@ void receiver_data_from_A650(void)
 					std_manul_tag = app_read_buffer[8];
 					glob_para.orbital_dir = app_read_buffer[9];
 					m_start = app_read_buffer[10];
+					shut_mode = app_read_buffer[12];
 					
 					if(check_abpoint_Set_if(app_read_buffer[3]))
 					{
 						if(page_id != GROUP_PHOTO)
 						{
 							page_id = GROUP_PHOTO;
-							cursor_id = 6;
+							cursor_id = 0;
 							change_page();
 						}
 						else
@@ -2481,6 +2513,7 @@ void receiver_data_from_A650(void)
 							param_display(4);
 							param_display(1);
 							single_cursor_dis(cursor_id);
+							param_display(7);
 						}
 					}
 					else
@@ -2612,7 +2645,7 @@ void receiver_data_from_A650(void)
 						else if(return_mode_back() == GROUP_PHOTO)
 						{
 							page_id = GROUP_PHOTO;
-							cursor_id = 1;
+							cursor_id = 0;
 							get_data_form_A650();
 						}
 						//ab_set_if = 2; // 设置成功志置
@@ -2697,9 +2730,8 @@ void receiver_data_from_A650(void)
 					else
 					{
 						m_start = 0;
-						The_page_processing(7,"                    ");
-						The_page_processing(7,"      AB点设置      ");
 						param_display(6);
+						param_display(7);
 					}
 				}
 				else if(app_read_buffer[3]==5) // 全景模式倒计时显示
@@ -3107,6 +3139,12 @@ void controller_send_data_to_motor(uint8_t opcode, uint8_t mode, uint8_t data)
 			{
 				App_Buffer[i].app_send_buffer[5] = m_start;
 				App_Buffer[i].app_send_buffer[6] = 0;
+			}
+			else if(data == 0x07)
+			{
+				App_Buffer[i].app_send_buffer[5] = shut_mode;
+				App_Buffer[i].app_send_buffer[6] = 0;
+			
 			}
 			
 			App_Buffer[i].app_send_buffer[7] = 0;
@@ -3604,16 +3642,9 @@ void Group_page_OK(void)
 	if(cursor_id == 6)
 	{
 		m_start  = ~m_start;
-		if(m_start)
-		{
-			The_page_processing(7,"张数              ");
-		}
-		else
-		{
-			The_page_processing(7,"      AB点设置      ");
-		}
 		controller_send_data_to_motor(0x00,0x05, 0x06);
 		param_display(6);
+		param_display(7);
 	}
 	else if(cursor_id == 7)
 	{
@@ -3661,5 +3692,38 @@ void Group_pix_amt_compara_dis(uint8_t max_p, uint8_t cur)
 	x = Check_String(buff, ENGLISH);
 	x = LCD_W-(x+SCREEN_MIGRATION);
 	Oled_EnlPrint(x, cur, buff, "张数", ENGLISH);
+}
+
+//  横竖拍显示
+void Group_shut_mode_display(uint8_t cur)
+{
+	uint8_t buff[10];
+	uint8_t x = 0;
+
+	if(shut_mode)
+	{
+		if(wifi_id.language_sel == CHINESE)
+		{
+			x = Check_String("竖拍", ENGLISH);
+		}
+		else
+		{
+			x = Check_String("V", ENGLISH);
+		}
+	}
+	else
+	{
+		if(wifi_id.language_sel == CHINESE)
+		{
+			x = Check_String("横拍", ENGLISH);
+		}
+		else
+		{
+			x = Check_String("H", ENGLISH);
+		}
+	}
+	
+	x = LCD_W-(x+SCREEN_MIGRATION);
+	Oled_EnlPrint(x, cur, buff, z_buffer, wifi_id.language_sel);
 }
 

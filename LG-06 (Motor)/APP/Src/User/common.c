@@ -18,16 +18,16 @@ uint8_t move_begin = 0;
 uint8_t move_begin_backup =0;
 uint8_t m_start = 0;
 uint8_t angle_snedt_tag = 0; // 实时发送角度标志位
-__IO uint8_t angle_snedt_time = 0; // 实时发送角度标时间间隔
+uint8_t angle_snedt_time = 0; // 实时发送角度标时间间隔
 uint8_t speed_Gear[4]={0};
 uint8_t ManulHH_dir_cehck=0;
 uint8_t ManulVV_dir_cehck=0;
 
-__IO uint16_t dynamic_speed=0;
-__IO uint16_t slow_time = 0;
+uint16_t dynamic_speed=0;
+uint16_t slow_time = 0;
 
 __IO uint32_t boot_time=0;
-__IO uint32_t p_move_time  = 0;
+uint32_t p_move_time  = 0;
 uint32_t p_amount=0;
 
 double Angle_basic = 0;
@@ -35,7 +35,7 @@ double Angle_basic = 0;
 
 void para_init_set(void)
 {
-	Angle_basic = 0.002818; // 0.001874;
+	Angle_basic = 0.002818; // 0.002055;
 }
 
 void time_count(void)
@@ -232,8 +232,9 @@ void Send_connect_data_to_controller(void)
 		buffers[9] = Group_p.GP_dir;
 		buffers[10] = m_start;
 		buffers[11] = Group_p.GP_set_if;
-		buffers[12] = check_sum_add(12, buffers);
-		sizes = 13;
+		buffers[12] = Group_p.GP_shut_mode;
+		buffers[13] = check_sum_add(13, buffers);
+		sizes = 14;
 	}
 	else if(mode_backup == WIDE_ANGLE_MODE) // 广角模式
 	{

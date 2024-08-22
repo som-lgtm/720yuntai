@@ -23,6 +23,7 @@
 uint8_t app_read_buffer[USART_TAG]={0};
 uint8_t con_buffer[USART_TAG] = {0};
 uint8_t app_send_if=0;
+uint8_t read_id = 0;
 //uint8_t buffer_send_size = 0;
 USART_RECEIVER usart_rev={
 0};
@@ -479,8 +480,8 @@ static void Usart22_init(void)
 	 LL_USART_SetHWFlowCtrl(USART2, LL_USART_HWCONTROL_NONE);
 	 LL_USART_SetTransferDirection(USART2, LL_USART_DIRECTION_TX_RX);
 	 */
-	  LL_USART_EnableDMAReq_RX(USART2);
-	  LL_USART_EnableDMAReq_TX(USART2);
+	 // LL_USART_EnableDMAReq_RX(USART2);
+	 // LL_USART_EnableDMAReq_TX(USART2);
 	
 	//	LL_USART_DisableIT_CTS(USART2);
 	
@@ -493,17 +494,15 @@ static void Usart22_init(void)
 	  //LL_USART_ReceiveData9(USART2);
 	//	LL_USART_RequestRxDataFlush(USART2); // clear rx flag
 	 // LL_USART_ClearFlag_ORE(USART1);
-		LL_USART_ClearFlag_IDLE(USART2);
-	  LL_USART_EnableIT_IDLE(USART2);
-	//	LL_USART_EnableIT_RXNE(USART2);
+	//	LL_USART_ClearFlag_IDLE(USART2);
+	//  LL_USART_EnableIT_IDLE(USART2);
+		LL_USART_EnableIT_RXNE(USART2);
 }
 
 void MX_USART2_UART_Init(void)
 {
-	LL_USART_Disable(USART2);
-
 	Usart22_init();
-	Usart22_Dma_Init();
+	//Usart22_Dma_Init();
 }
 
 void Usart22_Interval_set(void)
@@ -586,7 +585,7 @@ void Launch_Cache(void)
 // turn on Dma to send usart data; start transfer
 void Usart22_Open_Send_Dma(void)
 {
-//	 uint8_t index = 0;
+/*//	 uint8_t index = 0;
 	if(Usart22_return_Tx_Complete())return; // wait for send complete
 	if(usart22_send.send_interval22)return; // Sending interval
 	Launch_Cache(); //
@@ -601,67 +600,42 @@ void Usart22_Open_Send_Dma(void)
 	// 开串口发送DMA
 	LL_DMA_SetDataLength(DMA1, LL_DMA_CHANNEL_4, (uint32_t)usart22_send.send_lengt22);
 	LL_DMA_EnableIT_TC(DMA1, LL_DMA_CHANNEL_4);
-	LL_DMA_EnableChannel(DMA1, LL_DMA_CHANNEL_4);
+	LL_DMA_EnableChannel(DMA1, LL_DMA_CHANNEL_4);*/
 }
 
 // DMA send Interrupt handling function
 void Usart22_Dma_SendIRQ_Dispose (void)
 {
-	LL_DMA_DisableIT_TC(DMA1, LL_DMA_CHANNEL_4);
+/*	LL_DMA_DisableIT_TC(DMA1, LL_DMA_CHANNEL_4);
 	LL_DMA_ClearFlag_TC4(DMA1);
 	LL_DMA_ClearFlag_GI4(DMA1);
 	LL_DMA_DisableChannel(DMA1, LL_DMA_CHANNEL_4);
-	Usart22_Reset_Tx_Complete();
-}
-
-void Usart22_Send_Handling(uint8_t TX_size)
-{
-//	if(Return_Usart22_Load_SendData())return; // wait for the usart22_send.usart2_send_dd buffer load to usart22_send.usart2_semd_b buffer
-//	Usart22_Load_SendData(TRUE);
-////	memcpy(&usart22_send.usart2_send_dd[0], app_send_buffer, TX_size); // load data to DMA send buffer
-////	Usart22_Event_Flag(TX_size); // 
-
-	if(usart22_send.events_flag22 < 3)usart22_send.events_flag22++;
-	
+	Usart22_Reset_Tx_Complete();*/
 }
 // LL_DMA_GetDataLength():Get the remaining bytes, A total of 20 bytes
 // USART_TAG: total of transfer bytes = 20
 
-
-void Usart22_Receiver(void)
+void Usart22_ReadByte(void)
 {
-	//if(LL_USART_IsActiveFlag_IDLE(USART2))
+	if(read_id < 20)
 	{
-	//	LL_USART_ClearFlag_IDLE(USART2); // 
-		usart22_rev.RX_lengt22 = USART_SEND_TAG - LL_DMA_GetDataLength(DMA1, LL_DMA_CHANNEL_5);
-		
-		if(usart22_rev.RX_lengt22 == 0)return; // No valid data, so return
-		
-		LL_DMA_DisableChannel(DMA1, LL_DMA_CHANNEL_5); // To avoid interference
-		LL_USART_Disable(USART2);
-		
-		if(usart22_rev.RX_lengt22 > USART_SEND_TAG)usart22_rev.RX_lengt22 = USART_SEND_TAG;
-		
-	//	memcpy(&usart22_rev.usart2_rec_dd[0], &usart22_rev.usart2_rec_b[0], usart22_rev.RX_lengt22); // load data to DMA send buffer
-	//	LL_DMA_SetDataLength(DMA1, LL_DMA_CHANNEL_5, USART_TAG); //总的采集通道数量ADC_TAG
-	//	LL_DMA_EnableChannel(DMA1, LL_DMA_CHANNEL_5); // turn on DMA1 channel 3
-		
-		Usart22_Set_RX_Complete(); // To processing valid data
-//		Usart22_Send_Handling(usart22_rev.RX_lengt22);
-	
-
+		usart22_rev.usart2_rec_b[read_id] = LL_USART_ReceiveData8(USART2);
+	//	LL_USART_TransmitData8(USART2, usart22_rev.usart2_rec_b[read_id]);
+		read_id +=1;
+	}
+	else
+	{
+		LL_USART_ReceiveData8(USART2);
 	}
 }
 
 
-void Usart_Receve_Answer(uint8_t Answers)
+void Usart22_Receiver(void)
 {
-	//App_Buffer[0].app_send_buffer[1] = 0xEE; //
-	//App_Buffer[0].app_send_buffer[2] = Answers;
-	//App_Buffer[0].app_send_buffer[0] = check_sum_add(3, App_Buffer[0].app_send_buffer);
-	//App_Buffer[0].app_send_size = 3;
+		usart22_rev.RX_lengt22 = read_id;
+		read_id = 0;
+		Usart22_Set_RX_Complete(); // To processing valid data
 }
-
 
 void usart22_Recdata_Handling(void)
 {
@@ -673,33 +647,15 @@ void usart22_Recdata_Handling(void)
 		Usart22_Reset_RX_Complete(); // clear event flag
 		RX_size = usart22_rev.RX_lengt22; // backup data size, to avoid reset
 		memcpy(app_read_buffer, &usart22_rev.usart2_rec_b[0], RX_size); // load data to DMA send buffer
-		LL_USART_Enable(USART2);
-		LL_DMA_SetDataLength(DMA1, LL_DMA_CHANNEL_5, USART_SEND_TAG); //总的采集通道数量ADC_TAG
-		LL_DMA_EnableChannel(DMA1, LL_DMA_CHANNEL_5); // turn on DMA1 channel 3
-
-		
-		/*if(checksum_confirm(app_read_buffer, RX_size) == FALSE)
-		{
-			//App_Buffer[1].app_send_size = usart22_send.send_lengt22;
-			return; 
-		}*/
-		
-//		ack_times = 0;
-
-//		receiver_data_from_A650();
+	//	String_Printf(app_read_buffer, RX_size);
 		bootloader_action_if(app_read_buffer);
 		check_enter_boot_if(app_read_buffer);
-
-//		memcpy(con_send_buffer, &usart22_rev.usart2_rec_dd[0], RX_size); // load data to DMA send buffer
-
-//		Usart11_Send_Handling(RX_size);
 	}
 }
 
 void usart22_read_byte(void)
 {
 	Usart22_Receiver();
-	
 	usart22_Recdata_Handling();
 }
 

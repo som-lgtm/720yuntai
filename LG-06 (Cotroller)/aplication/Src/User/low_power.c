@@ -14,7 +14,7 @@
 #include "keyscan.h"
 #include "stm32f0xx_ll_usart.h"
 #include "stm32f0xx_ll_exti.h"
-__IO uint32_t active_time_out= 0; 
+uint32_t active_time_out= 0; 
 uint8_t lowbattery_dis_if = 0;
 uint8_t charge_tag=0; // 当插电充电时至1
 uint8_t rtc_wackup=0; //

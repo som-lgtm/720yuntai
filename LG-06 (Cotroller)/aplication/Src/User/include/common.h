@@ -345,6 +345,8 @@ void ShutDown(void);
 
 //USART.C
 void String_Printf(uint8_t *sptf, uint8_t sizes);
+void Usart22_Receiver(void);
+void Usart22_ReadByte(void);
 
 //BOOTLOADER.C
 void bootloader_action_if(uint8_t *spt);

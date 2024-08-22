@@ -33,7 +33,7 @@ typedef struct{
 	uint8_t Tx_tag;
 	uint8_t data_load;
 	uint8_t send_lengt;
-	__IO uint8_t send_interval;
+	uint8_t send_interval;
 	uint8_t send_event;
 
 }USART_SENDER;
@@ -51,7 +51,7 @@ typedef struct{
 	uint8_t Tx_tag22;
 	uint8_t events_flag22;
 	uint8_t send_lengt22;
-	__IO uint8_t send_interval22;
+	uint8_t send_interval22;
 	uint8_t load_flag22;
 
 }USART22_SENDER;

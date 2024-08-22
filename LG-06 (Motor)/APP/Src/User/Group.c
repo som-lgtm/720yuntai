@@ -120,13 +120,14 @@ void Group_set_abPoint(uint8_t typess)
 			Group_p.lens_folcal = 50;
 			Group_p.Roverlap = 30;
 			Group_p.GP_exposure = 1;
-			Group_p.GP_dir = B_TO_A;
+			Group_p.GP_dir = A_TO_B;
 			Group_mode_Dir_check();
 			Group_p.Gp_angle = Group_p.lens_pulse * Angle_basic;
 			Group_Max_amount_check();
 			//Delay_move_speed_calculate(0);
 			Group_shots_event();
 			//Send_connect_data_to_controller();
+			Group_mode_Start_check_diretion();
 		}
 		
 		Send_para_data_to_controller(1, 1);
@@ -152,7 +153,14 @@ void Group_shots_event(void)
 	overlap_rate = (float)1 - ((float)Group_p.Roverlap / (float)100); //除去重叠率计算出有效的画面
 
 	// 水平张数通过画幅长度和镜头焦距通过反正切算出所需要的拍摄张数
-	number = (float)Group_p.Gp_angle / ((2.0 * get_angle(atan((float)CCD_size[3].lenght/2.0/(float)Group_p.lens_folcal))) * overlap_rate);
+	if(Group_p.GP_shut_mode)
+	{
+		number = (float)Group_p.Gp_angle / ((2.0 * get_angle(atan((float)CCD_size[3].wide/2.0/(float)Group_p.lens_folcal))) * overlap_rate);
+	}
+	else
+	{
+		number = (float)Group_p.Gp_angle / ((2.0 * get_angle(atan((float)CCD_size[3].lenght/2.0/(float)Group_p.lens_folcal))) * overlap_rate);
+	}
 	temp = number * 10;
 
 	if(temp % 10)
@@ -164,7 +172,15 @@ void Group_shots_event(void)
 		Group_p.amount = number;
 	}
 
-	if(Group_p.amount<1)Group_p.amount=1;
+	if(Group_p.amount<1)
+	{
+		Group_p.amount=1;
+	}
+	else 
+	{
+		Group_p.amount +=1; //不为0时，需要加上一张(镜头在A/B两端各占半张)
+	}
+	
 	if(Group_p.amount > Group_p.Max_amount)
 	{
 		Group_p.amount = Group_p.Max_amount;
@@ -173,18 +189,38 @@ void Group_shots_event(void)
 
 void Group_get_data_from_controller(uint8_t *fifog)
 {
+	if(Group_p.check_dir)
+	{
+		Send_connect_data_to_controller();
+		return;
+	}
 	if(fifog[4] == 0x01) // 镜头焦距
 	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
 		Group_p.lens_folcal = (uint16_t)fifog[5] | (uint16_t)fifog[6]<<8;
 		Group_shots_event();
 	}
 	else if(fifog[4] == 0x02) //重叠率
 	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
 		Group_p.Roverlap = fifog[5];
 		Group_shots_event();
 	}
 	else if(fifog[4] == 0x03) //
 	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
 		Group_p.GP_exposure = fifog[5];
 	}
 	else if(fifog[4] == 0x04) // manul shut
@@ -193,6 +229,11 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	}
 	else if(fifog[4] == 0x05) // dir 
 	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
 		Group_p.GP_dir = fifog[5];
 		Group_mode_Dir_check();
 	}
@@ -200,6 +241,15 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	{
 		m_start = fifog[5];
 		Group_mode_start();
+	}
+	else if(fifog[4] == 0x07)
+	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
+		Group_p.GP_shut_mode = fifog[5];
 	}
 }
 
@@ -225,11 +275,18 @@ void Group_mode_countdwon_display(void)
 // 计算每张照移动的速度，两个轴的速度要非常接近才能同步
 void Group_move_speed_calculate(void)
 {
-		if(Group_p.lens_pulse) // 如果水平轴有轨迹就以水平轴的为主，V 轴为次主
+	uint8_t amout_b = 0;
+	
+	amout_b = Group_p.amount - 1;
+
+		if(amout_b)
 		{
-			Group_p.move_pulse = (double)Group_p.lens_pulse / (double)Group_p.amount;
-			
-		//	Hmove_times = (float)((DELAY_SPEED + 1) * (float)501 / (float)48000) * (float)Group_p.move_pulse;
+			if(Group_p.lens_pulse) // 如果水平轴有轨迹就以水平轴的为主，V 轴为次主
+			{
+				Group_p.move_pulse = (double)Group_p.lens_pulse / ((double)Group_p.amount-1);
+				
+			//	Hmove_times = (float)((DELAY_SPEED + 1) * (float)501 / (float)48000) * (float)Group_p.move_pulse;
+			}
 		}
 
 		if(Group_p.amount == 1)
@@ -396,8 +453,9 @@ void Group_main(void)
 				m_start = 0;
 				Group_mode_countdwon_display();
 				move_begin_backup = 0;
-				Group_p.GP_dir = ~Group_p.GP_dir;
+				//Group_p.GP_dir = ~Group_p.GP_dir;
 				Group_mode_Dir_check();
+				Group_mode_Start_check_diretion();
 			}
 			else
 			{
@@ -492,7 +550,7 @@ void Group_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 				Group_p.check_dir = 0;
 				Group_mode_start();
 				Video_Find_ABpoint_notify(REACHED_ABPOINT);
-				if(Group_p.amount == 1)
+				/*if(Group_p.amount == 1)
 				{
 					move_begin = 1;
 					p_move_time = 0;
@@ -503,8 +561,8 @@ void Group_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 				{
 					p_move_time = 0;
 					move_begin = 2;
-				}
-				Group_mode_countdwon_display();
+				}*/
+				//Group_mode_countdwon_display();
 			}
 		}
 		else if(Group_p.GP_dir == B_TO_A)
@@ -519,7 +577,7 @@ void Group_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 				Group_mode_start();
 
 				Video_Find_ABpoint_notify(REACHED_ABPOINT);
-				if(Group_p.amount == 1)
+				/*if(Group_p.amount == 1)
 				{
 					move_begin = 1;
 					p_move_time = 0;
@@ -530,8 +588,8 @@ void Group_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 				{
 					p_move_time = 0;
 					move_begin = 2;
-				}
-				Group_mode_countdwon_display();
+				}*/
+			//	Group_mode_countdwon_display();
 			}
 		}
 	}

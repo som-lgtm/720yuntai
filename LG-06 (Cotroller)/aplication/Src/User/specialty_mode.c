@@ -17,7 +17,7 @@ uint8_t mid_cr_back = 0; // 当前模式号
 uint8_t mid_cr = 0; // 当前模式号
 uint8_t pid_cr = 0; // 当前参数号
 uint8_t fanye = 0; // 页面标专，0为首页，1为第二页
-__IO uint16_t enter_time = 0;
+uint16_t enter_time = 0;
 uint8_t Reshot = 0;
 uint8_t sp_start = 0; // 专业模式整个拍摄全部结束
 

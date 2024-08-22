@@ -207,7 +207,7 @@ void main_page_ok(void)
 			
 			Set_enter_time();
 		}
-		else if(cursor_id == 3)
+		else if(cursor_id == 4)
 		{
 		//	page_id = VIDEO_MAIN;
 		//	cursor_id = 1;
@@ -231,7 +231,7 @@ void main_page_ok(void)
 			*/
 			
 		}
-		else if(cursor_id == 4)
+		else if(cursor_id == 5)
 		{			
 			page_id = DELAY_SET;
 			set_mode_back(page_id);
@@ -239,7 +239,7 @@ void main_page_ok(void)
 			page_id = MAIN_ID;
 			
 		}
-		else if(cursor_id == 5)
+		else if(cursor_id == 6)
 		{
 			page_id = MANUAL_MODE;
 			cursor_id = 2;
@@ -247,7 +247,7 @@ void main_page_ok(void)
 			get_data_form_A650();	
 			//version_dis();
 		}
-		else if(cursor_id == 6)
+		else if(cursor_id == 3)
 		{
 			page_id = GROUP_PHOTO;
 			cursor_id = 6;

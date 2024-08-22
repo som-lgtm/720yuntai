@@ -28,6 +28,7 @@
 ..\output\stm32f0xx_hal_pwr.o: ..\Src\User\include\common.h
 ..\output\stm32f0xx_hal_pwr.o: ..\Src\User\include\gpio.h
 ..\output\stm32f0xx_hal_pwr.o: ..\Src\User\include\rf24l01.h
+..\output\stm32f0xx_hal_pwr.o: ..\Src\User\include\keyscan.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h
 ..\output\stm32f0xx_hal_pwr.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h
 ..\output\stm32f0xx_hal_pwr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

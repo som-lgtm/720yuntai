@@ -27,3 +27,4 @@
 ..\output\stm32f0xx_it.o: ..\Src\User\include\common.h
 ..\output\stm32f0xx_it.o: ..\Src\User\include\gpio.h
 ..\output\stm32f0xx_it.o: ..\Src\User\include\rf24l01.h
+..\output\stm32f0xx_it.o: ..\Src\User\include\keyscan.h

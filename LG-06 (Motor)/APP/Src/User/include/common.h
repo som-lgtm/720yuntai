@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	110
+#define FW_VERSIONS	111
 
 #define PARA_MAX_ID	25
 

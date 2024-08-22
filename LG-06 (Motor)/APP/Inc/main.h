@@ -61,6 +61,7 @@
 #include "common.h"
 #include "gpio.h"
 #include "rf24l01.h"
+#include "keyscan.h"
 
 /* USER CODE END Includes */
 

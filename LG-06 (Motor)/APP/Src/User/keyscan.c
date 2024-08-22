@@ -59,7 +59,7 @@ void keyscan(void)
 	
 	key_status = key_Handle();
 		
-	/*	if((key_status & KEY_POWR_MASK)==0)
+		if((key_status & KEY_POWR_MASK)==0)
 		{
 			if(return_powers())
 			{
@@ -72,7 +72,7 @@ void keyscan(void)
 					check_the_powers_status(); // Continue standby for less than 1S
 				}
 			}
-		}*/
+		}
 		
 	if(key_status != key_final_status)
 	{
@@ -156,7 +156,8 @@ void press_key_continue(void)
 	{
 		//if(CHARGE_STATUS == 0)return;
 		set_power_on_int(POWER_OFF);
-		//Enter_Sleep_Mode();
+		key_final_status = 0;
+		keypowr_status = 0;
 		ShutDown();
 	}
 	else // Hold down the button 1S to wake up

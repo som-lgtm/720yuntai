@@ -26,3 +26,4 @@
 ..\output\main.o: ..\Src\User\include\common.h
 ..\output\main.o: ..\Src\User\include\gpio.h
 ..\output\main.o: ..\Src\User\include\rf24l01.h
+..\output\main.o: ..\Src\User\include\keyscan.h

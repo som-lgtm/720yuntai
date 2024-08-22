@@ -129,9 +129,7 @@ void ShutDown(void)
 	//SystemClock_Config();
 	enable_interrupt();
 	set_active_time_out(1800000); //30∑÷÷”
-//	Device_init();
 	RED_LED_OFF;
-//	GREEN_LED_ON;
 //	Led_init();
 //	key_gpio_init();
 //	LED_ON;
@@ -179,30 +177,31 @@ void disable_interrupt(void)
 	NVIC_DisableIRQ(TIM16_IRQn);
 	LL_TIM_ClearFlag_UPDATE(TIM16);
 	
+	NVIC_DisableIRQ(DMA1_Channel4_5_IRQn);
+	NVIC_DisableIRQ(USART2_IRQn);
+	Dma_SendIRQ_Dispose();
 	LL_USART_Disable(USART2);
 	LL_USART_DisableDMAReq_RX(USART2);
 	LL_USART_DisableDMAReq_TX(USART2);
 	LL_USART_DisableIT_IDLE(USART2);
 	LL_USART_ClearFlag_IDLE(USART2); // 
-	NVIC_DisableIRQ(USART2_IRQn);
-	NVIC_DisableIRQ(DMA1_Channel4_5_IRQn);
-	LL_USART_ClearFlag_IDLE(USART2); // 
-	Dma_SendIRQ_Dispose();
+
 	
+	NVIC_DisableIRQ(DMA1_Channel2_3_IRQn);
+	NVIC_DisableIRQ(USART1_IRQn);
+	Dma_SendIRQ_Dispose();
 	LL_USART_Disable(USART1);
 	LL_USART_DisableDMAReq_RX(USART1);
 	LL_USART_DisableDMAReq_TX(USART1);
 	LL_USART_DisableIT_IDLE(USART1);
 	LL_USART_ClearFlag_IDLE(USART1); // 
-	NVIC_DisableIRQ(USART1_IRQn);
-	NVIC_DisableIRQ(DMA1_Channel2_3_IRQn);
-	LL_USART_ClearFlag_IDLE(USART1); // 
+
 	//Dma_SendIRQ_Dispose();
 	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7);
 	LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_7);
 	
-	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7|LL_EXTI_LINE_4);
-	LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_7|LL_EXTI_LINE_4);
+	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_4);
+	LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_4);
 	NVIC_DisableIRQ(EXTI4_15_IRQn);
 
 }

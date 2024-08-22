@@ -6,8 +6,8 @@
 #define SET_A_POINT 	1
 #define SET_B_POINT 	2
 #define MAIN_ID			3
-#define SINGLE_PANORAMA		4 //单层全景
-#define SINGLE_PANORAMA_11	5 //单层全景模式第二页
+#define GROUP_PHOTO		4 //合影模式
+#define GROUP_PHOTO_MOVE	5 //合影模式运行界面
 #define DELAY_SET		6
 #define DELAY_DIS			10
 #define VIDEO_MODE			11
@@ -196,7 +196,6 @@ typedef struct{
 	uint8_t shut_time_h; // usual timelapse
 	uint8_t shut_time_m;
 	float shut_time_s;
-	float ssinterval;
 	
 	uint8_t tatol_time_m; // usual timelapse
 	uint16_t tatol_time_h;
@@ -228,7 +227,10 @@ typedef struct{
 	uint16_t exposure;
 	uint16_t shut_times; //快门次数，即每个角度需要拍的张数
 	float sys_stop_t; // 快门拍完关闭之后需要等待的时间和能开始下一张的动作
+
 	
+	uint16_t lens_folcal;
+	uint8_t Roverlap;
 }PARA_STRUCT;
 
 
@@ -381,6 +383,7 @@ void ab_set_move(uint8_t dir, uint8_t types);
 uint8_t check_abpoint_Set_if(uint8_t modes);
 void Set_ab_set_if(uint8_t datas);
 void Set_DDab_set_if(uint8_t datas);
+void Set_Gp_set_if(uint8_t datas);
 void set_mode_back(uint8_t datad);
 uint8_t return_mode_back(void);
 
@@ -422,6 +425,10 @@ void Video_check_the_motor_status(MOTOR_STATUS statuss);
 uint8_t Video_motor_status_return(void);
 void Video_Get_downcount_times(void);
 void count_tag_set(uint8_t dat);
+//RTC.C
+void RTC_clock_init(void);
+void MX_RTC_Init(void);
+void set_rtc_wackup(uint8_t sets);
 
 
 extern ID_CODE wifi_id;
@@ -438,7 +445,7 @@ extern uint16_t MS_count;
 extern uint8_t ab_set_if;
 extern uint8_t Inverse_Dis;
 extern uint8_t Factory_set;
-extern uint32_t boot_time;
+extern __IO uint32_t boot_time;
 extern uint8_t ramp_flag;
 extern uint8_t ramp_flag11;
 extern uint8_t reverse_cur;

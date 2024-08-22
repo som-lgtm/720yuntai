@@ -34,18 +34,18 @@ uint8_t video_fisrt_time = 0;
 uint8_t manual_flag = 0;
 uint8_t get_init_tag = 0;
 uint8_t fps_buffer[3]={0};
-uint16_t get_init_time = 0;
+__IO uint16_t get_init_time = 0;
 
 uint16_t delay_speed =0;
-uint16_t led_time=0;
-uint16_t sub_contunue=0;
-uint16_t add_contunue=0;
+__IO uint16_t led_time=0;
+__IO uint16_t sub_contunue=0;
+__IO uint16_t add_contunue=0;
 uint16_t MS_count=0;
 uint16_t p_amount =0;
 uint16_t p_move_step = 0;
 uint16_t hours =0;
 uint16_t addend_value=0;
-uint16_t connection_flag = 0;
+__IO uint16_t connection_flag = 0;
 uint16_t V_agnle = 0;
 uint16_t H_agnle = 0;
 
@@ -56,7 +56,7 @@ uint32_t p_move_time = 0;
 uint32_t sys_stop_time = 0;
 uint32_t dynamic_speed=0;
 uint32_t time_limit = 0; // ms
-uint32_t boot_time=0;
+__IO uint32_t boot_time=0;
 
 //uint16_t *stp;
 
@@ -564,7 +564,7 @@ void delay_page_return(void)
 
 void press_key_continue_if(uint8_t dir)
 {
-	if((page_id == DELAY_SET)||(page_id == PREINSTALL_SET1)||(page_id == PREINSTALL_MOVE) ||(page_id == SINGLE_PANORAMA) ||(page_id == SINGLE_PANORAMA_11) )
+	if((page_id == DELAY_SET)||(page_id == PREINSTALL_SET1)||(page_id == PREINSTALL_MOVE) || (page_id == GROUP_PHOTO))
 	{
 	/*	if(dir & KEY_UP_MASK)
 		{
@@ -671,6 +671,38 @@ void param_display(uint8_t cur)
 {
 	switch(page_id)
 	{
+		case GROUP_PHOTO:
+		{
+			if(cur == 1)
+			{
+				integer_display(glob_para.lens_folcal,cur);
+				Oled_EnlPrint(LCD_W-12-SCREEN_MIGRATION, cur, "mm", " ", ENGLISH);
+			}
+			else if(cur == 2) //
+			{
+				integer_display(glob_para.Roverlap,cur);
+				Oled_EnlPrint(LCD_W-6-SCREEN_MIGRATION, cur, "%", " ", ENGLISH);
+			}
+			else if(cur == 3)
+			{
+				secondes_time_dis(glob_para.exposure, cur);
+			}
+			else if(cur == 4)
+			{
+				manulORauto_dis(std_manul_tag, cur);
+			}
+			if(cur == 5)
+			{
+				if(cursor_id == cur)inverse_get_value(0xff);
+				move_to_disp(cur);
+				inverse_get_value(0);
+			}
+			else if(cur == 6)
+			{
+				status_display(cur);
+			}
+			break;
+		}
 		case DELAY_SET:
 		{
 			if(cur == 1) // frames
@@ -882,7 +914,7 @@ void cursor_shift(uint8_t dir)
 	{
 		case MAIN_ID:
 		{
-			cursor_count(dir, 6, 1);
+			cursor_count(dir, 7, 1);
 			cursor_id_back = cursor_id;
 			
 			break;
@@ -898,14 +930,9 @@ void cursor_shift(uint8_t dir)
 			cursor_count(dir, 6, 5);
 			break;
 		}
-		case SINGLE_PANORAMA:
+		case GROUP_PHOTO:
 		{
 			cursor_count(dir, 7, 1);
-			break;
-		}
-		case SINGLE_PANORAMA_11:
-		{
-			cursor_count(dir, 4, 1);
 			break;
 		}
 		case CONFIG_ID:
@@ -1017,7 +1044,6 @@ void status_display(uint8_t cur)
 {
 	uint8_t x = 96;
 	uint8_t Lang = 0;
-	uint8_t tag = 0;
 	
 	if(page_id == DELAY_DIS)
 	{
@@ -1025,19 +1051,9 @@ void status_display(uint8_t cur)
 		
 		if(m_start)
 		{
-			if(wifi_id.language_sel == ENGLISH || wifi_id.language_sel == FRENCH || wifi_id.language_sel == GERMAN)
+			if(wifi_id.language_sel == ENGLISH)
 			{
 				x = Check_String("   Pause    ", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == ITALIANO || wifi_id.language_sel == SPANISH)
-			{
-				x = Check_String("   Pausa   ", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == NELANDS)
-			{
-				x = Check_String("  Pauze  ", wifi_id.language_sel);
 				Lang = ENGLISH;
 			}
 			else if(wifi_id.language_sel == CHINESE)
@@ -1059,31 +1075,6 @@ void status_display(uint8_t cur)
 			{
 				x = Check_String("  继续  ", wifi_id.language_sel);
 				Lang = CHINESE;
-			}
-			else if(wifi_id.language_sel == NELANDS)
-			{
-				x = Check_String("Doorgaan", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == FRENCH)
-			{
-				x = Check_String("Continuer", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == SPANISH)
-			{
-				x = Check_String("Continuar", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == ITALIANO)
-			{
-				x = Check_String("Continuare", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == GERMAN)
-			{
-				x = Check_String("Weitermachen", wifi_id.language_sel);
-				Lang = ENGLISH;
 			}
 		}
 		
@@ -1107,6 +1098,10 @@ void status_display(uint8_t cur)
 		{
 			if(cursor_id == 4)inverse_get_value(0xff);
 		}
+		else if(page_id == GROUP_PHOTO)
+		{
+			if(cursor_id == 6)inverse_get_value(0xff);
+		}
 		else
 		{
 			if(cursor_id == 3)inverse_get_value(0xff);
@@ -1114,7 +1109,7 @@ void status_display(uint8_t cur)
 		
 		if(m_start)
 		{
-			if(wifi_id.language_sel == ENGLISH || wifi_id.language_sel == FRENCH || wifi_id.language_sel == ITALIANO|| wifi_id.language_sel == NELANDS || wifi_id.language_sel == SPANISH)
+			if(wifi_id.language_sel == ENGLISH)
 			{
 				x = Check_String("  Stop  ", wifi_id.language_sel);
 				Lang = ENGLISH;
@@ -1131,17 +1126,12 @@ void status_display(uint8_t cur)
 				}
 				Lang = CHINESE;
 			}
-			else if(wifi_id.language_sel == GERMAN)
-			{
-				x = Check_String("Stoppen ", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
 				
 		//	Oled_EnlPrint111(x, cur, z_buffer);
 		}
 		else
 		{
-			if(wifi_id.language_sel == ENGLISH || wifi_id.language_sel == NELANDS || wifi_id.language_sel == GERMAN)
+			if(wifi_id.language_sel == ENGLISH)
 			{
 				x = Check_String(" Start  ", wifi_id.language_sel);
 				Lang = ENGLISH;
@@ -1151,49 +1141,12 @@ void status_display(uint8_t cur)
 				x = Check_String("  启动  ", wifi_id.language_sel);
 				Lang = CHINESE;
 			}
-			else if(wifi_id.language_sel == FRENCH)
-			{
-				x = Check_String("D marrer", wifi_id.language_sel);
-				tag = 1;
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == SPANISH)
-			{
-				x = Check_String(" Inicio ", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
-			else if(wifi_id.language_sel == ITALIANO)
-			{
-				x = Check_String(" Avvio  ", wifi_id.language_sel);
-				Lang = ENGLISH;
-			}
 			
 		}
 		
 		x = (LCD_W - x) / 2;
 		Oled_EnlPrint(x, cur, z_buffer,z_buffer,Lang);
 		
-		if(tag == 1)
-		{
-			Oled_EnlPrint(46, cur,"é","", wifi_id.language_sel); // Set Point A
-		}
-		
-		/*if(page_id == DELAY_SET)
-		{
-			if(cursor_id == 6)inverse_get_value(0);
-		}
-		else if(page_id == PREINSTALL_MOVE)
-		{
-			if(cursor_id == 3)inverse_get_value(0);
-		}
-		else if(page_id == VIDEO_MODE)
-		{
-			if(cursor_id == 4)inverse_get_value(0);
-		}
-		else
-		{
-			if(cursor_id == 5)inverse_get_value(0);
-		}*/
 		inverse_get_value(0);
 	}
 }
@@ -1208,11 +1161,6 @@ void pix_amt_display(uint8_t cur)
 	uint8_t x_size = 0;
 	uint32_t amounts = 0;
 	
-	if(page_id == SINGLE_PANORAMA)
-	{
-		amounts = glob_para.sd_amount;
-	}
-	else 
 	{
 		amounts = glob_para.shoot_amount;
 	}
@@ -1316,36 +1264,6 @@ void play_back_dis(uint8_t cur)
 	Oled_EnlPrint(x, cur, buff, " ", ENGLISH);
 }
 
-
-void interval_time_dis(uint8_t cur)
-{
-	uint8_t buff[10];
-	uint8_t x=0;
-	uint8_t x_size=0;
-
-	
-	if(glob_para.ssinterval <10)
-	{
-		sprintf( (char *)buff," %.1fS", glob_para.ssinterval);
-	}
-	/*else if(glob_para.shut_time_s <100)
-	{
-		sprintf( (char *)buff,"00%.1fS", glob_para.shut_time_s);
-	}
-	else if(glob_para.shut_time_s <1000)
-	{
-		sprintf( (char *)buff,"%.1fS", glob_para.shut_time_s);
-	}*/
-	else 
-	{
-		sprintf( (char *)buff,"%.1fS", glob_para.ssinterval);
-	}
-	
-	x_size = Check_String(buff, ENGLISH);
-	x = LCD_W - (x_size + SCREEN_MIGRATION);
-	Oled_EnlPrint(x, cur, buff, " ", ENGLISH);
-}
-
 //符点显示
 void decimal_point_time_dis(float datat, uint8_t cur)
 {
@@ -1377,9 +1295,13 @@ void integer_display(uint16_t datat, uint8_t cur)
 	
 	if(datat < 10)
 	{
-		sprintf( (char *)buff," %d", datat);
+		sprintf( (char *)buff,"  %d", datat);
 	}
 	else if(datat < 100)
+	{
+		sprintf( (char *)buff," %d", datat);
+	}
+	else if(datat < 1000)
 	{
 		sprintf( (char *)buff,"%d", datat);
 	}
@@ -1387,7 +1309,14 @@ void integer_display(uint16_t datat, uint8_t cur)
 	x_size = Check_String(buff, ENGLISH);
 	//if(page_id == DELAY_SET)x = LCD_W - (x_size + SCREEN_MIGRATION);
 	//else if(page_id == DELAY_DIS)x=LCD_W - (x_size + SCREEN_MIGRATION);
-	x=LCD_W - (x_size + SCREEN_MIGRATION);
+	if(page_id == GROUP_PHOTO)
+	{
+		x=LCD_W - (x_size + SCREEN_MIGRATION + (18-cur*6)); //(18-cur*6)算法是CUR光标在1时，末尾有两个MM要为示，而CUR是2时只有一个字符要显示
+	}
+	else
+	{
+		x=LCD_W - (x_size + SCREEN_MIGRATION);
+	}
 	Oled_EnlPrint(x, cur, buff, " ", ENGLISH);
 }
 
@@ -1638,7 +1567,7 @@ void secondes_time_dis(uint16_t param, uint8_t cur)
 	//if(page_id == AUTO_MODE)x=192;
 	//else if(page_id == DELAY_DIS)x=88;
 	
-	if(page_id == SINGLE_PANORAMA || page_id == PREINSTALL_SET1 || page_id == PREINSTALL_MOVE)
+	if(page_id == PREINSTALL_SET1 || page_id == PREINSTALL_MOVE)
 	{
 		if(param < 10)
 		{
@@ -1837,93 +1766,67 @@ void param_adjust(uint8_t dir)
 {	
 	switch(page_id)
 	{
-		case SINGLE_PANORAMA:
+		case GROUP_PHOTO:
 		{
 			if(cursor_id == 1)
 			{
 				inverse_get_value(0xff);
-				glob_para.sd_amount = data_count(glob_para.sd_amount, dir, 99, 1);
+				glob_para.lens_folcal = data_count(glob_para.lens_folcal, dir, 500, 1);
 				param_display(cursor_id);
-				controller_send_data_to_motor(0,0x04, 0x01);
+				controller_send_data_to_motor(0,0x05, 0x01);
 				inverse_get_value(0);
 			}
 			else if(cursor_id == 2)
 			{
 				inverse_get_value(0xff);
-				glob_para.ssinterval = para_count(dir, glob_para.ssinterval, 30, 0.5);
-				if(glob_para.ssinterval > 30)glob_para.ssinterval = 30;
-				else if(glob_para.ssinterval < 0.5)glob_para.ssinterval = 0.5;
-				interval_time_dis(cursor_id);
-				controller_send_data_to_motor(0,0x04, 0x02);
-				inverse_get_value(0);
-			}
-			else if(cursor_id == 4) // delay begin time
-			{
-				inverse_get_value(0xff);
-				glob_para.delay_time_s = data_count(glob_para.delay_time_s, dir,  255, 0);
-				if(glob_para.delay_time_s > 255)glob_para.delay_time_s = 255;
-				secondes_time_dis(glob_para.delay_time_s, cursor_id);
-				controller_send_data_to_motor(0,0x04, 0x04);
+				glob_para.Roverlap = data_count(glob_para.Roverlap, dir, 100, 1);
+				param_display(cursor_id);
+				controller_send_data_to_motor(0,0x05, 0x02);
 				inverse_get_value(0);
 			}
 			else if(cursor_id == 3) // exposures time
 			{
 				inverse_get_value(0xff);
-				glob_para.shut_time_s = para_count(dir, glob_para.shut_time_s, 99, 0.5);
-				//secondes_time_dis(glob_para.shut_time_s, cursor_id);
+				glob_para.exposure = data_count(glob_para.exposure, dir,  99, 1);
 				param_display(cursor_id);
-				controller_send_data_to_motor(0,0x04, 0x03);
+				controller_send_data_to_motor(0,0x05, 0x03);
 				inverse_get_value(0);
 			}
-			else if(cursor_id == 5)// auto or manual
+			else if(cursor_id == 4) //manual exposures 
 			{
+				inverse_get_value(0xff);
 				if(dir & KEY_RIGHT_MASK)
-				{
-					std_manul_tag = 0xff;
-				}
-				else if(dir & KEY_LEFT_MASK)
 				{
 					std_manul_tag = 0;
 				}
-				inverse_get_value(0xff);
+				else if(dir & KEY_LEFT_MASK)
+				{
+					std_manul_tag = 0xff;
+				}
 				param_display(cursor_id);
-				inverse_get_value(0);
-				controller_send_data_to_motor(0,0x04, 0x05);
-			}
-			else if(cursor_id == 6)
-			{
-				inverse_get_value(0xff);
-				glob_para.shut_times = data_count(glob_para.shut_times, dir, 99, 1);
-				param_display(cursor_id);
-				controller_send_data_to_motor(0,0x04, 0x06);
+				controller_send_data_to_motor(0,0x05, 0x04);
 				inverse_get_value(0);
 			}
-			break;
-		}		
-		case SINGLE_PANORAMA_11:
-		{
-			if(cursor_id == 1)
+			else if(cursor_id == 5)// 
 			{
+				if(dir & KEY_RIGHT_MASK)
+				{
+					glob_para.orbital_dir = 0;
+					//std_manul_tag = 0xff;
+				}
+				else if(dir & KEY_LEFT_MASK)
+				{
+					glob_para.orbital_dir = 0xff;
+					//std_manul_tag = 0;
+				}
 				inverse_get_value(0xff);
-				glob_para.sys_stop_t = para_count(dir, glob_para.sys_stop_t, 99, 0.5);
-				//if(glob_para.ssinterval > 30)glob_para.ssinterval = 30;
-				//else if(glob_para.ssinterval < 0.5)glob_para.ssinterval = 0.5;
 				param_display(cursor_id);
-				controller_send_data_to_motor(0,0x04, 0x07);
 				inverse_get_value(0);
-			}
-			else if(cursor_id == 2)
-			{
-				inverse_get_value(0xff);
-				glob_para.orbital_speed = data_count(glob_para.orbital_speed, dir, 4, 1);
-			//	if(glob_para.wid_time_s > 255)glob_para.wid_time_s = 255;
-				param_display(cursor_id);
-				controller_send_data_to_motor(0,0x05, 0x08);
-				inverse_get_value(0);
+				controller_send_data_to_motor(0,0x05, 0x05);
 			}
 			
 			break;
-		}
+		}		
 		case DELAY_SET:
 		{			
 			if(cursor_id == 1)
@@ -2346,10 +2249,6 @@ void get_data_form_A650(void)
 	{
 		controller_send_data_to_motor(0x06,0, 0x04);
 	}
-	else if(page_id == SINGLE_PANORAMA)
-	{
-		controller_send_data_to_motor(0x06,0, 0x05);
-	}	
 	else if((page_id == SET_A_POINT))
 	{
 		controller_send_data_to_motor(0x06,0, 0x03);
@@ -2365,6 +2264,10 @@ void get_data_form_A650(void)
 	else if(page_id == ORIGIN_SET_MOVE)
 	{
 		controller_send_data_to_motor(0x06,0, 0x03);
+	}
+	else if(page_id == GROUP_PHOTO)
+	{
+		controller_send_data_to_motor(0x06,0, 0x05);
 	}
 }
 
@@ -2551,28 +2454,46 @@ void receiver_data_from_A650(void)
 					cursor_id = 2;
 					change_page();
 				}
-				else if(app_read_buffer[3] == 0x05) // 标准模式所有参数
+				else if(app_read_buffer[3] == 0x05) // 合影
 				{
-					glob_para.delay_time_s = app_read_buffer[4];
-					m_start = app_read_buffer[5];
-					glob_para.sd_amount = app_read_buffer[6];
-					glob_para.shut_time_s = (float)((uint16_t)app_read_buffer[7] | (uint16_t)app_read_buffer[8]<<8) / 1000.0;
-					std_manul_tag = app_read_buffer[9];
-					glob_para.ssinterval = (float)((uint16_t)app_read_buffer[10] | (uint16_t)app_read_buffer[11]<<8) / 1000.0;
-					//glob_para.delay_time_h = app_read_buffer[6];
-					//if(page_id != STANDAR_MODE)
+					Set_Gp_set_if(app_read_buffer[11]);
+					
+					glob_para.lens_folcal = (uint16_t)app_read_buffer[4]|(uint16_t)app_read_buffer[5]<<8;
+					glob_para.Roverlap  = app_read_buffer[6];
+					glob_para.exposure = app_read_buffer[7];
+					std_manul_tag = app_read_buffer[8];
+					glob_para.orbital_dir = app_read_buffer[9];
+					m_start = app_read_buffer[10];
+					
+					if(check_abpoint_Set_if(app_read_buffer[3]))
 					{
-						page_id = SINGLE_PANORAMA;
-						cursor_id = 1;
-						param_display(1);
-						param_display(2);
-						param_display(3);
-						param_display(4);
-						param_display(6);
+						if(page_id != GROUP_PHOTO)
+						{
+							page_id = GROUP_PHOTO;
+							cursor_id = 6;
+							change_page();
+						}
+						else
+						{
+							
+							param_display(2);
+							param_display(3);
+							param_display(4);
+							param_display(1);
+							single_cursor_dis(cursor_id);
+						}
+					}
+					else
+					{
+						//set_mode_back(page_id);
+						page_id = SET_A_POINT;
+						cursor_id = 3;
+						Set_ab_set_if(0);
 						change_page();
 					}
-					
-				}				
+
+					cursor_id_back = 2;
+				}
 				else if(app_read_buffer[3] == 0x07) // 专业模式
 				{
 					specialty_get = 1;
@@ -2688,6 +2609,12 @@ void receiver_data_from_A650(void)
 							cursor_id = 1;
 							get_data_form_A650();
 						}
+						else if(return_mode_back() == GROUP_PHOTO)
+						{
+							page_id = GROUP_PHOTO;
+							cursor_id = 1;
+							get_data_form_A650();
+						}
 						//ab_set_if = 2; // 设置成功志置
 						change_page();
 					}
@@ -2760,14 +2687,20 @@ void receiver_data_from_A650(void)
 			}
 			case 4:
 			{
-				if(app_read_buffer[3]==0) //定时时间倒计
+				if(app_read_buffer[3]==0x04) // 合影张数计数
 				{
-					cursor_id_back = 2;
-					if(page_id == PREINSTALL_MOVE)
+					p_amount = app_read_buffer[7];
+					if(app_read_buffer[9])
 					{
-						
+						Group_pix_amt_compara_dis(app_read_buffer[8],7);
 					}
-					
+					else
+					{
+						m_start = 0;
+						The_page_processing(7,"                    ");
+						The_page_processing(7,"      AB点设置      ");
+						param_display(6);
+					}
 				}
 				else if(app_read_buffer[3]==5) // 全景模式倒计时显示
 				{
@@ -3024,8 +2957,8 @@ void controller_send_data_to_motor(uint8_t opcode, uint8_t mode, uint8_t data)
 	if(i == NOT_EMPTY)return;
 
 	App_Buffer[i].app_send_buffer[0] = 0x90;
-	App_Buffer[i].app_send_buffer[2] = 0x09;
 	App_Buffer[i].app_send_buffer[1] = opcode;
+	App_Buffer[i].app_send_buffer[2] = 0x09;
 
 	if(opcode == 0x00)
 	{
@@ -3140,82 +3073,39 @@ void controller_send_data_to_motor(uint8_t opcode, uint8_t mode, uint8_t data)
 			}
 			//App_Buffer[i].app_send_buffer[6] = 0;
 		}
-		else if(mode == 0x04) // 单层全景模式
+		else if(mode == 0x05) // 
 		{
 			App_Buffer[i].app_send_buffer[3] = mode;
 			App_Buffer[i].app_send_buffer[4] = data;
 			//if(data == 0) //speed
-			if(data == 0x01)
+			if(data == 0x01) //
 			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.shut_times;
-				App_Buffer[i].app_send_buffer[6] = 0;
+				App_Buffer[i].app_send_buffer[5] = glob_para.lens_folcal;
+				App_Buffer[i].app_send_buffer[6] = glob_para.lens_folcal>>24;
 			}
-			else if(data == 0x04) // delay times
+			else if(data == 0x02) //
 			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.delay_time_s;
-				App_Buffer[i].app_send_buffer[6] = 0;
-			}
-			else if(data == 0x09) // start / stop
-			{
-				App_Buffer[i].app_send_buffer[5] = m_start;
+				App_Buffer[i].app_send_buffer[5] = glob_para.Roverlap;
 				App_Buffer[i].app_send_buffer[6] = 0;
 			}
 			else if(data == 0x03) // exposure time
 			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.shut_time_s*1000;
-				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.shut_time_s*1000)>>8;
+				App_Buffer[i].app_send_buffer[5] = glob_para.exposure;
+				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.exposure)>>8;
 			}
-			else if(data == 0x05) // auto or manul
+			else if(data == 0x04) // auto or manul
 			{
 				App_Buffer[i].app_send_buffer[5] = std_manul_tag;
 				App_Buffer[i].app_send_buffer[6] = 0;
 			}
-			else if(data == 0x02) // inerval time
+			else if(data == 0x05) // auto or manul
 			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.ssinterval*1000;
-				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.ssinterval*1000)>>8;
-			}
-			else if(data == 0x06)
-			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.shut_times;
+				App_Buffer[i].app_send_buffer[5] = glob_para.orbital_dir;
 				App_Buffer[i].app_send_buffer[6] = 0;
 			}
-			else if(data == 0x07) // inerval time
-			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.sys_stop_t*1000;
-				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.sys_stop_t*1000)>>8;
-			}
-			else if(data == 0x08) // 转速档位 
-			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.orbital_speed;
-				App_Buffer[i].app_send_buffer[6] = 0;
-			}
-			
-			App_Buffer[i].app_send_buffer[7] = 0;
-		}
-		else if(mode == 0x05) // 广角模式
-		{
-			App_Buffer[i].app_send_buffer[3] = mode;
-			App_Buffer[i].app_send_buffer[4] = data;
-			//if(data == 0) //speed
-			if(data == 0x01) // delay times
-			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.wid_time_s;
-				App_Buffer[i].app_send_buffer[6] = 0;
-			}
-			else if(data == 0x02) // start / stop
+			else if(data == 0x06) // auto or manul
 			{
 				App_Buffer[i].app_send_buffer[5] = m_start;
-				App_Buffer[i].app_send_buffer[6] = 0;
-			}
-			else if(data == 0x03) // exposure time
-			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.shut_time_s*1000;
-				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.shut_time_s*1000)>>8;
-			}
-			else if(data == 0x04) // auto or manul
-			{
-				App_Buffer[i].app_send_buffer[5] = wid_manul_tag;
 				App_Buffer[i].app_send_buffer[6] = 0;
 			}
 			
@@ -3387,36 +3277,6 @@ uint8_t check_sum_add(uint8_t index, uint8_t *spt)
 	}
 
 	return (temp & 0xff);
-}
-
-void Stander_mode_OK(void)
-{
-	if(page_id == SINGLE_PANORAMA)
-	{
-		if(cursor_id == 7)
-		{
-			page_id = SINGLE_PANORAMA_11;
-			cursor_id = 1;
-			change_page();
-		}
-	//	get_data_form_A650();
-	}
-	else if(page_id == SINGLE_PANORAMA_11)
-	{
-		if(cursor_id == 3)
-		{
-			m_start =~m_start;
-
-			controller_send_data_to_motor(0x00,0x04, 0x02);
-			param_display(cursor_id);
-		}
-		else if(cursor_id == 4)
-		{
-			page_id = SINGLE_PANORAMA;
-			cursor_id = 7;
-			change_page();
-		}
-	}
 }
 
 void manulORauto_dis(uint8_t dat, uint8_t cur)
@@ -3733,5 +3593,73 @@ void angle_cear(void)
 {
 	V_agnle = 0;
 	H_agnle = 0;
+}
+
+//////////////////////////////////group mode ///////////////////////////////////
+
+void Group_page_OK(void)
+{
+	if(page_id != GROUP_PHOTO)return;
+	
+	if(cursor_id == 6)
+	{
+		m_start  = ~m_start;
+		if(m_start)
+		{
+			The_page_processing(7,"张数              ");
+		}
+		else
+		{
+			The_page_processing(7,"      AB点设置      ");
+		}
+		controller_send_data_to_motor(0x00,0x05, 0x06);
+		param_display(6);
+	}
+	else if(cursor_id == 7)
+	{
+			if(m_start)return;
+			set_mode_back(page_id);
+			page_id = REVERSE_MODE;
+			cursor_id = 3;
+			
+			change_page();
+		//	controller_send_data_to_motor(0x00,0x01, 0x02);
+	}
+}
+
+
+void Group_pix_amt_compara_dis(uint8_t max_p, uint8_t cur)
+{
+	uint8_t buff[10];
+	uint8_t x = 0;
+
+	//if(page_id == DELAY_DIS)
+	{
+		if(p_amount < 10)
+		{
+			sprintf( (char *)buff,"    %d / %d", p_amount, max_p);
+		}
+		else if(p_amount < 100)
+		{
+			sprintf( (char *)buff,"   %d / %d", p_amount, max_p);
+		}
+		else if(p_amount < 1000)
+		{
+			sprintf( (char *)buff,"  %d / %d", p_amount, max_p);
+		}
+		else if(p_amount < 10000)
+		{
+			sprintf( (char *)buff," %d / %d", p_amount, max_p);
+		}
+		else
+		{
+			sprintf( (char *)buff,"%d / %d", p_amount, max_p);
+		}
+	}
+
+	
+	x = Check_String(buff, ENGLISH);
+	x = LCD_W-(x+SCREEN_MIGRATION);
+	Oled_EnlPrint(x, cur, buff, "张数", ENGLISH);
 }
 

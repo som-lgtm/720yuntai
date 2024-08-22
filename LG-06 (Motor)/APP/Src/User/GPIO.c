@@ -7,7 +7,7 @@
 #include "stm32f0xx_ll_exti.h"
 #include "stm32f0xx_ll_system.h"
 
-uint16_t led_time=0;
+__IO uint16_t led_time=0;
 uint8_t brightness = 0;
 
 void Gpio_time_count(void)
@@ -456,7 +456,7 @@ void bluetooth_pair_led(void)
 	{
 		if(find_pataVV.HHfind_Apoint || find_pata.HHfind_Apoint)return;
 		if(mode_backup == PREINSTALL_MODE)if(con_b.begin==4)return;
-		if(mode_backup == STANDAR_MODE || mode_backup == WIDE_ANGLE_MODE)if(move_begin==4)return;
+		if(mode_backup == WIDE_ANGLE_MODE)if(move_begin==4)return;
 		if(mode_backup == DELAY_SET)if(move_begin==3)return;
 		//C_status = 0;
 		if(Battery_percentage > 10)

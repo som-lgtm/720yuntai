@@ -18,7 +18,15 @@ void motorHH_pulse_count(void)
 			//if(motorHH_p.DVpulse_count > video_p.locusH.point_pulse_a)motorHH_p.DVpulse_count--;
 			//else motorHH_p.DVpulse_count = video_p.locusH.point_pulse_b;
 		}
-		if(mode_backup == DELAY_SET)if(motorHH_p.DLLpulse_count)motorHH_p.DLLpulse_count--;
+		if(mode_backup == DELAY_SET)
+		{
+			if(motorHH_p.DLLpulse_count)motorHH_p.DLLpulse_count--;
+		}
+
+		if(mode_backup == GROUP_PHOTO)
+		{
+			if(motorHH_p.GPpulse_count)motorHH_p.GPpulse_count--;
+		}
 	}
 	else
 	{
@@ -32,6 +40,11 @@ void motorHH_pulse_count(void)
 			//else motorHH_p.DVpulse_count = video_p.locusH.point_pulse_a;
 		}
 		if(mode_backup == DELAY_SET)motorHH_p.DLLpulse_count++;
+		
+		if(mode_backup == GROUP_PHOTO)
+		{
+			motorHH_p.GPpulse_count++;
+		}
 	}
 }
 

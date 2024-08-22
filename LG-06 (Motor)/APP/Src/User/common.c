@@ -18,16 +18,16 @@ uint8_t move_begin = 0;
 uint8_t move_begin_backup =0;
 uint8_t m_start = 0;
 uint8_t angle_snedt_tag = 0; // 实时发送角度标志位
-uint8_t angle_snedt_time = 0; // 实时发送角度标时间间隔
+__IO uint8_t angle_snedt_time = 0; // 实时发送角度标时间间隔
 uint8_t speed_Gear[4]={0};
 uint8_t ManulHH_dir_cehck=0;
 uint8_t ManulVV_dir_cehck=0;
 
-uint16_t dynamic_speed=0;
-uint16_t slow_time = 0;
+__IO uint16_t dynamic_speed=0;
+__IO uint16_t slow_time = 0;
 
-uint32_t boot_time=0;
-uint32_t p_move_time  = 0;
+__IO uint32_t boot_time=0;
+__IO uint32_t p_move_time  = 0;
 uint32_t p_amount=0;
 
 double Angle_basic = 0;
@@ -113,7 +113,7 @@ void set_slow_time_data(void)
 	{
 		slow_time = SLOW_BASIC_TIME11 ;//SLOW_THRESHOLD - dynamic_speed + 2;
 	}
-	else if(mode_backup == PREINSTALL_MODE)
+	else if((mode_backup == PREINSTALL_MODE) || (mode_backup == GROUP_PHOTO))
 	{
 		slow_time = SLOW_BASIC_TIME33;
 	}
@@ -222,16 +222,16 @@ void Send_connect_data_to_controller(void)
 		buffers[4] = check_sum_add(4, buffers);
 		sizes = 5;
 	}
-	else if(mode_backup == STANDAR_MODE) // 标准模式
+	else if(mode_backup == GROUP_PHOTO) // 合影模式
 	{
-		buffers[4] = con_b.delay_time_s;
-		buffers[5] = m_start;
-		buffers[6] = con_b.taltol_amount;
-		buffers[7] = con_b.exposure;
-		buffers[8] = con_b.exposure>>8;
-		buffers[9] = con_b.std_manul;
-		buffers[10] = con_b.interval;
-		buffers[11] = con_b.interval>>8;
+		buffers[4] = Group_p.lens_folcal;
+		buffers[5] = Group_p.lens_folcal>>8;
+		buffers[6] = Group_p.Roverlap;
+		buffers[7] = Group_p.GP_exposure;
+		buffers[8] = Group_p.GP_manul;
+		buffers[9] = Group_p.GP_dir;
+		buffers[10] = m_start;
+		buffers[11] = Group_p.GP_set_if;
 		buffers[12] = check_sum_add(12, buffers);
 		sizes = 13;
 	}
@@ -341,6 +341,23 @@ void Set_origin_move(uint8_t dirs, uint8_t active)
 						}
 					}
 				}
+			}			
+			if(mode_backup == GROUP_PHOTO )
+			{
+				if(Group_p.GP_set_if)
+				{
+					if(Group_p.GP_set_if < 3)
+					{
+						if((motorHH_p.GPpulse_count >= B_POINT_END) )
+						{
+							if(motorHH_p.DIR == A_TO_B)return;
+						}
+						else if(motorHH_p.GPpulse_count <= A_POINT_END)
+						{
+							if(motorHH_p.DIR == B_TO_A)return;
+						}
+					}
+				}
 			}
 			
 			Manual_mode_dir_set(typs);
@@ -420,6 +437,8 @@ void Set_origin_OK(uint8_t types)
 {
 	if(mode_backup == SET_ORIGIN)
 	{
+		motorHH_stop();
+		motorVV_stop();
 		motorHH_p.pulse_count = ORIGIN_POINT;
 		motorVV_p.pulse_count = ORIGIN_POINT;
 		mode_backup = MAIN_ID;
@@ -431,6 +450,10 @@ void Set_origin_OK(uint8_t types)
 	else if	(mode_backup == DELAY_SET)
 	{
 		Delay_set_abPoint(types);
+	}
+	else if	(mode_backup == GROUP_PHOTO)
+	{
+		Group_set_abPoint(types);
 	}
 	//Send_connect_data_to_controller();
 }
@@ -453,6 +476,10 @@ void Get_data_from_controller(uint8_t *fifos)
 			else if(fifos[3] == 0x04) // 单层全景模式设置参数
 			{
 				Standard_Get_data_from_controller(con_buffer);
+			}
+			else if(fifos[3] == 0x05) //  合影模式
+			{
+				Group_get_data_from_controller(con_buffer);
 			}
 			else if(fifos[3] == 0x06) // Specialty mode 专业模式
 			{
@@ -560,9 +587,17 @@ void Get_data_from_controller(uint8_t *fifos)
 				Manul_p.HH_UpRoDown = 0;
 				Manul_p.VV_UpRoDown = 0;
 			}
-			else if(fifos[3] == 0x05) //进入标准模式
+			else if(fifos[3] == 0x05) //进入合影模式
 			{
-				Standard_Get_data_from_controller(con_buffer);
+				if(mode_backup != GROUP_PHOTO)
+				{
+					mode_backup = GROUP_PHOTO;
+					Group_p.GP_dir = A_TO_B;
+					Group_mode_Dir_check();
+					Group_mode_find_Apoint();
+					//Send_connect_data_to_controller();
+				}
+				Send_connect_data_to_controller();
 			}
 			else if(fifos[3] == 0x06) // 进入广角模式
 			{
@@ -611,6 +646,14 @@ void Get_data_from_controller(uint8_t *fifos)
 					delay_p.locuVV.pulse = 0;
 					delay_p.locuHH.or_point = 0;
 					delay_p.locuVV.or_point = 0;
+				}
+				else if(mode_backup == GROUP_PHOTO)
+				{
+					Group_p.GP_set_if = 0;
+					Group_p.point_pulse_a = 0;
+					Group_p.point_pulse_b = 0;
+					Group_p.lens_pulse = 0;
+					Group_p.origin_pulse = 0;
 				}
 			}
 			else if(fifos[3] == 0x0a)
@@ -822,6 +865,10 @@ void Send_para_data_to_controller(uint8_t ipcode, uint8_t datas)
 			{
 				buffers[4] = con_b.vvAB_set;
 			}
+			else if(mode_backup == GROUP_PHOTO)
+			{
+				buffers[4] = Group_p.GP_set_if;
+			}
 			else
 			{
 				buffers[4] = delay_p.ab_set_if;
@@ -890,7 +937,7 @@ void manaul_slow_timeSet(MOTOR_TYPE motor_t)
 void Manual_HH_slowStartOrStop(void)
 {
 	uint8_t hhspeed_t = 0;
-	if(mode_backup != MANUAL_MODE && mode_backup != SET_ORIGIN && mode_backup != VIDEO_MODE && mode_backup != DELAY_SET)return;
+	if(mode_backup != MANUAL_MODE && mode_backup != SET_ORIGIN && mode_backup != VIDEO_MODE && mode_backup != DELAY_SET  && mode_backup != GROUP_PHOTO)return;
 //	if(Manul_p.VVfind_Apoint || find_pata.HHfind_Apoint)
 	{
 		//if(LEFT_REACTION == 0)return;
@@ -1095,7 +1142,7 @@ void Angle_real_time_transmission(uint8_t tpes)
 	uint32_t H_pulse = 0;
 	uint8_t buffers[10] = {0};
 	
-	if(mode_backup != VIDEO_MODE && mode_backup != DELAY_SET && mode_backup != MANUAL_MODE)return;
+	if(mode_backup != VIDEO_MODE && mode_backup != DELAY_SET && mode_backup != MANUAL_MODE && (mode_backup != GROUP_PHOTO))return;
 	if(tpes)if(angle_snedt_tag==0)return;
 	if(angle_snedt_time)return;
 
@@ -1104,6 +1151,10 @@ void Angle_real_time_transmission(uint8_t tpes)
 	{
 	//	V_pulse = Absolute_value_calculation(video_p.locusV.point_pulse_a, motorVV_p.DVpulse_count) * Angle_basic;
 		H_pulse = Absolute_value_calculation(video_p.locusH.point_pulse_a, motorHH_p.DVpulse_count) * Angle_basic;
+	}
+	else if(mode_backup == GROUP_PHOTO)
+	{
+		H_pulse = Calculate_current_angel();
 	}
 	else if(mode_backup == DELAY_SET)
 	{

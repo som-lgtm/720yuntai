@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	108
+#define FW_VERSIONS	109
 
 #define PARA_MAX_ID	25
 
@@ -22,7 +22,8 @@
 #define SET_ORIGIN		15
 #define MAIN_ID			3
 #define PANORAMA_MAIN		4
-#define STANDAR_MODE		5
+#define STANDAR_MODE		4
+#define GROUP_PHOTO		5
 #define WIDE_ANGLE_MODE	6
 #define PREINSTALL_MODE	7 //专业模式界面1
 #define PREINSTALL_SET		8 // 专业模式界面2，参数的添加
@@ -171,7 +172,7 @@ typedef struct{
 	uint16_t sys_stop_time;
 	uint16_t exposure;
 	uint16_t interval; // 标准模式和广角模式下的缓停速度
-	uint16_t MS_count;
+	__IO uint16_t MS_count;
 	
 	uint32_t p_amount_back;
 	uint32_t Dynamic_pulse;
@@ -188,7 +189,7 @@ typedef struct{
 	uint32_t interval_t;
 	uint8_t dynamic;
 	uint8_t p_upDown;
-	uint8_t slw_time;
+	__IO uint8_t slw_time;
 	uint8_t VRamp_id;
 	uint16_t Vslow_point ;
 	uint16_t Vramp_buffer[20];
@@ -210,19 +211,23 @@ typedef struct{
 
 	uint8_t vvAB_set; // 视频模式AB点设置状态
 	uint8_t shut_time_b; //快门次数计数
+
+	
+	
 }CONSTANT;
 
 typedef struct{
 	uint8_t DIR;
-	uint32_t pulse_count;
-	uint32_t DVpulse_count; //视频模式长度的脉冲计数
-	uint32_t DLLpulse_count;
+	__IO uint32_t pulse_count;
+	__IO uint32_t DVpulse_count; //视频模式长度的脉冲计数
+	__IO uint32_t DLLpulse_count;
+	__IO uint32_t GPpulse_count;
 
 }MOTOR_PARA;
 
 typedef struct{
 	uint8_t find_abpoint;
-	uint8_t speed_add; 
+	__IO uint8_t speed_add; 
 	//uint8_t VVfind_Apoint;
 	uint8_t HHfind_Apoint;
 	uint16_t compensation;
@@ -234,7 +239,7 @@ typedef struct{
 	uint8_t VV_speed;
 	uint8_t HH_speed;
 	uint8_t VV_Time;
-	uint8_t HH_Ttime;
+	__IO uint8_t HH_Ttime;
 	uint8_t VV_UpRoDown;
 	uint8_t HH_UpRoDown;
 	
@@ -244,7 +249,7 @@ typedef struct{
 	uint8_t VV_speed;
 	uint8_t HH_speed;
 	uint8_t VV_Time;
-	uint8_t HH_Ttime;
+	__IO uint8_t HH_Ttime;
 	uint8_t VV_UpRoDown;
 	uint8_t HH_UpRoDown;
 	
@@ -259,7 +264,7 @@ typedef struct{
 	uint8_t check_dir;
 	uint8_t p_upORdown;
 	uint8_t dynamic_speed;
-	uint8_t slow_time;
+	__IO uint8_t slow_time;
 	uint8_t locus_set;
 	uint32_t point_a; // 从其它模式回到视频模式的校准点
 	uint32_t point_b;
@@ -286,7 +291,7 @@ typedef struct{
 	uint8_t DIR;
 	uint8_t VV_DIR; // z 轴方向
 	uint8_t loop;
-	uint16_t activate;
+	__IO uint16_t activate;
 	uint8_t Pause;
 	uint8_t VVPause;
 	uint8_t locus_id;
@@ -317,8 +322,8 @@ typedef struct{
 	float remainder_p; //每张照片移动的脉冲数的余数，用于脉冲数的补尝计算
 	uint16_t ram_dist;
 	uint16_t ram_id;
-	uint8_t ramspeed;
-	uint8_t ramTime;
+	__IO uint8_t ramspeed;
+	__IO uint8_t ramTime;
 	uint8_t Ram_UpRoDown;
 	uint8_t check_dir;
 }DELAY_LOCUS;
@@ -341,8 +346,29 @@ typedef struct{
 	DELAY_LOCUS locuVV;
 
 	uint32_t all_times; // 每一张的总时间
-	uint16_t activate;
+	__IO uint16_t activate;
 }DELAY_PARA;
+
+typedef struct{
+	// 合影模式参数
+	uint16_t lens_folcal; // 镜头焦距
+	uint8_t Roverlap; // 重叠率
+	uint8_t GP_exposure;
+	uint8_t GP_manul;
+	uint8_t GP_dir;
+	uint8_t GP_set_if; // 是否已设置AB点
+	uint8_t check_dir; //找A/B点标志
+	uint8_t amount;
+
+	uint16_t Gp_angle;
+	uint32_t origin_pulse; // 从其它模式回到视频模式的校准点
+	uint32_t point_pulse_a; //视频模式长度的AB 点
+	uint32_t point_pulse_b;
+	uint32_t lens_pulse;
+	uint32_t Max_amount; //张数
+	uint32_t move_pulse; // 每张照片移动的脉冲数，移动脉冲数到达此数后停止移动
+	
+}GROUP_PARA;
 
 void Feed_IWDG(void);
 void Device_init(void);
@@ -559,6 +585,7 @@ void Sp_para_start_init(void);
 void shutter_time_counts(void);
 void camera_shutter_shot(uint8_t typess);
 void sp_Factory_default(void);
+void SpHHorizontal_start(void);
 
 // video_mode.c
 void Video_pulse_check(void);
@@ -624,20 +651,34 @@ void scan_cycle_count(void);
 void set_press_time(void);
 void keyscan(void);
 
+//GROUP.C
+void Group_set_abPoint(uint8_t typess);
+void Group_get_data_from_controller(uint8_t *fifog);
+uint32_t Calculate_current_angel(void);
+void Group_shots_event(void);
+void Group_loop_check(void);
+void Group_main(void);
+void Group_mode_start(void);
+void Group_mode_para_init(void);
+void Group_mode_find_Apoint(void);
+void Group_mode_Dir_check(void);
+void Group_Ramp_Speed_Load(void);
+void Group_manul_Shuting(void);
+
 extern PARA_STRUCT glob_para;
 extern float battery_back;
 extern uint8_t charge_tag;
 extern uint8_t rtc_wackup; //
 extern uint16_t low_voltage;
 extern uint8_t mode_backup;
-extern uint32_t boot_time;
+extern __IO uint32_t boot_time;
 extern uint8_t p_upORdown;
 
-extern uint16_t dynamic_speed;
-extern uint16_t slow_time;
+extern __IO uint16_t dynamic_speed;
+extern __IO uint16_t slow_time;
 extern uint8_t move_begin_backup;
 extern uint8_t move_begin;
-extern uint32_t p_move_time ;
+extern __IO uint32_t p_move_time ;
 extern uint32_t p_amount;
 extern uint8_t m_start;
 extern uint8_t Battery_percentage;
@@ -654,7 +695,10 @@ extern FIND_P find_pataVV;
 extern VIDEO_PARA video_p;
 extern DELAY_PARA delay_p;
 extern STANDARD_SLOW standard_p;
+extern GROUP_PARA Group_p;
+
 extern uint8_t Sync_sendt;
 extern uint8_t Alon_sendt;
+extern double Angle_basic;
 
 #endif

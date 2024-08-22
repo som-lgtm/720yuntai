@@ -8,14 +8,14 @@ uint32_t standard_H_pulse[STAND_IDMAX]={0};// 从仰角70度开始拍
 uint32_t standard_V_pulse[STAND_IDMAX]={0};// 从仰角70度开始拍
 uint8_t standard_H_frames[STAND_IDMAX]={0};// 从仰角70度开始拍
 uint8_t ble_shut_tag = 0;
-uint16_t ble_shut_time = 0;
+__IO uint16_t ble_shut_time = 0;
 STANDARD_SLOW standard_p={0};
 
 void ble_shut_time_count(void)
 {
 	if(ble_shut_time)ble_shut_time--;
 	if(standard_p.HH_Ttime)standard_p.HH_Ttime--;
-	if(standard_p.VV_Time)standard_p.VV_Time--;
+	//if(standard_p.VV_Time)standard_p.VV_Time--;
 }
 
 void Horizontal_start(void)
@@ -218,25 +218,11 @@ void Manul_Turn_the_shuter(void)
 			}
 		}
 	}
-	else if(mode_backup == WIDE_ANGLE_MODE)
+	else */if(mode_backup == GROUP_PHOTO)
 	{
-		if(move_begin != 2 && move_begin != 1)
-		{
-			BLE_shut_start();
-		}
-		
-		if(con_b.wid_manul == 0xff)
-		{
-			if(move_begin == 3)
-			{
-			//	SHUTTER_ON;
-			//	BLE_SHUT_OFF;
-				p_move_time = 0;
-				move_begin = 4;
-			}
-		}
+		Group_manul_Shuting();
 	}
-	else */if(mode_backup == PREINSTALL_MODE)
+	else if(mode_backup == PREINSTALL_MODE)
 	{
 		Spe_manul_Shuting();
 	}
@@ -475,7 +461,7 @@ void get_countdown_time(void)
 //定时时间的倒计
 void standard_countdown_time_display(void)
 {
-	static uint16_t ms_times = 0;
+	static __IO uint16_t ms_times = 0;
 
 	if(mode_backup != STANDAR_MODE && mode_backup != WIDE_ANGLE_MODE && mode_backup != PREINSTALL_MODE)return;
 	if(mode_backup == STANDAR_MODE  || mode_backup == WIDE_ANGLE_MODE)if(move_begin != 6)return;

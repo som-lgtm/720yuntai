@@ -520,6 +520,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\User\video.c</FilePath>
             </File>
+            <File>
+              <FileName>RTC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\User\RTC.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

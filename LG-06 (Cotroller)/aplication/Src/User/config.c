@@ -249,6 +249,14 @@ void main_page_ok(void)
 		}
 		else if(cursor_id == 6)
 		{
+			page_id = GROUP_PHOTO;
+			cursor_id = 6;
+			set_mode_back(page_id);
+			get_data_form_A650();	
+			page_id = MAIN_ID;
+		}
+		else if(cursor_id == 7)
+		{
 			page_id = CONFIG_ID;
 			cursor_id = 1;
 			change_page();
@@ -320,7 +328,7 @@ void page_return_adjust(void)
 			controller_send_data_to_motor(0x06,0, 0x04); // return the main manual
 			inverse_get_value(0);
 			change_page();
-			LCD_Fill(0, 140, LCD_W-1, 160, BLACK);
+			//LCD_Fill(0, 140, LCD_W-1, 160, BLACK);
 		}
 		write_flash_active();
 		

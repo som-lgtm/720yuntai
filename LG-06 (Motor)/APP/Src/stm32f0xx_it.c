@@ -176,6 +176,7 @@ void TIM3_IRQHandler(void)
 	Video_loop_check();
 	Timelapse_loop_check();
 	ManulHH_mode_pulse_check();
+	Group_loop_check();
 }
 
 

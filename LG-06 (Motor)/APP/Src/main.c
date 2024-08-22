@@ -131,6 +131,7 @@ MX_TIM14_Init();
 	BLE_shut_stop();
 	camera_shutter_shot(0);
 	specialty_mode_main();
+	Group_main();
 	FindOrigin_over_to_Sart();
 	Sync_data_for_controller();
 	SpHHmotor_slowly_startedORstop();

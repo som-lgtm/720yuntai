@@ -15,6 +15,7 @@ void motor_init(void)
 	motorVV_p.DVpulse_count = ORIGIN_POINT;
 	sp_para_init();
 	glob_para.speed = 3;
+	Group_mode_para_init();
 }
 
 // 水平轴每张相片移动的RAMP

@@ -16,12 +16,12 @@
 //#define RETURN_KEY1	GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10)
 //#define RETURN_KEY2	GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)
 
-uint16_t scan_cycle=0;
+__IO uint16_t scan_cycle=0;
 uint8_t key_final_status=0;
 
 uint8_t keypowr_status=0;
-uint16_t continues = 0;
-uint16_t press_time = 0;
+__IO uint16_t continues = 0;
+__IO uint16_t press_time = 0;
 uint8_t powers_off = 0;
 uint8_t Pwrkey_debounce = 0;
 

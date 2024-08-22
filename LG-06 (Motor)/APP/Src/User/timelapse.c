@@ -624,7 +624,7 @@ void Delay_find_Origin_slow_check(MOTOR_TYPE motor_t)
 void Delay_motorHH_move_time_compara(void)
 {
 	static uint32_t pulse_add = 0;
-//	if(mode_backup != DELAY_SET)return;
+	if(mode_backup != DELAY_SET)return;
 	if(delay_p.locuHH.begins != 1)return;
 	if(delay_p.locuHH.check_dir)return;
 	if(delay_p.locuVV.check_dir)return;

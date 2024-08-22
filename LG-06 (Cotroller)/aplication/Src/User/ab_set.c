@@ -11,6 +11,7 @@
 
 uint8_t ab_set_if = 0;
 uint8_t DDab_set_if = 0;
+uint8_t GPab_set_if = 0;
 uint8_t mode_back = 0;
 SLIDER_POSE_STRUCT Poses[3]={0};
 YUNTAI_POSE_STRUCT yuPoses[3]={0};
@@ -35,6 +36,11 @@ void Set_DDab_set_if(uint8_t datas)
 	DDab_set_if = datas;
 }
 
+void Set_Gp_set_if(uint8_t datas)
+{
+	GPab_set_if = datas;
+}
+
 uint8_t check_abpoint_Set_if(uint8_t modes)
 {
 	uint8_t temp = 0;
@@ -49,6 +55,13 @@ uint8_t check_abpoint_Set_if(uint8_t modes)
 	else if(modes == 2)
 	{
 		if(DDab_set_if == 3)
+		{
+			temp = 1;
+		}
+	}
+	else if(modes == 5)
+	{
+		if(GPab_set_if == 3)
 		{
 			temp = 1;
 		}

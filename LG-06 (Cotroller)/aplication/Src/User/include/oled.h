@@ -117,6 +117,7 @@ void motor_battery_dis(float bat);
 void page_display(uint8_t rowd);
 void bornd_code_dis(uint8_t row, uint8_t codeID);
 void LCD_shi_fen_miao_display(uint8_t x,uint8_t y,uint8_t *ch);
+void The_page_processing(uint8_t row, uint8_t *spt);
 
 // ADC.c
 void battery_frame_display(DEVICE_P type);

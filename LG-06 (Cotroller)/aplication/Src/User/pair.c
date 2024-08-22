@@ -13,7 +13,7 @@
 static void Paier_Indicate(void);
 extern void read_flash_holfword(uint16_t *data);
 static void Pair_send_data(void);
-uint16_t Pair_times = 0;
+__IO uint16_t Pair_times = 0;
 uint8_t ble_name[23]={0};
 uint8_t send_mode = 0;
 

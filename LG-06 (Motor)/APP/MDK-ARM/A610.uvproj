@@ -496,11 +496,6 @@
               <FilePath>..\Src\User\motorV.c</FilePath>
             </File>
             <File>
-              <FileName>standard.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\User\standard.c</FilePath>
-            </File>
-            <File>
               <FileName>Motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\User\Motor.c</FilePath>
@@ -509,11 +504,6 @@
               <FileName>ADC.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\User\ADC.c</FilePath>
-            </File>
-            <File>
-              <FileName>wide_angle.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\User\wide_angle.c</FilePath>
             </File>
             <File>
               <FileName>specialty_mode.c</FileName>
@@ -544,6 +534,21 @@
               <FileName>Ble.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\User\Ble.c</FilePath>
+            </File>
+            <File>
+              <FileName>standard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\User\standard.c</FilePath>
+            </File>
+            <File>
+              <FileName>wide_angle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\User\wide_angle.c</FilePath>
+            </File>
+            <File>
+              <FileName>Group.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\User\Group.c</FilePath>
             </File>
           </Files>
         </Group>

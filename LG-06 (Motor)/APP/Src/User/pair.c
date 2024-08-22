@@ -8,7 +8,7 @@
 #include "stm32f0xx_ll_dma.h"
 #include "stm32f0xx_ll_gpio.h"
 #include "rf24l01.h"
-uint16_t Pair_times = 0;
+__IO uint16_t Pair_times = 0;
 
 void Send_NameToBle(void);
 

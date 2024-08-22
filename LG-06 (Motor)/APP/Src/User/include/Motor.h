@@ -12,6 +12,7 @@
 #define SLOW_BASIC_TIME33		30
 #define SLOW_BASIC_TIME44		60
 #define BASE_SPEED	5 //15
+#define SP_BASE_SPEED	8 //全景模式的最快速度 
 
 #define A_TO_B		0 // 脉冲数递增//府仰轴 向上转也是顺时针 // 水平轴顺时针
 #define B_TO_A		0xff // 脉冲数递减//府仰轴向下转//水平轴逆时针

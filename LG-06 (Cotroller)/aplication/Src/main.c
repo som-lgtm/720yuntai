@@ -57,7 +57,6 @@ static void MX_DMA_Init(void);
 static void MX_TIM1_Init(void);
 //static void MX_ADC_Init(void);
 static void MX_IWDG_Init(void);
-static void MX_RTC_Init(void);
 static void MX_TIM14_Init(void);
 void MX_USART2_UART_Init(void);
 void MX_USART1_UART_Init(void);
@@ -119,6 +118,8 @@ int main(void)
   battery_init();
  set_active_time_out();
  write_flash_active();
+ MX_RTC_Init();
+ MX_IWDG_Init();
 
   /* USER CODE END 2 */
 
@@ -233,6 +234,7 @@ void SystemClock_Config(void)
   {
   
   }
+  RTC_clock_init();
  // LL_Init1msTick(48000000);
 
 //	LL_SYSTICK_SetClkSource(LL_SYSTICK_CLKSOURCE_HCLK);
@@ -256,30 +258,31 @@ void SystemClock_Config(void)
 static void MX_IWDG_Init(void)
 {
 
-  
+  LL_IWDG_Enable(IWDG);
 
   LL_IWDG_EnableWriteAccess(IWDG);
 
-  LL_IWDG_SetPrescaler(IWDG, LL_IWDG_PRESCALER_32);
+  LL_IWDG_SetPrescaler(IWDG, LL_IWDG_PRESCALER_128);
 
- // LL_IWDG_SetWindow(IWDG, 1250);
+//	LL_IWDG_SetWindow(IWDG, 1250);
 
-  LL_IWDG_SetReloadCounter(IWDG, 1250);
+  LL_IWDG_SetReloadCounter(IWDG, 1563);
 
-//  while (LL_IWDG_IsReady(IWDG) != 1)
-//  {
- // }
+  while (LL_IWDG_IsReady(IWDG) != 1)
+  {
+  }
 
   LL_IWDG_ReloadCounter(IWDG);
-  LL_IWDG_Enable(IWDG);
+	LL_IWDG_Enable(IWDG);
 
 
 }
 
+
 // Feed the dog
 void Feed_IWDG(void)
 {
-	//LL_IWDG_ReloadCounter(IWDG);
+	LL_IWDG_ReloadCounter(IWDG);
 }
 
 /* TIM3 init function */

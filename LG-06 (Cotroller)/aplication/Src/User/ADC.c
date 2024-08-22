@@ -18,7 +18,7 @@
 #define ADC_TAG	 1
 __IO uint16_t ADCConvertedValue=0;       // ADC为12位模数转换器，只有ADCConvertedValue的低12位有效
 
-uint16_t adc_send_time=0;
+__IO uint16_t adc_send_time=0;
 
 float adc_buffer[50] = {0};
 float adc_buffer22[50] = {0};
@@ -209,7 +209,8 @@ void read_ADC_value(void)
 				}
 				else
 				{
-					Forbidden_Used();
+				//	Forbidden_Used();
+					ShutDown();
 				}
 				//
 			}

@@ -69,6 +69,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 		case SET_A_POINT:
@@ -87,6 +89,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 		case SET_B_POINT:
@@ -105,6 +109,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}		
 		case ORIGIN_SET_MOVE:
@@ -123,6 +129,9 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
+				
 			break;
 		}
 		case MAIN_ID:
@@ -140,51 +149,51 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 5){
 				The_page_processing(rows,	"  手动模式  ");}
 			else if(rows == 6){
-				The_page_processing(rows,	"    设置    ");}
+				The_page_processing(rows,	"  合影模式  ");}
+			else if(rows == 7){
+				The_page_processing(rows,"    设置    ");}
+			break;
+		}
+		case GROUP_PHOTO:
+		{
+			if(rows == 0){
+				The_page_processing(rows, "合影模式");}
+			else if(rows == 1){
+				The_page_processing(rows,	"镜头焦距          ");}
+			else if(rows == 2){
+				The_page_processing(rows,"重叠率            ");}
+			else if(rows == 3){
+				The_page_processing(rows,"快门时间          ");}
+			else if(rows == 4){
+				The_page_processing(rows,	"手动快门          ");} // 延后
+			else if(rows == 5){
+				The_page_processing(rows,"方向              ");}
+			else if(rows == 6){
+				The_page_processing(rows,	"  启动  ");}
+			else if(rows == 7){
+				The_page_processing(rows,"  AB点设置  ");}
+			break;
+		}	
+		/*case GROUP_PHOTO_MOVE:
+		{
+			if(rows == 0){
+				The_page_processing(rows,	"合影模式");}
+			else if(rows == 1){
+				The_page_processing(rows,	"                    ");}
+			else if(rows == 2){
+				The_page_processing(rows,"完成度            ");}
+			else if(rows == 3){
+				The_page_processing(rows,	"                    ");}
+			else if(rows == 4){
+				The_page_processing(rows,"照片              ");}
+			else if(rows == 5){
+				The_page_processing(rows,"暂停");}
+			else if(rows == 6){
+				The_page_processing(rows,"  返回  ");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
 			break;
-		}
-	/*	case SINGLE_PANORAMA:
-		{
-			if(rows == 0){
-				The_page_processing(rows, "单层全景模式");}
-			else if(rows == 1){
-				The_page_processing(rows,	"张数              ");}
-			else if(rows == 2){
-				The_page_processing(rows,"缓停时间          ");}
-			else if(rows == 3){
-				The_page_processing(rows,"快门速度          ");}
-			else if(rows == 4){
-				The_page_processing(rows,	"定时              ");} // 延后
-			else if(rows == 5){
-				The_page_processing(rows,"手动快门          ");}
-			else if(rows == 6){
-				The_page_processing(rows,	"快门次数          ");}
-			else if(rows == 7){
-				The_page_processing(rows,	"下一页");}
-			break;
-		}	
-		case SINGLE_PANORAMA_11:
-		{
-			if(rows == 0){
-				The_page_processing(rows, "单层全景模式");}
-			else if(rows == 1){
-				The_page_processing(rows,	"延时时间          ");} //快门拍摄后的等待 时间
-			else if(rows == 2){
-				The_page_processing(rows,"转速              ");}
-			else if(rows == 3){
-				The_page_processing(rows,"  启动  ");}
-			else if(rows == 4){
-				The_page_processing(rows,	"上一页");}
-			else if(rows == 5){
-				The_page_processing(rows,	"定时计时          ");} // 延后
-			else if(rows == 6){
-				The_page_processing(rows,"张数计数          ");}
-			else if(rows == 7){
-				The_page_processing(rows,	"总张数            ");}
-			break;
-		}		*/
+		}	*/	
 		case PREINSTALL_MODE:
 		{
 			if(rows == 0){
@@ -242,7 +251,7 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 6){
 				The_page_processing(rows, "延时时间          ");}
 			else if(rows == 7){
-				The_page_processing(rows, "                    ");}
+				The_page_processing(rows, "                  ");}
 			break;
 		}
 		case PREINSTALL_MOVE:
@@ -301,6 +310,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,"  AB点设置  ");}
 			else if(rows == 6){
 				The_page_processing(rows,"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}				
 		case DELAY_SET:
@@ -339,6 +350,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,"暂停");}
 			else if(rows == 6){
 				The_page_processing(rows,"  返回  ");}
+			else if(rows == 7){
+				The_page_processing(rows, "                    ");}
 			break;
 		}
 		case CONFIG_ID:
@@ -417,8 +430,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows, "                    ");}
 			else if(rows == 6){
 				The_page_processing(rows, "                    ");}
-			//else if(rows == 7){
-			//	The_page_processing(rows, " 	                  ");}
+			else if(rows == 7){
+				The_page_processing(rows, "                    ");}
 			break;
 		}		
 		case ORIGIN_ACK:
@@ -437,6 +450,8 @@ void chinese_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 	}
@@ -462,6 +477,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 		case SET_A_POINT:
@@ -480,6 +497,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 		case SET_B_POINT:
@@ -498,6 +517,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 		case ORIGIN_SET_MOVE:
@@ -516,6 +537,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 		case MAIN_ID:
@@ -534,7 +557,27 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 5){
 				The_page_processing(rows,	"Manual mode");}
 			else if(rows == 6){
-				The_page_processing(rows,	"Settings");}
+				The_page_processing(rows,	"Group mode");}
+			else if(rows == 7){
+				The_page_processing(rows,"Settings");}
+			break;
+		}		
+		case GROUP_PHOTO:
+		{
+			if(rows == 0){
+				The_page_processing(rows, "Group mode");}
+			else if(rows == 1){
+				The_page_processing(rows,	"Lens              ");}
+			else if(rows == 2){
+				The_page_processing(rows,"Roverlap          ");}
+			else if(rows == 3){
+				The_page_processing(rows,"Exposure          ");}
+			else if(rows == 4){
+				The_page_processing(rows,	"Manual            ");} // 延后
+			else if(rows == 5){
+				The_page_processing(rows,"diraction         ");}
+			else if(rows == 6){
+				The_page_processing(rows,"                    ");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
 			break;
@@ -755,6 +798,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}		
 		case FINDING_ORIGIN:
@@ -773,8 +818,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows, "                    ");}
 			else if(rows == 6){
 				The_page_processing(rows, "                    ");}
-			//else if(rows == 7){
-			//	The_page_processing(rows, " 	                  ");}
+			else if(rows == 7){
+				The_page_processing(rows, "                    ");}
 			break;
 		}
 		case MANUAL_MODE:
@@ -793,8 +838,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows, "                    ");}
 			else if(rows == 6){
 				The_page_processing(rows, "                    ");}
-			//else if(rows == 7){
-			//	The_page_processing(rows, " 	                  ");}
+			else if(rows == 7){
+				The_page_processing(rows, "                    ");}
 			break;
 		}		
 		case ORIGIN_ACK:
@@ -813,6 +858,8 @@ void english_page_dis(uint8_t rows)
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
 			break;
 		}
 	}
@@ -2445,6 +2492,7 @@ void battery_init(void)
 	 battery_frame_display(CONTROLLER);
 	 LCD_Fill(LCD_W-10, 6, LCD_W-6-1, 6+5, LIGHTGREEN);
 	 The_motor_battery_dis_init();
+	 change_page();
 	//time_delay_ms(6000);
 }
 
@@ -3074,7 +3122,7 @@ y = y * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.0.9", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.1.0", "", ENGLISH);
 }
 
 

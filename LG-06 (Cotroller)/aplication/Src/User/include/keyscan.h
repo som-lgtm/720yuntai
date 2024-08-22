@@ -29,7 +29,6 @@ void page_return(void);
 void combination_key_deal(void);
 void press_ok_key_deal(void);
 void delay_page_ok(void);
-void Stander_mode_OK(void);
 void press_OK_function(void);
 void LowBattery_wakeup(void);
 void press_key_continue(uint8_t dir);

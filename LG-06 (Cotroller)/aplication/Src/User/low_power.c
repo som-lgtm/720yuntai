@@ -14,9 +14,15 @@
 #include "keyscan.h"
 #include "stm32f0xx_ll_usart.h"
 #include "stm32f0xx_ll_exti.h"
-uint32_t active_time_out= 0; 
+__IO uint32_t active_time_out= 0; 
 uint8_t lowbattery_dis_if = 0;
 uint8_t charge_tag=0; // 当插电充电时至1
+uint8_t rtc_wackup=0; //
+
+void set_rtc_wackup(uint8_t sets)
+{
+	rtc_wackup = sets;
+}
 
 void Reset_theSystem(uint8_t types)
 {
@@ -133,7 +139,10 @@ void ShutDown(void)
 	BOOST_PWR_OFF;
 	continues = 0;
 	lowbattery_dis_if = 1;
-	ADC_shutdown();
+	if(rtc_wackup==0)
+	{
+		ADC_shutdown();
+	}
 	wifi_sleep();
 	if(wifi_id.wakaup_tag != 0)
 	{
@@ -143,11 +152,15 @@ void ShutDown(void)
 	}
 	set_power_on_int(0XFF);
 	ShutDown_AllIO_High_resistance_mode();
+	rtc_wackup = 0;
+	RTC_AlarmConfig();
+	SysTick->CTRL  = 0; //DISABLE SYSYTICK
 	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
 	pwrKey_exti_interrupt();
 	Reset_theSystem(1);
 	HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 	Reset_theSystem(0);
+//	SystemClock_Config();
 	if(charge_tag)
 	{
 		__disable_irq();
@@ -225,11 +238,33 @@ void Enter_Sleep_Mode(void)
 // but Pressing any key within 10 minutes will not allow entry stop mode.
 void Time_Out_And_Enter_Stop_Mode(void)  
 {
-	if(return_active_time_out())return;
+	/*if(return_active_time_out())return;
 	set_active_time_out();
 	if(CHARGE_STATUS == 0)return; // 
-	ShutDown();
+	*/
+	
+	if(CHARGE_STATUS == CHARGING)
+	{
+		if(return_active_time_out())return;
+		set_active_time_out();
+		return;
+	}
+	
+	if(rtc_wackup)
+	{
+		//if(return_active_time_out())return;
+		ShutDown();
+	}
+	else
+	{
+		if(return_active_time_out())return;
+		set_active_time_out();
+		ShutDown();
+	}
+
+	
 }
+
 
 void active_time_out_countdown(void)
 {
@@ -242,23 +277,22 @@ void disable_interrupt(void)
 	
 	LL_TIM_DisableCounter(TIM3);
 	LL_TIM_ClearFlag_UPDATE(TIM3);
-	NVIC_DisableIRQ(TIM3_IRQn);
 	LL_TIM_ClearFlag_UPDATE(TIM3);
+	NVIC_DisableIRQ(TIM3_IRQn);
 	
 	LL_TIM_DisableCounter(TIM14);
 	LL_TIM_ClearFlag_UPDATE(TIM14);
 	NVIC_DisableIRQ(TIM14_IRQn);
 	LL_TIM_ClearFlag_UPDATE(TIM14);
 	
+	NVIC_DisableIRQ(DMA1_Channel4_5_IRQn);
+	NVIC_DisableIRQ(USART2_IRQn);
+	Dma_SendIRQ_Dispose();
 	LL_USART_Disable(USART2);
 	LL_USART_DisableDMAReq_RX(USART2);
 	LL_USART_DisableDMAReq_TX(USART2);
 	LL_USART_DisableIT_IDLE(USART2);
 	LL_USART_ClearFlag_IDLE(USART2); // 
-	NVIC_DisableIRQ(USART2_IRQn);
-	NVIC_DisableIRQ(DMA1_Channel4_5_IRQn);
-	LL_USART_ClearFlag_IDLE(USART2); // 
-	Dma_SendIRQ_Dispose();
 
 	
 //	LL_USART_Disable(USART1);
@@ -270,6 +304,7 @@ void disable_interrupt(void)
 	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_15|LL_EXTI_LINE_11|LL_EXTI_LINE_12|LL_EXTI_LINE_3|LL_EXTI_LINE_4|LL_EXTI_LINE_5|LL_EXTI_LINE_6|LL_EXTI_LINE_7|LL_EXTI_LINE_8);
 	LL_EXTI_DisableIT_0_31(LL_EXTI_LINE_15|LL_EXTI_LINE_8);
 	NVIC_DisableIRQ(EXTI4_15_IRQn);
+	NVIC_DisableIRQ(EXTI2_3_IRQn);
 
 }
 

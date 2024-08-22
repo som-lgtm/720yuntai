@@ -18,6 +18,7 @@
 "..\output\adc.o"
 "..\output\specialty_mode.o"
 "..\output\video.o"
+"..\output\rtc.o"
 "..\output\stm32f0xx_ll_adc.o"
 "..\output\stm32f0xx_ll_utils.o"
 "..\output\stm32f0xx_ll_exti.o"

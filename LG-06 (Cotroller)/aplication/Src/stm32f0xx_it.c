@@ -253,6 +253,7 @@ void EXTI2_3_IRQHandler(void)
 		LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_7);
 	}*/
 		LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_3|LL_EXTI_LINE_4|LL_EXTI_LINE_5|LL_EXTI_LINE_6|LL_EXTI_LINE_7);
+	set_rtc_wackup(0);
 }
 
 void EXTI4_15_IRQHandler(void)
@@ -270,6 +271,17 @@ void EXTI4_15_IRQHandler(void)
 		//Set_adc_back();
 	}
 		LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_15|LL_EXTI_LINE_11|LL_EXTI_LINE_12|LL_EXTI_LINE_3|LL_EXTI_LINE_4|LL_EXTI_LINE_5|LL_EXTI_LINE_6|LL_EXTI_LINE_7|LL_EXTI_LINE_8);
+		set_rtc_wackup(0);
+
+}
+
+void RTC_IRQHandler(void)
+{
+//	lights_flash();
+	LL_RTC_ClearFlag_ALRA(RTC);
+	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_17);
+	set_rtc_wackup(0xff);
+	charge_tag = 0;
 }
 
 /* USER CODE BEGIN 1 */

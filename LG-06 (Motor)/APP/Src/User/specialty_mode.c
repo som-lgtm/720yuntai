@@ -29,7 +29,7 @@ uint8_t V_slow_tag = 0; // 慢启停标志记
 uint8_t Alon_sendt = 0;
 uint16_t H_frame_pulse[PARA_MAX_ID]={0};
 uint16_t V_frame_pulse[PARA_MAX_ID]={0};
-uint16_t shutter_teimes = 0;
+__IO uint16_t shutter_teimes = 0;
 
 
 
@@ -326,7 +326,7 @@ void Specialty_mode_Start(void)
 			run_idVV = 1;
 			Sp_para_start_init();
 			//SpVVRamp_Speed_Load(speed_calculat(STANDARD_SPEED));
-			for(i=BASE_SPEED; i < RAMP_MAX; i++)
+			for(i=SP_BASE_SPEED; i < RAMP_MAX; i++)
 			{
 				if(SpecialtyHH_Ramp_Speed_Load(i, run_id))
 				{
@@ -502,7 +502,7 @@ void Specialty_Get_data_from_controller(uint8_t *fifob)
 		if(Reshot==0) // 退出补拍时要重新算RAMP 速度
 		{
 			Reshot_Clear();
-			for(idx=BASE_SPEED; idx < RAMP_MAX; idx++)
+			for(idx=SP_BASE_SPEED; idx < RAMP_MAX; idx++)
 			{
 				if(SpecialtyHH_Ramp_Speed_Load(idx, run_id))
 				{
@@ -513,7 +513,7 @@ void Specialty_Get_data_from_controller(uint8_t *fifob)
 		}
 		else
 		{
-			for(idx=BASE_SPEED; idx < RAMP_MAX; idx++)
+			for(idx=SP_BASE_SPEED; idx < RAMP_MAX; idx++)
 			{
 				if(SpecialtyHH_Ramp_Speed_Load(idx, Reshot_id))
 				{
@@ -705,7 +705,7 @@ void specialty_mode_main(void)
 					///////////////////////////////////////////
 				//	if(run_id < glob_para.spe_para[mid_ct].para_id)run_id +=1;
 				//	con_b.p_amount_back = 1;
-					for(i=BASE_SPEED; i < RAMP_MAX; i++)
+					for(i=SP_BASE_SPEED; i < RAMP_MAX; i++)
 					{
 						if(SpecialtyHH_Ramp_Speed_Load(i, run_id))
 						{
@@ -828,7 +828,7 @@ void Speialty_Horizontal_pulse_check(void)
 //专业模式
 void SpHHmotor_slowly_startedORstop(void)
 {
-	if(mode_backup != PREINSTALL_MODE)return;
+	if((mode_backup != PREINSTALL_MODE) && (mode_backup != GROUP_PHOTO))return;
 	//if(H_slow_tag == 0)return;
 	if(p_upORdown==0)return;
 	//if(p_upORdown == check_speed_tag)return;

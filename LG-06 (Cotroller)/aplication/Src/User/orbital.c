@@ -2505,7 +2505,7 @@ void receiver_data_from_A650(void)
 							cursor_id = 0;
 							change_page();
 						}
-						else
+						/*else
 						{
 							
 							param_display(2);
@@ -2514,7 +2514,8 @@ void receiver_data_from_A650(void)
 							param_display(1);
 							single_cursor_dis(cursor_id);
 							param_display(7);
-						}
+						}*/
+						change_page();
 					}
 					else
 					{

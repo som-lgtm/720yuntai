@@ -595,7 +595,8 @@ void Get_data_from_controller(uint8_t *fifos)
 					mode_backup = GROUP_PHOTO;
 					Group_p.GP_dir = A_TO_B;
 					Group_mode_Dir_check();
-					Group_mode_find_Apoint();
+					//Group_mode_find_Apoint();
+					Group_mode_Start_check_diretion();
 					//Send_connect_data_to_controller();
 				}
 				Send_connect_data_to_controller();
@@ -935,6 +936,7 @@ void manaul_slow_timeSet(MOTOR_TYPE motor_t)
 	}
 }
 
+// 设置AB点时或是手动模式时的缓起停
 void Manual_HH_slowStartOrStop(void)
 {
 	uint8_t hhspeed_t = 0;

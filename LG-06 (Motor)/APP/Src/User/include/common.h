@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	111
+#define FW_VERSIONS	113
 
 #define PARA_MAX_ID	25
 
@@ -34,9 +34,9 @@
 
 
 #define ORIGIN_POINT		0x80000000
-#define A_POINT_END		0x7FFE0CFA // 负的360度
-#define B_POINT_END		0x8001F401// 0x8001F306 // 正的360度
-#define M_POINT_END		0x8000FA00 //0x80017732 // 正的180度
+#define A_POINT_END		0x7FFE0CFA // 0x7FFD53B1负的360度
+#define B_POINT_END		0x8001F401// 0x8002AC4F // 正的360度
+#define M_POINT_END		0x8000FA00 //0x80015627 // 正的180度
 #define POINT_360_END		(B_POINT_END-ORIGIN_POINT) //360脉冲数
 
 #define STANDARD_SPEED		100
@@ -666,6 +666,7 @@ void Group_mode_Dir_check(void);
 void Group_Ramp_Speed_Load(void);
 void Group_manul_Shuting(void);
 uint8_t Group_mode_Start_check_diretion(void);
+void Group_move_speed_calculate(void);
 
 extern PARA_STRUCT glob_para;
 extern float battery_back;
@@ -698,6 +699,7 @@ extern VIDEO_PARA video_p;
 extern DELAY_PARA delay_p;
 extern STANDARD_SLOW standard_p;
 extern GROUP_PARA Group_p;
+extern MANAUL_SLOW Manul_p;
 
 extern uint8_t Sync_sendt;
 extern uint8_t Alon_sendt;

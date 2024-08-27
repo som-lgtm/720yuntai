@@ -70,7 +70,7 @@ void Group_mode_Dir_check(void)
 		}
 		else
 		{
-			motorHH_p.DIR = (Group_p.point_pulse_a < Group_p.point_pulse_b)?A_TO_B : B_TO_A;
+			motorHH_p.DIR = (Group_p.point_pulse_a > Group_p.point_pulse_b)?A_TO_B : B_TO_A;
 			//glob_para.orbital_dir = ~glob_para.orbital_dir;
 		}
 
@@ -126,7 +126,8 @@ void Group_set_abPoint(uint8_t typess)
 			Group_Max_amount_check();
 			//Delay_move_speed_calculate(0);
 			Group_shots_event();
-			//Send_connect_data_to_controller();
+			Group_move_speed_calculate();
+			Group_Ramp_Speed_Load();
 			Group_mode_Start_check_diretion();
 		}
 		
@@ -334,10 +335,12 @@ uint8_t Group_mode_Start_check_diretion(void)
 	if(temp)
 	{
 		Group_p.check_dir= 1;
-		//Delay_mode_Dir_check(MOTOR_HORITAL);
 		motorHH_direction_change(motorHH_p.DIR);
-		set_abpoint_start_setting(MOTOR_HORITAL);
-		Red_led_tack();
+		//Manul_SartOrStop(MOTOR_HORITAL,0xff);
+		dynamic_speed = con_b.Ramp_id;
+		motorHH_speed_set(con_b.ramp_buffer[dynamic_speed]);
+		p_upORdown = SLOW_START;
+		motorHH_start();
 		Video_Find_ABpoint_notify(temp);
 		/*DelayMode_ram_load( MOTOR_HORITAL);
 		delay_p.locuHH.ramspeed = delay_p.locuHH.ram_id;
@@ -526,6 +529,7 @@ void Group_find_Origin_checkStop(MOTOR_TYPE motor_t)
 			//video_p.locusV.dir = video_p.DIR;
 			Group_mode_Dir_check();
 			Video_Find_ABpoint_notify(REACHED_ORIGIN_POINT);
+			Send_connect_data_to_controller();
 		}
 	}
 	
@@ -550,6 +554,7 @@ void Group_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 				Group_p.check_dir = 0;
 				Group_mode_start();
 				Video_Find_ABpoint_notify(REACHED_ABPOINT);
+				Send_connect_data_to_controller();
 				/*if(Group_p.amount == 1)
 				{
 					move_begin = 1;
@@ -577,6 +582,7 @@ void Group_FindABpoint_pluse_check(MOTOR_TYPE motor_tt)
 				Group_mode_start();
 
 				Video_Find_ABpoint_notify(REACHED_ABPOINT);
+				Send_connect_data_to_controller();
 				/*if(Group_p.amount == 1)
 				{
 					move_begin = 1;
@@ -604,21 +610,23 @@ void Group_FindABpoint_slow_check(MOTOR_TYPE motor_t)
 	{
 		//if(delay_p.locuHH.pulse== 0)return;
 		if(Group_p.check_dir==0)return;
-		if(find_pata.HHfind_Apoint==0)return;
+		//if(Manul_p.HH_UpRoDown==0)return;
 				if(Group_p.GP_dir == A_TO_B) // 回到A点再开始
 				{
 					if(motorHH_p.DIR == A_TO_B)
 					{
-						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_a - find_pata.slow_pulse))
+						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_a - con_b.slow_point))
 						{
-							find_pata.find_abpoint = SLOW_STOP;
+							//find_pata.find_abpoint = SLOW_STOP;
+							p_upORdown = SLOW_STOP;
 						}
 					}
 					else
 					{
-						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_a + find_pata.slow_pulse))
+						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_a + con_b.slow_point))
 						{
-							find_pata.find_abpoint = SLOW_STOP;
+						//	find_pata.find_abpoint = SLOW_STOP;
+							p_upORdown = SLOW_STOP;
 						}
 					}
 				}
@@ -626,16 +634,18 @@ void Group_FindABpoint_slow_check(MOTOR_TYPE motor_t)
 				{
 					if(motorHH_p.DIR == A_TO_B)
 					{
-						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_b - find_pata.slow_pulse))
+						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_b - con_b.slow_point))
 						{
-							find_pata.find_abpoint = SLOW_STOP;
+							//find_pata.find_abpoint = SLOW_STOP;
+							p_upORdown = SLOW_STOP;
 						}
 					}
 					else
 					{
-						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_b + find_pata.slow_pulse))
+						if(motorHH_p.GPpulse_count == (Group_p.point_pulse_b + con_b.slow_point))
 						{
-							find_pata.find_abpoint = SLOW_STOP;
+							//find_pata.find_abpoint = SLOW_STOP;
+							p_upORdown = SLOW_STOP;
 						}
 					}
 				}

@@ -1891,6 +1891,21 @@ void limit_angle_360(void)
 					if(motorVV_p.DIR == B_TO_A)motorVV_stop();
 				}
 			}
+		}		
+		else if(mode_backup == GROUP_PHOTO)
+		{	
+			if(Group_p.GP_set_if)
+			{
+				if(Group_p.GP_set_if > 2)return;
+				if((motorHH_p.GPpulse_count >= B_POINT_END))
+				{
+					if(motorHH_p.DIR == A_TO_B)motorHH_stop();
+				}
+				else if(motorHH_p.GPpulse_count <= A_POINT_END)
+				{
+					if(motorHH_p.DIR == B_TO_A)motorHH_stop();
+				}
+			}
 		}
 	
 }

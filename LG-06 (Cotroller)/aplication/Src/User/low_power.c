@@ -243,12 +243,6 @@ void Time_Out_And_Enter_Stop_Mode(void)
 	if(CHARGE_STATUS == 0)return; // 
 	*/
 	
-	if(CHARGE_STATUS == CHARGING)
-	{
-		if(return_active_time_out())return;
-		set_active_time_out();
-		return;
-	}
 	
 	if(rtc_wackup)
 	{
@@ -257,6 +251,13 @@ void Time_Out_And_Enter_Stop_Mode(void)
 	}
 	else
 	{
+		if(CHARGE_STATUS == CHARGING)
+		{
+			if(return_active_time_out())return;
+			set_active_time_out();	
+			return;
+		}
+		
 		if(return_active_time_out())return;
 		set_active_time_out();
 		ShutDown();

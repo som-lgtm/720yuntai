@@ -209,7 +209,7 @@ void read_ADC_value(void)
 				}
 				else
 				{
-				//	Forbidden_Used();
+					if(return_powers())return;
 					ShutDown();
 				}
 				//

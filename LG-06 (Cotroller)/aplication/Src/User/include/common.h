@@ -439,6 +439,8 @@ extern YUNTAI_POSE_STRUCT yuPoses[3];
 extern uint8_t *ToE200;
 
 extern uint8_t page_id;
+extern uint8_t page_id_back;
+
 extern uint8_t cursor_id_back;
 extern uint8_t cursor_id;
 extern uint8_t m_start ;

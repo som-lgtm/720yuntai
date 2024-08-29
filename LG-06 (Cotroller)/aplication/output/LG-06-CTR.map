@@ -1064,8 +1064,8 @@ Section Cross References
     low_power.o(i.ShutDown) refers to keyscan.o(.data) for continues
     low_power.o(i.ShutDown) refers to low_power.o(.data) for .data
     low_power.o(i.ShutDown) refers to orbital.o(.bss) for wifi_id
-    low_power.o(i.Time_Out_And_Enter_Stop_Mode) refers to low_power.o(i.LL_GPIO_IsInputPinSet) for LL_GPIO_IsInputPinSet
     low_power.o(i.Time_Out_And_Enter_Stop_Mode) refers to low_power.o(i.ShutDown) for ShutDown
+    low_power.o(i.Time_Out_And_Enter_Stop_Mode) refers to low_power.o(i.LL_GPIO_IsInputPinSet) for LL_GPIO_IsInputPinSet
     low_power.o(i.Time_Out_And_Enter_Stop_Mode) refers to low_power.o(i.set_active_time_out) for set_active_time_out
     low_power.o(i.Time_Out_And_Enter_Stop_Mode) refers to low_power.o(.data) for .data
     low_power.o(i.active_time_out_countdown) refers to low_power.o(.data) for .data
@@ -1159,6 +1159,7 @@ Section Cross References
     adc.o(i.read_ADC_value) refers to ffixui.o(.text) for __aeabi_f2uiz
     adc.o(i.read_ADC_value) refers to adc.o(i.filtering) for filtering
     adc.o(i.read_ADC_value) refers to adc.o(i.percentage_get) for percentage_get
+    adc.o(i.read_ADC_value) refers to keyscan.o(i.return_powers) for return_powers
     adc.o(i.read_ADC_value) refers to low_power.o(i.ShutDown) for ShutDown
     adc.o(i.read_ADC_value) refers to oled.o(i.Charging_Dis) for Charging_Dis
     adc.o(i.read_ADC_value) refers to oled.o(i.TurnOff_ShutDonw_Battery_dis) for TurnOff_ShutDonw_Battery_dis
@@ -1394,6 +1395,7 @@ Section Cross References
     specialty_mode.o(i.splty_mode_time_count) refers to specialty_mode.o(.data) for .data
     video.o(i.Video_Get_downcount_times) refers to orbital.o(.bss) for glob_para
     video.o(i.Video_Get_downcount_times) refers to video.o(.data) for .data
+    video.o(i.Video_check_the_motor_status) refers to oled.o(i.LCD_Fill) for LCD_Fill
     video.o(i.Video_check_the_motor_status) refers to video.o(i.Video_motor_status_display) for Video_motor_status_display
     video.o(i.Video_check_the_motor_status) refers to orbital.o(i.inverse_get_value) for inverse_get_value
     video.o(i.Video_check_the_motor_status) refers to config.o(.data) for page_id
@@ -2452,192 +2454,192 @@ Image Symbol Table
     i.Time_DCount                            0x08005274   Section        0  orbital.o(i.Time_DCount)
     i.Time_DownCount                         0x08005288   Section        0  orbital.o(i.Time_DownCount)
     i.Time_Out_And_Enter_Stop_Mode           0x080053a0   Section        0  low_power.o(i.Time_Out_And_Enter_Stop_Mode)
-    i.TurnOff_ShutDonw_Battery_dis           0x080053e0   Section        0  oled.o(i.TurnOff_ShutDonw_Battery_dis)
-    i.USART1_IRQHandler                      0x08005508   Section        0  stm32f0xx_it.o(i.USART1_IRQHandler)
-    i.USART2_IRQHandler                      0x08005524   Section        0  stm32f0xx_it.o(i.USART2_IRQHandler)
-    i.UpOrDown_adjust_para                   0x08005554   Section        0  orbital.o(i.UpOrDown_adjust_para)
-    i.Usart22_Dma_SendIRQ_Dispose            0x0800562c   Section        0  uart.o(i.Usart22_Dma_SendIRQ_Dispose)
-    i.Usart22_ReadByte                       0x08005630   Section        0  uart.o(i.Usart22_ReadByte)
-    i.Usart22_Receiver                       0x08005658   Section        0  uart.o(i.Usart22_Receiver)
-    i.Usart22_init                           0x08005674   Section        0  uart.o(i.Usart22_init)
-    Usart22_init                             0x08005675   Thumb Code   136  uart.o(i.Usart22_init)
-    i.Video_Get_downcount_times              0x08005708   Section        0  video.o(i.Video_Get_downcount_times)
-    i.Video_check_the_motor_status           0x08005724   Section        0  video.o(i.Video_check_the_motor_status)
-    i.Video_downcount_times_display          0x08005818   Section        0  video.o(i.Video_downcount_times_display)
-    i.Video_mode_cursor_shift                0x08005928   Section        0  orbital.o(i.Video_mode_cursor_shift)
-    i.Video_motor_status_display             0x0800598c   Section        0  video.o(i.Video_motor_status_display)
-    i.Video_motor_status_return              0x080059d8   Section        0  video.o(i.Video_motor_status_return)
-    i.Video_times_downcount                  0x080059e4   Section        0  video.o(i.Video_times_downcount)
-    i.__0sprintf                             0x08005a40   Section        0  printfa.o(i.__0sprintf)
-    i.__ARM_clz                              0x08005a68   Section        0  depilogue.o(i.__ARM_clz)
-    i.__ARM_common_switch8                   0x08005a96   Section        0  orbital.o(i.__ARM_common_switch8)
-    i.__scatterload_copy                     0x08005ab0   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08005abe   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08005ac0   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._fp_digits                             0x08005ad0   Section        0  printfa.o(i._fp_digits)
-    _fp_digits                               0x08005ad1   Thumb Code   344  printfa.o(i._fp_digits)
-    i._printf_core                           0x08005c44   Section        0  printfa.o(i._printf_core)
-    _printf_core                             0x08005c45   Thumb Code  1754  printfa.o(i._printf_core)
-    i._printf_post_padding                   0x08006330   Section        0  printfa.o(i._printf_post_padding)
-    _printf_post_padding                     0x08006331   Thumb Code    32  printfa.o(i._printf_post_padding)
-    i._printf_pre_padding                    0x08006350   Section        0  printfa.o(i._printf_pre_padding)
-    _printf_pre_padding                      0x08006351   Thumb Code    44  printfa.o(i._printf_pre_padding)
-    i._sputc                                 0x0800637c   Section        0  printfa.o(i._sputc)
-    _sputc                                   0x0800637d   Thumb Code    10  printfa.o(i._sputc)
-    i.ab_set_move                            0x08006388   Section        0  ab_set.o(i.ab_set_move)
-    i.ab_set_press_ok                        0x0800647c   Section        0  ab_set.o(i.ab_set_press_ok)
-    i.active_time_out_countdown              0x080064d0   Section        0  low_power.o(i.active_time_out_countdown)
-    i.adc_cout                               0x080064e4   Section        0  adc.o(i.adc_cout)
-    i.angle_cear                             0x080064f8   Section        0  orbital.o(i.angle_cear)
-    i.angle_display                          0x08006508   Section        0  orbital.o(i.angle_display)
-    i.battery_data_display                   0x0800657c   Section        0  oled.o(i.battery_data_display)
-    i.battery_display                        0x080066cc   Section        0  oled.o(i.battery_display)
-    i.battery_frame_display                  0x08006728   Section        0  oled.o(i.battery_frame_display)
-    i.battery_init                           0x08006794   Section        0  oled.o(i.battery_init)
-    i.bootloader_action_if                   0x080067e4   Section        0  bootloader.o(i.bootloader_action_if)
-    i.bornd_code_dis                         0x08006888   Section        0  oled.o(i.bornd_code_dis)
-    i.cear_the_id_add                        0x08006a74   Section        0  specialty_mode.o(i.cear_the_id_add)
-    i.changeIO_Init                          0x08006a80   Section        0  gpio.o(i.changeIO_Init)
-    i.change_page                            0x08006a94   Section        0  orbital.o(i.change_page)
-    i.check_abpoint_Set_if                   0x08006ab8   Section        0  ab_set.o(i.check_abpoint_Set_if)
-    i.check_connection                       0x08006ae4   Section        0  orbital.o(i.check_connection)
-    i.check_enter_boot_if                    0x08006b2c   Section        0  bootloader.o(i.check_enter_boot_if)
-    i.check_sum_add                          0x08006b84   Section        0  orbital.o(i.check_sum_add)
-    i.check_the_powers_status                0x08006ba0   Section        0  keyscan.o(i.check_the_powers_status)
-    i.checksum_verify                        0x08006bc8   Section        0  rf24l01.o(i.checksum_verify)
-    i.chinese_page_dis                       0x08006bf0   Section        0  oled.o(i.chinese_page_dis)
-    i.config_page_ok                         0x0800738c   Section        0  config.o(i.config_page_ok)
-    i.controller_send_data_to_motor          0x080073f4   Section        0  orbital.o(i.controller_send_data_to_motor)
-    i.count_tag_set                          0x080075e4   Section        0  video.o(i.count_tag_set)
-    i.cursor_count                           0x080075f0   Section        0  config.o(i.cursor_count)
-    i.cursor_display                         0x0800763c   Section        0  config.o(i.cursor_display)
-    i.cursor_glint                           0x080076a0   Section        0  orbital.o(i.cursor_glint)
-    i.cursor_shift                           0x08007724   Section        0  orbital.o(i.cursor_shift)
-    i.data_count                             0x080077a0   Section        0  orbital.o(i.data_count)
-    i.delay_page_ok                          0x080077e0   Section        0  orbital.o(i.delay_page_ok)
-    i.delet_paraORmode                       0x080078b4   Section        0  specialty_mode.o(i.delet_paraORmode)
-    i.delete_jahao                           0x0800793c   Section        0  specialty_mode.o(i.delete_jahao)
-    i.disable_interrupt                      0x080079bc   Section        0  low_power.o(i.disable_interrupt)
-    i.drv_spi_read_write_byte                0x08007a4c   Section        0  rf24l01.o(i.drv_spi_read_write_byte)
-    i.durationORdelay_time_dis               0x08007a98   Section        0  orbital.o(i.durationORdelay_time_dis)
-    i.enable_interrupt                       0x08007ad4   Section        0  low_power.o(i.enable_interrupt)
-    i.english_page_dis                       0x08007af0   Section        0  oled.o(i.english_page_dis)
-    i.enter_bootloader                       0x080082b4   Section        0  bootloader.o(i.enter_bootloader)
-    i.erase_flash_OnePage                    0x080082d4   Section        0  flash.o(i.erase_flash_OnePage)
-    i.factory_set_display                    0x080082e8   Section        0  config.o(i.factory_set_display)
-    i.filtering                              0x0800832c   Section        0  adc.o(i.filtering)
-    i.get_data_form_A650                     0x080083d8   Section        0  orbital.o(i.get_data_form_A650)
-    i.get_init_from_A650                     0x0800842c   Section        0  orbital.o(i.get_init_from_A650)
-    i.hours_time_dis                         0x08008488   Section        0  orbital.o(i.hours_time_dis)
-    i.if_write_flash                         0x0800853c   Section        0  flash.o(i.if_write_flash)
-    i.input_opendrain                        0x08008548   Section        0  gpio.o(i.input_opendrain)
-    i.integer_display                        0x08008568   Section        0  orbital.o(i.integer_display)
-    i.inverse_get_value                      0x080085dc   Section        0  orbital.o(i.inverse_get_value)
-    i.jiantou_display                        0x080085e8   Section        0  specialty_mode.o(i.jiantou_display)
-    i.key_Handle                             0x08008664   Section        0  keyscan.o(i.key_Handle)
-    i.keyscan                                0x080086f0   Section        0  keyscan.o(i.keyscan)
-    i.keyscan_pin_init                       0x080088a8   Section        0  gpio.o(i.keyscan_pin_init)
-    i.language_display                       0x080088dc   Section        0  config.o(i.language_display)
-    i.main                                   0x080088e0   Section        0  main.o(i.main)
-    i.main_page_ok                           0x08008a04   Section        0  config.o(i.main_page_ok)
-    i.manulORauto_dis                        0x08008a98   Section        0  orbital.o(i.manulORauto_dis)
-    i.minutes_time_dis                       0x08008b08   Section        0  orbital.o(i.minutes_time_dis)
-    i.mode_and_para_sendt                    0x08008bbc   Section        0  specialty_mode.o(i.mode_and_para_sendt)
-    i.motor_battery_dis                      0x08008c2c   Section        0  oled.o(i.motor_battery_dis)
-    i.motor_init                             0x08008c38   Section        0  orbital.o(i.motor_init)
-    i.move_to_disp                           0x08008c68   Section        0  orbital.o(i.move_to_disp)
-    i.oled_gpio_init                         0x08008cb0   Section        0  gpio.o(i.oled_gpio_init)
-    i.oled_print_page                        0x08008cd8   Section        0  oled.o(i.oled_print_page)
-    i.oled_print_screen                      0x08008ce0   Section        0  oled.o(i.oled_print_screen)
-    i.page_display                           0x08008d1c   Section        0  oled.o(i.page_display)
-    i.page_return                            0x08008d3c   Section        0  keyscan.o(i.page_return)
-    i.page_return_adjust                     0x08008d58   Section        0  config.o(i.page_return_adjust)
-    i.paraORmode_shift                       0x08008dcc   Section        0  specialty_mode.o(i.paraORmode_shift)
-    i.para_init                              0x08008ea8   Section        0  config.o(i.para_init)
-    i.para_read_from_flash                   0x08008ef0   Section        0  flash.o(i.para_read_from_flash)
-    i.param_adjust                           0x08008f4c   Section        0  orbital.o(i.param_adjust)
-    i.param_display                          0x0800923c   Section        0  orbital.o(i.param_display)
-    i.parameter_init                         0x0800945c   Section        0  orbital.o(i.parameter_init)
-    i.pecialty_pix_amt_display               0x080094cc   Section        0  specialty_mode.o(i.pecialty_pix_amt_display)
-    i.percentage_get                         0x08009558   Section        0  adc.o(i.percentage_get)
-    i.pix_amt_compara_dis                    0x080095bc   Section        0  orbital.o(i.pix_amt_compara_dis)
-    i.pix_amt_display                        0x08009654   Section        0  orbital.o(i.pix_amt_display)
-    i.press_OK_function                      0x080096cc   Section        0  keyscan.o(i.press_OK_function)
-    i.press_key_continue                     0x080097e4   Section        0  keyscan.o(i.press_key_continue)
-    i.press_key_continue_if                  0x08009854   Section        0  orbital.o(i.press_key_continue_if)
-    i.pwrKey_exti_interrupt                  0x080098ac   Section        0  gpio.o(i.pwrKey_exti_interrupt)
-    i.pwr_key_enter_moveInterfer             0x080098f4   Section        0  specialty_mode.o(i.pwr_key_enter_moveInterfer)
-    i.read_ADC_value                         0x0800991c   Section        0  adc.o(i.read_ADC_value)
-    i.read_flash_holfword                    0x08009a44   Section        0  flash.o(i.read_flash_holfword)
-    i.receiver_data_from_A650                0x08009a78   Section        0  orbital.o(i.receiver_data_from_A650)
-    i.remotoe_cursor_dispose                 0x0800a000   Section        0  orbital.o(i.remotoe_cursor_dispose)
-    i.return_mode_back                       0x0800a004   Section        0  ab_set.o(i.return_mode_back)
-    i.return_powers                          0x0800a010   Section        0  keyscan.o(i.return_powers)
-    i.scan_cycle_count                       0x0800a01c   Section        0  keyscan.o(i.scan_cycle_count)
-    i.secondes_time_dis                      0x0800a078   Section        0  orbital.o(i.secondes_time_dis)
-    i.send_interval_count                    0x0800a15c   Section        0  uart.o(i.send_interval_count)
-    i.set_active_time_out                    0x0800a17c   Section        0  low_power.o(i.set_active_time_out)
-    i.set_addend_data                        0x0800a198   Section        0  orbital.o(i.set_addend_data)
-    i.set_mode_back                          0x0800a19c   Section        0  ab_set.o(i.set_mode_back)
-    i.set_power_on_int                       0x0800a1a8   Section        0  keyscan.o(i.set_power_on_int)
-    i.set_press_time                         0x0800a1b4   Section        0  keyscan.o(i.set_press_time)
-    i.set_rtc_wackup                         0x0800a1c4   Section        0  low_power.o(i.set_rtc_wackup)
-    i.shotting_Get_data_from_controller      0x0800a1d0   Section        0  specialty_mode.o(i.shotting_Get_data_from_controller)
-    i.shutKey_start                          0x0800a238   Section        0  orbital.o(i.shutKey_start)
-    i.single_cursor_dis                      0x0800a248   Section        0  orbital.o(i.single_cursor_dis)
-    i.sleep_time_dis                         0x0800a27c   Section        0  orbital.o(i.sleep_time_dis)
-    i.slow_start_stop_dis                    0x0800a2cc   Section        0  orbital.o(i.slow_start_stop_dis)
-    i.specialty_cursor_id_dis                0x0800a340   Section        0  specialty_mode.o(i.specialty_cursor_id_dis)
-    i.specialty_cursor_id_mode_dis           0x0800a504   Section        0  specialty_mode.o(i.specialty_cursor_id_mode_dis)
-    i.specialty_cursor_id_para_dis           0x0800a5a0   Section        0  specialty_mode.o(i.specialty_cursor_id_para_dis)
-    i.specialty_cursor_id_shift              0x0800a640   Section        0  specialty_mode.o(i.specialty_cursor_id_shift)
-    i.specialty_jiaHao_display               0x0800a690   Section        0  specialty_mode.o(i.specialty_jiaHao_display)
-    i.specialty_jiaHao_scan                  0x0800a7a0   Section        0  specialty_mode.o(i.specialty_jiaHao_scan)
-    i.specialty_mode_OKkey                   0x0800a80c   Section        0  specialty_mode.o(i.specialty_mode_OKkey)
-    i.specialty_mode_para_clear              0x0800aa38   Section        0  specialty_mode.o(i.specialty_mode_para_clear)
-    i.specialty_move_dis                     0x0800aa60   Section        0  specialty_mode.o(i.specialty_move_dis)
-    i.specialty_page_mode_dis                0x0800aae0   Section        0  specialty_mode.o(i.specialty_page_mode_dis)
-    i.specialty_page_para_dis                0x0800ab38   Section        0  specialty_mode.o(i.specialty_page_para_dis)
-    i.specialty_para_clear                   0x0800ac84   Section        0  specialty_mode.o(i.specialty_para_clear)
-    i.specialty_para_sendTo_motor            0x0800ac90   Section        0  specialty_mode.o(i.specialty_para_sendTo_motor)
-    i.specialty_totaol_time_dis              0x0800af3c   Section        0  specialty_mode.o(i.specialty_totaol_time_dis)
-    i.specielty_para_adjust                  0x0800af84   Section        0  specialty_mode.o(i.specielty_para_adjust)
-    i.specielty_para_dis                     0x0800b198   Section        0  specialty_mode.o(i.specielty_para_dis)
-    i.specilty_clear_han_display             0x0800b210   Section        0  specialty_mode.o(i.specilty_clear_han_display)
-    i.specilty_get_reshot_form_motor         0x0800b25c   Section        0  specialty_mode.o(i.specilty_get_reshot_form_motor)
-    i.specilty_keyscan_send                  0x0800b270   Section        0  specialty_mode.o(i.specilty_keyscan_send)
-    i.specilty_page_return                   0x0800b2e8   Section        0  specialty_mode.o(i.specilty_page_return)
-    i.splty_mode_time_count                  0x0800b364   Section        0  specialty_mode.o(i.splty_mode_time_count)
-    i.status_display                         0x0800b378   Section        0  orbital.o(i.status_display)
-    i.string_lengt                           0x0800b4bc   Section        0  bootloader.o(i.string_lengt)
-    i.time_count                             0x0800b4d0   Section        0  orbital.o(i.time_count)
-    i.time_delay_ms                          0x0800b4f8   Section        0  orbital.o(i.time_delay_ms)
-    i.usart1_receiver                        0x0800b510   Section        0  uart.o(i.usart1_receiver)
-    i.usart22_Recdata_Handling               0x0800b558   Section        0  uart.o(i.usart22_Recdata_Handling)
-    i.usart22_read_byte                      0x0800b588   Section        0  uart.o(i.usart22_read_byte)
-    i.version_dis                            0x0800b594   Section        0  oled.o(i.version_dis)
-    i.video_page_OK                          0x0800b5b4   Section        0  orbital.o(i.video_page_OK)
-    i.wait_for_init                          0x0800b658   Section        0  orbital.o(i.wait_for_init)
-    i.wifi24G_data_Dispose                   0x0800b6a0   Section        0  rf24l01.o(i.wifi24G_data_Dispose)
-    i.wifi24G_read_data                      0x0800b6ac   Section        0  rf24l01.o(i.wifi24G_read_data)
-    i.wifi24G_send_data                      0x0800b6f4   Section        0  rf24l01.o(i.wifi24G_send_data)
-    i.wifi_init                              0x0800b7d0   Section        0  gpio.o(i.wifi_init)
-    i.wifi_sleep                             0x0800b7e8   Section        0  rf24l01.o(i.wifi_sleep)
-    i.write_bootTag                          0x0800b810   Section        0  flash.o(i.write_bootTag)
-    i.write_flash_active                     0x0800b840   Section        0  flash.o(i.write_flash_active)
-    i.write_flash_holfword                   0x0800b868   Section        0  flash.o(i.write_flash_holfword)
-    i.write_flash_holfword_buffer            0x0800b878   Section        0  flash.o(i.write_flash_holfword_buffer)
-    .constdata                               0x0800b8cc   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x0800b8dc   Section        8  system_stm32f0xx.o(.constdata)
-    .constdata                               0x0800b8e4   Section       14  main.o(.constdata)
-    OFFSET_TAB_CCMRx                         0x0800b8e4   Data           7  main.o(.constdata)
-    SHIFT_TAB_OCxx                           0x0800b8eb   Data           7  main.o(.constdata)
-    .constdata                               0x0800b8f2   Section        5  uart.o(.constdata)
-    CHANNEL_OFFSET_TAB                       0x0800b8f2   Data           5  uart.o(.constdata)
-    .constdata                               0x0800b8f8   Section     6042  oled.o(.constdata)
-    .constdata                               0x0800d092   Section        5  adc.o(.constdata)
-    CHANNEL_OFFSET_TAB                       0x0800d092   Data           5  adc.o(.constdata)
-    .conststring                             0x0800d098   Section      603  oled.o(.conststring)
+    i.TurnOff_ShutDonw_Battery_dis           0x080053dc   Section        0  oled.o(i.TurnOff_ShutDonw_Battery_dis)
+    i.USART1_IRQHandler                      0x08005504   Section        0  stm32f0xx_it.o(i.USART1_IRQHandler)
+    i.USART2_IRQHandler                      0x08005520   Section        0  stm32f0xx_it.o(i.USART2_IRQHandler)
+    i.UpOrDown_adjust_para                   0x08005550   Section        0  orbital.o(i.UpOrDown_adjust_para)
+    i.Usart22_Dma_SendIRQ_Dispose            0x08005628   Section        0  uart.o(i.Usart22_Dma_SendIRQ_Dispose)
+    i.Usart22_ReadByte                       0x0800562c   Section        0  uart.o(i.Usart22_ReadByte)
+    i.Usart22_Receiver                       0x08005654   Section        0  uart.o(i.Usart22_Receiver)
+    i.Usart22_init                           0x08005670   Section        0  uart.o(i.Usart22_init)
+    Usart22_init                             0x08005671   Thumb Code   136  uart.o(i.Usart22_init)
+    i.Video_Get_downcount_times              0x08005704   Section        0  video.o(i.Video_Get_downcount_times)
+    i.Video_check_the_motor_status           0x08005720   Section        0  video.o(i.Video_check_the_motor_status)
+    i.Video_downcount_times_display          0x0800589c   Section        0  video.o(i.Video_downcount_times_display)
+    i.Video_mode_cursor_shift                0x080059ac   Section        0  orbital.o(i.Video_mode_cursor_shift)
+    i.Video_motor_status_display             0x08005a10   Section        0  video.o(i.Video_motor_status_display)
+    i.Video_motor_status_return              0x08005a5c   Section        0  video.o(i.Video_motor_status_return)
+    i.Video_times_downcount                  0x08005a68   Section        0  video.o(i.Video_times_downcount)
+    i.__0sprintf                             0x08005ac4   Section        0  printfa.o(i.__0sprintf)
+    i.__ARM_clz                              0x08005aec   Section        0  depilogue.o(i.__ARM_clz)
+    i.__ARM_common_switch8                   0x08005b1a   Section        0  orbital.o(i.__ARM_common_switch8)
+    i.__scatterload_copy                     0x08005b34   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08005b42   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08005b44   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._fp_digits                             0x08005b54   Section        0  printfa.o(i._fp_digits)
+    _fp_digits                               0x08005b55   Thumb Code   344  printfa.o(i._fp_digits)
+    i._printf_core                           0x08005cc8   Section        0  printfa.o(i._printf_core)
+    _printf_core                             0x08005cc9   Thumb Code  1754  printfa.o(i._printf_core)
+    i._printf_post_padding                   0x080063b4   Section        0  printfa.o(i._printf_post_padding)
+    _printf_post_padding                     0x080063b5   Thumb Code    32  printfa.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x080063d4   Section        0  printfa.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x080063d5   Thumb Code    44  printfa.o(i._printf_pre_padding)
+    i._sputc                                 0x08006400   Section        0  printfa.o(i._sputc)
+    _sputc                                   0x08006401   Thumb Code    10  printfa.o(i._sputc)
+    i.ab_set_move                            0x0800640c   Section        0  ab_set.o(i.ab_set_move)
+    i.ab_set_press_ok                        0x08006500   Section        0  ab_set.o(i.ab_set_press_ok)
+    i.active_time_out_countdown              0x08006554   Section        0  low_power.o(i.active_time_out_countdown)
+    i.adc_cout                               0x08006568   Section        0  adc.o(i.adc_cout)
+    i.angle_cear                             0x0800657c   Section        0  orbital.o(i.angle_cear)
+    i.angle_display                          0x0800658c   Section        0  orbital.o(i.angle_display)
+    i.battery_data_display                   0x08006600   Section        0  oled.o(i.battery_data_display)
+    i.battery_display                        0x08006750   Section        0  oled.o(i.battery_display)
+    i.battery_frame_display                  0x080067ac   Section        0  oled.o(i.battery_frame_display)
+    i.battery_init                           0x08006818   Section        0  oled.o(i.battery_init)
+    i.bootloader_action_if                   0x08006868   Section        0  bootloader.o(i.bootloader_action_if)
+    i.bornd_code_dis                         0x0800690c   Section        0  oled.o(i.bornd_code_dis)
+    i.cear_the_id_add                        0x08006af8   Section        0  specialty_mode.o(i.cear_the_id_add)
+    i.changeIO_Init                          0x08006b04   Section        0  gpio.o(i.changeIO_Init)
+    i.change_page                            0x08006b18   Section        0  orbital.o(i.change_page)
+    i.check_abpoint_Set_if                   0x08006b3c   Section        0  ab_set.o(i.check_abpoint_Set_if)
+    i.check_connection                       0x08006b68   Section        0  orbital.o(i.check_connection)
+    i.check_enter_boot_if                    0x08006bb0   Section        0  bootloader.o(i.check_enter_boot_if)
+    i.check_sum_add                          0x08006c08   Section        0  orbital.o(i.check_sum_add)
+    i.check_the_powers_status                0x08006c24   Section        0  keyscan.o(i.check_the_powers_status)
+    i.checksum_verify                        0x08006c4c   Section        0  rf24l01.o(i.checksum_verify)
+    i.chinese_page_dis                       0x08006c74   Section        0  oled.o(i.chinese_page_dis)
+    i.config_page_ok                         0x08007410   Section        0  config.o(i.config_page_ok)
+    i.controller_send_data_to_motor          0x08007478   Section        0  orbital.o(i.controller_send_data_to_motor)
+    i.count_tag_set                          0x08007668   Section        0  video.o(i.count_tag_set)
+    i.cursor_count                           0x08007674   Section        0  config.o(i.cursor_count)
+    i.cursor_display                         0x080076c0   Section        0  config.o(i.cursor_display)
+    i.cursor_glint                           0x08007724   Section        0  orbital.o(i.cursor_glint)
+    i.cursor_shift                           0x080077a8   Section        0  orbital.o(i.cursor_shift)
+    i.data_count                             0x08007824   Section        0  orbital.o(i.data_count)
+    i.delay_page_ok                          0x08007864   Section        0  orbital.o(i.delay_page_ok)
+    i.delet_paraORmode                       0x08007938   Section        0  specialty_mode.o(i.delet_paraORmode)
+    i.delete_jahao                           0x080079c0   Section        0  specialty_mode.o(i.delete_jahao)
+    i.disable_interrupt                      0x08007a40   Section        0  low_power.o(i.disable_interrupt)
+    i.drv_spi_read_write_byte                0x08007ad0   Section        0  rf24l01.o(i.drv_spi_read_write_byte)
+    i.durationORdelay_time_dis               0x08007b1c   Section        0  orbital.o(i.durationORdelay_time_dis)
+    i.enable_interrupt                       0x08007b58   Section        0  low_power.o(i.enable_interrupt)
+    i.english_page_dis                       0x08007b74   Section        0  oled.o(i.english_page_dis)
+    i.enter_bootloader                       0x0800833c   Section        0  bootloader.o(i.enter_bootloader)
+    i.erase_flash_OnePage                    0x0800835c   Section        0  flash.o(i.erase_flash_OnePage)
+    i.factory_set_display                    0x08008370   Section        0  config.o(i.factory_set_display)
+    i.filtering                              0x080083b4   Section        0  adc.o(i.filtering)
+    i.get_data_form_A650                     0x08008460   Section        0  orbital.o(i.get_data_form_A650)
+    i.get_init_from_A650                     0x080084b4   Section        0  orbital.o(i.get_init_from_A650)
+    i.hours_time_dis                         0x08008510   Section        0  orbital.o(i.hours_time_dis)
+    i.if_write_flash                         0x080085c4   Section        0  flash.o(i.if_write_flash)
+    i.input_opendrain                        0x080085d0   Section        0  gpio.o(i.input_opendrain)
+    i.integer_display                        0x080085f0   Section        0  orbital.o(i.integer_display)
+    i.inverse_get_value                      0x08008664   Section        0  orbital.o(i.inverse_get_value)
+    i.jiantou_display                        0x08008670   Section        0  specialty_mode.o(i.jiantou_display)
+    i.key_Handle                             0x080086ec   Section        0  keyscan.o(i.key_Handle)
+    i.keyscan                                0x08008778   Section        0  keyscan.o(i.keyscan)
+    i.keyscan_pin_init                       0x08008930   Section        0  gpio.o(i.keyscan_pin_init)
+    i.language_display                       0x08008964   Section        0  config.o(i.language_display)
+    i.main                                   0x08008968   Section        0  main.o(i.main)
+    i.main_page_ok                           0x08008a8c   Section        0  config.o(i.main_page_ok)
+    i.manulORauto_dis                        0x08008b20   Section        0  orbital.o(i.manulORauto_dis)
+    i.minutes_time_dis                       0x08008b90   Section        0  orbital.o(i.minutes_time_dis)
+    i.mode_and_para_sendt                    0x08008c44   Section        0  specialty_mode.o(i.mode_and_para_sendt)
+    i.motor_battery_dis                      0x08008cb4   Section        0  oled.o(i.motor_battery_dis)
+    i.motor_init                             0x08008cc0   Section        0  orbital.o(i.motor_init)
+    i.move_to_disp                           0x08008cf0   Section        0  orbital.o(i.move_to_disp)
+    i.oled_gpio_init                         0x08008d38   Section        0  gpio.o(i.oled_gpio_init)
+    i.oled_print_page                        0x08008d60   Section        0  oled.o(i.oled_print_page)
+    i.oled_print_screen                      0x08008d68   Section        0  oled.o(i.oled_print_screen)
+    i.page_display                           0x08008da4   Section        0  oled.o(i.page_display)
+    i.page_return                            0x08008dc4   Section        0  keyscan.o(i.page_return)
+    i.page_return_adjust                     0x08008de0   Section        0  config.o(i.page_return_adjust)
+    i.paraORmode_shift                       0x08008e54   Section        0  specialty_mode.o(i.paraORmode_shift)
+    i.para_init                              0x08008f30   Section        0  config.o(i.para_init)
+    i.para_read_from_flash                   0x08008f78   Section        0  flash.o(i.para_read_from_flash)
+    i.param_adjust                           0x08008fd4   Section        0  orbital.o(i.param_adjust)
+    i.param_display                          0x080092c4   Section        0  orbital.o(i.param_display)
+    i.parameter_init                         0x080094dc   Section        0  orbital.o(i.parameter_init)
+    i.pecialty_pix_amt_display               0x0800954c   Section        0  specialty_mode.o(i.pecialty_pix_amt_display)
+    i.percentage_get                         0x080095d8   Section        0  adc.o(i.percentage_get)
+    i.pix_amt_compara_dis                    0x0800963c   Section        0  orbital.o(i.pix_amt_compara_dis)
+    i.pix_amt_display                        0x080096d4   Section        0  orbital.o(i.pix_amt_display)
+    i.press_OK_function                      0x0800974c   Section        0  keyscan.o(i.press_OK_function)
+    i.press_key_continue                     0x08009864   Section        0  keyscan.o(i.press_key_continue)
+    i.press_key_continue_if                  0x080098d4   Section        0  orbital.o(i.press_key_continue_if)
+    i.pwrKey_exti_interrupt                  0x0800992c   Section        0  gpio.o(i.pwrKey_exti_interrupt)
+    i.pwr_key_enter_moveInterfer             0x08009974   Section        0  specialty_mode.o(i.pwr_key_enter_moveInterfer)
+    i.read_ADC_value                         0x0800999c   Section        0  adc.o(i.read_ADC_value)
+    i.read_flash_holfword                    0x08009acc   Section        0  flash.o(i.read_flash_holfword)
+    i.receiver_data_from_A650                0x08009b00   Section        0  orbital.o(i.receiver_data_from_A650)
+    i.remotoe_cursor_dispose                 0x0800a07c   Section        0  orbital.o(i.remotoe_cursor_dispose)
+    i.return_mode_back                       0x0800a080   Section        0  ab_set.o(i.return_mode_back)
+    i.return_powers                          0x0800a08c   Section        0  keyscan.o(i.return_powers)
+    i.scan_cycle_count                       0x0800a098   Section        0  keyscan.o(i.scan_cycle_count)
+    i.secondes_time_dis                      0x0800a0f4   Section        0  orbital.o(i.secondes_time_dis)
+    i.send_interval_count                    0x0800a1d8   Section        0  uart.o(i.send_interval_count)
+    i.set_active_time_out                    0x0800a1f8   Section        0  low_power.o(i.set_active_time_out)
+    i.set_addend_data                        0x0800a214   Section        0  orbital.o(i.set_addend_data)
+    i.set_mode_back                          0x0800a218   Section        0  ab_set.o(i.set_mode_back)
+    i.set_power_on_int                       0x0800a224   Section        0  keyscan.o(i.set_power_on_int)
+    i.set_press_time                         0x0800a230   Section        0  keyscan.o(i.set_press_time)
+    i.set_rtc_wackup                         0x0800a240   Section        0  low_power.o(i.set_rtc_wackup)
+    i.shotting_Get_data_from_controller      0x0800a24c   Section        0  specialty_mode.o(i.shotting_Get_data_from_controller)
+    i.shutKey_start                          0x0800a2b4   Section        0  orbital.o(i.shutKey_start)
+    i.single_cursor_dis                      0x0800a2c4   Section        0  orbital.o(i.single_cursor_dis)
+    i.sleep_time_dis                         0x0800a2f8   Section        0  orbital.o(i.sleep_time_dis)
+    i.slow_start_stop_dis                    0x0800a348   Section        0  orbital.o(i.slow_start_stop_dis)
+    i.specialty_cursor_id_dis                0x0800a3bc   Section        0  specialty_mode.o(i.specialty_cursor_id_dis)
+    i.specialty_cursor_id_mode_dis           0x0800a580   Section        0  specialty_mode.o(i.specialty_cursor_id_mode_dis)
+    i.specialty_cursor_id_para_dis           0x0800a61c   Section        0  specialty_mode.o(i.specialty_cursor_id_para_dis)
+    i.specialty_cursor_id_shift              0x0800a6bc   Section        0  specialty_mode.o(i.specialty_cursor_id_shift)
+    i.specialty_jiaHao_display               0x0800a70c   Section        0  specialty_mode.o(i.specialty_jiaHao_display)
+    i.specialty_jiaHao_scan                  0x0800a81c   Section        0  specialty_mode.o(i.specialty_jiaHao_scan)
+    i.specialty_mode_OKkey                   0x0800a888   Section        0  specialty_mode.o(i.specialty_mode_OKkey)
+    i.specialty_mode_para_clear              0x0800aab4   Section        0  specialty_mode.o(i.specialty_mode_para_clear)
+    i.specialty_move_dis                     0x0800aadc   Section        0  specialty_mode.o(i.specialty_move_dis)
+    i.specialty_page_mode_dis                0x0800ab5c   Section        0  specialty_mode.o(i.specialty_page_mode_dis)
+    i.specialty_page_para_dis                0x0800abb4   Section        0  specialty_mode.o(i.specialty_page_para_dis)
+    i.specialty_para_clear                   0x0800ad00   Section        0  specialty_mode.o(i.specialty_para_clear)
+    i.specialty_para_sendTo_motor            0x0800ad0c   Section        0  specialty_mode.o(i.specialty_para_sendTo_motor)
+    i.specialty_totaol_time_dis              0x0800afb8   Section        0  specialty_mode.o(i.specialty_totaol_time_dis)
+    i.specielty_para_adjust                  0x0800b000   Section        0  specialty_mode.o(i.specielty_para_adjust)
+    i.specielty_para_dis                     0x0800b214   Section        0  specialty_mode.o(i.specielty_para_dis)
+    i.specilty_clear_han_display             0x0800b28c   Section        0  specialty_mode.o(i.specilty_clear_han_display)
+    i.specilty_get_reshot_form_motor         0x0800b2d8   Section        0  specialty_mode.o(i.specilty_get_reshot_form_motor)
+    i.specilty_keyscan_send                  0x0800b2ec   Section        0  specialty_mode.o(i.specilty_keyscan_send)
+    i.specilty_page_return                   0x0800b364   Section        0  specialty_mode.o(i.specilty_page_return)
+    i.splty_mode_time_count                  0x0800b3e0   Section        0  specialty_mode.o(i.splty_mode_time_count)
+    i.status_display                         0x0800b3f4   Section        0  orbital.o(i.status_display)
+    i.string_lengt                           0x0800b538   Section        0  bootloader.o(i.string_lengt)
+    i.time_count                             0x0800b54c   Section        0  orbital.o(i.time_count)
+    i.time_delay_ms                          0x0800b574   Section        0  orbital.o(i.time_delay_ms)
+    i.usart1_receiver                        0x0800b58c   Section        0  uart.o(i.usart1_receiver)
+    i.usart22_Recdata_Handling               0x0800b5d4   Section        0  uart.o(i.usart22_Recdata_Handling)
+    i.usart22_read_byte                      0x0800b604   Section        0  uart.o(i.usart22_read_byte)
+    i.version_dis                            0x0800b610   Section        0  oled.o(i.version_dis)
+    i.video_page_OK                          0x0800b630   Section        0  orbital.o(i.video_page_OK)
+    i.wait_for_init                          0x0800b6d4   Section        0  orbital.o(i.wait_for_init)
+    i.wifi24G_data_Dispose                   0x0800b71c   Section        0  rf24l01.o(i.wifi24G_data_Dispose)
+    i.wifi24G_read_data                      0x0800b728   Section        0  rf24l01.o(i.wifi24G_read_data)
+    i.wifi24G_send_data                      0x0800b770   Section        0  rf24l01.o(i.wifi24G_send_data)
+    i.wifi_init                              0x0800b84c   Section        0  gpio.o(i.wifi_init)
+    i.wifi_sleep                             0x0800b864   Section        0  rf24l01.o(i.wifi_sleep)
+    i.write_bootTag                          0x0800b88c   Section        0  flash.o(i.write_bootTag)
+    i.write_flash_active                     0x0800b8bc   Section        0  flash.o(i.write_flash_active)
+    i.write_flash_holfword                   0x0800b8e4   Section        0  flash.o(i.write_flash_holfword)
+    i.write_flash_holfword_buffer            0x0800b8f4   Section        0  flash.o(i.write_flash_holfword_buffer)
+    .constdata                               0x0800b948   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x0800b958   Section        8  system_stm32f0xx.o(.constdata)
+    .constdata                               0x0800b960   Section       14  main.o(.constdata)
+    OFFSET_TAB_CCMRx                         0x0800b960   Data           7  main.o(.constdata)
+    SHIFT_TAB_OCxx                           0x0800b967   Data           7  main.o(.constdata)
+    .constdata                               0x0800b96e   Section        5  uart.o(.constdata)
+    CHANNEL_OFFSET_TAB                       0x0800b96e   Data           5  uart.o(.constdata)
+    .constdata                               0x0800b974   Section     6070  oled.o(.constdata)
+    .constdata                               0x0800d12a   Section        5  adc.o(.constdata)
+    CHANNEL_OFFSET_TAB                       0x0800d12a   Data           5  adc.o(.constdata)
+    .conststring                             0x0800d130   Section      607  oled.o(.conststring)
     .data                                    0x200000c4   Section        4  uart.o(.data)
     temp                                     0x200000c6   Data           2  uart.o(.data)
     .data                                    0x200000c8   Section        1  flash.o(.data)
@@ -2930,183 +2932,183 @@ Image Symbol Table
     The_page_processing                      0x080051fd   Thumb Code   114  oled.o(i.The_page_processing)
     Time_DCount                              0x08005275   Thumb Code    14  orbital.o(i.Time_DCount)
     Time_DownCount                           0x08005289   Thumb Code   240  orbital.o(i.Time_DownCount)
-    Time_Out_And_Enter_Stop_Mode             0x080053a1   Thumb Code    54  low_power.o(i.Time_Out_And_Enter_Stop_Mode)
-    TurnOff_ShutDonw_Battery_dis             0x080053e1   Thumb Code   266  oled.o(i.TurnOff_ShutDonw_Battery_dis)
-    USART1_IRQHandler                        0x08005509   Thumb Code    22  stm32f0xx_it.o(i.USART1_IRQHandler)
-    USART2_IRQHandler                        0x08005525   Thumb Code    42  stm32f0xx_it.o(i.USART2_IRQHandler)
-    UpOrDown_adjust_para                     0x08005555   Thumb Code   200  orbital.o(i.UpOrDown_adjust_para)
-    Usart22_Dma_SendIRQ_Dispose              0x0800562d   Thumb Code     2  uart.o(i.Usart22_Dma_SendIRQ_Dispose)
-    Usart22_ReadByte                         0x08005631   Thumb Code    26  uart.o(i.Usart22_ReadByte)
-    Usart22_Receiver                         0x08005659   Thumb Code    18  uart.o(i.Usart22_Receiver)
-    Video_Get_downcount_times                0x08005709   Thumb Code    18  video.o(i.Video_Get_downcount_times)
-    Video_check_the_motor_status             0x08005725   Thumb Code   134  video.o(i.Video_check_the_motor_status)
-    Video_downcount_times_display            0x08005819   Thumb Code   228  video.o(i.Video_downcount_times_display)
-    Video_mode_cursor_shift                  0x08005929   Thumb Code    84  orbital.o(i.Video_mode_cursor_shift)
-    Video_motor_status_display               0x0800598d   Thumb Code    68  video.o(i.Video_motor_status_display)
-    Video_motor_status_return                0x080059d9   Thumb Code     6  video.o(i.Video_motor_status_return)
-    Video_times_downcount                    0x080059e5   Thumb Code    84  video.o(i.Video_times_downcount)
-    __0sprintf                               0x08005a41   Thumb Code    36  printfa.o(i.__0sprintf)
-    __1sprintf                               0x08005a41   Thumb Code     0  printfa.o(i.__0sprintf)
-    __2sprintf                               0x08005a41   Thumb Code     0  printfa.o(i.__0sprintf)
-    __c89sprintf                             0x08005a41   Thumb Code     0  printfa.o(i.__0sprintf)
-    sprintf                                  0x08005a41   Thumb Code     0  printfa.o(i.__0sprintf)
-    __ARM_clz                                0x08005a69   Thumb Code    46  depilogue.o(i.__ARM_clz)
-    __ARM_common_switch8                     0x08005a97   Thumb Code    26  orbital.o(i.__ARM_common_switch8)
-    __scatterload_copy                       0x08005ab1   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08005abf   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08005ac1   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    ab_set_move                              0x08006389   Thumb Code   222  ab_set.o(i.ab_set_move)
-    ab_set_press_ok                          0x0800647d   Thumb Code    76  ab_set.o(i.ab_set_press_ok)
-    active_time_out_countdown                0x080064d1   Thumb Code    14  low_power.o(i.active_time_out_countdown)
-    adc_cout                                 0x080064e5   Thumb Code    14  adc.o(i.adc_cout)
-    angle_cear                               0x080064f9   Thumb Code    10  orbital.o(i.angle_cear)
-    angle_display                            0x08006509   Thumb Code    82  orbital.o(i.angle_display)
-    battery_data_display                     0x0800657d   Thumb Code   292  oled.o(i.battery_data_display)
-    battery_display                          0x080066cd   Thumb Code    86  oled.o(i.battery_display)
-    battery_frame_display                    0x08006729   Thumb Code    98  oled.o(i.battery_frame_display)
-    battery_init                             0x08006795   Thumb Code    70  oled.o(i.battery_init)
-    bootloader_action_if                     0x080067e5   Thumb Code   134  bootloader.o(i.bootloader_action_if)
-    bornd_code_dis                           0x08006889   Thumb Code   168  oled.o(i.bornd_code_dis)
-    cear_the_id_add                          0x08006a75   Thumb Code     6  specialty_mode.o(i.cear_the_id_add)
-    changeIO_Init                            0x08006a81   Thumb Code    14  gpio.o(i.changeIO_Init)
-    change_page                              0x08006a95   Thumb Code    28  orbital.o(i.change_page)
-    check_abpoint_Set_if                     0x08006ab9   Thumb Code    38  ab_set.o(i.check_abpoint_Set_if)
-    check_connection                         0x08006ae5   Thumb Code    56  orbital.o(i.check_connection)
-    check_enter_boot_if                      0x08006b2d   Thumb Code    78  bootloader.o(i.check_enter_boot_if)
-    check_sum_add                            0x08006b85   Thumb Code    28  orbital.o(i.check_sum_add)
-    check_the_powers_status                  0x08006ba1   Thumb Code    30  keyscan.o(i.check_the_powers_status)
-    checksum_verify                          0x08006bc9   Thumb Code    38  rf24l01.o(i.checksum_verify)
-    chinese_page_dis                         0x08006bf1   Thumb Code  1804  oled.o(i.chinese_page_dis)
-    config_page_ok                           0x0800738d   Thumb Code    88  config.o(i.config_page_ok)
-    controller_send_data_to_motor            0x080073f5   Thumb Code   474  orbital.o(i.controller_send_data_to_motor)
-    count_tag_set                            0x080075e5   Thumb Code     6  video.o(i.count_tag_set)
-    cursor_count                             0x080075f1   Thumb Code    70  config.o(i.cursor_count)
-    cursor_display                           0x0800763d   Thumb Code    94  config.o(i.cursor_display)
-    cursor_glint                             0x080076a1   Thumb Code   114  orbital.o(i.cursor_glint)
-    cursor_shift                             0x08007725   Thumb Code   108  orbital.o(i.cursor_shift)
-    data_count                               0x080077a1   Thumb Code    56  orbital.o(i.data_count)
-    delay_page_ok                            0x080077e1   Thumb Code   200  orbital.o(i.delay_page_ok)
-    delet_paraORmode                         0x080078b5   Thumb Code   116  specialty_mode.o(i.delet_paraORmode)
-    delete_jahao                             0x0800793d   Thumb Code   104  specialty_mode.o(i.delete_jahao)
-    disable_interrupt                        0x080079bd   Thumb Code   124  low_power.o(i.disable_interrupt)
-    drv_spi_read_write_byte                  0x08007a4d   Thumb Code    74  rf24l01.o(i.drv_spi_read_write_byte)
-    durationORdelay_time_dis                 0x08007a99   Thumb Code    52  orbital.o(i.durationORdelay_time_dis)
-    enable_interrupt                         0x08007ad5   Thumb Code    18  low_power.o(i.enable_interrupt)
-    english_page_dis                         0x08007af1   Thumb Code  1770  oled.o(i.english_page_dis)
-    enter_bootloader                         0x080082b5   Thumb Code    24  bootloader.o(i.enter_bootloader)
-    erase_flash_OnePage                      0x080082d5   Thumb Code    18  flash.o(i.erase_flash_OnePage)
-    factory_set_display                      0x080082e9   Thumb Code    48  config.o(i.factory_set_display)
-    filtering                                0x0800832d   Thumb Code   142  adc.o(i.filtering)
-    get_data_form_A650                       0x080083d9   Thumb Code    78  orbital.o(i.get_data_form_A650)
-    get_init_from_A650                       0x0800842d   Thumb Code    82  orbital.o(i.get_init_from_A650)
-    hours_time_dis                           0x08008489   Thumb Code   148  orbital.o(i.hours_time_dis)
-    if_write_flash                           0x0800853d   Thumb Code     8  flash.o(i.if_write_flash)
-    input_opendrain                          0x08008549   Thumb Code    30  gpio.o(i.input_opendrain)
-    integer_display                          0x08008569   Thumb Code    90  orbital.o(i.integer_display)
-    inverse_get_value                        0x080085dd   Thumb Code     6  orbital.o(i.inverse_get_value)
-    jiantou_display                          0x080085e9   Thumb Code    98  specialty_mode.o(i.jiantou_display)
-    key_Handle                               0x08008665   Thumb Code   134  keyscan.o(i.key_Handle)
-    keyscan                                  0x080086f1   Thumb Code   432  keyscan.o(i.keyscan)
-    keyscan_pin_init                         0x080088a9   Thumb Code    48  gpio.o(i.keyscan_pin_init)
-    language_display                         0x080088dd   Thumb Code     2  config.o(i.language_display)
-    main                                     0x080088e1   Thumb Code   252  main.o(i.main)
-    main_page_ok                             0x08008a05   Thumb Code   144  config.o(i.main_page_ok)
-    manulORauto_dis                          0x08008a99   Thumb Code    78  orbital.o(i.manulORauto_dis)
-    minutes_time_dis                         0x08008b09   Thumb Code   148  orbital.o(i.minutes_time_dis)
-    mode_and_para_sendt                      0x08008bbd   Thumb Code    98  specialty_mode.o(i.mode_and_para_sendt)
-    motor_battery_dis                        0x08008c2d   Thumb Code    12  oled.o(i.motor_battery_dis)
-    motor_init                               0x08008c39   Thumb Code    36  orbital.o(i.motor_init)
-    move_to_disp                             0x08008c69   Thumb Code    46  orbital.o(i.move_to_disp)
-    oled_gpio_init                           0x08008cb1   Thumb Code    34  gpio.o(i.oled_gpio_init)
-    oled_print_page                          0x08008cd9   Thumb Code     8  oled.o(i.oled_print_page)
-    oled_print_screen                        0x08008ce1   Thumb Code    56  oled.o(i.oled_print_screen)
-    page_display                             0x08008d1d   Thumb Code    26  oled.o(i.page_display)
-    page_return                              0x08008d3d   Thumb Code    22  keyscan.o(i.page_return)
-    page_return_adjust                       0x08008d59   Thumb Code    98  config.o(i.page_return_adjust)
-    paraORmode_shift                         0x08008dcd   Thumb Code   198  specialty_mode.o(i.paraORmode_shift)
-    para_init                                0x08008ea9   Thumb Code    64  config.o(i.para_init)
-    para_read_from_flash                     0x08008ef1   Thumb Code    72  flash.o(i.para_read_from_flash)
-    param_adjust                             0x08008f4d   Thumb Code   718  orbital.o(i.param_adjust)
-    param_display                            0x0800923d   Thumb Code   470  orbital.o(i.param_display)
-    parameter_init                           0x0800945d   Thumb Code    96  orbital.o(i.parameter_init)
-    pecialty_pix_amt_display                 0x080094cd   Thumb Code   108  specialty_mode.o(i.pecialty_pix_amt_display)
-    percentage_get                           0x08009559   Thumb Code    70  adc.o(i.percentage_get)
-    pix_amt_compara_dis                      0x080095bd   Thumb Code    96  orbital.o(i.pix_amt_compara_dis)
-    pix_amt_display                          0x08009655   Thumb Code    82  orbital.o(i.pix_amt_display)
-    press_OK_function                        0x080096cd   Thumb Code   266  keyscan.o(i.press_OK_function)
-    press_key_continue                       0x080097e5   Thumb Code    84  keyscan.o(i.press_key_continue)
-    press_key_continue_if                    0x08009855   Thumb Code    72  orbital.o(i.press_key_continue_if)
-    pwrKey_exti_interrupt                    0x080098ad   Thumb Code    64  gpio.o(i.pwrKey_exti_interrupt)
-    pwr_key_enter_moveInterfer               0x080098f5   Thumb Code    30  specialty_mode.o(i.pwr_key_enter_moveInterfer)
-    read_ADC_value                           0x0800991d   Thumb Code   256  adc.o(i.read_ADC_value)
-    read_flash_holfword                      0x08009a45   Thumb Code    52  flash.o(i.read_flash_holfword)
-    receiver_data_from_A650                  0x08009a79   Thumb Code  1396  orbital.o(i.receiver_data_from_A650)
-    remotoe_cursor_dispose                   0x0800a001   Thumb Code     4  orbital.o(i.remotoe_cursor_dispose)
-    return_mode_back                         0x0800a005   Thumb Code     6  ab_set.o(i.return_mode_back)
-    return_powers                            0x0800a011   Thumb Code     6  keyscan.o(i.return_powers)
-    scan_cycle_count                         0x0800a01d   Thumb Code    78  keyscan.o(i.scan_cycle_count)
-    secondes_time_dis                        0x0800a079   Thumb Code   182  orbital.o(i.secondes_time_dis)
-    send_interval_count                      0x0800a15d   Thumb Code    28  uart.o(i.send_interval_count)
-    set_active_time_out                      0x0800a17d   Thumb Code    14  low_power.o(i.set_active_time_out)
-    set_addend_data                          0x0800a199   Thumb Code     2  orbital.o(i.set_addend_data)
-    set_mode_back                            0x0800a19d   Thumb Code     6  ab_set.o(i.set_mode_back)
-    set_power_on_int                         0x0800a1a9   Thumb Code     6  keyscan.o(i.set_power_on_int)
-    set_press_time                           0x0800a1b5   Thumb Code     8  keyscan.o(i.set_press_time)
-    set_rtc_wackup                           0x0800a1c5   Thumb Code     6  low_power.o(i.set_rtc_wackup)
-    shotting_Get_data_from_controller        0x0800a1d1   Thumb Code    86  specialty_mode.o(i.shotting_Get_data_from_controller)
-    shutKey_start                            0x0800a239   Thumb Code    14  orbital.o(i.shutKey_start)
-    single_cursor_dis                        0x0800a249   Thumb Code    44  orbital.o(i.single_cursor_dis)
-    sleep_time_dis                           0x0800a27d   Thumb Code    60  orbital.o(i.sleep_time_dis)
-    slow_start_stop_dis                      0x0800a2cd   Thumb Code    80  orbital.o(i.slow_start_stop_dis)
-    specialty_cursor_id_dis                  0x0800a341   Thumb Code   436  specialty_mode.o(i.specialty_cursor_id_dis)
-    specialty_cursor_id_mode_dis             0x0800a505   Thumb Code   126  specialty_mode.o(i.specialty_cursor_id_mode_dis)
-    specialty_cursor_id_para_dis             0x0800a5a1   Thumb Code   124  specialty_mode.o(i.specialty_cursor_id_para_dis)
-    specialty_cursor_id_shift                0x0800a641   Thumb Code    66  specialty_mode.o(i.specialty_cursor_id_shift)
-    specialty_jiaHao_display                 0x0800a691   Thumb Code   222  specialty_mode.o(i.specialty_jiaHao_display)
-    specialty_jiaHao_scan                    0x0800a7a1   Thumb Code    98  specialty_mode.o(i.specialty_jiaHao_scan)
-    specialty_mode_OKkey                     0x0800a80d   Thumb Code   504  specialty_mode.o(i.specialty_mode_OKkey)
-    specialty_mode_para_clear                0x0800aa39   Thumb Code    30  specialty_mode.o(i.specialty_mode_para_clear)
-    specialty_move_dis                       0x0800aa61   Thumb Code   106  specialty_mode.o(i.specialty_move_dis)
-    specialty_page_mode_dis                  0x0800aae1   Thumb Code    76  specialty_mode.o(i.specialty_page_mode_dis)
-    specialty_page_para_dis                  0x0800ab39   Thumb Code   320  specialty_mode.o(i.specialty_page_para_dis)
-    specialty_para_clear                     0x0800ac85   Thumb Code     8  specialty_mode.o(i.specialty_para_clear)
-    specialty_para_sendTo_motor              0x0800ac91   Thumb Code   662  specialty_mode.o(i.specialty_para_sendTo_motor)
-    specialty_totaol_time_dis                0x0800af3d   Thumb Code    58  specialty_mode.o(i.specialty_totaol_time_dis)
-    specielty_para_adjust                    0x0800af85   Thumb Code   516  specialty_mode.o(i.specielty_para_adjust)
-    specielty_para_dis                       0x0800b199   Thumb Code   108  specialty_mode.o(i.specielty_para_dis)
-    specilty_clear_han_display               0x0800b211   Thumb Code    42  specialty_mode.o(i.specilty_clear_han_display)
-    specilty_get_reshot_form_motor           0x0800b25d   Thumb Code    14  specialty_mode.o(i.specilty_get_reshot_form_motor)
-    specilty_keyscan_send                    0x0800b271   Thumb Code   108  specialty_mode.o(i.specilty_keyscan_send)
-    specilty_page_return                     0x0800b2e9   Thumb Code   110  specialty_mode.o(i.specilty_page_return)
-    splty_mode_time_count                    0x0800b365   Thumb Code    14  specialty_mode.o(i.splty_mode_time_count)
-    status_display                           0x0800b379   Thumb Code   204  orbital.o(i.status_display)
-    string_lengt                             0x0800b4bd   Thumb Code    20  bootloader.o(i.string_lengt)
-    time_count                               0x0800b4d1   Thumb Code    36  orbital.o(i.time_count)
-    time_delay_ms                            0x0800b4f9   Thumb Code    20  orbital.o(i.time_delay_ms)
-    usart1_receiver                          0x0800b511   Thumb Code    56  uart.o(i.usart1_receiver)
-    usart22_Recdata_Handling                 0x0800b559   Thumb Code    42  uart.o(i.usart22_Recdata_Handling)
-    usart22_read_byte                        0x0800b589   Thumb Code    12  uart.o(i.usart22_read_byte)
-    version_dis                              0x0800b595   Thumb Code    20  oled.o(i.version_dis)
-    video_page_OK                            0x0800b5b5   Thumb Code   148  orbital.o(i.video_page_OK)
-    wait_for_init                            0x0800b659   Thumb Code    60  orbital.o(i.wait_for_init)
-    wifi24G_data_Dispose                     0x0800b6a1   Thumb Code    12  rf24l01.o(i.wifi24G_data_Dispose)
-    wifi24G_read_data                        0x0800b6ad   Thumb Code    62  rf24l01.o(i.wifi24G_read_data)
-    wifi24G_send_data                        0x0800b6f5   Thumb Code   204  rf24l01.o(i.wifi24G_send_data)
-    wifi_init                                0x0800b7d1   Thumb Code    20  gpio.o(i.wifi_init)
-    wifi_sleep                               0x0800b7e9   Thumb Code    34  rf24l01.o(i.wifi_sleep)
-    write_bootTag                            0x0800b811   Thumb Code    42  flash.o(i.write_bootTag)
-    write_flash_active                       0x0800b841   Thumb Code    26  flash.o(i.write_flash_active)
-    write_flash_holfword                     0x0800b869   Thumb Code    14  flash.o(i.write_flash_holfword)
-    write_flash_holfword_buffer              0x0800b879   Thumb Code    78  flash.o(i.write_flash_holfword_buffer)
-    AHBPrescTable                            0x0800b8cc   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x0800b8dc   Data           8  system_stm32f0xx.o(.constdata)
-    zhi_f16x16                               0x0800b8f8   Data        4284  oled.o(.constdata)
-    LOGO720YUN                               0x0800c9b4   Data         320  oled.o(.constdata)
-    Biaoyu                                   0x0800caf4   Data         256  oled.o(.constdata)
-    battery                                  0x0800cbf4   Data          42  oled.o(.constdata)
-    F8X16                                    0x0800cc1e   Data        1140  oled.o(.constdata)
-    Region$$Table$$Base                      0x0800d2f4   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800d314   Number         0  anon$$obj.o(Region$$Table)
+    Time_Out_And_Enter_Stop_Mode             0x080053a1   Thumb Code    52  low_power.o(i.Time_Out_And_Enter_Stop_Mode)
+    TurnOff_ShutDonw_Battery_dis             0x080053dd   Thumb Code   266  oled.o(i.TurnOff_ShutDonw_Battery_dis)
+    USART1_IRQHandler                        0x08005505   Thumb Code    22  stm32f0xx_it.o(i.USART1_IRQHandler)
+    USART2_IRQHandler                        0x08005521   Thumb Code    42  stm32f0xx_it.o(i.USART2_IRQHandler)
+    UpOrDown_adjust_para                     0x08005551   Thumb Code   200  orbital.o(i.UpOrDown_adjust_para)
+    Usart22_Dma_SendIRQ_Dispose              0x08005629   Thumb Code     2  uart.o(i.Usart22_Dma_SendIRQ_Dispose)
+    Usart22_ReadByte                         0x0800562d   Thumb Code    26  uart.o(i.Usart22_ReadByte)
+    Usart22_Receiver                         0x08005655   Thumb Code    18  uart.o(i.Usart22_Receiver)
+    Video_Get_downcount_times                0x08005705   Thumb Code    18  video.o(i.Video_Get_downcount_times)
+    Video_check_the_motor_status             0x08005721   Thumb Code   236  video.o(i.Video_check_the_motor_status)
+    Video_downcount_times_display            0x0800589d   Thumb Code   228  video.o(i.Video_downcount_times_display)
+    Video_mode_cursor_shift                  0x080059ad   Thumb Code    84  orbital.o(i.Video_mode_cursor_shift)
+    Video_motor_status_display               0x08005a11   Thumb Code    66  video.o(i.Video_motor_status_display)
+    Video_motor_status_return                0x08005a5d   Thumb Code     6  video.o(i.Video_motor_status_return)
+    Video_times_downcount                    0x08005a69   Thumb Code    84  video.o(i.Video_times_downcount)
+    __0sprintf                               0x08005ac5   Thumb Code    36  printfa.o(i.__0sprintf)
+    __1sprintf                               0x08005ac5   Thumb Code     0  printfa.o(i.__0sprintf)
+    __2sprintf                               0x08005ac5   Thumb Code     0  printfa.o(i.__0sprintf)
+    __c89sprintf                             0x08005ac5   Thumb Code     0  printfa.o(i.__0sprintf)
+    sprintf                                  0x08005ac5   Thumb Code     0  printfa.o(i.__0sprintf)
+    __ARM_clz                                0x08005aed   Thumb Code    46  depilogue.o(i.__ARM_clz)
+    __ARM_common_switch8                     0x08005b1b   Thumb Code    26  orbital.o(i.__ARM_common_switch8)
+    __scatterload_copy                       0x08005b35   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08005b43   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08005b45   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    ab_set_move                              0x0800640d   Thumb Code   222  ab_set.o(i.ab_set_move)
+    ab_set_press_ok                          0x08006501   Thumb Code    76  ab_set.o(i.ab_set_press_ok)
+    active_time_out_countdown                0x08006555   Thumb Code    14  low_power.o(i.active_time_out_countdown)
+    adc_cout                                 0x08006569   Thumb Code    14  adc.o(i.adc_cout)
+    angle_cear                               0x0800657d   Thumb Code    10  orbital.o(i.angle_cear)
+    angle_display                            0x0800658d   Thumb Code    82  orbital.o(i.angle_display)
+    battery_data_display                     0x08006601   Thumb Code   292  oled.o(i.battery_data_display)
+    battery_display                          0x08006751   Thumb Code    86  oled.o(i.battery_display)
+    battery_frame_display                    0x080067ad   Thumb Code    98  oled.o(i.battery_frame_display)
+    battery_init                             0x08006819   Thumb Code    70  oled.o(i.battery_init)
+    bootloader_action_if                     0x08006869   Thumb Code   134  bootloader.o(i.bootloader_action_if)
+    bornd_code_dis                           0x0800690d   Thumb Code   168  oled.o(i.bornd_code_dis)
+    cear_the_id_add                          0x08006af9   Thumb Code     6  specialty_mode.o(i.cear_the_id_add)
+    changeIO_Init                            0x08006b05   Thumb Code    14  gpio.o(i.changeIO_Init)
+    change_page                              0x08006b19   Thumb Code    28  orbital.o(i.change_page)
+    check_abpoint_Set_if                     0x08006b3d   Thumb Code    38  ab_set.o(i.check_abpoint_Set_if)
+    check_connection                         0x08006b69   Thumb Code    56  orbital.o(i.check_connection)
+    check_enter_boot_if                      0x08006bb1   Thumb Code    78  bootloader.o(i.check_enter_boot_if)
+    check_sum_add                            0x08006c09   Thumb Code    28  orbital.o(i.check_sum_add)
+    check_the_powers_status                  0x08006c25   Thumb Code    30  keyscan.o(i.check_the_powers_status)
+    checksum_verify                          0x08006c4d   Thumb Code    38  rf24l01.o(i.checksum_verify)
+    chinese_page_dis                         0x08006c75   Thumb Code  1804  oled.o(i.chinese_page_dis)
+    config_page_ok                           0x08007411   Thumb Code    88  config.o(i.config_page_ok)
+    controller_send_data_to_motor            0x08007479   Thumb Code   474  orbital.o(i.controller_send_data_to_motor)
+    count_tag_set                            0x08007669   Thumb Code     6  video.o(i.count_tag_set)
+    cursor_count                             0x08007675   Thumb Code    70  config.o(i.cursor_count)
+    cursor_display                           0x080076c1   Thumb Code    94  config.o(i.cursor_display)
+    cursor_glint                             0x08007725   Thumb Code   114  orbital.o(i.cursor_glint)
+    cursor_shift                             0x080077a9   Thumb Code   108  orbital.o(i.cursor_shift)
+    data_count                               0x08007825   Thumb Code    56  orbital.o(i.data_count)
+    delay_page_ok                            0x08007865   Thumb Code   200  orbital.o(i.delay_page_ok)
+    delet_paraORmode                         0x08007939   Thumb Code   116  specialty_mode.o(i.delet_paraORmode)
+    delete_jahao                             0x080079c1   Thumb Code   104  specialty_mode.o(i.delete_jahao)
+    disable_interrupt                        0x08007a41   Thumb Code   124  low_power.o(i.disable_interrupt)
+    drv_spi_read_write_byte                  0x08007ad1   Thumb Code    74  rf24l01.o(i.drv_spi_read_write_byte)
+    durationORdelay_time_dis                 0x08007b1d   Thumb Code    52  orbital.o(i.durationORdelay_time_dis)
+    enable_interrupt                         0x08007b59   Thumb Code    18  low_power.o(i.enable_interrupt)
+    english_page_dis                         0x08007b75   Thumb Code  1774  oled.o(i.english_page_dis)
+    enter_bootloader                         0x0800833d   Thumb Code    24  bootloader.o(i.enter_bootloader)
+    erase_flash_OnePage                      0x0800835d   Thumb Code    18  flash.o(i.erase_flash_OnePage)
+    factory_set_display                      0x08008371   Thumb Code    48  config.o(i.factory_set_display)
+    filtering                                0x080083b5   Thumb Code   142  adc.o(i.filtering)
+    get_data_form_A650                       0x08008461   Thumb Code    78  orbital.o(i.get_data_form_A650)
+    get_init_from_A650                       0x080084b5   Thumb Code    82  orbital.o(i.get_init_from_A650)
+    hours_time_dis                           0x08008511   Thumb Code   148  orbital.o(i.hours_time_dis)
+    if_write_flash                           0x080085c5   Thumb Code     8  flash.o(i.if_write_flash)
+    input_opendrain                          0x080085d1   Thumb Code    30  gpio.o(i.input_opendrain)
+    integer_display                          0x080085f1   Thumb Code    90  orbital.o(i.integer_display)
+    inverse_get_value                        0x08008665   Thumb Code     6  orbital.o(i.inverse_get_value)
+    jiantou_display                          0x08008671   Thumb Code    98  specialty_mode.o(i.jiantou_display)
+    key_Handle                               0x080086ed   Thumb Code   134  keyscan.o(i.key_Handle)
+    keyscan                                  0x08008779   Thumb Code   432  keyscan.o(i.keyscan)
+    keyscan_pin_init                         0x08008931   Thumb Code    48  gpio.o(i.keyscan_pin_init)
+    language_display                         0x08008965   Thumb Code     2  config.o(i.language_display)
+    main                                     0x08008969   Thumb Code   252  main.o(i.main)
+    main_page_ok                             0x08008a8d   Thumb Code   144  config.o(i.main_page_ok)
+    manulORauto_dis                          0x08008b21   Thumb Code    78  orbital.o(i.manulORauto_dis)
+    minutes_time_dis                         0x08008b91   Thumb Code   148  orbital.o(i.minutes_time_dis)
+    mode_and_para_sendt                      0x08008c45   Thumb Code    98  specialty_mode.o(i.mode_and_para_sendt)
+    motor_battery_dis                        0x08008cb5   Thumb Code    12  oled.o(i.motor_battery_dis)
+    motor_init                               0x08008cc1   Thumb Code    36  orbital.o(i.motor_init)
+    move_to_disp                             0x08008cf1   Thumb Code    46  orbital.o(i.move_to_disp)
+    oled_gpio_init                           0x08008d39   Thumb Code    34  gpio.o(i.oled_gpio_init)
+    oled_print_page                          0x08008d61   Thumb Code     8  oled.o(i.oled_print_page)
+    oled_print_screen                        0x08008d69   Thumb Code    56  oled.o(i.oled_print_screen)
+    page_display                             0x08008da5   Thumb Code    26  oled.o(i.page_display)
+    page_return                              0x08008dc5   Thumb Code    22  keyscan.o(i.page_return)
+    page_return_adjust                       0x08008de1   Thumb Code    98  config.o(i.page_return_adjust)
+    paraORmode_shift                         0x08008e55   Thumb Code   198  specialty_mode.o(i.paraORmode_shift)
+    para_init                                0x08008f31   Thumb Code    64  config.o(i.para_init)
+    para_read_from_flash                     0x08008f79   Thumb Code    72  flash.o(i.para_read_from_flash)
+    param_adjust                             0x08008fd5   Thumb Code   718  orbital.o(i.param_adjust)
+    param_display                            0x080092c5   Thumb Code   464  orbital.o(i.param_display)
+    parameter_init                           0x080094dd   Thumb Code    96  orbital.o(i.parameter_init)
+    pecialty_pix_amt_display                 0x0800954d   Thumb Code   108  specialty_mode.o(i.pecialty_pix_amt_display)
+    percentage_get                           0x080095d9   Thumb Code    70  adc.o(i.percentage_get)
+    pix_amt_compara_dis                      0x0800963d   Thumb Code    96  orbital.o(i.pix_amt_compara_dis)
+    pix_amt_display                          0x080096d5   Thumb Code    82  orbital.o(i.pix_amt_display)
+    press_OK_function                        0x0800974d   Thumb Code   266  keyscan.o(i.press_OK_function)
+    press_key_continue                       0x08009865   Thumb Code    84  keyscan.o(i.press_key_continue)
+    press_key_continue_if                    0x080098d5   Thumb Code    72  orbital.o(i.press_key_continue_if)
+    pwrKey_exti_interrupt                    0x0800992d   Thumb Code    64  gpio.o(i.pwrKey_exti_interrupt)
+    pwr_key_enter_moveInterfer               0x08009975   Thumb Code    30  specialty_mode.o(i.pwr_key_enter_moveInterfer)
+    read_ADC_value                           0x0800999d   Thumb Code   264  adc.o(i.read_ADC_value)
+    read_flash_holfword                      0x08009acd   Thumb Code    52  flash.o(i.read_flash_holfword)
+    receiver_data_from_A650                  0x08009b01   Thumb Code  1388  orbital.o(i.receiver_data_from_A650)
+    remotoe_cursor_dispose                   0x0800a07d   Thumb Code     4  orbital.o(i.remotoe_cursor_dispose)
+    return_mode_back                         0x0800a081   Thumb Code     6  ab_set.o(i.return_mode_back)
+    return_powers                            0x0800a08d   Thumb Code     6  keyscan.o(i.return_powers)
+    scan_cycle_count                         0x0800a099   Thumb Code    78  keyscan.o(i.scan_cycle_count)
+    secondes_time_dis                        0x0800a0f5   Thumb Code   182  orbital.o(i.secondes_time_dis)
+    send_interval_count                      0x0800a1d9   Thumb Code    28  uart.o(i.send_interval_count)
+    set_active_time_out                      0x0800a1f9   Thumb Code    14  low_power.o(i.set_active_time_out)
+    set_addend_data                          0x0800a215   Thumb Code     2  orbital.o(i.set_addend_data)
+    set_mode_back                            0x0800a219   Thumb Code     6  ab_set.o(i.set_mode_back)
+    set_power_on_int                         0x0800a225   Thumb Code     6  keyscan.o(i.set_power_on_int)
+    set_press_time                           0x0800a231   Thumb Code     8  keyscan.o(i.set_press_time)
+    set_rtc_wackup                           0x0800a241   Thumb Code     6  low_power.o(i.set_rtc_wackup)
+    shotting_Get_data_from_controller        0x0800a24d   Thumb Code    86  specialty_mode.o(i.shotting_Get_data_from_controller)
+    shutKey_start                            0x0800a2b5   Thumb Code    14  orbital.o(i.shutKey_start)
+    single_cursor_dis                        0x0800a2c5   Thumb Code    44  orbital.o(i.single_cursor_dis)
+    sleep_time_dis                           0x0800a2f9   Thumb Code    60  orbital.o(i.sleep_time_dis)
+    slow_start_stop_dis                      0x0800a349   Thumb Code    80  orbital.o(i.slow_start_stop_dis)
+    specialty_cursor_id_dis                  0x0800a3bd   Thumb Code   436  specialty_mode.o(i.specialty_cursor_id_dis)
+    specialty_cursor_id_mode_dis             0x0800a581   Thumb Code   126  specialty_mode.o(i.specialty_cursor_id_mode_dis)
+    specialty_cursor_id_para_dis             0x0800a61d   Thumb Code   124  specialty_mode.o(i.specialty_cursor_id_para_dis)
+    specialty_cursor_id_shift                0x0800a6bd   Thumb Code    66  specialty_mode.o(i.specialty_cursor_id_shift)
+    specialty_jiaHao_display                 0x0800a70d   Thumb Code   222  specialty_mode.o(i.specialty_jiaHao_display)
+    specialty_jiaHao_scan                    0x0800a81d   Thumb Code    98  specialty_mode.o(i.specialty_jiaHao_scan)
+    specialty_mode_OKkey                     0x0800a889   Thumb Code   504  specialty_mode.o(i.specialty_mode_OKkey)
+    specialty_mode_para_clear                0x0800aab5   Thumb Code    30  specialty_mode.o(i.specialty_mode_para_clear)
+    specialty_move_dis                       0x0800aadd   Thumb Code   106  specialty_mode.o(i.specialty_move_dis)
+    specialty_page_mode_dis                  0x0800ab5d   Thumb Code    76  specialty_mode.o(i.specialty_page_mode_dis)
+    specialty_page_para_dis                  0x0800abb5   Thumb Code   320  specialty_mode.o(i.specialty_page_para_dis)
+    specialty_para_clear                     0x0800ad01   Thumb Code     8  specialty_mode.o(i.specialty_para_clear)
+    specialty_para_sendTo_motor              0x0800ad0d   Thumb Code   662  specialty_mode.o(i.specialty_para_sendTo_motor)
+    specialty_totaol_time_dis                0x0800afb9   Thumb Code    58  specialty_mode.o(i.specialty_totaol_time_dis)
+    specielty_para_adjust                    0x0800b001   Thumb Code   516  specialty_mode.o(i.specielty_para_adjust)
+    specielty_para_dis                       0x0800b215   Thumb Code   108  specialty_mode.o(i.specielty_para_dis)
+    specilty_clear_han_display               0x0800b28d   Thumb Code    42  specialty_mode.o(i.specilty_clear_han_display)
+    specilty_get_reshot_form_motor           0x0800b2d9   Thumb Code    14  specialty_mode.o(i.specilty_get_reshot_form_motor)
+    specilty_keyscan_send                    0x0800b2ed   Thumb Code   108  specialty_mode.o(i.specilty_keyscan_send)
+    specilty_page_return                     0x0800b365   Thumb Code   110  specialty_mode.o(i.specilty_page_return)
+    splty_mode_time_count                    0x0800b3e1   Thumb Code    14  specialty_mode.o(i.splty_mode_time_count)
+    status_display                           0x0800b3f5   Thumb Code   204  orbital.o(i.status_display)
+    string_lengt                             0x0800b539   Thumb Code    20  bootloader.o(i.string_lengt)
+    time_count                               0x0800b54d   Thumb Code    36  orbital.o(i.time_count)
+    time_delay_ms                            0x0800b575   Thumb Code    20  orbital.o(i.time_delay_ms)
+    usart1_receiver                          0x0800b58d   Thumb Code    56  uart.o(i.usart1_receiver)
+    usart22_Recdata_Handling                 0x0800b5d5   Thumb Code    42  uart.o(i.usart22_Recdata_Handling)
+    usart22_read_byte                        0x0800b605   Thumb Code    12  uart.o(i.usart22_read_byte)
+    version_dis                              0x0800b611   Thumb Code    20  oled.o(i.version_dis)
+    video_page_OK                            0x0800b631   Thumb Code   148  orbital.o(i.video_page_OK)
+    wait_for_init                            0x0800b6d5   Thumb Code    60  orbital.o(i.wait_for_init)
+    wifi24G_data_Dispose                     0x0800b71d   Thumb Code    12  rf24l01.o(i.wifi24G_data_Dispose)
+    wifi24G_read_data                        0x0800b729   Thumb Code    62  rf24l01.o(i.wifi24G_read_data)
+    wifi24G_send_data                        0x0800b771   Thumb Code   204  rf24l01.o(i.wifi24G_send_data)
+    wifi_init                                0x0800b84d   Thumb Code    20  gpio.o(i.wifi_init)
+    wifi_sleep                               0x0800b865   Thumb Code    34  rf24l01.o(i.wifi_sleep)
+    write_bootTag                            0x0800b88d   Thumb Code    42  flash.o(i.write_bootTag)
+    write_flash_active                       0x0800b8bd   Thumb Code    26  flash.o(i.write_flash_active)
+    write_flash_holfword                     0x0800b8e5   Thumb Code    14  flash.o(i.write_flash_holfword)
+    write_flash_holfword_buffer              0x0800b8f5   Thumb Code    78  flash.o(i.write_flash_holfword_buffer)
+    AHBPrescTable                            0x0800b948   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x0800b958   Data           8  system_stm32f0xx.o(.constdata)
+    zhi_f16x16                               0x0800b974   Data        4312  oled.o(.constdata)
+    LOGO720YUN                               0x0800ca4c   Data         320  oled.o(.constdata)
+    Biaoyu                                   0x0800cb8c   Data         256  oled.o(.constdata)
+    battery                                  0x0800cc8c   Data          42  oled.o(.constdata)
+    F8X16                                    0x0800ccb6   Data        1140  oled.o(.constdata)
+    Region$$Table$$Base                      0x0800d390   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800d3b0   Number         0  anon$$obj.o(Region$$Table)
     read_id                                  0x200000c4   Data           1  uart.o(.data)
     whether_write_flash                      0x200000c8   Data           1  flash.o(.data)
     page_id                                  0x200000c9   Data           1  config.o(.data)
@@ -3235,9 +3237,9 @@ Memory Map of the image
 
   Image Entry point : 0x080018b5
 
-  Load Region LR_IROM1 (Base: 0x08001800, Size: 0x0000bbe0, Max: 0x0000e000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08001800, Size: 0x0000bc7c, Max: 0x0000e000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08001800, Load base: 0x08001800, Size: 0x0000bb14, Max: 0x0000e000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08001800, Load base: 0x08001800, Size: 0x0000bbb0, Max: 0x0000e000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3456,226 +3458,226 @@ Memory Map of the image
     0x080051fc   0x080051fc   0x00000078   Code   RO         1936    i.The_page_processing  oled.o
     0x08005274   0x08005274   0x00000014   Code   RO         1013    i.Time_DCount       orbital.o
     0x08005288   0x08005288   0x00000118   Code   RO         1014    i.Time_DownCount    orbital.o
-    0x080053a0   0x080053a0   0x00000040   Code   RO         2486    i.Time_Out_And_Enter_Stop_Mode  low_power.o
-    0x080053e0   0x080053e0   0x00000128   Code   RO         1937    i.TurnOff_ShutDonw_Battery_dis  oled.o
-    0x08005508   0x08005508   0x0000001c   Code   RO          215    i.USART1_IRQHandler  stm32f0xx_it.o
-    0x08005524   0x08005524   0x00000030   Code   RO          216    i.USART2_IRQHandler  stm32f0xx_it.o
-    0x08005554   0x08005554   0x000000d8   Code   RO         1015    i.UpOrDown_adjust_para  orbital.o
-    0x0800562c   0x0800562c   0x00000002   Code   RO          378    i.Usart22_Dma_SendIRQ_Dispose  uart.o
-    0x0800562e   0x0800562e   0x00000002   PAD
-    0x08005630   0x08005630   0x00000028   Code   RO          383    i.Usart22_ReadByte  uart.o
-    0x08005658   0x08005658   0x0000001c   Code   RO          384    i.Usart22_Receiver  uart.o
-    0x08005674   0x08005674   0x00000094   Code   RO          391    i.Usart22_init      uart.o
-    0x08005708   0x08005708   0x0000001c   Code   RO         3176    i.Video_Get_downcount_times  video.o
-    0x08005724   0x08005724   0x000000f4   Code   RO         3177    i.Video_check_the_motor_status  video.o
-    0x08005818   0x08005818   0x00000110   Code   RO         3178    i.Video_downcount_times_display  video.o
-    0x08005928   0x08005928   0x00000064   Code   RO         1016    i.Video_mode_cursor_shift  orbital.o
-    0x0800598c   0x0800598c   0x0000004c   Code   RO         3179    i.Video_motor_status_display  video.o
-    0x080059d8   0x080059d8   0x0000000c   Code   RO         3180    i.Video_motor_status_return  video.o
-    0x080059e4   0x080059e4   0x0000005c   Code   RO         3181    i.Video_times_downcount  video.o
-    0x08005a40   0x08005a40   0x00000028   Code   RO         4342    i.__0sprintf        mc_p.l(printfa.o)
-    0x08005a68   0x08005a68   0x0000002e   Code   RO         4416    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x08005a96   0x08005a96   0x0000001a   Code   RO         1579    i.__ARM_common_switch8  orbital.o
-    0x08005ab0   0x08005ab0   0x0000000e   Code   RO         4434    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x08005abe   0x08005abe   0x00000002   Code   RO         4435    i.__scatterload_null  mc_p.l(handlers.o)
-    0x08005ac0   0x08005ac0   0x0000000e   Code   RO         4436    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x08005ace   0x08005ace   0x00000002   PAD
-    0x08005ad0   0x08005ad0   0x00000174   Code   RO         4347    i._fp_digits        mc_p.l(printfa.o)
-    0x08005c44   0x08005c44   0x000006ec   Code   RO         4348    i._printf_core      mc_p.l(printfa.o)
-    0x08006330   0x08006330   0x00000020   Code   RO         4349    i._printf_post_padding  mc_p.l(printfa.o)
-    0x08006350   0x08006350   0x0000002c   Code   RO         4350    i._printf_pre_padding  mc_p.l(printfa.o)
-    0x0800637c   0x0800637c   0x0000000a   Code   RO         4352    i._sputc            mc_p.l(printfa.o)
-    0x08006386   0x08006386   0x00000002   PAD
-    0x08006388   0x08006388   0x000000f4   Code   RO         2726    i.ab_set_move       ab_set.o
-    0x0800647c   0x0800647c   0x00000054   Code   RO         2728    i.ab_set_press_ok   ab_set.o
-    0x080064d0   0x080064d0   0x00000014   Code   RO         2487    i.active_time_out_countdown  low_power.o
-    0x080064e4   0x080064e4   0x00000014   Code   RO         2828    i.adc_cout          adc.o
-    0x080064f8   0x080064f8   0x00000010   Code   RO         1020    i.angle_cear        orbital.o
-    0x08006508   0x08006508   0x00000074   Code   RO         1021    i.angle_display     orbital.o
-    0x0800657c   0x0800657c   0x00000150   Code   RO         1938    i.battery_data_display  oled.o
-    0x080066cc   0x080066cc   0x0000005c   Code   RO         1939    i.battery_display   oled.o
-    0x08006728   0x08006728   0x0000006c   Code   RO         1940    i.battery_frame_display  oled.o
-    0x08006794   0x08006794   0x00000050   Code   RO         1941    i.battery_init      oled.o
-    0x080067e4   0x080067e4   0x000000a4   Code   RO         2631    i.bootloader_action_if  bootloader.o
-    0x08006888   0x08006888   0x000001ec   Code   RO         1942    i.bornd_code_dis    oled.o
-    0x08006a74   0x08006a74   0x0000000c   Code   RO         2926    i.cear_the_id_add   specialty_mode.o
-    0x08006a80   0x08006a80   0x00000014   Code   RO         1730    i.changeIO_Init     gpio.o
-    0x08006a94   0x08006a94   0x00000024   Code   RO         1024    i.change_page       orbital.o
-    0x08006ab8   0x08006ab8   0x0000002c   Code   RO         2729    i.check_abpoint_Set_if  ab_set.o
-    0x08006ae4   0x08006ae4   0x00000048   Code   RO         1025    i.check_connection  orbital.o
-    0x08006b2c   0x08006b2c   0x00000058   Code   RO         2632    i.check_enter_boot_if  bootloader.o
-    0x08006b84   0x08006b84   0x0000001c   Code   RO         1026    i.check_sum_add     orbital.o
-    0x08006ba0   0x08006ba0   0x00000028   Code   RO         1605    i.check_the_powers_status  keyscan.o
-    0x08006bc8   0x08006bc8   0x00000026   Code   RO         2324    i.checksum_verify   rf24l01.o
-    0x08006bee   0x08006bee   0x00000002   PAD
-    0x08006bf0   0x08006bf0   0x0000079c   Code   RO         1943    i.chinese_page_dis  oled.o
-    0x0800738c   0x0800738c   0x00000068   Code   RO          887    i.config_page_ok    config.o
-    0x080073f4   0x080073f4   0x000001f0   Code   RO         1028    i.controller_send_data_to_motor  orbital.o
-    0x080075e4   0x080075e4   0x0000000c   Code   RO         3182    i.count_tag_set     video.o
-    0x080075f0   0x080075f0   0x0000004c   Code   RO          888    i.cursor_count      config.o
-    0x0800763c   0x0800763c   0x00000064   Code   RO          889    i.cursor_display    config.o
-    0x080076a0   0x080076a0   0x00000084   Code   RO         1030    i.cursor_glint      orbital.o
-    0x08007724   0x08007724   0x0000007c   Code   RO         1031    i.cursor_shift      orbital.o
-    0x080077a0   0x080077a0   0x00000040   Code   RO         1032    i.data_count        orbital.o
-    0x080077e0   0x080077e0   0x000000d4   Code   RO         1040    i.delay_page_ok     orbital.o
-    0x080078b4   0x080078b4   0x00000088   Code   RO         2927    i.delet_paraORmode  specialty_mode.o
-    0x0800793c   0x0800793c   0x00000080   Code   RO         2928    i.delete_jahao      specialty_mode.o
-    0x080079bc   0x080079bc   0x00000090   Code   RO         2488    i.disable_interrupt  low_power.o
-    0x08007a4c   0x08007a4c   0x0000004a   Code   RO         2325    i.drv_spi_read_write_byte  rf24l01.o
-    0x08007a96   0x08007a96   0x00000002   PAD
-    0x08007a98   0x08007a98   0x0000003c   Code   RO         1044    i.durationORdelay_time_dis  orbital.o
-    0x08007ad4   0x08007ad4   0x0000001c   Code   RO         2489    i.enable_interrupt  low_power.o
-    0x08007af0   0x08007af0   0x000007c4   Code   RO         1944    i.english_page_dis  oled.o
-    0x080082b4   0x080082b4   0x00000020   Code   RO         2633    i.enter_bootloader  bootloader.o
-    0x080082d4   0x080082d4   0x00000012   Code   RO          756    i.erase_flash_OnePage  flash.o
-    0x080082e6   0x080082e6   0x00000002   PAD
-    0x080082e8   0x080082e8   0x00000044   Code   RO          891    i.factory_set_display  config.o
-    0x0800832c   0x0800832c   0x000000ac   Code   RO         2829    i.filtering         adc.o
-    0x080083d8   0x080083d8   0x00000054   Code   RO         1047    i.get_data_form_A650  orbital.o
-    0x0800842c   0x0800842c   0x0000005c   Code   RO         1048    i.get_init_from_A650  orbital.o
-    0x08008488   0x08008488   0x000000b4   Code   RO         1050    i.hours_time_dis    orbital.o
-    0x0800853c   0x0800853c   0x0000000c   Code   RO          758    i.if_write_flash    flash.o
-    0x08008548   0x08008548   0x0000001e   Code   RO         1731    i.input_opendrain   gpio.o
-    0x08008566   0x08008566   0x00000002   PAD
-    0x08008568   0x08008568   0x00000074   Code   RO         1051    i.integer_display   orbital.o
-    0x080085dc   0x080085dc   0x0000000c   Code   RO         1054    i.inverse_get_value  orbital.o
-    0x080085e8   0x080085e8   0x0000007c   Code   RO         2929    i.jiantou_display   specialty_mode.o
-    0x08008664   0x08008664   0x0000008c   Code   RO         1606    i.key_Handle        keyscan.o
-    0x080086f0   0x080086f0   0x000001b8   Code   RO         1607    i.keyscan           keyscan.o
-    0x080088a8   0x080088a8   0x00000034   Code   RO         1733    i.keyscan_pin_init  gpio.o
-    0x080088dc   0x080088dc   0x00000002   Code   RO          892    i.language_display  config.o
-    0x080088de   0x080088de   0x00000002   PAD
-    0x080088e0   0x080088e0   0x00000124   Code   RO           70    i.main              main.o
-    0x08008a04   0x08008a04   0x00000094   Code   RO          893    i.main_page_ok      config.o
-    0x08008a98   0x08008a98   0x00000070   Code   RO         1056    i.manulORauto_dis   orbital.o
-    0x08008b08   0x08008b08   0x000000b4   Code   RO         1057    i.minutes_time_dis  orbital.o
-    0x08008bbc   0x08008bbc   0x00000070   Code   RO         2930    i.mode_and_para_sendt  specialty_mode.o
-    0x08008c2c   0x08008c2c   0x0000000c   Code   RO         1945    i.motor_battery_dis  oled.o
-    0x08008c38   0x08008c38   0x00000030   Code   RO         1058    i.motor_init        orbital.o
-    0x08008c68   0x08008c68   0x00000048   Code   RO         1062    i.move_to_disp      orbital.o
-    0x08008cb0   0x08008cb0   0x00000028   Code   RO         1737    i.oled_gpio_init    gpio.o
-    0x08008cd8   0x08008cd8   0x00000008   Code   RO         1947    i.oled_print_page   oled.o
-    0x08008ce0   0x08008ce0   0x0000003c   Code   RO         1948    i.oled_print_screen  oled.o
-    0x08008d1c   0x08008d1c   0x00000020   Code   RO         1949    i.page_display      oled.o
-    0x08008d3c   0x08008d3c   0x0000001c   Code   RO         1608    i.page_return       keyscan.o
-    0x08008d58   0x08008d58   0x00000074   Code   RO          894    i.page_return_adjust  config.o
-    0x08008dcc   0x08008dcc   0x000000dc   Code   RO         2931    i.paraORmode_shift  specialty_mode.o
-    0x08008ea8   0x08008ea8   0x00000048   Code   RO          895    i.para_init         config.o
-    0x08008ef0   0x08008ef0   0x0000005c   Code   RO          759    i.para_read_from_flash  flash.o
-    0x08008f4c   0x08008f4c   0x000002f0   Code   RO         1064    i.param_adjust      orbital.o
-    0x0800923c   0x0800923c   0x00000220   Code   RO         1065    i.param_display     orbital.o
-    0x0800945c   0x0800945c   0x00000070   Code   RO         1066    i.parameter_init    orbital.o
-    0x080094cc   0x080094cc   0x0000008c   Code   RO         2932    i.pecialty_pix_amt_display  specialty_mode.o
-    0x08009558   0x08009558   0x00000064   Code   RO         2830    i.percentage_get    adc.o
-    0x080095bc   0x080095bc   0x00000098   Code   RO         1067    i.pix_amt_compara_dis  orbital.o
-    0x08009654   0x08009654   0x00000078   Code   RO         1068    i.pix_amt_display   orbital.o
-    0x080096cc   0x080096cc   0x00000118   Code   RO         1609    i.press_OK_function  keyscan.o
-    0x080097e4   0x080097e4   0x00000070   Code   RO         1610    i.press_key_continue  keyscan.o
-    0x08009854   0x08009854   0x00000058   Code   RO         1070    i.press_key_continue_if  orbital.o
-    0x080098ac   0x080098ac   0x00000048   Code   RO         1738    i.pwrKey_exti_interrupt  gpio.o
-    0x080098f4   0x080098f4   0x00000028   Code   RO         2933    i.pwr_key_enter_moveInterfer  specialty_mode.o
-    0x0800991c   0x0800991c   0x00000128   Code   RO         2831    i.read_ADC_value    adc.o
-    0x08009a44   0x08009a44   0x00000034   Code   RO          760    i.read_flash_holfword  flash.o
-    0x08009a78   0x08009a78   0x00000588   Code   RO         1071    i.receiver_data_from_A650  orbital.o
-    0x0800a000   0x0800a000   0x00000004   Code   RO         1072    i.remotoe_cursor_dispose  orbital.o
-    0x0800a004   0x0800a004   0x0000000c   Code   RO         2731    i.return_mode_back  ab_set.o
-    0x0800a010   0x0800a010   0x0000000c   Code   RO         1611    i.return_powers     keyscan.o
-    0x0800a01c   0x0800a01c   0x0000005c   Code   RO         1612    i.scan_cycle_count  keyscan.o
-    0x0800a078   0x0800a078   0x000000e4   Code   RO         1073    i.secondes_time_dis  orbital.o
-    0x0800a15c   0x0800a15c   0x00000020   Code   RO          398    i.send_interval_count  uart.o
-    0x0800a17c   0x0800a17c   0x0000001c   Code   RO         2491    i.set_active_time_out  low_power.o
-    0x0800a198   0x0800a198   0x00000002   Code   RO         1074    i.set_addend_data   orbital.o
-    0x0800a19a   0x0800a19a   0x00000002   PAD
-    0x0800a19c   0x0800a19c   0x0000000c   Code   RO         2732    i.set_mode_back     ab_set.o
-    0x0800a1a8   0x0800a1a8   0x0000000c   Code   RO         1613    i.set_power_on_int  keyscan.o
-    0x0800a1b4   0x0800a1b4   0x00000010   Code   RO         1614    i.set_press_time    keyscan.o
-    0x0800a1c4   0x0800a1c4   0x0000000c   Code   RO         2492    i.set_rtc_wackup    low_power.o
-    0x0800a1d0   0x0800a1d0   0x00000068   Code   RO         2934    i.shotting_Get_data_from_controller  specialty_mode.o
-    0x0800a238   0x0800a238   0x0000000e   Code   RO         1076    i.shutKey_start     orbital.o
-    0x0800a246   0x0800a246   0x00000002   PAD
-    0x0800a248   0x0800a248   0x00000034   Code   RO         1077    i.single_cursor_dis  orbital.o
-    0x0800a27c   0x0800a27c   0x00000050   Code   RO         1078    i.sleep_time_dis    orbital.o
-    0x0800a2cc   0x0800a2cc   0x00000074   Code   RO         1080    i.slow_start_stop_dis  orbital.o
-    0x0800a340   0x0800a340   0x000001c4   Code   RO         2935    i.specialty_cursor_id_dis  specialty_mode.o
-    0x0800a504   0x0800a504   0x0000009c   Code   RO         2936    i.specialty_cursor_id_mode_dis  specialty_mode.o
-    0x0800a5a0   0x0800a5a0   0x000000a0   Code   RO         2937    i.specialty_cursor_id_para_dis  specialty_mode.o
-    0x0800a640   0x0800a640   0x00000050   Code   RO         2938    i.specialty_cursor_id_shift  specialty_mode.o
-    0x0800a690   0x0800a690   0x00000110   Code   RO         2939    i.specialty_jiaHao_display  specialty_mode.o
-    0x0800a7a0   0x0800a7a0   0x0000006c   Code   RO         2940    i.specialty_jiaHao_scan  specialty_mode.o
-    0x0800a80c   0x0800a80c   0x0000022c   Code   RO         2941    i.specialty_mode_OKkey  specialty_mode.o
-    0x0800aa38   0x0800aa38   0x00000028   Code   RO         2942    i.specialty_mode_para_clear  specialty_mode.o
-    0x0800aa60   0x0800aa60   0x00000080   Code   RO         2943    i.specialty_move_dis  specialty_mode.o
-    0x0800aae0   0x0800aae0   0x00000058   Code   RO         2944    i.specialty_page_mode_dis  specialty_mode.o
-    0x0800ab38   0x0800ab38   0x0000014c   Code   RO         2945    i.specialty_page_para_dis  specialty_mode.o
-    0x0800ac84   0x0800ac84   0x0000000c   Code   RO         2946    i.specialty_para_clear  specialty_mode.o
-    0x0800ac90   0x0800ac90   0x000002ac   Code   RO         2947    i.specialty_para_sendTo_motor  specialty_mode.o
-    0x0800af3c   0x0800af3c   0x00000048   Code   RO         2948    i.specialty_totaol_time_dis  specialty_mode.o
-    0x0800af84   0x0800af84   0x00000214   Code   RO         2949    i.specielty_para_adjust  specialty_mode.o
-    0x0800b198   0x0800b198   0x00000078   Code   RO         2950    i.specielty_para_dis  specialty_mode.o
-    0x0800b210   0x0800b210   0x0000004c   Code   RO         2951    i.specilty_clear_han_display  specialty_mode.o
-    0x0800b25c   0x0800b25c   0x00000014   Code   RO         2952    i.specilty_get_reshot_form_motor  specialty_mode.o
-    0x0800b270   0x0800b270   0x00000078   Code   RO         2953    i.specilty_keyscan_send  specialty_mode.o
-    0x0800b2e8   0x0800b2e8   0x0000007c   Code   RO         2954    i.specilty_page_return  specialty_mode.o
-    0x0800b364   0x0800b364   0x00000014   Code   RO         2955    i.splty_mode_time_count  specialty_mode.o
-    0x0800b378   0x0800b378   0x00000144   Code   RO         1083    i.status_display    orbital.o
-    0x0800b4bc   0x0800b4bc   0x00000014   Code   RO         2634    i.string_lengt      bootloader.o
-    0x0800b4d0   0x0800b4d0   0x00000028   Code   RO         1087    i.time_count        orbital.o
-    0x0800b4f8   0x0800b4f8   0x00000018   Code   RO         1088    i.time_delay_ms     orbital.o
-    0x0800b510   0x0800b510   0x00000048   Code   RO          403    i.usart1_receiver   uart.o
-    0x0800b558   0x0800b558   0x00000030   Code   RO          405    i.usart22_Recdata_Handling  uart.o
-    0x0800b588   0x0800b588   0x0000000c   Code   RO          406    i.usart22_read_byte  uart.o
-    0x0800b594   0x0800b594   0x00000020   Code   RO         1950    i.version_dis       oled.o
-    0x0800b5b4   0x0800b5b4   0x000000a4   Code   RO         1092    i.video_page_OK     orbital.o
-    0x0800b658   0x0800b658   0x00000048   Code   RO         1093    i.wait_for_init     orbital.o
-    0x0800b6a0   0x0800b6a0   0x0000000c   Code   RO         2327    i.wifi24G_data_Dispose  rf24l01.o
-    0x0800b6ac   0x0800b6ac   0x00000048   Code   RO         2328    i.wifi24G_read_data  rf24l01.o
-    0x0800b6f4   0x0800b6f4   0x000000dc   Code   RO         2329    i.wifi24G_send_data  rf24l01.o
-    0x0800b7d0   0x0800b7d0   0x00000018   Code   RO         1740    i.wifi_init         gpio.o
-    0x0800b7e8   0x0800b7e8   0x00000028   Code   RO         2330    i.wifi_sleep        rf24l01.o
-    0x0800b810   0x0800b810   0x00000030   Code   RO          761    i.write_bootTag     flash.o
-    0x0800b840   0x0800b840   0x00000028   Code   RO          762    i.write_flash_active  flash.o
-    0x0800b868   0x0800b868   0x0000000e   Code   RO          763    i.write_flash_holfword  flash.o
-    0x0800b876   0x0800b876   0x00000002   PAD
-    0x0800b878   0x0800b878   0x00000054   Code   RO          764    i.write_flash_holfword_buffer  flash.o
-    0x0800b8cc   0x0800b8cc   0x00000010   Data   RO            5    .constdata          system_stm32f0xx.o
-    0x0800b8dc   0x0800b8dc   0x00000008   Data   RO            6    .constdata          system_stm32f0xx.o
-    0x0800b8e4   0x0800b8e4   0x0000000e   Data   RO           71    .constdata          main.o
-    0x0800b8f2   0x0800b8f2   0x00000005   Data   RO          411    .constdata          uart.o
-    0x0800b8f7   0x0800b8f7   0x00000001   PAD
-    0x0800b8f8   0x0800b8f8   0x0000179a   Data   RO         1951    .constdata          oled.o
-    0x0800d092   0x0800d092   0x00000005   Data   RO         2833    .constdata          adc.o
-    0x0800d097   0x0800d097   0x00000001   PAD
-    0x0800d098   0x0800d098   0x0000025b   Data   RO         1955    .conststring        oled.o
-    0x0800d2f3   0x0800d2f3   0x00000001   PAD
-    0x0800d2f4   0x0800d2f4   0x00000020   Data   RO         4432    Region$$Table       anon$$obj.o
+    0x080053a0   0x080053a0   0x0000003c   Code   RO         2486    i.Time_Out_And_Enter_Stop_Mode  low_power.o
+    0x080053dc   0x080053dc   0x00000128   Code   RO         1937    i.TurnOff_ShutDonw_Battery_dis  oled.o
+    0x08005504   0x08005504   0x0000001c   Code   RO          215    i.USART1_IRQHandler  stm32f0xx_it.o
+    0x08005520   0x08005520   0x00000030   Code   RO          216    i.USART2_IRQHandler  stm32f0xx_it.o
+    0x08005550   0x08005550   0x000000d8   Code   RO         1015    i.UpOrDown_adjust_para  orbital.o
+    0x08005628   0x08005628   0x00000002   Code   RO          378    i.Usart22_Dma_SendIRQ_Dispose  uart.o
+    0x0800562a   0x0800562a   0x00000002   PAD
+    0x0800562c   0x0800562c   0x00000028   Code   RO          383    i.Usart22_ReadByte  uart.o
+    0x08005654   0x08005654   0x0000001c   Code   RO          384    i.Usart22_Receiver  uart.o
+    0x08005670   0x08005670   0x00000094   Code   RO          391    i.Usart22_init      uart.o
+    0x08005704   0x08005704   0x0000001c   Code   RO         3176    i.Video_Get_downcount_times  video.o
+    0x08005720   0x08005720   0x0000017c   Code   RO         3177    i.Video_check_the_motor_status  video.o
+    0x0800589c   0x0800589c   0x00000110   Code   RO         3178    i.Video_downcount_times_display  video.o
+    0x080059ac   0x080059ac   0x00000064   Code   RO         1016    i.Video_mode_cursor_shift  orbital.o
+    0x08005a10   0x08005a10   0x0000004c   Code   RO         3179    i.Video_motor_status_display  video.o
+    0x08005a5c   0x08005a5c   0x0000000c   Code   RO         3180    i.Video_motor_status_return  video.o
+    0x08005a68   0x08005a68   0x0000005c   Code   RO         3181    i.Video_times_downcount  video.o
+    0x08005ac4   0x08005ac4   0x00000028   Code   RO         4342    i.__0sprintf        mc_p.l(printfa.o)
+    0x08005aec   0x08005aec   0x0000002e   Code   RO         4416    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x08005b1a   0x08005b1a   0x0000001a   Code   RO         1579    i.__ARM_common_switch8  orbital.o
+    0x08005b34   0x08005b34   0x0000000e   Code   RO         4434    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x08005b42   0x08005b42   0x00000002   Code   RO         4435    i.__scatterload_null  mc_p.l(handlers.o)
+    0x08005b44   0x08005b44   0x0000000e   Code   RO         4436    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x08005b52   0x08005b52   0x00000002   PAD
+    0x08005b54   0x08005b54   0x00000174   Code   RO         4347    i._fp_digits        mc_p.l(printfa.o)
+    0x08005cc8   0x08005cc8   0x000006ec   Code   RO         4348    i._printf_core      mc_p.l(printfa.o)
+    0x080063b4   0x080063b4   0x00000020   Code   RO         4349    i._printf_post_padding  mc_p.l(printfa.o)
+    0x080063d4   0x080063d4   0x0000002c   Code   RO         4350    i._printf_pre_padding  mc_p.l(printfa.o)
+    0x08006400   0x08006400   0x0000000a   Code   RO         4352    i._sputc            mc_p.l(printfa.o)
+    0x0800640a   0x0800640a   0x00000002   PAD
+    0x0800640c   0x0800640c   0x000000f4   Code   RO         2726    i.ab_set_move       ab_set.o
+    0x08006500   0x08006500   0x00000054   Code   RO         2728    i.ab_set_press_ok   ab_set.o
+    0x08006554   0x08006554   0x00000014   Code   RO         2487    i.active_time_out_countdown  low_power.o
+    0x08006568   0x08006568   0x00000014   Code   RO         2828    i.adc_cout          adc.o
+    0x0800657c   0x0800657c   0x00000010   Code   RO         1020    i.angle_cear        orbital.o
+    0x0800658c   0x0800658c   0x00000074   Code   RO         1021    i.angle_display     orbital.o
+    0x08006600   0x08006600   0x00000150   Code   RO         1938    i.battery_data_display  oled.o
+    0x08006750   0x08006750   0x0000005c   Code   RO         1939    i.battery_display   oled.o
+    0x080067ac   0x080067ac   0x0000006c   Code   RO         1940    i.battery_frame_display  oled.o
+    0x08006818   0x08006818   0x00000050   Code   RO         1941    i.battery_init      oled.o
+    0x08006868   0x08006868   0x000000a4   Code   RO         2631    i.bootloader_action_if  bootloader.o
+    0x0800690c   0x0800690c   0x000001ec   Code   RO         1942    i.bornd_code_dis    oled.o
+    0x08006af8   0x08006af8   0x0000000c   Code   RO         2926    i.cear_the_id_add   specialty_mode.o
+    0x08006b04   0x08006b04   0x00000014   Code   RO         1730    i.changeIO_Init     gpio.o
+    0x08006b18   0x08006b18   0x00000024   Code   RO         1024    i.change_page       orbital.o
+    0x08006b3c   0x08006b3c   0x0000002c   Code   RO         2729    i.check_abpoint_Set_if  ab_set.o
+    0x08006b68   0x08006b68   0x00000048   Code   RO         1025    i.check_connection  orbital.o
+    0x08006bb0   0x08006bb0   0x00000058   Code   RO         2632    i.check_enter_boot_if  bootloader.o
+    0x08006c08   0x08006c08   0x0000001c   Code   RO         1026    i.check_sum_add     orbital.o
+    0x08006c24   0x08006c24   0x00000028   Code   RO         1605    i.check_the_powers_status  keyscan.o
+    0x08006c4c   0x08006c4c   0x00000026   Code   RO         2324    i.checksum_verify   rf24l01.o
+    0x08006c72   0x08006c72   0x00000002   PAD
+    0x08006c74   0x08006c74   0x0000079c   Code   RO         1943    i.chinese_page_dis  oled.o
+    0x08007410   0x08007410   0x00000068   Code   RO          887    i.config_page_ok    config.o
+    0x08007478   0x08007478   0x000001f0   Code   RO         1028    i.controller_send_data_to_motor  orbital.o
+    0x08007668   0x08007668   0x0000000c   Code   RO         3182    i.count_tag_set     video.o
+    0x08007674   0x08007674   0x0000004c   Code   RO          888    i.cursor_count      config.o
+    0x080076c0   0x080076c0   0x00000064   Code   RO          889    i.cursor_display    config.o
+    0x08007724   0x08007724   0x00000084   Code   RO         1030    i.cursor_glint      orbital.o
+    0x080077a8   0x080077a8   0x0000007c   Code   RO         1031    i.cursor_shift      orbital.o
+    0x08007824   0x08007824   0x00000040   Code   RO         1032    i.data_count        orbital.o
+    0x08007864   0x08007864   0x000000d4   Code   RO         1040    i.delay_page_ok     orbital.o
+    0x08007938   0x08007938   0x00000088   Code   RO         2927    i.delet_paraORmode  specialty_mode.o
+    0x080079c0   0x080079c0   0x00000080   Code   RO         2928    i.delete_jahao      specialty_mode.o
+    0x08007a40   0x08007a40   0x00000090   Code   RO         2488    i.disable_interrupt  low_power.o
+    0x08007ad0   0x08007ad0   0x0000004a   Code   RO         2325    i.drv_spi_read_write_byte  rf24l01.o
+    0x08007b1a   0x08007b1a   0x00000002   PAD
+    0x08007b1c   0x08007b1c   0x0000003c   Code   RO         1044    i.durationORdelay_time_dis  orbital.o
+    0x08007b58   0x08007b58   0x0000001c   Code   RO         2489    i.enable_interrupt  low_power.o
+    0x08007b74   0x08007b74   0x000007c8   Code   RO         1944    i.english_page_dis  oled.o
+    0x0800833c   0x0800833c   0x00000020   Code   RO         2633    i.enter_bootloader  bootloader.o
+    0x0800835c   0x0800835c   0x00000012   Code   RO          756    i.erase_flash_OnePage  flash.o
+    0x0800836e   0x0800836e   0x00000002   PAD
+    0x08008370   0x08008370   0x00000044   Code   RO          891    i.factory_set_display  config.o
+    0x080083b4   0x080083b4   0x000000ac   Code   RO         2829    i.filtering         adc.o
+    0x08008460   0x08008460   0x00000054   Code   RO         1047    i.get_data_form_A650  orbital.o
+    0x080084b4   0x080084b4   0x0000005c   Code   RO         1048    i.get_init_from_A650  orbital.o
+    0x08008510   0x08008510   0x000000b4   Code   RO         1050    i.hours_time_dis    orbital.o
+    0x080085c4   0x080085c4   0x0000000c   Code   RO          758    i.if_write_flash    flash.o
+    0x080085d0   0x080085d0   0x0000001e   Code   RO         1731    i.input_opendrain   gpio.o
+    0x080085ee   0x080085ee   0x00000002   PAD
+    0x080085f0   0x080085f0   0x00000074   Code   RO         1051    i.integer_display   orbital.o
+    0x08008664   0x08008664   0x0000000c   Code   RO         1054    i.inverse_get_value  orbital.o
+    0x08008670   0x08008670   0x0000007c   Code   RO         2929    i.jiantou_display   specialty_mode.o
+    0x080086ec   0x080086ec   0x0000008c   Code   RO         1606    i.key_Handle        keyscan.o
+    0x08008778   0x08008778   0x000001b8   Code   RO         1607    i.keyscan           keyscan.o
+    0x08008930   0x08008930   0x00000034   Code   RO         1733    i.keyscan_pin_init  gpio.o
+    0x08008964   0x08008964   0x00000002   Code   RO          892    i.language_display  config.o
+    0x08008966   0x08008966   0x00000002   PAD
+    0x08008968   0x08008968   0x00000124   Code   RO           70    i.main              main.o
+    0x08008a8c   0x08008a8c   0x00000094   Code   RO          893    i.main_page_ok      config.o
+    0x08008b20   0x08008b20   0x00000070   Code   RO         1056    i.manulORauto_dis   orbital.o
+    0x08008b90   0x08008b90   0x000000b4   Code   RO         1057    i.minutes_time_dis  orbital.o
+    0x08008c44   0x08008c44   0x00000070   Code   RO         2930    i.mode_and_para_sendt  specialty_mode.o
+    0x08008cb4   0x08008cb4   0x0000000c   Code   RO         1945    i.motor_battery_dis  oled.o
+    0x08008cc0   0x08008cc0   0x00000030   Code   RO         1058    i.motor_init        orbital.o
+    0x08008cf0   0x08008cf0   0x00000048   Code   RO         1062    i.move_to_disp      orbital.o
+    0x08008d38   0x08008d38   0x00000028   Code   RO         1737    i.oled_gpio_init    gpio.o
+    0x08008d60   0x08008d60   0x00000008   Code   RO         1947    i.oled_print_page   oled.o
+    0x08008d68   0x08008d68   0x0000003c   Code   RO         1948    i.oled_print_screen  oled.o
+    0x08008da4   0x08008da4   0x00000020   Code   RO         1949    i.page_display      oled.o
+    0x08008dc4   0x08008dc4   0x0000001c   Code   RO         1608    i.page_return       keyscan.o
+    0x08008de0   0x08008de0   0x00000074   Code   RO          894    i.page_return_adjust  config.o
+    0x08008e54   0x08008e54   0x000000dc   Code   RO         2931    i.paraORmode_shift  specialty_mode.o
+    0x08008f30   0x08008f30   0x00000048   Code   RO          895    i.para_init         config.o
+    0x08008f78   0x08008f78   0x0000005c   Code   RO          759    i.para_read_from_flash  flash.o
+    0x08008fd4   0x08008fd4   0x000002f0   Code   RO         1064    i.param_adjust      orbital.o
+    0x080092c4   0x080092c4   0x00000218   Code   RO         1065    i.param_display     orbital.o
+    0x080094dc   0x080094dc   0x00000070   Code   RO         1066    i.parameter_init    orbital.o
+    0x0800954c   0x0800954c   0x0000008c   Code   RO         2932    i.pecialty_pix_amt_display  specialty_mode.o
+    0x080095d8   0x080095d8   0x00000064   Code   RO         2830    i.percentage_get    adc.o
+    0x0800963c   0x0800963c   0x00000098   Code   RO         1067    i.pix_amt_compara_dis  orbital.o
+    0x080096d4   0x080096d4   0x00000078   Code   RO         1068    i.pix_amt_display   orbital.o
+    0x0800974c   0x0800974c   0x00000118   Code   RO         1609    i.press_OK_function  keyscan.o
+    0x08009864   0x08009864   0x00000070   Code   RO         1610    i.press_key_continue  keyscan.o
+    0x080098d4   0x080098d4   0x00000058   Code   RO         1070    i.press_key_continue_if  orbital.o
+    0x0800992c   0x0800992c   0x00000048   Code   RO         1738    i.pwrKey_exti_interrupt  gpio.o
+    0x08009974   0x08009974   0x00000028   Code   RO         2933    i.pwr_key_enter_moveInterfer  specialty_mode.o
+    0x0800999c   0x0800999c   0x00000130   Code   RO         2831    i.read_ADC_value    adc.o
+    0x08009acc   0x08009acc   0x00000034   Code   RO          760    i.read_flash_holfword  flash.o
+    0x08009b00   0x08009b00   0x0000057c   Code   RO         1071    i.receiver_data_from_A650  orbital.o
+    0x0800a07c   0x0800a07c   0x00000004   Code   RO         1072    i.remotoe_cursor_dispose  orbital.o
+    0x0800a080   0x0800a080   0x0000000c   Code   RO         2731    i.return_mode_back  ab_set.o
+    0x0800a08c   0x0800a08c   0x0000000c   Code   RO         1611    i.return_powers     keyscan.o
+    0x0800a098   0x0800a098   0x0000005c   Code   RO         1612    i.scan_cycle_count  keyscan.o
+    0x0800a0f4   0x0800a0f4   0x000000e4   Code   RO         1073    i.secondes_time_dis  orbital.o
+    0x0800a1d8   0x0800a1d8   0x00000020   Code   RO          398    i.send_interval_count  uart.o
+    0x0800a1f8   0x0800a1f8   0x0000001c   Code   RO         2491    i.set_active_time_out  low_power.o
+    0x0800a214   0x0800a214   0x00000002   Code   RO         1074    i.set_addend_data   orbital.o
+    0x0800a216   0x0800a216   0x00000002   PAD
+    0x0800a218   0x0800a218   0x0000000c   Code   RO         2732    i.set_mode_back     ab_set.o
+    0x0800a224   0x0800a224   0x0000000c   Code   RO         1613    i.set_power_on_int  keyscan.o
+    0x0800a230   0x0800a230   0x00000010   Code   RO         1614    i.set_press_time    keyscan.o
+    0x0800a240   0x0800a240   0x0000000c   Code   RO         2492    i.set_rtc_wackup    low_power.o
+    0x0800a24c   0x0800a24c   0x00000068   Code   RO         2934    i.shotting_Get_data_from_controller  specialty_mode.o
+    0x0800a2b4   0x0800a2b4   0x0000000e   Code   RO         1076    i.shutKey_start     orbital.o
+    0x0800a2c2   0x0800a2c2   0x00000002   PAD
+    0x0800a2c4   0x0800a2c4   0x00000034   Code   RO         1077    i.single_cursor_dis  orbital.o
+    0x0800a2f8   0x0800a2f8   0x00000050   Code   RO         1078    i.sleep_time_dis    orbital.o
+    0x0800a348   0x0800a348   0x00000074   Code   RO         1080    i.slow_start_stop_dis  orbital.o
+    0x0800a3bc   0x0800a3bc   0x000001c4   Code   RO         2935    i.specialty_cursor_id_dis  specialty_mode.o
+    0x0800a580   0x0800a580   0x0000009c   Code   RO         2936    i.specialty_cursor_id_mode_dis  specialty_mode.o
+    0x0800a61c   0x0800a61c   0x000000a0   Code   RO         2937    i.specialty_cursor_id_para_dis  specialty_mode.o
+    0x0800a6bc   0x0800a6bc   0x00000050   Code   RO         2938    i.specialty_cursor_id_shift  specialty_mode.o
+    0x0800a70c   0x0800a70c   0x00000110   Code   RO         2939    i.specialty_jiaHao_display  specialty_mode.o
+    0x0800a81c   0x0800a81c   0x0000006c   Code   RO         2940    i.specialty_jiaHao_scan  specialty_mode.o
+    0x0800a888   0x0800a888   0x0000022c   Code   RO         2941    i.specialty_mode_OKkey  specialty_mode.o
+    0x0800aab4   0x0800aab4   0x00000028   Code   RO         2942    i.specialty_mode_para_clear  specialty_mode.o
+    0x0800aadc   0x0800aadc   0x00000080   Code   RO         2943    i.specialty_move_dis  specialty_mode.o
+    0x0800ab5c   0x0800ab5c   0x00000058   Code   RO         2944    i.specialty_page_mode_dis  specialty_mode.o
+    0x0800abb4   0x0800abb4   0x0000014c   Code   RO         2945    i.specialty_page_para_dis  specialty_mode.o
+    0x0800ad00   0x0800ad00   0x0000000c   Code   RO         2946    i.specialty_para_clear  specialty_mode.o
+    0x0800ad0c   0x0800ad0c   0x000002ac   Code   RO         2947    i.specialty_para_sendTo_motor  specialty_mode.o
+    0x0800afb8   0x0800afb8   0x00000048   Code   RO         2948    i.specialty_totaol_time_dis  specialty_mode.o
+    0x0800b000   0x0800b000   0x00000214   Code   RO         2949    i.specielty_para_adjust  specialty_mode.o
+    0x0800b214   0x0800b214   0x00000078   Code   RO         2950    i.specielty_para_dis  specialty_mode.o
+    0x0800b28c   0x0800b28c   0x0000004c   Code   RO         2951    i.specilty_clear_han_display  specialty_mode.o
+    0x0800b2d8   0x0800b2d8   0x00000014   Code   RO         2952    i.specilty_get_reshot_form_motor  specialty_mode.o
+    0x0800b2ec   0x0800b2ec   0x00000078   Code   RO         2953    i.specilty_keyscan_send  specialty_mode.o
+    0x0800b364   0x0800b364   0x0000007c   Code   RO         2954    i.specilty_page_return  specialty_mode.o
+    0x0800b3e0   0x0800b3e0   0x00000014   Code   RO         2955    i.splty_mode_time_count  specialty_mode.o
+    0x0800b3f4   0x0800b3f4   0x00000144   Code   RO         1083    i.status_display    orbital.o
+    0x0800b538   0x0800b538   0x00000014   Code   RO         2634    i.string_lengt      bootloader.o
+    0x0800b54c   0x0800b54c   0x00000028   Code   RO         1087    i.time_count        orbital.o
+    0x0800b574   0x0800b574   0x00000018   Code   RO         1088    i.time_delay_ms     orbital.o
+    0x0800b58c   0x0800b58c   0x00000048   Code   RO          403    i.usart1_receiver   uart.o
+    0x0800b5d4   0x0800b5d4   0x00000030   Code   RO          405    i.usart22_Recdata_Handling  uart.o
+    0x0800b604   0x0800b604   0x0000000c   Code   RO          406    i.usart22_read_byte  uart.o
+    0x0800b610   0x0800b610   0x00000020   Code   RO         1950    i.version_dis       oled.o
+    0x0800b630   0x0800b630   0x000000a4   Code   RO         1092    i.video_page_OK     orbital.o
+    0x0800b6d4   0x0800b6d4   0x00000048   Code   RO         1093    i.wait_for_init     orbital.o
+    0x0800b71c   0x0800b71c   0x0000000c   Code   RO         2327    i.wifi24G_data_Dispose  rf24l01.o
+    0x0800b728   0x0800b728   0x00000048   Code   RO         2328    i.wifi24G_read_data  rf24l01.o
+    0x0800b770   0x0800b770   0x000000dc   Code   RO         2329    i.wifi24G_send_data  rf24l01.o
+    0x0800b84c   0x0800b84c   0x00000018   Code   RO         1740    i.wifi_init         gpio.o
+    0x0800b864   0x0800b864   0x00000028   Code   RO         2330    i.wifi_sleep        rf24l01.o
+    0x0800b88c   0x0800b88c   0x00000030   Code   RO          761    i.write_bootTag     flash.o
+    0x0800b8bc   0x0800b8bc   0x00000028   Code   RO          762    i.write_flash_active  flash.o
+    0x0800b8e4   0x0800b8e4   0x0000000e   Code   RO          763    i.write_flash_holfword  flash.o
+    0x0800b8f2   0x0800b8f2   0x00000002   PAD
+    0x0800b8f4   0x0800b8f4   0x00000054   Code   RO          764    i.write_flash_holfword_buffer  flash.o
+    0x0800b948   0x0800b948   0x00000010   Data   RO            5    .constdata          system_stm32f0xx.o
+    0x0800b958   0x0800b958   0x00000008   Data   RO            6    .constdata          system_stm32f0xx.o
+    0x0800b960   0x0800b960   0x0000000e   Data   RO           71    .constdata          main.o
+    0x0800b96e   0x0800b96e   0x00000005   Data   RO          411    .constdata          uart.o
+    0x0800b973   0x0800b973   0x00000001   PAD
+    0x0800b974   0x0800b974   0x000017b6   Data   RO         1951    .constdata          oled.o
+    0x0800d12a   0x0800d12a   0x00000005   Data   RO         2833    .constdata          adc.o
+    0x0800d12f   0x0800d12f   0x00000001   PAD
+    0x0800d130   0x0800d130   0x0000025f   Data   RO         1955    .conststring        oled.o
+    0x0800d38f   0x0800d38f   0x00000001   PAD
+    0x0800d390   0x0800d390   0x00000020   Data   RO         4432    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x200000c4, Load base: 0x0800d314, Size: 0x000011bc, Max: 0x00002000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x200000c4, Load base: 0x0800d3b0, Size: 0x000011bc, Max: 0x00002000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x200000c4   0x0800d314   0x00000004   Data   RW          413    .data               uart.o
-    0x200000c8   0x0800d318   0x00000001   Data   RW          765    .data               flash.o
-    0x200000c9   0x0800d319   0x00000006   Data   RW          896    .data               config.o
-    0x200000cf   0x0800d31f   0x00000001   PAD
-    0x200000d0   0x0800d320   0x00000048   Data   RW         1095    .data               orbital.o
-    0x20000118   0x0800d368   0x00000001   Data   RW         1097    .data               orbital.o
-    0x20000119   0x0800d369   0x00000001   Data   RW         1098    .data               orbital.o
-    0x2000011a   0x0800d36a   0x00000016   Data   RW         1615    .data               keyscan.o
-    0x20000130   0x0800d380   0x00000014   Data   RW         1957    .data               oled.o
-    0x20000144   0x0800d394   0x00000004   Data   RW         2242    .data               pair.o
-    0x20000148   0x0800d398   0x00000003   Data   RW         2333    .data               rf24l01.o
-    0x2000014b   0x0800d39b   0x00000001   PAD
-    0x2000014c   0x0800d39c   0x00000008   Data   RW         2493    .data               low_power.o
-    0x20000154   0x0800d3a4   0x00000001   Data   RW         2635    .data               bootloader.o
-    0x20000155   0x0800d3a5   0x00000007   Data   RW         2737    .data               ab_set.o
-    0x2000015c   0x0800d3ac   0x00000018   Data   RW         2834    .data               adc.o
-    0x20000174   0x0800d3c4   0x00000014   Data   RW         2957    .data               specialty_mode.o
-    0x20000188   0x0800d3d8   0x00000008   Data   RW         3183    .data               video.o
+    0x200000c4   0x0800d3b0   0x00000004   Data   RW          413    .data               uart.o
+    0x200000c8   0x0800d3b4   0x00000001   Data   RW          765    .data               flash.o
+    0x200000c9   0x0800d3b5   0x00000006   Data   RW          896    .data               config.o
+    0x200000cf   0x0800d3bb   0x00000001   PAD
+    0x200000d0   0x0800d3bc   0x00000048   Data   RW         1095    .data               orbital.o
+    0x20000118   0x0800d404   0x00000001   Data   RW         1097    .data               orbital.o
+    0x20000119   0x0800d405   0x00000001   Data   RW         1098    .data               orbital.o
+    0x2000011a   0x0800d406   0x00000016   Data   RW         1615    .data               keyscan.o
+    0x20000130   0x0800d41c   0x00000014   Data   RW         1957    .data               oled.o
+    0x20000144   0x0800d430   0x00000004   Data   RW         2242    .data               pair.o
+    0x20000148   0x0800d434   0x00000003   Data   RW         2333    .data               rf24l01.o
+    0x2000014b   0x0800d437   0x00000001   PAD
+    0x2000014c   0x0800d438   0x00000008   Data   RW         2493    .data               low_power.o
+    0x20000154   0x0800d440   0x00000001   Data   RW         2635    .data               bootloader.o
+    0x20000155   0x0800d441   0x00000007   Data   RW         2737    .data               ab_set.o
+    0x2000015c   0x0800d448   0x00000018   Data   RW         2834    .data               adc.o
+    0x20000174   0x0800d460   0x00000014   Data   RW         2957    .data               specialty_mode.o
+    0x20000188   0x0800d474   0x00000008   Data   RW         3183    .data               video.o
     0x20000190        -       0x00000161   Zero   RW          408    .bss                uart.o
-    0x200002f1   0x0800d3e0   0x00000003   PAD
+    0x200002f1   0x0800d47c   0x00000003   PAD
     0x200002f4        -       0x0000005a   Zero   RW         1094    .bss                orbital.o
-    0x2000034e   0x0800d3e0   0x00000002   PAD
+    0x2000034e   0x0800d47c   0x00000002   PAD
     0x20000350        -       0x00000190   Zero   RW         2832    .bss                adc.o
     0x200004e0        -       0x000009a0   Zero   RW         2956    .bss                specialty_mode.o
     0x20000e80        -       0x00000400   Zero   RW         4085    STACK               startup_stm32f030x8.o
@@ -3688,21 +3690,21 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       432         66          0          7          0      10517   ab_set.o
-      1038        152          5         24        400      43184   adc.o
+       432         66          0          7          0      10554   ab_set.o
+      1046        152          5         24        400      43188   adc.o
        304         48          0          1          0       3043   bootloader.o
        718         82          0          6          0      30440   config.o
        590         82          0          1          0       9267   flash.o
        754         90          0          0          0      38427   gpio.o
       1434        140          0         22          0      15692   keyscan.o
-       754        134          0          8          0      94373   low_power.o
-       852        106         14          0          0      68060   main.o
-      7616       2964       6645         20          0      30957   oled.o
-      8302       1262          0         74         90      48366   orbital.o
+       750        132          0          8          0      94373   low_power.o
+       852        106         14          0          0      68097   main.o
+      7620       2964       6677         20          0      30957   oled.o
+      8282       1254          0         74         90      48338   orbital.o
        910         86          0          4          0       5724   pair.o
       1442        128          0          3          0      19293   rf24l01.o
        516         56          0          0          0      45963   rtc.o
-      6516        904          0         20       2464      31073   specialty_mode.o
+      6516        904          0         20       2464      31110   specialty_mode.o
         28          8        180          0       1024        608   startup_stm32f030x8.o
         52          8          0          0          0        640   stm32f0xx_hal_pwr.o
        338         56          0          0          0      76969   stm32f0xx_it.o
@@ -3716,10 +3718,10 @@ Image component sizes
         32          6          0          0          0       1681   stm32f0xx_ll_utils.o
         92         14         24          0          0     180207   system_stm32f0xx.o
        578         94          5          4        353      34932   uart.o
-       736        192          0          8          0       5019   video.o
+       872        228          0          8          0       5163   video.o
 
     ----------------------------------------------------------------------
-     36382       6870       6908        204       4336     911789   Object Totals
+     36506       6896       6940        204       4336     912020   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         46          0          3          2          5          0   (incl. Padding)
 
@@ -3785,15 +3787,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     40984       7008       6908        204       4336     899277   Grand Totals
-     40984       7008       6908        204       4336     899277   ELF Image Totals
-     40984       7008       6908        204          0          0   ROM Totals
+     41108       7034       6940        204       4336     899508   Grand Totals
+     41108       7034       6940        204       4336     899508   ELF Image Totals
+     41108       7034       6940        204          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                47892 (  46.77kB)
+    Total RO  Size (Code + RO Data)                48048 (  46.92kB)
     Total RW  Size (RW Data + ZI Data)              4540 (   4.43kB)
-    Total ROM Size (Code + RO Data + RW Data)      48096 (  46.97kB)
+    Total ROM Size (Code + RO Data + RW Data)      48252 (  47.12kB)
 
 ==============================================================================
 

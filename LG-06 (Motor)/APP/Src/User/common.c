@@ -594,12 +594,14 @@ void Get_data_from_controller(uint8_t *fifos)
 				{
 					mode_backup = GROUP_PHOTO;
 					Group_p.GP_dir = A_TO_B;
+					Group_p.check_dir = 0;
 					Group_mode_Dir_check();
 					//Group_mode_find_Apoint();
-					Group_mode_Start_check_diretion();
 					//Send_connect_data_to_controller();
 				}
 				Send_connect_data_to_controller();
+				Group_mode_find_Apoint();
+				//Group_mode_Start_check_diretion();
 			}
 			else if(fifos[3] == 0x06) // 进入广角模式
 			{

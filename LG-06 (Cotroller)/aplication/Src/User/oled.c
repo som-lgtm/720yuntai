@@ -165,9 +165,9 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows,"快门时间          ");}
 			else if(rows == 4){
-				The_page_processing(rows,	"手动快门          ");} // 延后
+				The_page_processing(rows,	"方向              ");} // 延后
 			else if(rows == 5){
-				The_page_processing(rows,"方向              ");}
+				The_page_processing(rows,"手动快门          ");}
 			else if(rows == 6){
 				The_page_processing(rows,	"  启动  ");}
 			else if(rows == 7){
@@ -573,9 +573,9 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows,"Exposure          ");}
 			else if(rows == 4){
-				The_page_processing(rows,	"Manual            ");} // 延后
+				The_page_processing(rows,	"diraction         ");} // 延后
 			else if(rows == 5){
-				The_page_processing(rows,"diraction         ");}
+				The_page_processing(rows,"Manual            ");}
 			else if(rows == 6){
 				The_page_processing(rows,"                    ");}
 			else if(rows == 7){
@@ -3122,7 +3122,7 @@ y = y * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.1.2", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.1.3", "", ENGLISH);
 }
 
 

@@ -127,6 +127,7 @@ void Burn_code_value(void)
 			if(timeover >= 15)break;
 			if(send_mode)
 			{
+				if_write_flash();
 				RF24L01_Set_Mode( MODE_TX );
 				NRF24L01_TxPacket( &App_Buffer[0].app_send_buffer[0], App_Buffer[0].app_send_size );
 				RF24L01_CE_OFF;

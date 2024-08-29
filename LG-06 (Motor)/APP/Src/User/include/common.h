@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	113
+#define FW_VERSIONS	114
 
 #define PARA_MAX_ID	25
 
@@ -149,6 +149,11 @@ typedef struct{
 	//uint8_t ramp;
 	uint8_t speed; // 手动模式的速度档位
 	MONOLAYER SLayer;
+	
+	uint16_t lens_folcal; // 镜头焦距
+	uint8_t Roverlap; // 重叠率
+	uint8_t GP_shut_mode; // 横竖拍
+	uint8_t GP_exposure;
 
 }PARA_STRUCT;
 

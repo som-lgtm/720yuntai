@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\output\LG-06-CTR.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\output\LG-06-CTR.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Aug 27 13:25:48 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Aug 28 16:16:37 2024
 <BR><P>
 <H3>Maximum Stack Usage =        344 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -895,6 +895,7 @@ Global Symbols
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_display
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;The_motor_battery_dis_init
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Enter_into_Pair
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Video_check_the_motor_status
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;The_page_processing
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Video_downcount_times_display
 </UL>
@@ -1704,7 +1705,7 @@ Global Symbols
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_page_ok
 </UL>
 
-<P><STRONG><a name="[ea]"></a>Time_Out_And_Enter_Stop_Mode</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, low_power.o(i.Time_Out_And_Enter_Stop_Mode))
+<P><STRONG><a name="[ea]"></a>Time_Out_And_Enter_Stop_Mode</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, low_power.o(i.Time_Out_And_Enter_Stop_Mode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = Time_Out_And_Enter_Stop_Mode &rArr; ShutDown &rArr; ShutDown_AllIO_High_resistance_mode &rArr; input_opendrain &rArr; LL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_active_time_out
@@ -1775,10 +1776,11 @@ Global Symbols
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;video_page_OK
 </UL>
 
-<P><STRONG><a name="[f5]"></a>Video_check_the_motor_status</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, video.o(i.Video_check_the_motor_status))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Video_check_the_motor_status &rArr; Video_motor_status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
+<P><STRONG><a name="[f5]"></a>Video_check_the_motor_status</STRONG> (Thumb, 236 bytes, Stack size 16 bytes, video.o(i.Video_check_the_motor_status))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Video_check_the_motor_status &rArr; Video_motor_status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_get_value
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Fill
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Video_motor_status_display
 </UL>
 <BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receiver_data_from_A650
@@ -1805,7 +1807,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyscan
 </UL>
 
-<P><STRONG><a name="[f6]"></a>Video_motor_status_display</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, video.o(i.Video_motor_status_display))
+<P><STRONG><a name="[f6]"></a>Video_motor_status_display</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, video.o(i.Video_motor_status_display))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = Video_motor_status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Oled_EnlPrint
@@ -2257,7 +2259,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShutDown
 </UL>
 
-<P><STRONG><a name="[123]"></a>english_page_dis</STRONG> (Thumb, 1770 bytes, Stack size 8 bytes, oled.o(i.english_page_dis))
+<P><STRONG><a name="[123]"></a>english_page_dis</STRONG> (Thumb, 1774 bytes, Stack size 8 bytes, oled.o(i.english_page_dis))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = english_page_dis &rArr; The_page_processing &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
@@ -2654,7 +2656,7 @@ Global Symbols
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_key_continue
 </UL>
 
-<P><STRONG><a name="[83]"></a>param_display</STRONG> (Thumb, 470 bytes, Stack size 24 bytes, orbital.o(i.param_display))
+<P><STRONG><a name="[83]"></a>param_display</STRONG> (Thumb, 464 bytes, Stack size 24 bytes, orbital.o(i.param_display))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_display
@@ -2804,10 +2806,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyscan
 </UL>
 
-<P><STRONG><a name="[140]"></a>read_ADC_value</STRONG> (Thumb, 256 bytes, Stack size 32 bytes, adc.o(i.read_ADC_value))
+<P><STRONG><a name="[140]"></a>read_ADC_value</STRONG> (Thumb, 264 bytes, Stack size 32 bytes, adc.o(i.read_ADC_value))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = read_ADC_value &rArr; TurnOff_ShutDonw_Battery_dis &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnOff_ShutDonw_Battery_dis
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_powers
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnOff_ShutDonw_Battery_dis
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_data_display
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Charging_Dis
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShutDown
@@ -2832,7 +2835,7 @@ Global Symbols
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;para_read_from_flash
 </UL>
 
-<P><STRONG><a name="[164]"></a>receiver_data_from_A650</STRONG> (Thumb, 1396 bytes, Stack size 48 bytes, orbital.o(i.receiver_data_from_A650))
+<P><STRONG><a name="[164]"></a>receiver_data_from_A650</STRONG> (Thumb, 1388 bytes, Stack size 48 bytes, orbital.o(i.receiver_data_from_A650))
 <BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = receiver_data_from_A650 &rArr; Page_preinstall_move_return &rArr; change_page &rArr; single_cursor_dis &rArr; param_display &rArr; specialty_move_dis &rArr; status_display &rArr; Oled_EnlPrint &rArr; LCD_P8x16Str &rArr; Address_set &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;time_delay_ms
@@ -2882,7 +2885,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5f]"></a>return_powers</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, keyscan.o(i.return_powers))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_init
+<BR><BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_ADC_value
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_init
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnOff_ShutDonw_Battery_dis
 <LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;battery_data_display

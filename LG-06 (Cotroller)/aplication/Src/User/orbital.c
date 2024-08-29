@@ -692,11 +692,11 @@ void param_display(uint8_t cur)
 			{
 				secondes_time_dis(glob_para.exposure, cur);
 			}
-			else if(cur == 4)
+			else if(cur == 5)
 			{
 				manulORauto_dis(std_manul_tag, cur);
 			}
-			if(cur == 5)
+			if(cur == 4)
 			{
 				if(cursor_id == cur)inverse_get_value(0xff);
 				move_to_disp(cur);
@@ -1784,6 +1784,7 @@ void param_adjust(uint8_t dir)
 	{
 		case GROUP_PHOTO:
 		{
+			//if(page_id_back == GROUP_PHOTO)return;
 			if(cursor_id == 0)
 			{
 				inverse_get_value(0xff);
@@ -1823,7 +1824,7 @@ void param_adjust(uint8_t dir)
 				controller_send_data_to_motor(0,0x05, 0x03);
 				inverse_get_value(0);
 			}
-			else if(cursor_id == 4) //manual exposures 
+			else if(cursor_id == 5) //manual exposures 
 			{
 				inverse_get_value(0xff);
 				if(dir & KEY_RIGHT_MASK)
@@ -1838,7 +1839,7 @@ void param_adjust(uint8_t dir)
 				controller_send_data_to_motor(0,0x05, 0x04);
 				inverse_get_value(0);
 			}
-			else if(cursor_id == 5)// 
+			else if(cursor_id == 4)// 
 			{
 				if(dir & KEY_RIGHT_MASK)
 				{
@@ -2502,8 +2503,8 @@ void receiver_data_from_A650(void)
 						if(page_id != GROUP_PHOTO)
 						{
 							page_id = GROUP_PHOTO;
-							cursor_id = 0;
-							change_page();
+							//cursor_id = 0;
+						//	change_page();
 						}
 						/*else
 						{
@@ -2636,21 +2637,22 @@ void receiver_data_from_A650(void)
 							page_id = VIDEO_MODE;
 							cursor_id = 2;
 							get_data_form_A650();
+							change_page();
 						}
 						else if(return_mode_back() == DELAY_SET)
 						{
 							page_id = DELAY_SET;
 							cursor_id = 1;
 							get_data_form_A650();
+							change_page();
 						}
 						else if(return_mode_back() == GROUP_PHOTO)
 						{
 							page_id = GROUP_PHOTO;
 							cursor_id = 0;
-							get_data_form_A650();
+							//get_data_form_A650();
 						}
 						//ab_set_if = 2; // 设置成功志置
-						change_page();
 					}
 				}
 				else if(app_read_buffer[3] == 0x02) //自动找原的处理
@@ -2833,6 +2835,7 @@ void receiver_data_from_A650(void)
 			case 0x0b:
 			{
 				specilty_get_reshot_form_motor(app_read_buffer[3]);
+				break;
 			}
 			case 0x0d:
 			{

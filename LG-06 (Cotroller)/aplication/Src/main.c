@@ -137,8 +137,8 @@ int main(void)
 	{
 		check_connection();
 		get_init_from_A650();
+		wifi24G_data_Dispose();
 	}
-	wifi24G_data_Dispose();
 	//usart22_Recdata_Handling();
 	Time_Out_And_Enter_Stop_Mode();
   }

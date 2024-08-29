@@ -30,6 +30,11 @@ void Group_mode_para_init(void)
 	//全画幅
 	CCD_size[3].lenght = 36;
 	CCD_size[3].wide = 24;
+
+	Group_p.lens_folcal = glob_para.lens_folcal;
+	Group_p.GP_shut_mode= glob_para.GP_shut_mode;
+	Group_p.Roverlap = glob_para.Roverlap;
+	Group_p.GP_exposure = glob_para.GP_exposure;
 }
 
 // 手动快门处理，即电动模式开时，手按快门键
@@ -100,12 +105,15 @@ void Group_set_abPoint(uint8_t typess)
 	else if(Group_p.GP_set_if == 2)
 	{
 		motorHH_stop();
+		Manul_p.HH_UpRoDown = 0;
+		Angle_real_time_transmission(0);
 		pulse_h = Absolute_value_calculation(Group_p.point_pulse_a, motorHH_p.GPpulse_count);
 
 		if(pulse_h < (uint32_t)PULSE_SUM(1))
 		{
 			Group_p.GP_set_if = 0;
 			Group_p.lens_pulse = 0;
+			Send_para_data_to_controller(1, 1);
 		}
 		else
 		{
@@ -117,9 +125,9 @@ void Group_set_abPoint(uint8_t typess)
 				Group_p.lens_pulse = pulse_h;
 			}
 
-			Group_p.lens_folcal = 50;
-			Group_p.Roverlap = 30;
-			Group_p.GP_exposure = 1;
+			//Group_p.lens_folcal = 50;
+			//Group_p.Roverlap = 30;
+			//Group_p.GP_exposure = 1;
 			Group_p.GP_dir = A_TO_B;
 			Group_mode_Dir_check();
 			Group_p.Gp_angle = Group_p.lens_pulse * Angle_basic;
@@ -128,10 +136,10 @@ void Group_set_abPoint(uint8_t typess)
 			Group_shots_event();
 			Group_move_speed_calculate();
 			Group_Ramp_Speed_Load();
+			Send_para_data_to_controller(1, 1);
 			Group_mode_Start_check_diretion();
 		}
 		
-		Send_para_data_to_controller(1, 1);
 	}
 }
 
@@ -154,7 +162,7 @@ void Group_shots_event(void)
 	overlap_rate = (float)1 - ((float)Group_p.Roverlap / (float)100); //除去重叠率计算出有效的画面
 
 	// 水平张数通过画幅长度和镜头焦距通过反正切算出所需要的拍摄张数
-	if(Group_p.GP_shut_mode)
+	if(Group_p.GP_shut_mode) //竖拍
 	{
 		number = (float)Group_p.Gp_angle / ((2.0 * get_angle(atan((float)CCD_size[3].wide/2.0/(float)Group_p.lens_folcal))) * overlap_rate);
 	}
@@ -190,36 +198,41 @@ void Group_shots_event(void)
 
 void Group_get_data_from_controller(uint8_t *fifog)
 {
-	if(Group_p.check_dir)
-	{
-		Send_connect_data_to_controller();
-		return;
-	}
+//	if(Group_p.check_dir)
+//	{
+		//Send_connect_data_to_controller();
+//		return;
+//	}
+	
 	if(fifog[4] == 0x01) // 镜头焦距
 	{
 		if(m_start)
 		{
-			Send_connect_data_to_controller();
+		//	Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.lens_folcal = (uint16_t)fifog[5] | (uint16_t)fifog[6]<<8;
 		Group_shots_event();
+		glob_para.lens_folcal = Group_p.lens_folcal;
+		if_write_flash();
 	}
 	else if(fifog[4] == 0x02) //重叠率
 	{
 		if(m_start)
 		{
-			Send_connect_data_to_controller();
+		//	Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.Roverlap = fifog[5];
 		Group_shots_event();
+		glob_para.Roverlap = Group_p.Roverlap;
+		if_write_flash();
 	}
 	else if(fifog[4] == 0x03) //
 	{
 		if(m_start)
 		{
-			Send_connect_data_to_controller();
+		//	Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.GP_exposure = fifog[5];
@@ -232,7 +245,7 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	{
 		if(m_start)
 		{
-			Send_connect_data_to_controller();
+		//	Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.GP_dir = fifog[5];
@@ -247,10 +260,12 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	{
 		if(m_start)
 		{
-			Send_connect_data_to_controller();
+		//	Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.GP_shut_mode = fifog[5];
+		glob_para.GP_shut_mode = Group_p.GP_shut_mode;
+		if_write_flash();
 	}
 }
 
@@ -360,6 +375,7 @@ void Group_mode_start(void)
 	if(mode_backup != GROUP_PHOTO)return;
 	if(m_start)
 	{
+		write_flash_active();
 		if(move_begin_backup)
 		{
 			move_begin = move_begin_backup;
@@ -690,6 +706,13 @@ void Group_mode_find_Apoint(void)
 				set_abpoint_start_setting(MOTOR_HORITAL);
 				Red_led_tack();
 				Video_Find_ABpoint_notify(LOOKING_ORIGIN_POINT);
+		}	
+		else
+		{
+			motorHH_p.GPpulse_count = Group_p.point_pulse_a;
+			Group_p.GP_dir = A_TO_B;
+			//video_p.locusV.dir = video_p.DIR;
+			Group_mode_Dir_check();
 		}
 	}
 }
@@ -729,11 +752,35 @@ void Group_Ramp_Speed_Load(void)
 	
 }
 
+void Group_find_Origin_slow_check(MOTOR_TYPE motor_t)
+{	
+	if(motor_t == MOTOR_HORITAL)
+	{
+		if(Group_p.check_dir)return;
+		if(find_pata.HHfind_Apoint == 0)return;
+
+		if(motorHH_p.DIR == A_TO_B)
+		{
+			if(motorHH_p.pulse_count >= Group_p.origin_pulse - find_pata.slow_pulse)
+			{
+				find_pata.find_abpoint = SLOW_STOP;
+			}
+		}
+		else
+		{
+			if(motorHH_p.pulse_count <= Group_p.origin_pulse + find_pata.slow_pulse)
+			{
+				find_pata.find_abpoint = SLOW_STOP;
+			}
+		}
+	}
+}
+
 void Group_loop_check(void)
 {
 	if(mode_backup != GROUP_PHOTO)return;
 		Group_find_Origin_checkStop(MOTOR_HORITAL);
-		//Delay_find_Origin_slow_check(MOTOR_HORITAL);
+		Group_find_Origin_slow_check(MOTOR_HORITAL);
 		Group_mode_move_compara();
 		Group_FindABpoint_pluse_check(MOTOR_HORITAL);
 		Group_FindABpoint_slow_check(MOTOR_HORITAL);

@@ -1,4 +1,5 @@
 ..\output\flash.o: ..\Src\User\flash.c
+..\output\flash.o: ..\Src\User\include\flash.h
 ..\output\flash.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h
 ..\output\flash.o: ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h
 ..\output\flash.o: ../Drivers/CMSIS/Include/core_cm0.h

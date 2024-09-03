@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\output\bootloader.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\output\bootloader.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jul 25 16:45:55 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Aug 30 11:03:49 2024
 <BR><P>
 <H3>Maximum Stack Usage =       1200 bytes + Unknown(Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -96,8 +96,8 @@ Global Symbols
 <P><STRONG><a name="[70]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[25]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
+<BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
+<LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
 <P><STRONG><a name="[71]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -351,9 +351,9 @@ Global Symbols
 <P><STRONG><a name="[4a]"></a>LL_USART_Init</STRONG> (Thumb, 156 bytes, Stack size 32 bytes, stm32f0xx_ll_usart.o(i.LL_USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = LL_USART_Init &rArr; LL_RCC_GetUSARTClockFreq &rArr; RCC_GetSystemClockFreq &rArr; RCC_PLL_GetFreqDomain_SYS &rArr; __aeabi_uidivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetUSARTClockFreq
+<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetUSARTClockFreq
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetSystemClocksFreq
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart22_Init
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart11_Init
@@ -596,10 +596,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gpio_init
 </UL>
 
-<P><STRONG><a name="[5e]"></a>check_ID</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, main.o(i.check_ID))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = check_ID &rArr; read_flash_holfword
+<P><STRONG><a name="[5e]"></a>check_ID</STRONG> (Thumb, 60 bytes, Stack size 32 bytes, main.o(i.check_ID))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = check_ID &rArr; write_flash_holfword_buffer &rArr; write_flash_holfword &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_flash_holfword
+<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_flash_holfword_buffer
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_flash_holfword
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -728,6 +729,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Upgrade_failure_ErasePage
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iap_flash_write_iap_inf
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JomToApp
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_ID
 </UL>
 <P>
 <H3>

@@ -40,27 +40,14 @@ uint8_t check_ID(void)
 	
 	read_flash_holfword(FLASH_WRITE_START_ADDR, (uint16_t *)&infor, sizeof(infor));
 	select_usart = infor.usart_number;
-/*	read_flash_holfword(0x1FFFF7AC, (uint16_t *)&device_id[0], sizeof(device_id));
-	
-	
 	if(infor.first_used != 0x70)
 	{
-		memcpy(&infor.MCU_uid[0], device_id, 12); // load data to DMA send buffer
+		//memcpy(&infor.MCU_uid[0], device_id, 12); // load data to DMA send buffer
+		infor.Reserved = 0x06;
 		infor.first_used = 0x70;
 		write_flash_holfword_buffer((uint16_t *)&infor,sizeof(infor));
 	}
-	else
-	{
-		for( i = 0; i < 12; i++ )
-		{
-			if( infor.MCU_uid[ i ] != device_id[ i ] )
-			{
-				return 0;
-			}	
-		} 
 
-	}
-*/
 	return 1;
 }
 

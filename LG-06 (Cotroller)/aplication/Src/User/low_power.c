@@ -161,6 +161,7 @@ void ShutDown(void)
 	HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 	Reset_theSystem(0);
 //	SystemClock_Config();
+	RTC_disable();
 	if(charge_tag)
 	{
 		__disable_irq();
@@ -168,6 +169,7 @@ void ShutDown(void)
 	}
 	//SystemClock_Config();
 	enable_interrupt();
+	set_active_time_out();
 }
 
 void Enter_Sleep_Mode(void)

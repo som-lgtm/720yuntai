@@ -19,6 +19,7 @@ Section Cross References
     main.o(i.Usart22_Init) refers to stm32f0xx_ll_usart.o(i.LL_USART_Init) for LL_USART_Init
     main.o(i.check_ID) refers to memseta.o(.text) for __aeabi_memclr4
     main.o(i.check_ID) refers to flash.o(i.read_flash_holfword) for read_flash_holfword
+    main.o(i.check_ID) refers to flash.o(i.write_flash_holfword_buffer) for write_flash_holfword_buffer
     main.o(i.check_ID) refers to main.o(.data) for .data
     main.o(i.enter_bootloader) refers to flash.o(i.FLASH_Unlock) for FLASH_Unlock
     main.o(i.enter_bootloader) refers to main.o(i.Usart22_Init) for Usart22_Init
@@ -602,22 +603,22 @@ Image Symbol Table
     i.__scatterload_zeroinit                 0x0800151c   Section       14  handlers.o(i.__scatterload_zeroinit)
     i.ble_init                               0x0800152a   Section        0  gpio.o(i.ble_init)
     i.check_ID                               0x08001548   Section        0  main.o(i.check_ID)
-    i.check_sum_add                          0x08001574   Section        0  ymodem.o(i.check_sum_add)
-    i.checksum_verify                        0x0800158e   Section        0  ymodem.o(i.checksum_verify)
-    i.enter_bootloader                       0x080015b4   Section        0  main.o(i.enter_bootloader)
-    i.erase_flash_OnePage                    0x080015e4   Section        0  flash.o(i.erase_flash_OnePage)
-    i.fw_updata                              0x080015f8   Section        0  ymodem.o(i.fw_updata)
-    i.iap_flash_write_iap_inf                0x08001650   Section        0  flash.o(i.iap_flash_write_iap_inf)
-    i.key_check                              0x0800167c   Section        0  gpio.o(i.key_check)
-    i.key_gpio_init                          0x080016d8   Section        0  gpio.o(i.key_gpio_init)
-    i.lights_flash                           0x080016fc   Section        0  download.o(i.lights_flash)
-    i.main                                   0x08001734   Section        0  main.o(i.main)
-    i.para_init                              0x080017c4   Section        0  ymodem.o(i.para_init)
-    i.read_flash_holfword                    0x080017dc   Section        0  flash.o(i.read_flash_holfword)
-    i.write_flash_holfword                   0x08001800   Section        0  flash.o(i.write_flash_holfword)
-    i.write_flash_holfword_buffer            0x08001810   Section        0  flash.o(i.write_flash_holfword_buffer)
-    .constdata                               0x08001858   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x08001868   Section        8  system_stm32f0xx.o(.constdata)
+    i.check_sum_add                          0x0800158c   Section        0  ymodem.o(i.check_sum_add)
+    i.checksum_verify                        0x080015a6   Section        0  ymodem.o(i.checksum_verify)
+    i.enter_bootloader                       0x080015cc   Section        0  main.o(i.enter_bootloader)
+    i.erase_flash_OnePage                    0x080015fc   Section        0  flash.o(i.erase_flash_OnePage)
+    i.fw_updata                              0x08001610   Section        0  ymodem.o(i.fw_updata)
+    i.iap_flash_write_iap_inf                0x08001668   Section        0  flash.o(i.iap_flash_write_iap_inf)
+    i.key_check                              0x08001694   Section        0  gpio.o(i.key_check)
+    i.key_gpio_init                          0x080016f0   Section        0  gpio.o(i.key_gpio_init)
+    i.lights_flash                           0x08001714   Section        0  download.o(i.lights_flash)
+    i.main                                   0x0800174c   Section        0  main.o(i.main)
+    i.para_init                              0x080017dc   Section        0  ymodem.o(i.para_init)
+    i.read_flash_holfword                    0x080017f4   Section        0  flash.o(i.read_flash_holfword)
+    i.write_flash_holfword                   0x08001818   Section        0  flash.o(i.write_flash_holfword)
+    i.write_flash_holfword_buffer            0x08001828   Section        0  flash.o(i.write_flash_holfword_buffer)
+    .constdata                               0x08001870   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x08001880   Section        8  system_stm32f0xx.o(.constdata)
     .data                                    0x20000000   Section        2  main.o(.data)
     .data                                    0x20000004   Section       12  common.o(.data)
     .data                                    0x20000010   Section        4  download.o(.data)
@@ -742,25 +743,25 @@ Image Symbol Table
     __scatterload_null                       0x0800151b   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x0800151d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
     ble_init                                 0x0800152b   Thumb Code    30  gpio.o(i.ble_init)
-    check_ID                                 0x08001549   Thumb Code    36  main.o(i.check_ID)
-    check_sum_add                            0x08001575   Thumb Code    26  ymodem.o(i.check_sum_add)
-    checksum_verify                          0x0800158f   Thumb Code    38  ymodem.o(i.checksum_verify)
-    enter_bootloader                         0x080015b5   Thumb Code    40  main.o(i.enter_bootloader)
-    erase_flash_OnePage                      0x080015e5   Thumb Code    16  flash.o(i.erase_flash_OnePage)
-    fw_updata                                0x080015f9   Thumb Code    80  ymodem.o(i.fw_updata)
-    iap_flash_write_iap_inf                  0x08001651   Thumb Code    38  flash.o(i.iap_flash_write_iap_inf)
-    key_check                                0x0800167d   Thumb Code    74  gpio.o(i.key_check)
-    key_gpio_init                            0x080016d9   Thumb Code    32  gpio.o(i.key_gpio_init)
-    lights_flash                             0x080016fd   Thumb Code    36  download.o(i.lights_flash)
-    main                                     0x08001735   Thumb Code   120  main.o(i.main)
-    para_init                                0x080017c5   Thumb Code    16  ymodem.o(i.para_init)
-    read_flash_holfword                      0x080017dd   Thumb Code    36  flash.o(i.read_flash_holfword)
-    write_flash_holfword                     0x08001801   Thumb Code    14  flash.o(i.write_flash_holfword)
-    write_flash_holfword_buffer              0x08001811   Thumb Code    60  flash.o(i.write_flash_holfword_buffer)
-    AHBPrescTable                            0x08001858   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x08001868   Data           8  system_stm32f0xx.o(.constdata)
-    Region$$Table$$Base                      0x08001870   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001890   Number         0  anon$$obj.o(Region$$Table)
+    check_ID                                 0x08001549   Thumb Code    60  main.o(i.check_ID)
+    check_sum_add                            0x0800158d   Thumb Code    26  ymodem.o(i.check_sum_add)
+    checksum_verify                          0x080015a7   Thumb Code    38  ymodem.o(i.checksum_verify)
+    enter_bootloader                         0x080015cd   Thumb Code    40  main.o(i.enter_bootloader)
+    erase_flash_OnePage                      0x080015fd   Thumb Code    16  flash.o(i.erase_flash_OnePage)
+    fw_updata                                0x08001611   Thumb Code    80  ymodem.o(i.fw_updata)
+    iap_flash_write_iap_inf                  0x08001669   Thumb Code    38  flash.o(i.iap_flash_write_iap_inf)
+    key_check                                0x08001695   Thumb Code    74  gpio.o(i.key_check)
+    key_gpio_init                            0x080016f1   Thumb Code    32  gpio.o(i.key_gpio_init)
+    lights_flash                             0x08001715   Thumb Code    36  download.o(i.lights_flash)
+    main                                     0x0800174d   Thumb Code   120  main.o(i.main)
+    para_init                                0x080017dd   Thumb Code    16  ymodem.o(i.para_init)
+    read_flash_holfword                      0x080017f5   Thumb Code    36  flash.o(i.read_flash_holfword)
+    write_flash_holfword                     0x08001819   Thumb Code    14  flash.o(i.write_flash_holfword)
+    write_flash_holfword_buffer              0x08001829   Thumb Code    60  flash.o(i.write_flash_holfword_buffer)
+    AHBPrescTable                            0x08001870   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x08001880   Data           8  system_stm32f0xx.o(.constdata)
+    Region$$Table$$Base                      0x08001888   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080018a8   Number         0  anon$$obj.o(Region$$Table)
     select_usart                             0x20000000   Data           1  main.o(.data)
     force_updata                             0x20000001   Data           1  main.o(.data)
     FlashProtection                          0x20000004   Data           1  common.o(.data)
@@ -789,148 +790,148 @@ Memory Map of the image
 
   Image Entry point : 0x080000b5
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000018c4, Max: 0x00002000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000018dc, Max: 0x00002000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001890, Max: 0x00002000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000018a8, Max: 0x00002000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x000000b4   Data   RO         1552    RESET               startup_stm32f030x8.o
-    0x080000b4   0x080000b4   0x00000000   Code   RO         1557  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x080000b4   0x080000b4   0x00000004   Code   RO         1568    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x080000b8   0x080000b8   0x00000004   Code   RO         1571    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x080000bc   0x080000bc   0x00000000   Code   RO         1573    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x080000bc   0x080000bc   0x00000000   Code   RO         1575    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x080000bc   0x080000bc   0x00000008   Code   RO         1576    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x080000c4   0x080000c4   0x00000000   Code   RO         1578    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x080000c4   0x080000c4   0x00000000   Code   RO         1580    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x080000c4   0x080000c4   0x00000004   Code   RO         1569    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
-    0x080000c8   0x080000c8   0x0000001c   Code   RO         1553    .text               startup_stm32f030x8.o
-    0x080000e4   0x080000e4   0x0000002c   Code   RO         1560    .text               mc_p.l(uidiv.o)
-    0x08000110   0x08000110   0x00000024   Code   RO         1562    .text               mc_p.l(memcpya.o)
-    0x08000134   0x08000134   0x00000024   Code   RO         1564    .text               mc_p.l(memseta.o)
-    0x08000158   0x08000158   0x00000024   Code   RO         1582    .text               mc_p.l(init.o)
-    0x0800017c   0x0800017c   0x00000020   Code   RO          721    i.ADC1_IRQHandler   stm32f0xx_it.o
+    0x08000000   0x08000000   0x000000b4   Data   RO         1616    RESET               startup_stm32f030x8.o
+    0x080000b4   0x080000b4   0x00000000   Code   RO         1621  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x080000b4   0x080000b4   0x00000004   Code   RO         1632    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x080000b8   0x080000b8   0x00000004   Code   RO         1635    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x080000bc   0x080000bc   0x00000000   Code   RO         1637    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x080000bc   0x080000bc   0x00000000   Code   RO         1639    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x080000bc   0x080000bc   0x00000008   Code   RO         1640    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x080000c4   0x080000c4   0x00000000   Code   RO         1642    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x080000c4   0x080000c4   0x00000000   Code   RO         1644    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x080000c4   0x080000c4   0x00000004   Code   RO         1633    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x080000c8   0x080000c8   0x0000001c   Code   RO         1617    .text               startup_stm32f030x8.o
+    0x080000e4   0x080000e4   0x0000002c   Code   RO         1624    .text               mc_p.l(uidiv.o)
+    0x08000110   0x08000110   0x00000024   Code   RO         1626    .text               mc_p.l(memcpya.o)
+    0x08000134   0x08000134   0x00000024   Code   RO         1628    .text               mc_p.l(memseta.o)
+    0x08000158   0x08000158   0x00000024   Code   RO         1646    .text               mc_p.l(init.o)
+    0x0800017c   0x0800017c   0x00000020   Code   RO          755    i.ADC1_IRQHandler   stm32f0xx_it.o
     0x0800019c   0x0800019c   0x0000004c   Code   RO           61    i.App_Udatat_Erase  main.o
-    0x080001e8   0x080001e8   0x00000028   Code   RO          625    i.Bit32_checksum_verify  ymodem.o
-    0x08000210   0x08000210   0x0000007c   Code   RO          553    i.Check_Firmware    download.o
-    0x0800028c   0x0800028c   0x00000020   Code   RO          722    i.DMA1_Channel1_IRQHandler  stm32f0xx_it.o
-    0x080002ac   0x080002ac   0x00000020   Code   RO          723    i.DMA1_Channel2_3_IRQHandler  stm32f0xx_it.o
-    0x080002cc   0x080002cc   0x00000020   Code   RO          724    i.DMA1_Channel4_5_IRQHandler  stm32f0xx_it.o
-    0x080002ec   0x080002ec   0x00000020   Code   RO          725    i.EXTI0_1_IRQHandler  stm32f0xx_it.o
-    0x0800030c   0x0800030c   0x00000020   Code   RO          726    i.EXTI2_3_IRQHandler  stm32f0xx_it.o
-    0x0800032c   0x0800032c   0x00000020   Code   RO          727    i.EXTI4_15_IRQHandler  stm32f0xx_it.o
-    0x0800034c   0x0800034c   0x00000038   Code   RO          193    i.FLASH_ErasePage   flash.o
-    0x08000384   0x08000384   0x00000028   Code   RO          194    i.FLASH_GetStatus   flash.o
-    0x080003ac   0x080003ac   0x00000020   Code   RO          728    i.FLASH_IRQHandler  stm32f0xx_it.o
-    0x080003cc   0x080003cc   0x00000010   Code   RO          196    i.FLASH_Lock        flash.o
-    0x080003dc   0x080003dc   0x00000010   Code   RO          452    i.FLASH_PagesMask   common.o
-    0x080003ec   0x080003ec   0x00000034   Code   RO          201    i.FLASH_ProgramHalfWord  flash.o
-    0x08000420   0x08000420   0x0000004c   Code   RO          202    i.FLASH_ProgramWord  flash.o
-    0x0800046c   0x0800046c   0x00000020   Code   RO          203    i.FLASH_Unlock      flash.o
-    0x0800048c   0x0800048c   0x00000022   Code   RO          204    i.FLASH_WaitForLastOperation  flash.o
+    0x080001e8   0x080001e8   0x00000028   Code   RO          659    i.Bit32_checksum_verify  ymodem.o
+    0x08000210   0x08000210   0x0000007c   Code   RO          581    i.Check_Firmware    download.o
+    0x0800028c   0x0800028c   0x00000020   Code   RO          756    i.DMA1_Channel1_IRQHandler  stm32f0xx_it.o
+    0x080002ac   0x080002ac   0x00000020   Code   RO          757    i.DMA1_Channel2_3_IRQHandler  stm32f0xx_it.o
+    0x080002cc   0x080002cc   0x00000020   Code   RO          758    i.DMA1_Channel4_5_IRQHandler  stm32f0xx_it.o
+    0x080002ec   0x080002ec   0x00000020   Code   RO          759    i.EXTI0_1_IRQHandler  stm32f0xx_it.o
+    0x0800030c   0x0800030c   0x00000020   Code   RO          760    i.EXTI2_3_IRQHandler  stm32f0xx_it.o
+    0x0800032c   0x0800032c   0x00000020   Code   RO          761    i.EXTI4_15_IRQHandler  stm32f0xx_it.o
+    0x0800034c   0x0800034c   0x00000038   Code   RO          211    i.FLASH_ErasePage   flash.o
+    0x08000384   0x08000384   0x00000028   Code   RO          212    i.FLASH_GetStatus   flash.o
+    0x080003ac   0x080003ac   0x00000020   Code   RO          762    i.FLASH_IRQHandler  stm32f0xx_it.o
+    0x080003cc   0x080003cc   0x00000010   Code   RO          214    i.FLASH_Lock        flash.o
+    0x080003dc   0x080003dc   0x00000010   Code   RO          477    i.FLASH_PagesMask   common.o
+    0x080003ec   0x080003ec   0x00000034   Code   RO          219    i.FLASH_ProgramHalfWord  flash.o
+    0x08000420   0x08000420   0x0000004c   Code   RO          220    i.FLASH_ProgramWord  flash.o
+    0x0800046c   0x0800046c   0x00000020   Code   RO          221    i.FLASH_Unlock      flash.o
+    0x0800048c   0x0800048c   0x00000022   Code   RO          222    i.FLASH_WaitForLastOperation  flash.o
     0x080004ae   0x080004ae   0x00000002   PAD
-    0x080004b0   0x080004b0   0x00000030   Code   RO          627    i.FW_ErasePage      ymodem.o
-    0x080004e0   0x080004e0   0x0000001c   Code   RO          322    i.GPIO_INUP_Init    gpio.o
-    0x080004fc   0x080004fc   0x0000001c   Code   RO          323    i.GPIO_OUT_init     gpio.o
-    0x08000518   0x08000518   0x00000024   Code   RO          324    i.Gpio_init         gpio.o
-    0x0800053c   0x0800053c   0x0000013c   Code   RO          554    i.Handshake_Get     download.o
-    0x08000678   0x08000678   0x00000020   Code   RO          729    i.HardFault_Handler  stm32f0xx_it.o
-    0x08000698   0x08000698   0x00000020   Code   RO          730    i.I2C1_IRQHandler   stm32f0xx_it.o
-    0x080006b8   0x080006b8   0x00000020   Code   RO          731    i.I2C2_IRQHandler   stm32f0xx_it.o
-    0x080006d8   0x080006d8   0x0000005c   Code   RO          555    i.JomToApp          download.o
-    0x08000734   0x08000734   0x00000018   Code   RO          325    i.LL_AHB1_GRP1_EnableClock  gpio.o
+    0x080004b0   0x080004b0   0x00000030   Code   RO          661    i.FW_ErasePage      ymodem.o
+    0x080004e0   0x080004e0   0x0000001c   Code   RO          344    i.GPIO_INUP_Init    gpio.o
+    0x080004fc   0x080004fc   0x0000001c   Code   RO          345    i.GPIO_OUT_init     gpio.o
+    0x08000518   0x08000518   0x00000024   Code   RO          346    i.Gpio_init         gpio.o
+    0x0800053c   0x0800053c   0x0000013c   Code   RO          582    i.Handshake_Get     download.o
+    0x08000678   0x08000678   0x00000020   Code   RO          763    i.HardFault_Handler  stm32f0xx_it.o
+    0x08000698   0x08000698   0x00000020   Code   RO          764    i.I2C1_IRQHandler   stm32f0xx_it.o
+    0x080006b8   0x080006b8   0x00000020   Code   RO          765    i.I2C2_IRQHandler   stm32f0xx_it.o
+    0x080006d8   0x080006d8   0x0000005c   Code   RO          583    i.JomToApp          download.o
+    0x08000734   0x08000734   0x00000018   Code   RO          347    i.LL_AHB1_GRP1_EnableClock  gpio.o
     0x0800074c   0x0800074c   0x00000018   Code   RO           62    i.LL_APB1_GRP2_EnableClock  main.o
-    0x08000764   0x08000764   0x000000a8   Code   RO         1400    i.LL_GPIO_Init      stm32f0xx_ll_gpio.o
-    0x0800080c   0x0800080c   0x0000000e   Code   RO          326    i.LL_GPIO_IsInputPinSet  gpio.o
-    0x0800081a   0x0800081a   0x00000018   Code   RO         1101    i.LL_RCC_GetSystemClocksFreq  stm32f0xx_ll_rcc.o
+    0x08000764   0x08000764   0x000000a8   Code   RO         1464    i.LL_GPIO_Init      stm32f0xx_ll_gpio.o
+    0x0800080c   0x0800080c   0x0000000e   Code   RO          348    i.LL_GPIO_IsInputPinSet  gpio.o
+    0x0800081a   0x0800081a   0x00000018   Code   RO         1165    i.LL_RCC_GetSystemClocksFreq  stm32f0xx_ll_rcc.o
     0x08000832   0x08000832   0x00000002   PAD
-    0x08000834   0x08000834   0x00000054   Code   RO         1102    i.LL_RCC_GetUSARTClockFreq  stm32f0xx_ll_rcc.o
-    0x08000888   0x08000888   0x000000ac   Code   RO         1293    i.LL_USART_Init     stm32f0xx_ll_usart.o
-    0x08000934   0x08000934   0x00000034   Code   RO          327    i.Led_init          gpio.o
-    0x08000968   0x08000968   0x00000020   Code   RO          732    i.NMI_Handler       stm32f0xx_it.o
-    0x08000988   0x08000988   0x00000078   Code   RO          556    i.NameAndSize_Check  download.o
-    0x08000a00   0x08000a00   0x0000007e   Code   RO          557    i.OTA_Ack           download.o
+    0x08000834   0x08000834   0x00000054   Code   RO         1166    i.LL_RCC_GetUSARTClockFreq  stm32f0xx_ll_rcc.o
+    0x08000888   0x08000888   0x000000ac   Code   RO         1357    i.LL_USART_Init     stm32f0xx_ll_usart.o
+    0x08000934   0x08000934   0x00000034   Code   RO          349    i.Led_init          gpio.o
+    0x08000968   0x08000968   0x00000020   Code   RO          766    i.NMI_Handler       stm32f0xx_it.o
+    0x08000988   0x08000988   0x00000078   Code   RO          584    i.NameAndSize_Check  download.o
+    0x08000a00   0x08000a00   0x0000007e   Code   RO          585    i.OTA_Ack           download.o
     0x08000a7e   0x08000a7e   0x00000002   PAD
-    0x08000a80   0x08000a80   0x00000020   Code   RO          733    i.PendSV_Handler    stm32f0xx_it.o
-    0x08000aa0   0x08000aa0   0x0000001c   Code   RO         1103    i.RCC_GetHCLKClockFreq  stm32f0xx_ll_rcc.o
-    0x08000abc   0x08000abc   0x00000018   Code   RO         1104    i.RCC_GetPCLK1ClockFreq  stm32f0xx_ll_rcc.o
-    0x08000ad4   0x08000ad4   0x00000024   Code   RO         1105    i.RCC_GetSystemClockFreq  stm32f0xx_ll_rcc.o
-    0x08000af8   0x08000af8   0x00000020   Code   RO          734    i.RCC_IRQHandler    stm32f0xx_it.o
-    0x08000b18   0x08000b18   0x0000003c   Code   RO         1106    i.RCC_PLL_GetFreqDomain_SYS  stm32f0xx_ll_rcc.o
-    0x08000b54   0x08000b54   0x00000020   Code   RO          735    i.RTC_IRQHandler    stm32f0xx_it.o
-    0x08000b74   0x08000b74   0x00000044   Code   RO          558    i.Read_Usart        download.o
-    0x08000bb8   0x08000bb8   0x00000020   Code   RO          628    i.Receive_Byte      ymodem.o
-    0x08000bd8   0x08000bd8   0x000000d0   Code   RO          629    i.Receive_Packet    ymodem.o
-    0x08000ca8   0x08000ca8   0x00000020   Code   RO          736    i.SPI1_IRQHandler   stm32f0xx_it.o
-    0x08000cc8   0x08000cc8   0x00000020   Code   RO          737    i.SPI2_IRQHandler   stm32f0xx_it.o
-    0x08000ce8   0x08000ce8   0x00000020   Code   RO          738    i.SVC_Handler       stm32f0xx_it.o
-    0x08000d08   0x08000d08   0x0000000a   Code   RO          630    i.Send_Byte         ymodem.o
+    0x08000a80   0x08000a80   0x00000020   Code   RO          767    i.PendSV_Handler    stm32f0xx_it.o
+    0x08000aa0   0x08000aa0   0x0000001c   Code   RO         1167    i.RCC_GetHCLKClockFreq  stm32f0xx_ll_rcc.o
+    0x08000abc   0x08000abc   0x00000018   Code   RO         1168    i.RCC_GetPCLK1ClockFreq  stm32f0xx_ll_rcc.o
+    0x08000ad4   0x08000ad4   0x00000024   Code   RO         1169    i.RCC_GetSystemClockFreq  stm32f0xx_ll_rcc.o
+    0x08000af8   0x08000af8   0x00000020   Code   RO          768    i.RCC_IRQHandler    stm32f0xx_it.o
+    0x08000b18   0x08000b18   0x0000003c   Code   RO         1170    i.RCC_PLL_GetFreqDomain_SYS  stm32f0xx_ll_rcc.o
+    0x08000b54   0x08000b54   0x00000020   Code   RO          769    i.RTC_IRQHandler    stm32f0xx_it.o
+    0x08000b74   0x08000b74   0x00000044   Code   RO          586    i.Read_Usart        download.o
+    0x08000bb8   0x08000bb8   0x00000020   Code   RO          662    i.Receive_Byte      ymodem.o
+    0x08000bd8   0x08000bd8   0x000000d0   Code   RO          663    i.Receive_Packet    ymodem.o
+    0x08000ca8   0x08000ca8   0x00000020   Code   RO          770    i.SPI1_IRQHandler   stm32f0xx_it.o
+    0x08000cc8   0x08000cc8   0x00000020   Code   RO          771    i.SPI2_IRQHandler   stm32f0xx_it.o
+    0x08000ce8   0x08000ce8   0x00000020   Code   RO          772    i.SVC_Handler       stm32f0xx_it.o
+    0x08000d08   0x08000d08   0x0000000a   Code   RO          664    i.Send_Byte         ymodem.o
     0x08000d12   0x08000d12   0x00000002   PAD
-    0x08000d14   0x08000d14   0x000000ac   Code   RO          559    i.SerialDownload    download.o
-    0x08000dc0   0x08000dc0   0x00000038   Code   RO          458    i.SerialKeyPressed  common.o
-    0x08000df8   0x08000df8   0x00000034   Code   RO          459    i.SerialPutChar     common.o
-    0x08000e2c   0x08000e2c   0x000000be   Code   RO          461    i.Str2Int           common.o
+    0x08000d14   0x08000d14   0x000000ac   Code   RO          587    i.SerialDownload    download.o
+    0x08000dc0   0x08000dc0   0x00000038   Code   RO          483    i.SerialKeyPressed  common.o
+    0x08000df8   0x08000df8   0x00000034   Code   RO          484    i.SerialPutChar     common.o
+    0x08000e2c   0x08000e2c   0x000000be   Code   RO          486    i.Str2Int           common.o
     0x08000eea   0x08000eea   0x00000002   PAD
-    0x08000eec   0x08000eec   0x00000020   Code   RO          739    i.SysTick_Handler   stm32f0xx_it.o
+    0x08000eec   0x08000eec   0x00000020   Code   RO          773    i.SysTick_Handler   stm32f0xx_it.o
     0x08000f0c   0x08000f0c   0x00000088   Code   RO           63    i.SystemClock_Config  main.o
     0x08000f94   0x08000f94   0x0000005c   Code   RO            4    i.SystemInit        system_stm32f0xx.o
-    0x08000ff0   0x08000ff0   0x00000020   Code   RO          740    i.TIM14_IRQHandler  stm32f0xx_it.o
-    0x08001010   0x08001010   0x00000020   Code   RO          741    i.TIM15_IRQHandler  stm32f0xx_it.o
-    0x08001030   0x08001030   0x00000020   Code   RO          742    i.TIM16_IRQHandler  stm32f0xx_it.o
-    0x08001050   0x08001050   0x00000020   Code   RO          743    i.TIM17_IRQHandler  stm32f0xx_it.o
-    0x08001070   0x08001070   0x00000020   Code   RO          744    i.TIM1_BRK_UP_TRG_COM_IRQHandler  stm32f0xx_it.o
-    0x08001090   0x08001090   0x00000020   Code   RO          745    i.TIM1_CC_IRQHandler  stm32f0xx_it.o
-    0x080010b0   0x080010b0   0x00000020   Code   RO          746    i.TIM3_IRQHandler   stm32f0xx_it.o
-    0x080010d0   0x080010d0   0x00000020   Code   RO          747    i.TIM6_IRQHandler   stm32f0xx_it.o
-    0x080010f0   0x080010f0   0x00000028   Code   RO          330    i.TMC22xx_Init      gpio.o
-    0x08001118   0x08001118   0x00000020   Code   RO          748    i.USART1_IRQHandler  stm32f0xx_it.o
-    0x08001138   0x08001138   0x00000020   Code   RO          749    i.USART2_IRQHandler  stm32f0xx_it.o
-    0x08001158   0x08001158   0x00000060   Code   RO          631    i.Upgrade_failure_ErasePage  ymodem.o
+    0x08000ff0   0x08000ff0   0x00000020   Code   RO          774    i.TIM14_IRQHandler  stm32f0xx_it.o
+    0x08001010   0x08001010   0x00000020   Code   RO          775    i.TIM15_IRQHandler  stm32f0xx_it.o
+    0x08001030   0x08001030   0x00000020   Code   RO          776    i.TIM16_IRQHandler  stm32f0xx_it.o
+    0x08001050   0x08001050   0x00000020   Code   RO          777    i.TIM17_IRQHandler  stm32f0xx_it.o
+    0x08001070   0x08001070   0x00000020   Code   RO          778    i.TIM1_BRK_UP_TRG_COM_IRQHandler  stm32f0xx_it.o
+    0x08001090   0x08001090   0x00000020   Code   RO          779    i.TIM1_CC_IRQHandler  stm32f0xx_it.o
+    0x080010b0   0x080010b0   0x00000020   Code   RO          780    i.TIM3_IRQHandler   stm32f0xx_it.o
+    0x080010d0   0x080010d0   0x00000020   Code   RO          781    i.TIM6_IRQHandler   stm32f0xx_it.o
+    0x080010f0   0x080010f0   0x00000028   Code   RO          352    i.TMC22xx_Init      gpio.o
+    0x08001118   0x08001118   0x00000020   Code   RO          782    i.USART1_IRQHandler  stm32f0xx_it.o
+    0x08001138   0x08001138   0x00000020   Code   RO          783    i.USART2_IRQHandler  stm32f0xx_it.o
+    0x08001158   0x08001158   0x00000060   Code   RO          665    i.Upgrade_failure_ErasePage  ymodem.o
     0x080011b8   0x080011b8   0x00000070   Code   RO           64    i.Usart11_Init      main.o
     0x08001228   0x08001228   0x0000007c   Code   RO           65    i.Usart22_Init      main.o
-    0x080012a4   0x080012a4   0x00000034   Code   RO          462    i.UsartSendBuff     common.o
-    0x080012d8   0x080012d8   0x00000020   Code   RO          750    i.WWDG_IRQHandler   stm32f0xx_it.o
-    0x080012f8   0x080012f8   0x00000214   Code   RO          632    i.Ymodem_Receive    ymodem.o
-    0x0800150c   0x0800150c   0x0000000e   Code   RO         1586    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x0800151a   0x0800151a   0x00000002   Code   RO         1587    i.__scatterload_null  mc_p.l(handlers.o)
-    0x0800151c   0x0800151c   0x0000000e   Code   RO         1588    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x0800152a   0x0800152a   0x0000001e   Code   RO          332    i.ble_init          gpio.o
-    0x08001548   0x08001548   0x0000002c   Code   RO           66    i.check_ID          main.o
-    0x08001574   0x08001574   0x0000001a   Code   RO          633    i.check_sum_add     ymodem.o
-    0x0800158e   0x0800158e   0x00000026   Code   RO          634    i.checksum_verify   ymodem.o
-    0x080015b4   0x080015b4   0x00000030   Code   RO           67    i.enter_bootloader  main.o
-    0x080015e4   0x080015e4   0x00000014   Code   RO          205    i.erase_flash_OnePage  flash.o
-    0x080015f8   0x080015f8   0x00000058   Code   RO          635    i.fw_updata         ymodem.o
-    0x08001650   0x08001650   0x0000002c   Code   RO          207    i.iap_flash_write_iap_inf  flash.o
-    0x0800167c   0x0800167c   0x0000005c   Code   RO          334    i.key_check         gpio.o
-    0x080016d8   0x080016d8   0x00000024   Code   RO          335    i.key_gpio_init     gpio.o
-    0x080016fc   0x080016fc   0x00000038   Code   RO          560    i.lights_flash      download.o
-    0x08001734   0x08001734   0x00000090   Code   RO           68    i.main              main.o
-    0x080017c4   0x080017c4   0x00000018   Code   RO          636    i.para_init         ymodem.o
-    0x080017dc   0x080017dc   0x00000024   Code   RO          208    i.read_flash_holfword  flash.o
-    0x08001800   0x08001800   0x0000000e   Code   RO          209    i.write_flash_holfword  flash.o
-    0x0800180e   0x0800180e   0x00000002   PAD
-    0x08001810   0x08001810   0x00000048   Code   RO          210    i.write_flash_holfword_buffer  flash.o
-    0x08001858   0x08001858   0x00000010   Data   RO            5    .constdata          system_stm32f0xx.o
-    0x08001868   0x08001868   0x00000008   Data   RO            6    .constdata          system_stm32f0xx.o
-    0x08001870   0x08001870   0x00000020   Data   RO         1584    Region$$Table       anon$$obj.o
+    0x080012a4   0x080012a4   0x00000034   Code   RO          487    i.UsartSendBuff     common.o
+    0x080012d8   0x080012d8   0x00000020   Code   RO          784    i.WWDG_IRQHandler   stm32f0xx_it.o
+    0x080012f8   0x080012f8   0x00000214   Code   RO          666    i.Ymodem_Receive    ymodem.o
+    0x0800150c   0x0800150c   0x0000000e   Code   RO         1650    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x0800151a   0x0800151a   0x00000002   Code   RO         1651    i.__scatterload_null  mc_p.l(handlers.o)
+    0x0800151c   0x0800151c   0x0000000e   Code   RO         1652    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x0800152a   0x0800152a   0x0000001e   Code   RO          354    i.ble_init          gpio.o
+    0x08001548   0x08001548   0x00000044   Code   RO           66    i.check_ID          main.o
+    0x0800158c   0x0800158c   0x0000001a   Code   RO          667    i.check_sum_add     ymodem.o
+    0x080015a6   0x080015a6   0x00000026   Code   RO          668    i.checksum_verify   ymodem.o
+    0x080015cc   0x080015cc   0x00000030   Code   RO           67    i.enter_bootloader  main.o
+    0x080015fc   0x080015fc   0x00000014   Code   RO          223    i.erase_flash_OnePage  flash.o
+    0x08001610   0x08001610   0x00000058   Code   RO          669    i.fw_updata         ymodem.o
+    0x08001668   0x08001668   0x0000002c   Code   RO          225    i.iap_flash_write_iap_inf  flash.o
+    0x08001694   0x08001694   0x0000005c   Code   RO          356    i.key_check         gpio.o
+    0x080016f0   0x080016f0   0x00000024   Code   RO          357    i.key_gpio_init     gpio.o
+    0x08001714   0x08001714   0x00000038   Code   RO          588    i.lights_flash      download.o
+    0x0800174c   0x0800174c   0x00000090   Code   RO           68    i.main              main.o
+    0x080017dc   0x080017dc   0x00000018   Code   RO          670    i.para_init         ymodem.o
+    0x080017f4   0x080017f4   0x00000024   Code   RO          226    i.read_flash_holfword  flash.o
+    0x08001818   0x08001818   0x0000000e   Code   RO          227    i.write_flash_holfword  flash.o
+    0x08001826   0x08001826   0x00000002   PAD
+    0x08001828   0x08001828   0x00000048   Code   RO          228    i.write_flash_holfword_buffer  flash.o
+    0x08001870   0x08001870   0x00000010   Data   RO            5    .constdata          system_stm32f0xx.o
+    0x08001880   0x08001880   0x00000008   Data   RO            6    .constdata          system_stm32f0xx.o
+    0x08001888   0x08001888   0x00000020   Data   RO         1648    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001890, Size: 0x00000948, Max: 0x00002000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080018a8, Size: 0x00000948, Max: 0x00002000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001890   0x00000002   Data   RW           69    .data               main.o
-    0x20000002   0x08001892   0x00000002   PAD
-    0x20000004   0x08001894   0x0000000c   Data   RW          465    .data               common.o
-    0x20000010   0x080018a0   0x00000004   Data   RW          562    .data               download.o
-    0x20000014   0x080018a4   0x0000001c   Data   RW          639    .data               ymodem.o
-    0x20000030   0x080018c0   0x00000004   Data   RW          751    .data               stm32f0xx_it.o
-    0x20000034        -       0x00000400   Zero   RW          561    .bss                download.o
-    0x20000434        -       0x00000111   Zero   RW          638    .bss                ymodem.o
-    0x20000545   0x080018c4   0x00000003   PAD
-    0x20000548        -       0x00000400   Zero   RW         1550    STACK               startup_stm32f030x8.o
+    0x20000000   0x080018a8   0x00000002   Data   RW           69    .data               main.o
+    0x20000002   0x080018aa   0x00000002   PAD
+    0x20000004   0x080018ac   0x0000000c   Data   RW          490    .data               common.o
+    0x20000010   0x080018b8   0x00000004   Data   RW          590    .data               download.o
+    0x20000014   0x080018bc   0x0000001c   Data   RW          673    .data               ymodem.o
+    0x20000030   0x080018d8   0x00000004   Data   RW          785    .data               stm32f0xx_it.o
+    0x20000034        -       0x00000400   Zero   RW          589    .bss                download.o
+    0x20000434        -       0x00000111   Zero   RW          672    .bss                ymodem.o
+    0x20000545   0x080018dc   0x00000003   PAD
+    0x20000548        -       0x00000400   Zero   RW         1614    STACK               startup_stm32f030x8.o
 
 
 ==============================================================================
@@ -941,10 +942,10 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        366         34          0         12          0      23977   common.o
-      1074        118          0          4       1024      26727   download.o
+      1074        118          0          4       1024      30639   download.o
        492         60          0          0          0      12297   flash.o
        380         38          0          0          0      12296   gpio.o
-       708         90          0          2          0      47364   main.o
+       732         90          0          2          0     220664   main.o
         28          8        180          0       1024        588   startup_stm32f030x8.o
        960        360          0          4          0      25193   stm32f0xx_it.o
        168          0          0          0          0       6723   stm32f0xx_ll_gpio.o
@@ -954,7 +955,7 @@ Image component sizes
       1142         72          0         28        273      13699   ymodem.o
 
     ----------------------------------------------------------------------
-      5850        854        236         52       2324     382783   Object Totals
+      5874        854        236         52       2324     559995   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          0          2          3          0   (incl. Padding)
 
@@ -996,15 +997,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      6052        870        236         52       2324     379231   Grand Totals
-      6052        870        236         52       2324     379231   ELF Image Totals
-      6052        870        236         52          0          0   ROM Totals
+      6076        870        236         52       2324     556443   Grand Totals
+      6076        870        236         52       2324     556443   ELF Image Totals
+      6076        870        236         52          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 6288 (   6.14kB)
+    Total RO  Size (Code + RO Data)                 6312 (   6.16kB)
     Total RW  Size (RW Data + ZI Data)              2376 (   2.32kB)
-    Total ROM Size (Code + RO Data + RW Data)       6340 (   6.19kB)
+    Total ROM Size (Code + RO Data + RW Data)       6364 (   6.21kB)
 
 ==============================================================================
 

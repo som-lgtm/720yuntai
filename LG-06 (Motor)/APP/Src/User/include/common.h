@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	114
+#define FW_VERSIONS	115
 
 #define PARA_MAX_ID	25
 
@@ -33,11 +33,11 @@
 #define MANUAL_MODE			9
 
 
-#define ORIGIN_POINT		0x80000000
-#define A_POINT_END		0x7FFE0CFA // 0x7FFD53B1负的360度
-#define B_POINT_END		0x8001F401// 0x8002AC4F // 正的360度
-#define M_POINT_END		0x8000FA00 //0x80015627 // 正的180度
-#define POINT_360_END		(B_POINT_END-ORIGIN_POINT) //360脉冲数
+//#define ORIGIN_POINT		0x80000000
+//#define A_POINT_END		0x7FFE0CFA // 0x7FFD53B1负的360度
+//#define B_POINT_END		0x8001F401// 0x8002AC4F // 正的360度
+//#define M_POINT_END		0x8000FA00 //0x80015627 // 正的180度
+//#define POINT_360_END		(B_POINT_END-ORIGIN_POINT) //360脉冲数
 
 #define STANDARD_SPEED		100
 #define DELAY_SPEED	60 //定时器预分频数
@@ -709,5 +709,10 @@ extern MANAUL_SLOW Manul_p;
 extern uint8_t Sync_sendt;
 extern uint8_t Alon_sendt;
 extern double Angle_basic;
+extern uint32_t ORIGIN_POINT ;		
+extern uint32_t A_POINT_END;
+extern uint32_t B_POINT_END;	
+extern uint32_t M_POINT_END;		
+extern uint32_t POINT_360_END;		
 
 #endif

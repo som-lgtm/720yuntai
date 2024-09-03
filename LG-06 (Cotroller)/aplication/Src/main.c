@@ -95,7 +95,7 @@ int main(void)
 //  MX_DMA_Init();
   MX_TIM14_Init();
   MX_USART2_UART_Init();
-///  check_uid();
+  check_uid();
   A_d_c_int();
   Lcd_Init();
   time_delay_ms(100);

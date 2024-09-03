@@ -29,13 +29,46 @@ uint16_t slow_time = 0;
 __IO uint32_t boot_time=0;
 uint32_t p_move_time  = 0;
 uint32_t p_amount=0;
+uint32_t ORIGIN_POINT =0;		
+uint32_t A_POINT_END=0;
+uint32_t B_POINT_END=0;	
+uint32_t M_POINT_END=0;		
+uint32_t POINT_360_END=0;		
 
 double Angle_basic = 0;
 
+//新旧电机的兼容处理
+void NewOROld_motor_compatible(void)
+{
+	IAP_INF_T bufer={0};
+	
+	read_flash_holfword(FLASH_WRITE_START_ADDR22, (uint8_t *)&bufer, sizeof(bufer));
+	if(bufer.Reserved == 0x06) // 新电机，配置新电机的参数(电机减速比1:13.6)
+	{
+		Angle_basic = 0.0020483; // 0.002055;
+		ORIGIN_POINT = 0x80000000;
+		A_POINT_END = 0x7FFD5160; // 0x7FFD53B1负的360度
+		B_POINT_END = 0x8002AEA0;// 0x8002AC4F // 正的360度
+		POINT_360_END = (B_POINT_END-ORIGIN_POINT); //360脉冲数
+		M_POINT_END = POINT_360_END/2 + ORIGIN_POINT; //0x80015627 // 正的180度
+	}
+	else // 旧电机，配置旧电机的参数(电机减速比1:8)
+	{
+		Angle_basic = 0.002818; // 0.002055;
+		ORIGIN_POINT = 0x80000000;
+		A_POINT_END = 0x7FFE0CFA; // 0x7FFD53B1负的360度
+		B_POINT_END = 0x8001F401;// 0x8002AC4F // 正的360度
+		//M_POINT_END = 0x8000FA00; //0x80015627 // 正的180度
+		POINT_360_END = (B_POINT_END-ORIGIN_POINT); //360脉冲数
+		M_POINT_END = POINT_360_END/2 + ORIGIN_POINT; //0x80015627 // 正的180度
+	}
+}
 
 void para_init_set(void)
 {
-	Angle_basic = 0.002818; // 0.002055;
+	NewOROld_motor_compatible();
+
+//	Angle_basic = 0.002818; // 0.002055;
 }
 
 void time_count(void)

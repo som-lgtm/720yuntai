@@ -26,7 +26,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f0xx.h"
+#include "flash.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 #include "common.h"
@@ -34,20 +34,6 @@
 #include "string.h"
 #include "UID_Encryption.h"
 
-#define FLASH_WRITE_START_ADDR22	((uint32_t)0x08001C00)	 /* Start @ of user Flash area */
-#define FLASH_UID_ADDR				((uint32_t)0x0800F800)	 /* 对应烧录器的地址 */
-#define FLASH_WRITE_START_ADDR	((uint32_t)0x0800EC00)	 /* Start @ of user Flash area */
-#define FLASH_PAGE_SIZE 		((uint32_t)0x00000400)	 /* FLASH Page Size */
-#define FLASH_FKEY1                          ((uint32_t)0x45670123)        /*!< Flash program erase key1 */
-#define FLASH_FKEY2                          ((uint32_t)0xCDEF89AB)        /*!< Flash program erase key2: used with FLASH_PEKEY1
-                                                                                to unlock the write access to the FPEC. */
-#define FLASH_ER_PRG_TIMEOUT         ((uint32_t)0x000B0000)
-#define OB_RDP_Level_0   ((uint8_t)0xAA)
-#define OB_RDP_Level_1   ((uint8_t)0xBB)
-#define FLASH_FLAG_BSY                 FLASH_SR_BSY     /*!< FLASH Busy flag */
-#define FLASH_FLAG_PGERR               FLASH_SR_PGERR   /*!< FLASH Programming error flag */
-#define FLASH_FLAG_WRPERR              FLASH_SR_WRPERR  /*!< FLASH Write protected error flag */
-#define FLASH_FLAG_EOP                 FLASH_SR_EOP     /*!< FLASH End of Programming flag */
 
 uint8_t whether_write_flash=0;
 
@@ -463,27 +449,8 @@ void write_flash_active(void)
 void write_bootTag(uint8_t tag, uint16_t sizess)
 {
 	IAP_INF_T bufer={0};
-		uint32_t p_address = FLASH_WRITE_START_ADDR22;
-		uint16_t i;
-		uint8_t data_len=0;
-		uint16_t p_temp=0;
-		
-		uint16_t *spt = (uint16_t *)&bufer.MCU_uid[0];
-		data_len = sizeof(bufer);
-		if(data_len%2)data_len +=1;
-		
-//	read_flash_holfword(FLASH_WRITE_START_ADDR22, (uint16_t *)&bufer, sizeof(bufer));
-	
-	for(i=0;i<data_len/2;i++)
-	{
-		if(p_address < (FLASH_WRITE_START_ADDR22+FLASH_PAGE_SIZE))
-		{
-			p_temp = *(__IO uint16_t *)p_address;
-			spt[i] = p_temp;
-			p_address += 2;
-		}
-	}
 
+	read_flash_holfword(FLASH_WRITE_START_ADDR22, (uint8_t *)&bufer, sizeof(bufer));
 	bufer.usart_number = tag;
 	bufer.firmware = sizess;
 	bufer.firmware_version = FW_VERSIONS;

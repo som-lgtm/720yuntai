@@ -86,6 +86,10 @@ void Video_Get_data_from_controller(uint8_t *fifo)
 		video_Dir_check(MOTOR_HORITAL);
 		video_Dir_check(MOTOR_Vertical);
 	}
+	else if(fifo[4] == 0x07) 
+	{
+		video_p.shut_switch
+	}
 }
 
 void Video_speed_calculate(void)

@@ -312,7 +312,7 @@ void press_OK_function(void)
 	{
 		video_page_OK();
 	}
-	else if(page_id == GROUP_PHOTO)
+	else if(page_id == GROUP_PHOTO || page_id == GROUP_PHOTO_MOVE)
 	{
 		Group_page_OK();
 	}

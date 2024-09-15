@@ -34,7 +34,7 @@ void Group_mode_para_init(void)
 	Group_p.lens_folcal = glob_para.lens_folcal;
 	Group_p.GP_shut_mode= glob_para.GP_shut_mode;
 	Group_p.Roverlap = glob_para.Roverlap;
-	Group_p.GP_exposure = glob_para.GP_exposure;
+	//Group_p.GP_exposure = glob_para.GP_exposure;
 }
 
 // 手动快门处理，即电动模式开时，手按快门键
@@ -135,7 +135,7 @@ void Group_set_abPoint(uint8_t typess)
 			//Delay_move_speed_calculate(0);
 			Group_shots_event();
 			Group_move_speed_calculate();
-			Group_Ramp_Speed_Load();
+			Group_Ramp_Speed_Load(2);
 			Send_para_data_to_controller(1, 1);
 			Group_mode_Start_check_diretion();
 		}
@@ -208,7 +208,7 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	{
 		if(m_start)
 		{
-		//	Send_connect_data_to_controller();
+			Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.lens_folcal = (uint16_t)fifog[5] | (uint16_t)fifog[6]<<8;
@@ -220,7 +220,7 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	{
 		if(m_start)
 		{
-		//	Send_connect_data_to_controller();
+			Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.Roverlap = fifog[5];
@@ -232,10 +232,10 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	{
 		if(m_start)
 		{
-		//	Send_connect_data_to_controller();
+			Send_connect_data_to_controller();
 			return;
 		}
-		Group_p.GP_exposure = fifog[5];
+		glob_para.GP_exposure = (uint16_t)fifog[5] | (uint16_t)fifog[6]<<8;
 	}
 	else if(fifog[4] == 0x04) // manul shut
 	{
@@ -245,7 +245,7 @@ void Group_get_data_from_controller(uint8_t *fifog)
 	{
 		if(m_start)
 		{
-		//	Send_connect_data_to_controller();
+			Send_connect_data_to_controller();
 			return;
 		}
 		Group_p.GP_dir = fifog[5];
@@ -265,6 +265,37 @@ void Group_get_data_from_controller(uint8_t *fifog)
 		}
 		Group_p.GP_shut_mode = fifog[5];
 		glob_para.GP_shut_mode = Group_p.GP_shut_mode;
+		if_write_flash();
+	}
+	else if(fifog[4] == 0x08) //start or stop
+	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
+		glob_para.GP_shut_t = (uint16_t)fifog[5] | (uint16_t)fifog[6]<<8;
+		if_write_flash();
+	}
+	else if(fifog[4] == 0x09) //start or stop
+	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
+		glob_para.GP_sys_t = (uint16_t)fifog[5] | (uint16_t)fifog[6]<<8;
+		if_write_flash();
+	}
+	else if(fifog[4] == 0x0A) // SPEED 
+	{
+		if(m_start)
+		{
+			Send_connect_data_to_controller();
+			return;
+		}
+		glob_para.GP_speed = fifog[5];
+		Group_Ramp_Speed_Load(glob_para.GP_speed);
 		if_write_flash();
 	}
 }
@@ -288,7 +319,7 @@ void Group_mode_countdwon_display(void)
 	Package_dataBufer(11, bufers);
 }
 
-// 计算每张照移动的速度，两个轴的速度要非常接近才能同步
+// 计算每张照移动的速度，
 void Group_move_speed_calculate(void)
 {
 	uint8_t amout_b = 0;
@@ -392,7 +423,7 @@ void Group_mode_start(void)
 		{
 			Group_shots_event();
 			Group_move_speed_calculate();
-			Group_Ramp_Speed_Load();
+			Group_Ramp_Speed_Load(glob_para.GP_speed);
 			hhdir_check = Group_mode_Start_check_diretion();
 			if(hhdir_check==0)
 			{
@@ -436,7 +467,7 @@ void Group_main(void)
 	
 	if(move_begin == 2)
 	{
-		if(p_move_time >= 1000) // 开快门
+		if(p_move_time >= glob_para.GP_shut_t) // 开快门
 		{
 			if(Group_p.GP_manul==0)
 			{
@@ -449,7 +480,7 @@ void Group_main(void)
 	}
 	else if(move_begin == 3)
 	{
-		if(p_move_time >= (Group_p.GP_exposure*1000)) // 关快门
+		if(p_move_time >= (glob_para.GP_exposure)) // 关快门
 		{
 			SHUTTER_OFF;
 			//Panorama_mode_compensation();
@@ -462,7 +493,7 @@ void Group_main(void)
 	}
 	else if(move_begin == 4)
 	{
-		if(p_move_time >= 200)
+		if(p_move_time >= glob_para.GP_sys_t)
 		{
 			if(p_amount >= Group_p.amount)
 			{
@@ -472,7 +503,7 @@ void Group_main(void)
 				m_start = 0;
 				Group_mode_countdwon_display();
 				move_begin_backup = 0;
-				//Group_p.GP_dir = ~Group_p.GP_dir;
+				Group_Ramp_Speed_Load(2);
 				Group_mode_Dir_check();
 				Group_mode_Start_check_diretion();
 			}
@@ -720,13 +751,15 @@ void Group_mode_find_Apoint(void)
 
 // 水平轴每张相片移动的RAMP
 // 需要缓起缓停的区间速度缓冲区
-void Group_Ramp_Speed_Load(void)
+void Group_Ramp_Speed_Load(uint8_t speeds)
 {
 	uint8_t i;
 	uint16_t timeb = 0;
 	
 	con_b.slow_point = 0;
-	con_b.ramp_buffer[0] = BASE_SPEED+5;
+	//(glob_para.GP_speed-1)=0时一圈为5秒的速度;(glob_para.GP_speed-1)=1时一圈为9秒的速度;(glob_para.GP_speed-1)=2时一圈为13秒的速度
+	//(glob_para.GP_speed-1)=3时一圈为17秒的速度;(glob_para.GP_speed-1)=4时一圈为21秒的速度
+	con_b.ramp_buffer[0] = (BASE_SPEED-2) + (speeds-1)*(BASE_SPEED-2);
 
 	
 	for(i=1; i<20; i++)

@@ -316,6 +316,12 @@ void page_return_adjust(void)
 		{
 			specilty_page_return();
 		}
+		else if(page_id == GROUP_PHOTO_MOVE)
+		{
+			page_id = GROUP_PHOTO;
+			cursor_id = 6;
+			change_page();
+		}
 		else
 		{
 			cursor_id = cursor_id_back;

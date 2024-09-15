@@ -690,33 +690,40 @@ void param_display(uint8_t cur)
 			}
 			else if(cur == 3)
 			{
-				secondes_time_dis(glob_para.exposure, cur);
+				float_time_dis(cur, glob_para.G_exposure);
+				//secondes_time_dis(glob_para.exposure, cur);
+			}
+			else if(cur == 4)
+			{
+				float_time_dis(cur, glob_para.shut_stop_t);
 			}
 			else if(cur == 5)
 			{
-				manulORauto_dis(std_manul_tag, cur);
+				float_time_dis(cur, glob_para.sys_stop_t);
 			}
-			if(cur == 4)
+			break;
+		}
+		case GROUP_PHOTO_MOVE:
+		{
+			if(cur == 2)
 			{
 				if(cursor_id == cur)inverse_get_value(0xff);
 				move_to_disp(cur);
 				inverse_get_value(0);
 			}
-			else if(cur == 6)
+			else if(cur == 3)
+			{
+				init_dis(cur, glob_para.speed_greer);
+			}
+			else if(cur == 4)
+			{
+				manulORauto_dis(std_manul_tag, cur);
+			}
+			else if(cur == 5)
 			{
 				status_display(cur);
 			}
-			else if(cur == 7)
-			{
-				if(m_start)
-				{
-					The_page_processing(7,"张数              ");
-				}
-				else
-				{
-					The_page_processing(7,"      AB点设置      ");
-				}
-			}
+			
 			break;
 		}
 		case DELAY_SET:
@@ -951,6 +958,11 @@ void cursor_shift(uint8_t dir)
 			cursor_count(dir, 7, 0);
 			break;
 		}
+		case GROUP_PHOTO_MOVE:
+		{
+			cursor_count(dir, 5, 2);
+			break;
+		}
 		case CONFIG_ID:
 		{
 			cursor_count(dir, 4, 1);
@@ -1114,9 +1126,9 @@ void status_display(uint8_t cur)
 		{
 			if(cursor_id == 4)inverse_get_value(0xff);
 		}
-		else if(page_id == GROUP_PHOTO)
+		else if(page_id == GROUP_PHOTO_MOVE)
 		{
-			if(cursor_id == 6)inverse_get_value(0xff);
+			if(cursor_id == 5)inverse_get_value(0xff);
 		}
 		else
 		{
@@ -1819,27 +1831,44 @@ void param_adjust(uint8_t dir)
 			else if(cursor_id == 3) // exposures time
 			{
 				inverse_get_value(0xff);
-				glob_para.exposure = data_count(glob_para.exposure, dir,  99, 1);
+				glob_para.G_exposure = para_count(dir, glob_para.G_exposure, 65, 0.5);
+				if(glob_para.G_exposure < 0.5)glob_para.G_exposure = 0.5;
 				param_display(cursor_id);
 				controller_send_data_to_motor(0,0x05, 0x03);
 				inverse_get_value(0);
 			}
-			else if(cursor_id == 5) //manual exposures 
+			else if(cursor_id == 4) //  
 			{
 				inverse_get_value(0xff);
-				if(dir & KEY_RIGHT_MASK)
-				{
-					std_manul_tag = 0;
-				}
-				else if(dir & KEY_LEFT_MASK)
-				{
-					std_manul_tag = 0xff;
-				}
+				glob_para.shut_stop_t = para_count(dir, glob_para.shut_stop_t, 65, 0.5);
+				if(glob_para.shut_stop_t < 0.5)glob_para.shut_stop_t = 0.5;
 				param_display(cursor_id);
-				controller_send_data_to_motor(0,0x05, 0x04);
+				controller_send_data_to_motor(0,0x05, 0x08);
 				inverse_get_value(0);
 			}
-			else if(cursor_id == 4)// 
+			else if(cursor_id == 5)// 
+			{
+				inverse_get_value(0xff);
+				glob_para.sys_stop_t = para_count(dir, glob_para.sys_stop_t, 65, 0.5);
+				if(glob_para.sys_stop_t < 0.5)glob_para.sys_stop_t = 0.5;
+				param_display(cursor_id);
+				controller_send_data_to_motor(0,0x05, 0x09);
+				inverse_get_value(0);
+			}
+			
+			break;
+		}
+		case GROUP_PHOTO_MOVE:
+		{
+			if(cursor_id == 3)
+			{
+				inverse_get_value(0xff);
+				glob_para.speed_greer = data_count(glob_para.speed_greer, dir, 5, 1);
+				param_display(cursor_id);
+				controller_send_data_to_motor(0,0x05, 0x0a);
+				inverse_get_value(0);
+			}
+			else if(cursor_id == 2)// 
 			{
 				if(dir & KEY_RIGHT_MASK)
 				{
@@ -1855,10 +1884,24 @@ void param_adjust(uint8_t dir)
 				param_display(cursor_id);
 				inverse_get_value(0);
 				controller_send_data_to_motor(0,0x05, 0x05);
+			}			
+			else if(cursor_id == 4) //manual exposures 
+			{
+				inverse_get_value(0xff);
+				if(dir & KEY_RIGHT_MASK)
+				{
+					std_manul_tag = 0;
+				}
+				else if(dir & KEY_LEFT_MASK)
+				{
+					std_manul_tag = 0xff;
+				}
+				param_display(cursor_id);
+				controller_send_data_to_motor(0,0x05, 0x04);
+				inverse_get_value(0);
 			}
-			
 			break;
-		}		
+		}
 		case DELAY_SET:
 		{			
 			if(cursor_id == 1)
@@ -2488,23 +2531,25 @@ void receiver_data_from_A650(void)
 				}
 				else if(app_read_buffer[3] == 0x05) // 合影
 				{
-					Set_Gp_set_if(app_read_buffer[11]);
+					Set_Gp_set_if(app_read_buffer[12]);
 					
 					glob_para.lens_folcal = (uint16_t)app_read_buffer[4]|(uint16_t)app_read_buffer[5]<<8;
 					glob_para.Roverlap  = app_read_buffer[6];
-					glob_para.exposure = app_read_buffer[7];
-					std_manul_tag = app_read_buffer[8];
-					glob_para.orbital_dir = app_read_buffer[9];
-					m_start = app_read_buffer[10];
-					shut_mode = app_read_buffer[12];
+					glob_para.G_exposure = (float)((uint16_t)app_read_buffer[7]|(uint16_t)app_read_buffer[8]<<8)/1000;
+					std_manul_tag = app_read_buffer[9];
+					glob_para.orbital_dir = app_read_buffer[10];
+					m_start = app_read_buffer[11];
+					shut_mode = app_read_buffer[13];
+					glob_para.shut_stop_t = (float)((uint16_t)app_read_buffer[14]|(uint16_t)app_read_buffer[15]<<8)/1000;
+					glob_para.sys_stop_t = (float)((uint16_t)app_read_buffer[16]|(uint16_t)app_read_buffer[17]<<8)/1000;
+					glob_para.speed_greer  = app_read_buffer[18];
 					
 					if(check_abpoint_Set_if(app_read_buffer[3]))
 					{
-						if(page_id != GROUP_PHOTO)
+						if(page_id !=GROUP_PHOTO_MOVE && page_id_back != GROUP_PHOTO_MOVE)
 						{
 							page_id = GROUP_PHOTO;
-							//cursor_id = 0;
-						//	change_page();
+							cursor_id = 6;
 						}
 						/*else
 						{
@@ -2728,7 +2773,7 @@ void receiver_data_from_A650(void)
 					p_amount = app_read_buffer[7];
 					if(app_read_buffer[9])
 					{
-						Group_pix_amt_compara_dis(app_read_buffer[8],7);
+						if(page_id == GROUP_PHOTO_MOVE)Group_pix_amt_compara_dis(app_read_buffer[8],6);
 					}
 					else
 					{
@@ -3126,8 +3171,9 @@ void controller_send_data_to_motor(uint8_t opcode, uint8_t mode, uint8_t data)
 			}
 			else if(data == 0x03) // exposure time
 			{
-				App_Buffer[i].app_send_buffer[5] = glob_para.exposure;
-				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.exposure)>>8;
+				App_Buffer[i].app_send_buffer[5] = (uint16_t)(glob_para.G_exposure*1000);
+				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.G_exposure*1000)>>8;
+				App_Buffer[i].app_send_buffer[7] = 0;
 			}
 			else if(data == 0x04) // auto or manul
 			{
@@ -3147,6 +3193,24 @@ void controller_send_data_to_motor(uint8_t opcode, uint8_t mode, uint8_t data)
 			else if(data == 0x07)
 			{
 				App_Buffer[i].app_send_buffer[5] = shut_mode;
+				App_Buffer[i].app_send_buffer[6] = 0;
+			
+			}
+			else if(data == 0x08)
+			{
+				App_Buffer[i].app_send_buffer[5] = (uint16_t)(glob_para.shut_stop_t*1000);
+				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.shut_stop_t*1000)>>8;
+			
+			}
+			else if(data == 0x09)
+			{
+				App_Buffer[i].app_send_buffer[5] = (uint16_t)(glob_para.sys_stop_t*1000);
+				App_Buffer[i].app_send_buffer[6] = (uint16_t)(glob_para.sys_stop_t*1000)>>8;
+			
+			}
+			else if(data == 0x0a)
+			{
+				App_Buffer[i].app_send_buffer[5] =glob_para.speed_greer;
 				App_Buffer[i].app_send_buffer[6] = 0;
 			
 			}
@@ -3641,24 +3705,37 @@ void angle_cear(void)
 
 void Group_page_OK(void)
 {
-	if(page_id != GROUP_PHOTO)return;
-	
-	if(cursor_id == 6)
+	if(page_id != GROUP_PHOTO && page_id != GROUP_PHOTO_MOVE)return;
+
+	if(page_id == GROUP_PHOTO)
 	{
-		m_start  = ~m_start;
-		controller_send_data_to_motor(0x00,0x05, 0x06);
-		param_display(6);
-		param_display(7);
-	}
-	else if(cursor_id == 7)
-	{
-			if(m_start)return;
+		if(cursor_id == 6)
+		{
+			page_id = GROUP_PHOTO_MOVE;
 			set_mode_back(page_id);
-			page_id = REVERSE_MODE;
-			cursor_id = 3;
-			
+			cursor_id = 5;
 			change_page();
-		//	controller_send_data_to_motor(0x00,0x01, 0x02);
+		}
+		else if(cursor_id == 7)
+		{
+				if(m_start)return;
+				set_mode_back(page_id);
+				page_id = REVERSE_MODE;
+				cursor_id = 3;
+				
+				change_page();
+			//	controller_send_data_to_motor(0x00,0x01, 0x02);
+		}
+	}
+	else if(page_id == GROUP_PHOTO_MOVE)
+	{
+		if(cursor_id == 5)
+		{
+			m_start  = ~m_start;
+			controller_send_data_to_motor(0x00,0x05, 0x06);
+			param_display(cursor_id);
+			param_display(7);
+		}
 	}
 }
 

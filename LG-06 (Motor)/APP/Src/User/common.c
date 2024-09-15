@@ -260,14 +260,20 @@ void Send_connect_data_to_controller(void)
 		buffers[4] = Group_p.lens_folcal;
 		buffers[5] = Group_p.lens_folcal>>8;
 		buffers[6] = Group_p.Roverlap;
-		buffers[7] = Group_p.GP_exposure;
-		buffers[8] = Group_p.GP_manul;
-		buffers[9] = Group_p.GP_dir;
-		buffers[10] = m_start;
-		buffers[11] = Group_p.GP_set_if;
-		buffers[12] = Group_p.GP_shut_mode;
-		buffers[13] = check_sum_add(13, buffers);
-		sizes = 14;
+		buffers[7] = glob_para.GP_exposure;
+		buffers[8] = glob_para.GP_exposure>>8;
+		buffers[9] = Group_p.GP_manul;
+		buffers[10] = Group_p.GP_dir;
+		buffers[11] = m_start;
+		buffers[12] = Group_p.GP_set_if;
+		buffers[13] = Group_p.GP_shut_mode;
+		buffers[14] = glob_para.GP_shut_t;
+		buffers[15] = glob_para.GP_shut_t>>8;
+		buffers[16] = glob_para.GP_sys_t;
+		buffers[17] = glob_para.GP_sys_t>>8;
+		buffers[18] = glob_para.GP_speed;
+		buffers[19] = check_sum_add(19, buffers);
+		sizes = 20;
 	}
 	else if(mode_backup == WIDE_ANGLE_MODE) // ¹ã½ÇÄ£Ê½
 	{
@@ -629,10 +635,12 @@ void Get_data_from_controller(uint8_t *fifos)
 					Group_p.GP_dir = A_TO_B;
 					Group_p.check_dir = 0;
 					Group_mode_Dir_check();
+					//Group_Ramp_Speed_Load(2);
 					//Group_mode_find_Apoint();
 					//Send_connect_data_to_controller();
 				}
 				Send_connect_data_to_controller();
+				Group_Ramp_Speed_Load(2);
 				Group_mode_find_Apoint();
 				//Group_mode_Start_check_diretion();
 			}

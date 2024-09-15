@@ -227,8 +227,9 @@ typedef struct{
 	uint16_t exposure;
 	uint16_t shut_times; //快门次数，即每个角度需要拍的张数
 	float sys_stop_t; // 快门拍完关闭之后需要等待的时间和能开始下一张的动作
-
-	
+	float shut_stop_t; // 拍前暂停
+	float G_exposure;
+	uint8_t speed_greer; // 速度档位
 	uint16_t lens_folcal;
 	uint8_t Roverlap;
 }PARA_STRUCT;

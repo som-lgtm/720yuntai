@@ -8,16 +8,19 @@
 void motor_init(void)
 {
 	para_read_from_flash();
-	if(glob_para.read_fisrt != 0x80)
+	if(glob_para.read_fisrt != 0x90)
 	{
 		//glob_para.a_point = 0;
 		para_init();
-		glob_para.read_fisrt = 0x80;
+		glob_para.read_fisrt = 0x90;
 		glob_para.speed = 3;
 		glob_para.lens_folcal = 50;
 		glob_para.GP_shut_mode = 1;
 		glob_para.Roverlap = 30;
-		glob_para.GP_exposure = 1;
+		glob_para.GP_exposure = 500;
+		glob_para.GP_shut_t = 500;
+		glob_para.GP_sys_t = 500;
+		glob_para.GP_speed = 1;
 //		write_flash_holfword_buffer(&glob_para.read_fisrt);
 		if_write_flash();
 //		flash_read_protect();

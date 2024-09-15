@@ -165,35 +165,35 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows,"快门时间          ");}
 			else if(rows == 4){
-				The_page_processing(rows,	"方向              ");} // 延后
+				The_page_processing(rows,	"拍前暂停          ");} // 延后
 			else if(rows == 5){
-				The_page_processing(rows,"手动快门          ");}
+				The_page_processing(rows,"拍后暂停          ");}
 			else if(rows == 6){
-				The_page_processing(rows,	"  启动  ");}
+				The_page_processing(rows,	"  下一页  ");}
 			else if(rows == 7){
 				The_page_processing(rows,"  AB点设置  ");}
 			break;
 		}	
-		/*case GROUP_PHOTO_MOVE:
+		case GROUP_PHOTO_MOVE:
 		{
 			if(rows == 0){
-				The_page_processing(rows,	"合影模式");}
+				The_page_processing(rows,	"合影拍摄模式");}
 			else if(rows == 1){
 				The_page_processing(rows,	"                    ");}
 			else if(rows == 2){
-				The_page_processing(rows,"完成度            ");}
+				The_page_processing(rows,"拍摄方向          ");}
 			else if(rows == 3){
-				The_page_processing(rows,	"                    ");}
+				The_page_processing(rows,	"云台转速          ");}
 			else if(rows == 4){
-				The_page_processing(rows,"照片              ");}
+				The_page_processing(rows,"手动快门          ");}
 			else if(rows == 5){
-				The_page_processing(rows,"暂停");}
+				The_page_processing(rows,"  暂停  ");}
 			else if(rows == 6){
-				The_page_processing(rows,"  返回  ");}
+				The_page_processing(rows,"张数              ");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
 			break;
-		}	*/	
+		}	
 		case PREINSTALL_MODE:
 		{
 			if(rows == 0){
@@ -573,9 +573,29 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows,"Exposure          ");}
 			else if(rows == 4){
-				The_page_processing(rows,	"diraction         ");} // 延后
+				The_page_processing(rows,	"Stop time         ");} // 延后
 			else if(rows == 5){
-				The_page_processing(rows,"Manual            ");}
+				The_page_processing(rows,"Delay             ");}
+			else if(rows == 6){
+				The_page_processing(rows,"                    ");}
+			else if(rows == 7){
+				The_page_processing(rows,"                    ");}
+			break;
+		}
+		case GROUP_PHOTO_MOVE:
+		{
+			if(rows == 0){
+				The_page_processing(rows,"GROUP Move");}
+			else if(rows == 1){
+				The_page_processing(rows,	"                  ");}
+			else if(rows == 2){
+				The_page_processing(rows,"diraction         ");}
+			else if(rows == 3){
+				The_page_processing(rows,"Speed             ");}
+			else if(rows == 4){
+				The_page_processing(rows,	"Manual            ");} // 延后
+			else if(rows == 5){
+				The_page_processing(rows,"                    ");}
 			else if(rows == 6){
 				The_page_processing(rows,"                    ");}
 			else if(rows == 7){
@@ -3120,9 +3140,68 @@ y = y * (ZHI_H + ROWLEDGE) + TITLE; // 3: 行间距; ZHI_H: 每行字的高度; 16 : 开始
   }
 }
 
+void float_time_dis(uint8_t cur, float data)
+{
+	uint8_t buff[10];
+	uint8_t x=0;
+	uint8_t x_size=0;
+
+	
+	if(data <10)
+	{
+		sprintf( (char *)buff," %.1fS", data);
+	}
+	/*else if(glob_para.shut_time_s <100)
+	{
+		sprintf( (char *)buff,"00%.1fS", glob_para.shut_time_s);
+	}
+	else if(glob_para.shut_time_s <1000)
+	{
+		sprintf( (char *)buff,"%.1fS", glob_para.shut_time_s);
+	}*/
+	else 
+	{
+		sprintf( (char *)buff,"%.1fS", data);
+	}
+	
+	x_size = Check_String(buff, ENGLISH);
+	x = LCD_W - (x_size + SCREEN_MIGRATION);
+	Oled_EnlPrint(x, cur, buff, " ", ENGLISH);
+}
+
+//整 数显示
+void init_dis(uint8_t cur, uint32_t data)
+{
+	uint8_t buff[10];
+	uint8_t x=0;
+	uint8_t x_size=0;
+
+	
+	if(data <10)
+	{
+		sprintf( (char *)buff,"   %d", data);
+	}
+	else if(data <100)
+	{
+		sprintf( (char *)buff,"  %d", data);
+	}
+	else if(data <1000)
+	{
+		sprintf( (char *)buff," %d", data);
+	}
+	else 
+	{
+		sprintf( (char *)buff,"%d", data);
+	}
+	
+	x_size = Check_String(buff, ENGLISH);
+	x = LCD_W - (x_size + SCREEN_MIGRATION);
+	Oled_EnlPrint(x, cur, buff, " ", ENGLISH);
+}
+
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.1.4", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.1.7", "", ENGLISH);
 }
 
 

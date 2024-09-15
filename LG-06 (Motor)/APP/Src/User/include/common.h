@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	115
+#define FW_VERSIONS	119
 
 #define PARA_MAX_ID	25
 
@@ -153,7 +153,10 @@ typedef struct{
 	uint16_t lens_folcal; // 镜头焦距
 	uint8_t Roverlap; // 重叠率
 	uint8_t GP_shut_mode; // 横竖拍
-	uint8_t GP_exposure;
+	uint16_t GP_exposure;
+	uint8_t GP_speed;
+	uint16_t GP_shut_t;
+	uint16_t GP_sys_t;
 
 }PARA_STRUCT;
 
@@ -310,6 +313,7 @@ typedef struct{
 	uint8_t rx_id;
 	uint8_t HH_dynamic;
 	uint8_t VV_dynamic;
+	uint8_t shut_switch;
 	
 }VIDEO_PARA;
 
@@ -358,7 +362,6 @@ typedef struct{
 	// 合影模式参数
 	uint16_t lens_folcal; // 镜头焦距
 	uint8_t Roverlap; // 重叠率
-	uint8_t GP_exposure;
 	uint8_t GP_manul;
 	uint8_t GP_dir;
 	uint8_t GP_set_if; // 是否已设置AB点
@@ -668,7 +671,7 @@ void Group_mode_start(void);
 void Group_mode_para_init(void);
 void Group_mode_find_Apoint(void);
 void Group_mode_Dir_check(void);
-void Group_Ramp_Speed_Load(void);
+void Group_Ramp_Speed_Load(uint8_t speeds);
 void Group_manul_Shuting(void);
 uint8_t Group_mode_Start_check_diretion(void);
 void Group_move_speed_calculate(void);

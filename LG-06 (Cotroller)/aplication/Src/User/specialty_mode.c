@@ -865,15 +865,18 @@ void specielty_para_dis(uint8_t cur)
 		}
 		else if(cur == 4)
 		{
-			secondes_time_dis(spe_para[mid_cr].modes[pid_cr].exposure, cur);
+			float_time_dis(cur, spe_para[mid_cr].modes[pid_cr].exposure);
+		//	secondes_time_dis(spe_para[mid_cr].modes[pid_cr].exposure, cur);
 		}
 		else if(cur == 5)
 		{
-			secondes_time_dis(spe_para[mid_cr].modes[pid_cr].interval, cur);
+			float_time_dis(cur, spe_para[mid_cr].modes[pid_cr].interval);
+			//secondes_time_dis(spe_para[mid_cr].modes[pid_cr].interval, cur);
 		}
 		else if(cur == 6) //延时时间，快门关闭后的等待时间
 		{
-			integer_display(spe_para[mid_cr].modes[pid_cr].sys_stop_t, cur);
+			float_time_dis(cur, spe_para[mid_cr].modes[pid_cr].sys_stop_t);
+			//integer_display(spe_para[mid_cr].modes[pid_cr].sys_stop_t, cur);
 		}
 	}
 }
@@ -980,20 +983,23 @@ void specielty_para_adjust(uint8_t dir)
 		}
 		else if(cursor_id == 4) // 快门速度
 		{
-			spe_para[mid_cr].modes[pid_cr].exposure = data_count(spe_para[mid_cr].modes[pid_cr].exposure, dir,  99, 1);
+			spe_para[mid_cr].modes[pid_cr].exposure = para_count(dir, spe_para[mid_cr].modes[pid_cr].exposure, 65, 0.5);
+			if(spe_para[mid_cr].modes[pid_cr].exposure < 0.5)spe_para[mid_cr].modes[pid_cr].exposure = 0.5;
 			//sp_lip.amout = spe_para[mid_cr].modes[pid_cr].amout;
 			specielty_para_dis(cursor_id);
 		}
 		else if(cursor_id == 5) //间隔设置
 		{
-			spe_para[mid_cr].modes[pid_cr].interval = data_count(spe_para[mid_cr].modes[pid_cr].interval, dir,  99, 1);
+			spe_para[mid_cr].modes[pid_cr].interval = para_count(dir, spe_para[mid_cr].modes[pid_cr].interval, 65, 0.5);
+			if(spe_para[mid_cr].modes[pid_cr].interval < 0.5)spe_para[mid_cr].modes[pid_cr].interval = 0.5;
 			//sp_lip.interval = spe_para[mid_cr].modes[pid_cr].interval;
 			
 			specielty_para_dis(cursor_id);
 		}
 		else if(cursor_id == 6) //关闭快门后的等待时间
 		{
-			spe_para[mid_cr].modes[pid_cr].sys_stop_t = data_count(spe_para[mid_cr].modes[pid_cr].sys_stop_t,dir, 99, 1);
+			spe_para[mid_cr].modes[pid_cr].sys_stop_t = para_count(dir, spe_para[mid_cr].modes[pid_cr].sys_stop_t, 65, 0.5);
+			if(spe_para[mid_cr].modes[pid_cr].sys_stop_t < 0.5)spe_para[mid_cr].modes[pid_cr].sys_stop_t = 0.5;
 			specielty_para_dis(cursor_id);
 		}
 		inverse_get_value(0);
@@ -1260,8 +1266,8 @@ void specialty_para_sendTo_motor(uint8_t curt)
 			App_Buffer[i].app_send_buffer[2] = 0x09;
 			App_Buffer[i].app_send_buffer[3] = 0x06;
 			App_Buffer[i].app_send_buffer[4] = 4; //	快门速度即是曝光时间
-			App_Buffer[i].app_send_buffer[5] = (spe_para[mid_cr].modes[pid_cr].exposure);
-			App_Buffer[i].app_send_buffer[6] = 0;
+			App_Buffer[i].app_send_buffer[5] = ((uint16_t)(spe_para[mid_cr].modes[pid_cr].exposure*1000));
+			App_Buffer[i].app_send_buffer[6] = ((uint16_t)(spe_para[mid_cr].modes[pid_cr].exposure*1000))>>8;
 			App_Buffer[i].app_send_buffer[7] = pid_cr;
 			App_Buffer[i].app_send_buffer[8] = check_sum_add(8, App_Buffer[i].app_send_buffer);
 			App_Buffer[i].app_send_size = 9;
@@ -1272,8 +1278,8 @@ void specialty_para_sendTo_motor(uint8_t curt)
 			App_Buffer[i].app_send_buffer[2] = 0x09;
 			App_Buffer[i].app_send_buffer[3] = 0x06;
 			App_Buffer[i].app_send_buffer[4] = 5; //	间隔时间
-			App_Buffer[i].app_send_buffer[5] = (spe_para[mid_cr].modes[pid_cr].interval);
-			App_Buffer[i].app_send_buffer[6] = 0;
+			App_Buffer[i].app_send_buffer[5] = ((uint16_t)(spe_para[mid_cr].modes[pid_cr].interval*1000));
+			App_Buffer[i].app_send_buffer[6] = ((uint16_t)(spe_para[mid_cr].modes[pid_cr].interval*1000))>>8;
 			App_Buffer[i].app_send_buffer[7] = pid_cr;
 			App_Buffer[i].app_send_buffer[8] = check_sum_add(8, App_Buffer[i].app_send_buffer);
 			App_Buffer[i].app_send_size = 9;
@@ -1284,8 +1290,8 @@ void specialty_para_sendTo_motor(uint8_t curt)
 			App_Buffer[i].app_send_buffer[2] = 0x09;
 			App_Buffer[i].app_send_buffer[3] = 0x06;
 			App_Buffer[i].app_send_buffer[4] = 0x0e; //	延时时间
-			App_Buffer[i].app_send_buffer[5] = (spe_para[mid_cr].modes[pid_cr].sys_stop_t);
-			App_Buffer[i].app_send_buffer[6] = 0;
+			App_Buffer[i].app_send_buffer[5] = ((uint16_t)(spe_para[mid_cr].modes[pid_cr].sys_stop_t*1000));
+			App_Buffer[i].app_send_buffer[6] = ((uint16_t)(spe_para[mid_cr].modes[pid_cr].sys_stop_t*1000))>>8;
 			App_Buffer[i].app_send_buffer[7] = pid_cr;
 			App_Buffer[i].app_send_buffer[8] = check_sum_add(8, App_Buffer[i].app_send_buffer);
 			App_Buffer[i].app_send_size = 9;
@@ -1409,12 +1415,12 @@ void Get_data_from_Motor(uint8_t *fofob)
 	spe_para[mid_cr].modes[pid_cr].shut_times = (uint16_t)fofob[6] | (uint16_t)fofob[7]<<8;
 	spe_para[mid_cr].modes[pid_cr].ele_angle = (uint16_t)fofob[4] | (uint16_t)fofob[5]<<8;
 	spe_para[mid_cr].modes[pid_cr].amout = fofob[8];
-	spe_para[mid_cr].modes[pid_cr].exposure = fofob[9];
-	spe_para[mid_cr].modes[pid_cr].interval = fofob[10];
+	spe_para[mid_cr].modes[pid_cr].exposure = (float)((uint16_t)fofob[9]|(uint16_t)fofob[18]<<8)/1000;
+	spe_para[mid_cr].modes[pid_cr].interval = (float)((uint16_t)fofob[10]|(uint16_t)fofob[19]<<8)/1000;
 	spe_para[mid_cr].delay_t = fofob[11];
 	spe_para[mid_cr].manul = fofob[12];
 	m_start = fofob[13];
-	spe_para[mid_cr].modes[pid_cr].sys_stop_t = fofob[16];
+	spe_para[mid_cr].modes[pid_cr].sys_stop_t = (float)((uint16_t)fofob[16]|(uint16_t)fofob[20]<<8)/1000;
 	id_add = 1;
 }
 

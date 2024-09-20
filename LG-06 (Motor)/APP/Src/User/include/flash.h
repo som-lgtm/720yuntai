@@ -5,7 +5,7 @@
 
 #define FLASH_WRITE_START_ADDR22	((uint32_t)0x08001C00)	 /* Start @ of user Flash area */
 #define FLASH_UID_ADDR				((uint32_t)0x0800F800)	 /* 对应烧录器的地址 */
-#define FLASH_WRITE_START_ADDR	((uint32_t)0x0800EC00)	 /* Start @ of user Flash area */
+#define FLASH_WRITE_START_ADDR	((uint32_t)0x0800E800)	 /* Start @ of user Flash area */
 #define FLASH_PAGE_SIZE 		((uint32_t)0x00000400)	 /* FLASH Page Size */
 #define FLASH_FKEY1                          ((uint32_t)0x45670123)        /*!< Flash program erase key1 */
 #define FLASH_FKEY2                          ((uint32_t)0xCDEF89AB)        /*!< Flash program erase key2: used with FLASH_PEKEY1
@@ -20,6 +20,6 @@
 
 void para_read_from_flash(void);
 void write_flash_tag_verify(void);
-void read_flash_holfword(uint32_t address, uint8_t *data, uint16_t sizes);
+void read_flash_holfword(uint32_t address, uint16_t *data, uint16_t sizes);
 
 #endif

@@ -122,7 +122,7 @@ void connection_set(void);
 uint8_t remotoe_cursor_dispose(uint8_t tage);
 void manulORauto_dis(uint8_t dat, uint8_t cur);
 uint16_t data_count(uint16_t data, uint8_t dir, uint16_t max, uint8_t mix);
-void slow_start_stop_dis(uint8_t cur);
+void slow_start_stop_dis(uint8_t cur, uint8_t swit);
 void Time_DownCount(uint8_t cur);
 void Manual_page_OK(void);
 void Speed_display(uint8_t cur);

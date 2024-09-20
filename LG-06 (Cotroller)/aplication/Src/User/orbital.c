@@ -49,6 +49,7 @@ uint16_t addend_value=0;
 uint16_t connection_flag = 0;
 uint16_t V_agnle = 0;
 uint16_t H_agnle = 0;
+uint16_t tagat_amount =0;
 
 uint32_t fast_time_bakeup =0;
 uint32_t stop_time_bakeup = 0;
@@ -211,7 +212,7 @@ void ab_point_change_dir(void)
 void video_page_OK(void)
 {	
 	if(page_id != VIDEO_MODE)return;
-		if(cursor_id == 4)
+		if(cursor_id == 5)
 		{
 			if(Video_motor_status_return())return;
 			m_start = ~m_start;
@@ -226,7 +227,7 @@ void video_page_OK(void)
 			//if(m_start)Send_data_to_ER1(0x00,0x02,0x04);
 			//else Send_data_to_ER1(0x00,0x02,0x02);
 		}
-		else if(cursor_id == 5)
+		else if(cursor_id == 6)
 		{
 			if(m_start)return;
 			set_mode_back(page_id);
@@ -866,15 +867,15 @@ void param_display(uint8_t cur)
 			}
 			else if(cur == 3) //ramp
 			{
-				slow_start_stop_dis(cur);
+				slow_start_stop_dis(cur,ramp_flag);
 			} 
-			else if(cur == 4) // start / stop
+			else if(cur == 5) // start / stop
 			{
 				status_display(cur);
 			}
-			else if(cur == 5) // ab point set
+			else if(cur == 4) // ab point set
 			{
-			
+				slow_start_stop_dis(cur, glob_para.shut_swit);
 			}
 			break;
 		}
@@ -1124,7 +1125,7 @@ void status_display(uint8_t cur)
 		}
 		else if(page_id == VIDEO_MODE)
 		{
-			if(cursor_id == 4)inverse_get_value(0xff);
+			if(cursor_id == 5)inverse_get_value(0xff);
 		}
 		else if(page_id == GROUP_PHOTO_MOVE)
 		{
@@ -2030,6 +2031,16 @@ void param_adjust(uint8_t dir)
 				inverse_get_value(0);
 			controller_send_data_to_motor(0,0x01, 0x07);
 			}
+			else if(cursor_id == 4) // 相机快门开关
+			{
+				inverse_get_value(0xff);
+				if(dir & KEY_RIGHT_MASK)glob_para.shut_swit = 0;
+				else if(dir & KEY_LEFT_MASK)glob_para.shut_swit = 0xff;
+				param_display(cursor_id);
+				controller_send_data_to_motor(0,0x01, 0x08);
+				inverse_get_value(0);
+				
+			}
 			break;
 		}
 		case MANUAL_MODE:
@@ -2771,16 +2782,17 @@ void receiver_data_from_A650(void)
 				if(app_read_buffer[3]==0x04) // 合影张数计数
 				{
 					p_amount = app_read_buffer[7];
-					if(app_read_buffer[9])
+					tagat_amount = app_read_buffer[8];
+					//if(app_read_buffer[9])
 					{
 						if(page_id == GROUP_PHOTO_MOVE)Group_pix_amt_compara_dis(app_read_buffer[8],6);
 					}
-					else
+					/*else
 					{
 						m_start = 0;
 						param_display(6);
 						param_display(7);
-					}
+					}*/
 				}
 				else if(app_read_buffer[3]==5) // 全景模式倒计时显示
 				{
@@ -3086,6 +3098,13 @@ void controller_send_data_to_motor(uint8_t opcode, uint8_t mode, uint8_t data)
 			else if(data == 0x07) // ramp
 			{
 				App_Buffer[i].app_send_buffer[5] = ramp_flag;
+				//App_Buffer[i].app_send_buffer[5] = 0;
+				App_Buffer[i].app_send_buffer[6] = 0;
+				App_Buffer[i].app_send_buffer[7] = 0;
+			}
+			else if(data == 0x08) // ramp
+			{
+				App_Buffer[i].app_send_buffer[5] = glob_para.shut_swit;
 				//App_Buffer[i].app_send_buffer[5] = 0;
 				App_Buffer[i].app_send_buffer[6] = 0;
 				App_Buffer[i].app_send_buffer[7] = 0;
@@ -3421,14 +3440,14 @@ void manulORauto_dis(uint8_t dat, uint8_t cur)
 }
 
 
-void slow_start_stop_dis(uint8_t cur)
+void slow_start_stop_dis(uint8_t cur, uint8_t swit)
 {
 	uint8_t x = 96;
 	uint8_t x_size = 0;
 	
 	//	inverse_get_value(0xff);
 		
-		if(ramp_flag)
+		if(swit)
 		{
 			if(wifi_id.language_sel == ENGLISH)
 			{
@@ -3715,6 +3734,7 @@ void Group_page_OK(void)
 			set_mode_back(page_id);
 			cursor_id = 5;
 			change_page();
+			Group_pix_amt_compara_dis(tagat_amount,6);
 		}
 		else if(cursor_id == 7)
 		{

@@ -146,10 +146,10 @@ typedef struct{
 	uint16_t lev_angle; //水平角
 	uint16_t shut_times; //快门次数，即每个角度需要拍的张数
 	uint8_t amout;
-	uint8_t exposure; //快门速度
-	uint8_t interval; // 缓停时间
 	uint8_t set_flag;
-	uint8_t sys_stop_t; // 快门拍完关闭之后需要等待的时间和能开始下一张的动作
+	float exposure; //快门速度
+	float interval; // 缓停时间
+	float sys_stop_t; // 快门拍完关闭之后需要等待的时间和能开始下一张的动作
 }MODE_PARA;
 
 
@@ -232,6 +232,8 @@ typedef struct{
 	uint8_t speed_greer; // 速度档位
 	uint16_t lens_folcal;
 	uint8_t Roverlap;
+
+	uint8_t shut_swit;
 }PARA_STRUCT;
 
 

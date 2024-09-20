@@ -43,7 +43,7 @@ uint8_t check_ID(void)
 	if(infor.first_used != 0x70)
 	{
 		//memcpy(&infor.MCU_uid[0], device_id, 12); // load data to DMA send buffer
-		infor.Reserved = 0x06;
+		//infor.Reserved = 0x06;
 		infor.first_used = 0x70;
 		write_flash_holfword_buffer((uint16_t *)&infor,sizeof(infor));
 	}

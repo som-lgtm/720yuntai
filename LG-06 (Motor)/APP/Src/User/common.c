@@ -42,7 +42,7 @@ void NewOROld_motor_compatible(void)
 {
 	IAP_INF_T bufer={0};
 	
-	read_flash_holfword(FLASH_WRITE_START_ADDR22, (uint8_t *)&bufer, sizeof(bufer));
+	read_flash_holfword(FLASH_WRITE_START_ADDR22, (uint16_t *)&bufer, sizeof(bufer));
 	if(bufer.Reserved == 0x06) // 新电机，配置新电机的参数(电机减速比1:13.6)
 	{
 		Angle_basic = 0.0020483; // 0.002055;
@@ -210,7 +210,7 @@ void Package_dataBufer(uint8_t txsize, uint8_t *buffer)
 
 void Send_connect_data_to_controller(void)
 {
-	uint8_t buffers[20] = {0};
+	uint8_t buffers[25] = {0};
 	uint8_t sizes = 0;
 
 	buffers[0] = 0x09;
@@ -228,8 +228,9 @@ void Send_connect_data_to_controller(void)
 		buffers[9] = con_b.vvAB_set;
 		buffers[10] = 0;
 		buffers[11] = video_p.Pause;
-		buffers[12] = check_sum_add(12, buffers);
-		sizes = 13;
+		buffers[12] = video_p.shut_switch;
+		buffers[13] = check_sum_add(13, buffers);
+		sizes = 14;
 	}
 	else if(mode_backup == DELAY_SET) // 延时模式
 	{
@@ -635,6 +636,7 @@ void Get_data_from_controller(uint8_t *fifos)
 					Group_p.GP_dir = A_TO_B;
 					Group_p.check_dir = 0;
 					Group_mode_Dir_check();
+					Group_mode_countdwon_display();
 					//Group_Ramp_Speed_Load(2);
 					//Group_mode_find_Apoint();
 					//Send_connect_data_to_controller();

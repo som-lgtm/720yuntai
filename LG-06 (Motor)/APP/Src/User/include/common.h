@@ -8,7 +8,7 @@
 
 #define STAND_IDMAX	5
 
-#define FW_VERSIONS	119
+#define FW_VERSIONS	121
 
 #define PARA_MAX_ID	25
 
@@ -82,11 +82,11 @@ typedef enum
 typedef struct{
 	uint16_t lev_angle; //水平角
 	uint8_t amout;
-	uint8_t exposure;
-	uint8_t interval;
+	uint16_t exposure;
+	uint16_t interval;
 	uint8_t set_flag;
 	uint8_t shut_times; //快门次数
-	uint8_t sys_stop; //延时时间，快门关闭后的等待时间
+	uint16_t sys_stop; //延时时间，快门关闭后的等待时间
 }SPECIALTY_PARA;
 
 typedef struct{
@@ -675,6 +675,7 @@ void Group_Ramp_Speed_Load(uint8_t speeds);
 void Group_manul_Shuting(void);
 uint8_t Group_mode_Start_check_diretion(void);
 void Group_move_speed_calculate(void);
+void Group_mode_countdwon_display(void);
 
 extern PARA_STRUCT glob_para;
 extern float battery_back;

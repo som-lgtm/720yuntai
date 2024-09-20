@@ -81,7 +81,7 @@
     <WindowPosition>
       <length>44</length>
       <flags>0</flags>
-      <showCmd>2</showCmd>
+      <showCmd>1</showCmd>
       <MinPosition>
         <xPos>-32000</xPos>
         <yPos>-32000</yPos>

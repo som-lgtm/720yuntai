@@ -225,15 +225,16 @@ void write_flash_holfword_buffer(uint32_t address, uint16_t *data, uint16_t size
 {
 	uint32_t p_address = address;
 	uint16_t i;
-	uint16_t data_len=0;
-	uint16_t data_len1=0;
-	uint8_t temp1=0;
+	//uint16_t data_len=0;
+	//uint16_t data_len1=0;
+	uint16_t temp1=0;
 
 	//temp1 = (uint32_t)(&glob_para.stop_time);
 	//temp2 = (uint32_t)&glob_para.read_fisrt;
 
 	if(sizes%2)sizes += 1;
-
+	temp1 = sizes / 2;
+/*
 	if(sizes > 0x400)
 	{
 		data_len = (sizes - 0x400)/2; // ³ý2 ÊÇÒòÎª°ë×ÖÐ´´æ
@@ -243,7 +244,7 @@ void write_flash_holfword_buffer(uint32_t address, uint16_t *data, uint16_t size
 	else
 	{
 		data_len1 = sizes / 2;
-	}
+	}*/
 	
 	FLASH_Unlock();
 	
@@ -251,21 +252,27 @@ void write_flash_holfword_buffer(uint32_t address, uint16_t *data, uint16_t size
 	FLASH_ClearFlag(FLASH_FLAG_EOP | FLASH_FLAG_PGERR | FLASH_FLAG_WRPERR); 
 	//erase_flash_OnePage(p_address);
 	//erase_flash_OnePage(p_address+400); // Ò»Ò³1K,  ¹²2k
-	FLASH_ErasePage(p_address);
-	if(temp1)FLASH_ErasePage(p_address+FLASH_PAGE_SIZE);
+		FLASH_ErasePage(p_address);
+		FLASH_ErasePage(p_address+FLASH_PAGE_SIZE);
+		FLASH_ErasePage(p_address+(FLASH_PAGE_SIZE*2));
+//	else
+//	{
+//		FLASH_ErasePage(p_address);
+//	}
+	
+//	if(temp1)FLASH_ErasePage(p_address+FLASH_PAGE_SIZE);
 	Feed_IWDG(); //Î¹¹·
 
-	for(i=0;i< data_len1;i++) // µÚÒ»Ò³
-	{
-		if(p_address < (address+FLASH_PAGE_SIZE))
+		for(i=0;i< (temp1);i++) // 
 		{
-			write_flash_holfword(p_address, (uint16_t)data[i]);
+			if(p_address < (address+(FLASH_PAGE_SIZE*3)))
+			{
+				write_flash_holfword(p_address, (uint16_t)data[i]);
 
-			p_address+=2;
+				p_address+=2;
+			}
 		}
-	}
-
-	if(temp1)
+/*	if(temp1)
 	{
 		p_address = address+FLASH_PAGE_SIZE;
 		for(i=0;i< data_len;i++) // µÚ¶þÒ³
@@ -278,48 +285,48 @@ void write_flash_holfword_buffer(uint32_t address, uint16_t *data, uint16_t size
 			}
 		}
 	}
-	
+	*/
 	
 	Feed_IWDG(); //Î¹¹·
 
 	 FLASH_Lock(); 
 }
 
-void read_flash_holfword(uint32_t address, uint8_t *data, uint16_t sizes)
+void read_flash_holfword(uint32_t address, uint16_t *data, uint16_t sizes)
 {
 	uint32_t p_address = address;
 	uint16_t i;
-	uint16_t data_len=0;
+//	uint16_t data_len=0;
 	uint16_t data_len1=0;
 	uint16_t p_temp=0;
-	uint8_t temp1=0;
+//	uint8_t temp1=0;
 	
 	if(sizes%2)sizes += 1; // ³ý2 ÊÇÒòÎª°ë×ÖÐ´´æ
 //	String_Printf(USART_2,"AA",2);
 //	String_Printf(USART_2,(uint8_t *)&sizes,2);
-	if(sizes > 0x400)
+/*	if(sizes > 0x400)
 	{
 		data_len = (sizes - 0x400); 
 		data_len1 = 0x400;
 		temp1 = 1;
 	}
-	else
+	else*/
 	{
-		data_len1 = sizes;
+		data_len1 = sizes/2;
 	}
 	Feed_IWDG();//Î¹¹·
 
 	for(i=0;i<data_len1;i++)
 	{
-		if(p_address < (address+FLASH_PAGE_SIZE))
+		if(p_address < (address+(FLASH_PAGE_SIZE + FLASH_PAGE_SIZE + FLASH_PAGE_SIZE)))
 		{
-			p_temp = *(__IO uint8_t *)p_address;
+			p_temp = *(__IO uint16_t *)p_address;
 			data[i] = p_temp;
-			p_address += 1;
+			p_address += 2;
 		}
 	}
 
-	if(temp1)
+	/*if(temp1)
 	{
 		address  += FLASH_PAGE_SIZE;
 		p_address = address;
@@ -332,7 +339,7 @@ void read_flash_holfword(uint32_t address, uint8_t *data, uint16_t sizes)
 				p_address += 1;
 			}
 		}
-	}
+	}*/
 	
 	Feed_IWDG(); //Î¹¹·
 
@@ -428,7 +435,7 @@ void flash_read_protect(void)
 }
 void para_read_from_flash(void)
 {
-	read_flash_holfword(FLASH_WRITE_START_ADDR, (uint8_t *)&glob_para.read_fisrt, sizeof(glob_para));
+	read_flash_holfword(FLASH_WRITE_START_ADDR, (uint16_t *)&glob_para.read_fisrt, sizeof(glob_para));
 }
 
 
@@ -450,7 +457,7 @@ void write_bootTag(uint8_t tag, uint16_t sizess)
 {
 	IAP_INF_T bufer={0};
 
-	read_flash_holfword(FLASH_WRITE_START_ADDR22, (uint8_t *)&bufer, sizeof(bufer));
+	read_flash_holfword(FLASH_WRITE_START_ADDR22, (uint16_t *)&bufer, sizeof(bufer));
 	bufer.usart_number = tag;
 	bufer.firmware = sizess;
 	bufer.firmware_version = FW_VERSIONS;

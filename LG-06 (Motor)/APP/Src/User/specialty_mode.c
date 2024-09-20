@@ -93,11 +93,11 @@ void sp_Factory_default(void)
 {
 	glob_para.spe_para[1].Param[1].lev_angle = 360;
 	glob_para.spe_para[1].Param[1].amout = 4;
-	glob_para.spe_para[1].Param[1].exposure = 1;
-	glob_para.spe_para[1].Param[1].interval = 1;
+	glob_para.spe_para[1].Param[1].exposure = 500;
+	glob_para.spe_para[1].Param[1].interval = 500;
 	glob_para.spe_para[1].Param[1].set_flag = 1;
 	glob_para.spe_para[1].Param[1].shut_times = 1;
-	glob_para.spe_para[1].Param[1].sys_stop = 1;
+	glob_para.spe_para[1].Param[1].sys_stop = 500;
 	glob_para.spe_para[1].para_id=1;
 	glob_para.mode_id =1;
 }
@@ -136,9 +136,9 @@ void Sp_para_start_init(void)
 	glob_para.spe_para[mid_ct].total_aount = temps;
 	con_b.taltol_amount = temps;
 
-	con_b.shut_time = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].exposure * 1000;
-	con_b.interval_t = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].interval * 1000;
-	con_b.sys_stop = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].sys_stop * 1000;
+	con_b.shut_time = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].exposure;
+	con_b.interval_t = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].interval;
+	con_b.sys_stop = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].sys_stop;
 	//con_b.interval_t = con_b.interval_t - con_b.shut_time;
 	
 }
@@ -385,6 +385,7 @@ void Specialty_mode_Start(void)
 void Specialty_Get_data_from_controller(uint8_t *fifob)
 {
 	uint8_t idx = 0;
+	uint8_t i = 0;
 
 	idx = fifob[7];
 	
@@ -406,17 +407,24 @@ void Specialty_Get_data_from_controller(uint8_t *fifob)
 	{
 		glob_para.spe_para[mid_ct].Param[idx].amout = fifob[5];
 		specialty_parameter_calculate(idx);
+		for(i=SP_BASE_SPEED; i < RAMP_MAX; i++)
+		{
+			if(SpecialtyHH_Ramp_Speed_Load(i, run_id))
+			{
+				break;				
+			}
+		}
 	}
 	else if(fifob[4] == 0x04) //曝光时间
 	{
-		glob_para.spe_para[mid_ct].Param[idx].exposure = fifob[5];
+		glob_para.spe_para[mid_ct].Param[idx].exposure = (uint16_t)fifob[5] | (uint16_t)fifob[6]<<8;
 		if_write_flash();
 		//String_Printf(USART_2,"EEEE",4);
 	//	String_Printf(USART_2,(uint8_t *)&glob_para.spe_para[mid_ct].Param[idx].exposure,2);
 	}
 	else if(fifob[4] == 0x05) //间隔时间
 	{
-		glob_para.spe_para[mid_ct].Param[idx].interval = fifob[5];
+		glob_para.spe_para[mid_ct].Param[idx].interval = (uint16_t)fifob[5] | (uint16_t)fifob[6]<<8;
 		if_write_flash();
 		//write_flash_active();
 	}
@@ -479,7 +487,7 @@ void Specialty_Get_data_from_controller(uint8_t *fifob)
 	}
 	else if(fifob[4] == 0x0e) // 延时时间，快门关闭后的等待时间
 	{
-		glob_para.spe_para[mid_ct].Param[idx].sys_stop = fifob[5];
+		glob_para.spe_para[mid_ct].Param[idx].sys_stop = (uint16_t)fifob[5] | (uint16_t)fifob[6]<<8;
 		if_write_flash();
 	}
 	else if(fifob[4] == 0x0f) // 速度档位
@@ -547,7 +555,7 @@ void Specialty_modeID_sendt(void)
 // 发送专业模式下的所有模式和所有参数给控制器显示
 void Specialty_Send_data(uint8_t m_id)
 {
-	uint8_t buffer[20] = {0};
+	uint8_t buffer[25] = {0};
 	uint8_t j=0;
 	
 	buffer[0] = 9;
@@ -574,8 +582,11 @@ void Specialty_Send_data(uint8_t m_id)
 				buffer[15] = m_id;
 				buffer[16] = (uint16_t)glob_para.spe_para[m_id].Param[j+1].sys_stop;
 				buffer[17] = glob_para.spe_para[m_id].speed_range;
-				buffer[18] = check_sum_add(18, buffer);
-				Package_dataBufer(19,buffer);
+				buffer[18] = glob_para.spe_para[m_id].Param[j+1].exposure>>8;
+				buffer[19] = glob_para.spe_para[m_id].Param[j+1].interval>>8;
+				buffer[20] = (uint16_t)glob_para.spe_para[m_id].Param[j+1].sys_stop>>8;
+				buffer[21] = check_sum_add(21, buffer);
+				Package_dataBufer(22,buffer);
 				//memcpy(&Usart11_shadow[j].usart11_shadow_buffer[0], buffer, 19); // load data to DMA send buffer
 				//Usart11_shadow[j].shadow_send_size = 19;
 			//	Usart11_Interval_set();
@@ -589,7 +600,7 @@ void Specialty_Send_data(uint8_t m_id)
 // 参数设置取消时的数据返回用于同步参数
 void Cancel_the_para_set_return(uint8_t indx)
 {
-	uint8_t buffer[20] = {0};
+	uint8_t buffer[25] = {0};
 
 	if(indx>=PARA_MAX_ID)indx=PARA_MAX_ID-1;
 	if(mid_ct>=MODE_ID_MAX)mid_ct =MODE_ID_MAX-1;
@@ -612,8 +623,11 @@ void Cancel_the_para_set_return(uint8_t indx)
 	buffer[15] = mid_ct;
 	buffer[16] = glob_para.spe_para[mid_ct].Param[indx].sys_stop;
 	buffer[17] = glob_para.spe_para[mid_ct].speed_range;
-	buffer[18] = check_sum_add(18, buffer);
-	Package_dataBufer(19, buffer);
+	buffer[18] = glob_para.spe_para[mid_ct].Param[indx].exposure>>8;
+	buffer[19]= glob_para.spe_para[mid_ct].Param[indx].interval>>8;
+	buffer[20] = glob_para.spe_para[mid_ct].Param[indx].sys_stop>>8;
+	buffer[21] = check_sum_add(21, buffer);
+	Package_dataBufer(22, buffer);
 }
 
 //发张数计数给遥控器显示
@@ -724,9 +738,9 @@ void specialty_mode_main(void)
 							specialty_mode_param_display();
 						}
 					}
-					con_b.shut_time = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].exposure * 1000;
-					con_b.interval_t = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].interval * 1000;
-					con_b.sys_stop = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].sys_stop * 1000;
+					con_b.shut_time = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].exposure;
+					con_b.interval_t = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].interval;
+					con_b.sys_stop = (uint16_t)glob_para.spe_para[mid_ct].Param[run_id].sys_stop;
 					sp_start = 0;
 					//con_b.interval_t = con_b.interval_t - con_b.shut_time;
 					//HHmotor_return_to_theOrigin_start();
@@ -1300,6 +1314,7 @@ void SpResot_slow_check(void)
 // 
 void camera_shutter_shot(uint8_t typess)
 {
+	//if(video_p.shut_switch==0)return;
 	if(typess)
 	{
 		SHUTTER_ON;

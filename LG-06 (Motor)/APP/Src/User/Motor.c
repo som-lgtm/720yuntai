@@ -7,12 +7,13 @@
 
 void motor_init(void)
 {
+//	time_delay_ms(5000);
 	para_read_from_flash();
-	if(glob_para.read_fisrt != 0x90)
+	if(glob_para.read_fisrt != 0x11)
 	{
 		//glob_para.a_point = 0;
 		para_init();
-		glob_para.read_fisrt = 0x90;
+		glob_para.read_fisrt = 0x11;
 		glob_para.speed = 3;
 		glob_para.lens_folcal = 50;
 		glob_para.GP_shut_mode = 1;
@@ -25,6 +26,7 @@ void motor_init(void)
 		if_write_flash();
 //		flash_read_protect();
 	}
+//	String_Printf(USART_2,(uint8_t *)&glob_para.lens_folcal,12);
 	para_init_set();
 	con_b.exposure = 1000;
 	con_b.interval = 1000;

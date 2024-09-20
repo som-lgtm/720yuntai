@@ -86,9 +86,9 @@ void Video_Get_data_from_controller(uint8_t *fifo)
 		video_Dir_check(MOTOR_HORITAL);
 		video_Dir_check(MOTOR_Vertical);
 	}
-	else if(fifo[4] == 0x07) 
+	else if(fifo[4] == 0x08) 
 	{
-		video_p.shut_switch
+		video_p.shut_switch = fifo[5];
 	}
 }
 
@@ -1153,12 +1153,12 @@ void Video_start(void)
 	if(video_p.Pause)
 	{
 		BLE_shut_start();
-		camera_shutter_shot(1);
+		if(video_p.shut_switch)camera_shutter_shot(1);
 	}
 	else
 	{
 		BLE_shut_start();
-		camera_shutter_shot(1);
+		if(video_p.shut_switch)camera_shutter_shot(1);
 	}
 	Video_motorHH_start(video_p.Pause);
 	Video_motorVV_start(video_p.VVPause);
@@ -1235,7 +1235,7 @@ void video_motorHH_pulse_check(void)
 			{
 				Send_connect_data_to_controller();
 				BLE_shut_start();
-				camera_shutter_shot(1);
+				if(video_p.shut_switch)camera_shutter_shot(1);
 			}
 		}
 	}

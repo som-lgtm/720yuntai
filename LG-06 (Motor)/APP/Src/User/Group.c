@@ -138,6 +138,8 @@ void Group_set_abPoint(uint8_t typess)
 			Group_Ramp_Speed_Load(2);
 			Send_para_data_to_controller(1, 1);
 			Group_mode_Start_check_diretion();
+			
+			Group_mode_countdwon_display();
 		}
 		
 	}
@@ -215,6 +217,8 @@ void Group_get_data_from_controller(uint8_t *fifog)
 		Group_shots_event();
 		glob_para.lens_folcal = Group_p.lens_folcal;
 		if_write_flash();
+		Group_shots_event();
+		Group_mode_countdwon_display();
 	}
 	else if(fifog[4] == 0x02) //ÖØµþÂÊ
 	{
@@ -227,6 +231,8 @@ void Group_get_data_from_controller(uint8_t *fifog)
 		Group_shots_event();
 		glob_para.Roverlap = Group_p.Roverlap;
 		if_write_flash();
+		Group_shots_event();
+		Group_mode_countdwon_display();
 	}
 	else if(fifog[4] == 0x03) //
 	{
@@ -266,8 +272,10 @@ void Group_get_data_from_controller(uint8_t *fifog)
 		Group_p.GP_shut_mode = fifog[5];
 		glob_para.GP_shut_mode = Group_p.GP_shut_mode;
 		if_write_flash();
+		Group_shots_event();
+		Group_mode_countdwon_display();
 	}
-	else if(fifog[4] == 0x08) //start or stop
+	else if(fifog[4] == 0x08) //
 	{
 		if(m_start)
 		{
@@ -277,7 +285,7 @@ void Group_get_data_from_controller(uint8_t *fifog)
 		glob_para.GP_shut_t = (uint16_t)fifog[5] | (uint16_t)fifog[6]<<8;
 		if_write_flash();
 	}
-	else if(fifog[4] == 0x09) //start or stop
+	else if(fifog[4] == 0x09) //
 	{
 		if(m_start)
 		{

@@ -305,11 +305,11 @@ void chinese_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows,	"循环              ");}
 			else if(rows == 4){
-				The_page_processing(rows,"  启动  ");}
+				The_page_processing(rows,"快门开关          ");}
 			else if(rows == 5){
-				The_page_processing(rows,"  AB点设置  ");}
+				The_page_processing(rows,"  启动  ");}
 			else if(rows == 6){
-				The_page_processing(rows,"                    ");}
+				The_page_processing(rows,"  AB点设置  ");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
 			break;
@@ -673,11 +673,11 @@ void english_page_dis(uint8_t rows)
 			else if(rows == 3){
 				The_page_processing(rows,	"Loop                ");}
 			else if(rows == 4){
-				The_page_processing(rows,"                    ");}
+				The_page_processing(rows,"Shut switch         ");}
 			else if(rows == 5){
-				The_page_processing(rows,"AB point reset");}
-			else if(rows == 6){
 				The_page_processing(rows,"                    ");}
+			else if(rows == 6){
+				The_page_processing(rows,"AB point reset");}
 			else if(rows == 7){
 				The_page_processing(rows,"                    ");}
 			break;
@@ -3201,7 +3201,7 @@ void init_dis(uint8_t cur, uint32_t data)
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.1.7", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.1.8", "", ENGLISH);
 }
 
 

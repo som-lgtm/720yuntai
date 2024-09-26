@@ -997,7 +997,7 @@ void cursor_shift(uint8_t dir)
 		}*/
 		case VIDEO_MODE:
 		{
-			cursor_count(dir, 5, 1);
+			cursor_count(dir, 6, 1);
 			break;
 		}	
 		case REVERSE_MODE:

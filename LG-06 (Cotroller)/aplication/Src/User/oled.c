@@ -3201,7 +3201,7 @@ void init_dis(uint8_t cur, uint32_t data)
 
 void version_dis(void)
 {
-	Oled_EnlPrint(LCD_W-42, 5, "V1.1.8", "", ENGLISH);
+	Oled_EnlPrint(LCD_W-42, 5, "V1.1.9", "", ENGLISH);
 }
 
 

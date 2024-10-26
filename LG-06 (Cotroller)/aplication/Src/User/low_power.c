@@ -277,7 +277,6 @@ void active_time_out_countdown(void)
 
 void disable_interrupt(void)
 {
-	
 	LL_TIM_DisableCounter(TIM3);
 	LL_TIM_ClearFlag_UPDATE(TIM3);
 	LL_TIM_ClearFlag_UPDATE(TIM3);

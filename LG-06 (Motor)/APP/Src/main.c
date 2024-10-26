@@ -115,27 +115,32 @@ MX_TIM14_Init();
   {
 	//Feed_IWDG();
 	keyscan();
-		 read_ADC_value();
+	read_ADC_value();
+		 
+		 if(return_powers()==0)
+		 {
 		  Angle_real_time_transmission(1);
-	 	bluetooth_pair_led();
-		set_abpoint_slow_stopORstart(MOTOR_HORITAL);
-		Manual_HH_slowStartOrStop();
-		DelayMode_slowly_startedORstop(MOTOR_HORITAL);
-		DelayMode_FindABpoint_End();
-		BLE_shut_stop();
-		camera_shutter_shot(0);
-		specialty_mode_main();
-		Group_main();
-		FindOrigin_over_to_Sart();
-		Sync_data_for_controller();
-		SpHHmotor_slowly_startedORstop();
-		Video_MotorHH_slowly_startedORstop();
-		Video_FindABpoint_End();
-		limit_angle_360();
-		delay_mode_main();
-		wifi24G_data_Dispose();
+		 	bluetooth_pair_led();
+			set_abpoint_slow_stopORstart(MOTOR_HORITAL);
+			Manual_HH_slowStartOrStop();
+			DelayMode_slowly_startedORstop(MOTOR_HORITAL);
+			DelayMode_FindABpoint_End();
+			BLE_shut_stop();
+			camera_shutter_shot(0);
+			specialty_mode_main();
+			Group_main();
+			FindOrigin_over_to_Sart();
+			Sync_data_for_controller();
+			SpHHmotor_slowly_startedORstop();
+			Video_MotorHH_slowly_startedORstop();
+			Video_FindABpoint_End();
+			limit_angle_360();
+			delay_mode_main();
+			wifi24G_data_Dispose();
+			All_slow_check();
+		}
+		
 	  Time_Out_And_Enter_Stop_Mode();
-	 All_slow_check();
   }
   /* USER CODE END 3 */
 
